@@ -182,7 +182,7 @@
       const f = families[slug];
       const c = counts[slug] || 0;
       const logo = LOGO_FILES[slug]
-        ? '<span class="family-logo" style="--logo-url: url(' + basePath + 'assets/logos/' + LOGO_FILES[slug] + ')"></span>'
+        ? '<span class="family-logo" style="--logo-url: url(assets/logos/' + LOGO_FILES[slug] + ')"></span>'
         : '';
       return '<a class="family-card" href="' + basePath + 'transcripts/' + slug + '.html">' +
         logo +
@@ -229,11 +229,13 @@
     if (el) el.innerHTML = '<div class="load-error">' + escapeHTML(message) + '</div>';
   }
 
-  function renderTitleLogo(slug, basePath) {
-    basePath = basePath || "";
+  function renderTitleLogo(slug) {
     const file = LOGO_FILES[slug];
     if (!file) return "";
-    const url = basePath + "assets/logos/" + file;
+    // Always relative to styles.css (root), not the calling page —
+    // url() inside an inline-style custom property is resolved against
+    // the stylesheet, not the document.
+    const url = "assets/logos/" + file;
     return '<span class="title-logo" style="--logo-url: url(' + url + ')"></span>';
   }
 

@@ -64,8 +64,14 @@ h1.site-title .title-logo {
   margin-right: 18px;
   vertical-align: -6px;
   background-color: var(--ink);
-  -webkit-mask: var(--logo-url) no-repeat center / contain;
-          mask: var(--logo-url) no-repeat center / contain;
+  -webkit-mask-image: var(--logo-url);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: var(--logo-url);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
 }
 @media (max-width: 640px) {
   h1.site-title .title-logo {

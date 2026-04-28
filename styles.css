@@ -267,7 +267,8 @@ li { margin-bottom: 6px; }
   align-items: center;
   justify-content: center;
   padding: 4px 10px;
-  min-width: 116px;
+  width: 132px;
+  box-sizing: border-box;
   border-radius: 4px;
   font-weight: 700;
   font-size: 12px;

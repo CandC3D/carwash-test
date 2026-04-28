@@ -206,6 +206,14 @@
     if (el) el.innerHTML = '<div class="load-error">' + escapeHTML(message) + '</div>';
   }
 
+  function renderTitleLogo(slug, basePath) {
+    basePath = basePath || "";
+    const file = LOGO_FILES[slug];
+    if (!file) return "";
+    const url = basePath + "assets/logos/" + file;
+    return '<span class="title-logo" style="--logo-url: url(' + url + ')"></span>';
+  }
+
   global.CarwashTest = {
     loadData: loadData,
     formatDate: formatDate,
@@ -217,6 +225,7 @@
     renderResultsTableForFamily: renderResultsTableForFamily,
     renderLegend: renderLegend,
     renderFamilyGrid: renderFamilyGrid,
+    renderTitleLogo: renderTitleLogo,
     renderTranscriptEntry: renderTranscriptEntry,
     renderChangeLog: renderChangeLog,
     showError: showError

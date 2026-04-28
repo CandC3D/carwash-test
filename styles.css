@@ -57,6 +57,24 @@ h1.site-title {
   line-height: 1.05;
   margin: 0 0 8px;
 }
+h1.site-title .title-logo {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin-right: 18px;
+  vertical-align: -6px;
+  background-color: var(--ink);
+  -webkit-mask: var(--logo-url) no-repeat center / contain;
+          mask: var(--logo-url) no-repeat center / contain;
+}
+@media (max-width: 640px) {
+  h1.site-title .title-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    vertical-align: -4px;
+  }
+}
 
 .site-subtitle {
   font-family: var(--sans);

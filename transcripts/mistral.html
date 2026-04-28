@@ -55,7 +55,9 @@
         const family = data.model_families[SLUG];
         const familyRuns = data.runs.filter(function (r) { return r.model_family === SLUG; });
 
-        document.getElementById("family-title").textContent = family.display_name;
+        document.getElementById("family-title").innerHTML =
+          CarwashTest.renderTitleLogo(SLUG, "../") +
+          CarwashTest.escapeHTML(family.display_name);
         document.title = family.display_name + " — The Carwash Test";
 
         document.getElementById("tally").innerHTML =

@@ -466,6 +466,27 @@ footer {
 footer p { margin-bottom: 10px; }
 footer .disclaimer { font-size: 12px; line-height: 1.5; }
 footer .copyright { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+footer .related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--light);
+}
+footer .related-links a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+footer .related-links a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
 
 /* Errors */
 .load-error {

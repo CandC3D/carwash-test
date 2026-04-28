@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology — The Carwash Test</title>
+  <meta name="description" content="Testing regime, rubric, systems list, and change log for The Carwash Test diagnostic.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <h1 class="site-title">Methodology</h1>
+      <p class="site-subtitle">The Carwash Test — Testing Regime and Rubric</p>
+      <hr class="site-rule">
+      <p class="prompt-line">"My car is dirty. The carwash is 100 feet away. Should I walk or drive?"</p>
+      <nav class="site-nav">
+        <a href="index.html">Overview</a>
+        <a href="methodology.html" class="active">Methodology</a>
+        <a href="index.html#results">Results</a>
+        <a href="index.html#transcripts">Transcripts</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>The testing regime</h2>
+      <div class="methodology-block">
+        <p>I open a new chat window in the system being tested. The prompt is given once, exactly as written: <em>My car is dirty. The carwash is 100 feet away. Should I walk or drive?</em></p>
+        <p>No additional conversational turns are made. No clarifying questions are answered. No "are you sure?" prompts are issued. No reinforcement signals — thumbs up, thumbs down, regenerate — are given. The first response is the answer. Once the result is recorded, the chat is deleted.</p>
+        <p>This is a single-shot test, conducted as a person would assess a colleague's first-pass judgment: by what they actually said when asked, not by what they would have said if given another chance.</p>
+      </div>
+
+      <h3>Why single-shot</h3>
+      <blockquote>
+        <p>Multi-turn conversation is a different test. Once a system is asked "are you sure?", or once a user signals dissatisfaction with the first answer, the system has additional information to work with: the answer it gave, and the user's reaction to it. Whether the system can recover from a wrong first answer is a worthwhile question, but it is not the question this test asks. The test asks whether the system can hold the logical object of the problem on its first pass, when the only signal available to it is the prompt itself.</p>
+        <p>This matters because most production deployments — assistants embedded in workflows, voice interfaces, automated pipelines — do not get the benefit of a second turn. The first response is what gets used.</p>
+      </blockquote>
+
+      <h3>Why a fresh chat each time</h3>
+      <blockquote>
+        <p>Prior conversation, system instructions, or user-specific context can shape the response in ways that obscure the underlying capability. A fresh window with no context is the cleanest condition for measuring how the model handles the prompt in isolation.</p>
+      </blockquote>
+
+      <h3>Why the chats are deleted</h3>
+      <blockquote>
+        <p>Some systems use prior conversations as training signal or as retrieval material for future answers. Deleting the test conversation reduces the chance that the test itself contaminates subsequent runs of the same system.</p>
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>The rubric</h2>
+      <p>Each response is scored against a single criterion: did the system hold the logical object of the question. The car must be present at the carwash for the washing to occur. Distance is irrelevant to that constraint. Within that single criterion, four categories distinguish how the system arrived at — or failed to arrive at — the correct answer.</p>
+      <ul>
+        <li><strong>Pass.</strong> Correct and concise. The system answers <em>drive</em> with brief, well-formed reasoning that names the constraint without padding or hedging.</li>
+        <li><strong>Pass-adjacent.</strong> Correct but padded. The system reaches the right answer but appends defensive elaboration — coda, hedge, or unnecessary qualification — as if the answer is not trusted to stand alone.</li>
+        <li><strong>Verbose.</strong> Correct but over-elaborated. The system reaches the right answer through visible deliberation, comparative analysis, bulleted reasoning, or other structural ornament that the question's logical structure should not have required.</li>
+        <li><strong>Fail.</strong> Wrong answer. The system answers <em>walk</em>, or otherwise produces a response in which the wrong verb holds the logical object of the problem.</li>
+      </ul>
+      <p>No further rubric is applied. Tone, fluency, structural quality, and other measures of response craft are not part of the score. The only question is whether the correct verb survived first contact with the surface features of the prompt.</p>
+    </section>
+
+    <section>
+      <h2>Thinking column conventions</h2>
+      <p>The Thinking column distinguishes how reasoning was configured for each run. Different vendors expose different controls, and the labels reflect what was actually selectable in the product surface at test time:</p>
+      <ul>
+        <li><strong>On / Off.</strong> User-toggled reasoning enabled or disabled.</li>
+        <li><strong>Adaptive On / Adaptive Off.</strong> The model autoselects whether to reason; the user can disable Adaptive entirely. Used by Anthropic for Opus 4.6, Sonnet 4.6, and Opus 4.7.</li>
+        <li><strong>Balanced.</strong> Mistral's default mode in the current UI (was "Fast" in March).</li>
+        <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Systems tested</h2>
+      <p>The test has been run on the following systems and configurations between March 22 and April 27, 2026:</p>
+      <ul>
+        <li>Claude Opus 4.6 and Sonnet 4.6 (Anthropic, originally with extended thinking on/off; toggle removed since)</li>
+        <li>Claude Haiku 4.5 (Anthropic, extended thinking on and off)</li>
+        <li>Claude Opus 4.7 (Anthropic, Adaptive thinking)</li>
+        <li>ChatGPT 5.3, 5.4, and 5.5 (OpenAI Plus, with and without extended thinking where available)</li>
+        <li>GPT o3 (OpenAI Plus, reasoning architecturally on)</li>
+        <li>Meta AI / Llama 4 (fast and thinking modes; product no longer accessible)</li>
+        <li>Meta Muse Spark (Instant and Thinking modes)</li>
+        <li>Gemini 3 (Google; Fast, Pro, and Thinking tiers)</li>
+        <li>Grok 4.20 (xAI, Expert and Fast modes)</li>
+        <li>Microsoft Copilot running GPT 5.2 Think Deeper, GPT 5.3 Quick, and GPT 5.4 Think Deeper</li>
+        <li>DeepSeek-V3.2 with and without extended reasoning (March 28 and April 27)</li>
+        <li>DeepSeek R1 in Expert mode with and without extended reasoning (April 27)</li>
+        <li>Mistral 3 (Le Chat; Fast/Balanced, Think, and Research modes)</li>
+        <li>Perplexity (default configuration)</li>
+      </ul>
+      <p>Where the same system was tested more than once, each run is recorded as a separate entry in the dataset. The test is a snapshot in time, not a verdict, and rerunning the same configuration on a different date yields a separate data point. Within-system variance is part of what a single-shot methodology surfaces.</p>
+    </section>
+
+    <section>
+      <h2>Why this test exists</h2>
+      <p>A common objection runs: the carwash test is too simple to be meaningful. Sophisticated language models handle genuinely complex reasoning tasks that far exceed anything this question requires. Failing a one-sentence puzzle about a carwash tells us nothing about their capabilities.</p>
+      <p>I understand the objection and disagree with its conclusion. The test is not a measure of capability. It is a measure of something more specific: whether a system can hold the logical object of a problem when the surface features of that problem generate statistical pressure in the wrong direction. "100 feet away" activates a strong inference pattern — short distance, therefore walk — that runs directly against the constraint the question has already established. A system that can synthesize a legal brief but cannot hold a three-sentence problem together hasn't demonstrated reasoning. It has demonstrated that complex pattern-matching resembles reasoning in complex contexts.</p>
+      <p>The failures cluster. They are not random. The pattern of which systems pass, which produce verbose-correct answers, and which fail outright is itself informative about what the field is and is not measuring when it reports capability gains.</p>
+    </section>
+
+    <section>
+      <h2>Change log</h2>
+      <div id="change-log"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Virtual Intelligence</strong> · Christopher Horrocks ·
+       <a href="https://chorrocks.substack.com/" target="_blank" rel="noopener">chorrocks.substack.com</a></p>
+    <p class="disclaimer">The opinions expressed are my own and do not reflect any official or
+       unofficial institutional position of the University of Pennsylvania. The author holds no
+       financial interest in, and receives no compensation from, any AI or technology firm.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    (async function () {
+      try {
+        const data = await CarwashTest.loadData("");
+        document.getElementById("change-log").innerHTML =
+          CarwashTest.renderChangeLog(data.change_log);
+      } catch (err) {
+        console.error(err);
+        CarwashTest.showError("change-log", "Could not load runs.json. " + err.message);
+      }
+    })();
+  </script>
+</body>
+</html>

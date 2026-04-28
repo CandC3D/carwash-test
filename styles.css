@@ -197,13 +197,16 @@ li { margin-bottom: 6px; }
 .badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 4px 10px;
+  min-width: 116px;
   border-radius: 4px;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   font-family: var(--sans);
+  text-align: center;
 }
 .badge.pass         { background: var(--pass-bg);    color: var(--pass-text); }
 .badge.pass-adjacent{ background: var(--passadj-bg); color: var(--passadj-text); }

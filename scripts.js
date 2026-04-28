@@ -19,6 +19,18 @@
 
   const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
+  const LOGO_FILES = {
+    "anthropic": "anthropic.svg",
+    "openai": "openai.svg",
+    "deepseek": "deepseek.svg",
+    "google": "googlegemini.svg",
+    "meta": "meta.svg",
+    "microsoft": "microsoft.svg",
+    "xai": "x.svg",
+    "mistral": "mistralai.svg",
+    "perplexity": "perplexity.svg"
+  };
+
   async function loadData(basePath) {
     basePath = basePath || "";
     const res = await fetch(basePath + "data/runs.json", { cache: "no-cache" });
@@ -146,7 +158,11 @@
     return '<div class="family-grid">' + slugs.map(function (slug) {
       const f = families[slug];
       const c = counts[slug] || 0;
+      const logo = LOGO_FILES[slug]
+        ? '<span class="family-logo" style="--logo-url: url(' + basePath + 'assets/logos/' + LOGO_FILES[slug] + ')"></span>'
+        : '';
       return '<a class="family-card" href="' + basePath + 'transcripts/' + slug + '.html">' +
+        logo +
         '<span class="family-name">' + escapeHTML(f.display_name) + '</span>' +
         '<span class="family-count">' + c + ' run' + (c === 1 ? '' : 's') + '</span>' +
         '</a>';

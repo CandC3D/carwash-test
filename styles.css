@@ -227,14 +227,26 @@ li { margin-bottom: 6px; }
   border: 1px solid var(--light);
   padding: 20px;
   color: var(--ink);
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease;
 }
 .family-card:hover { border-color: var(--ink); color: var(--ink); }
+.family-card:hover .family-logo { background-color: var(--pumpkin); }
+.family-logo {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+  background-color: var(--ink);
+  -webkit-mask: var(--logo-url) no-repeat center / contain;
+          mask: var(--logo-url) no-repeat center / contain;
+  transition: background-color 0.15s ease;
+}
 .family-card .family-name {
   font-family: var(--serif);
   font-size: 22px;
   display: block;
   margin-bottom: 6px;
+  line-height: 1.15;
 }
 .family-card .family-count {
   font-size: 12px;

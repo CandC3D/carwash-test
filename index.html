@@ -66,6 +66,7 @@
           CarwashTest.renderTallyRow(CarwashTest.tally(runs));
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTable(runs, families);
+        CarwashTest.makeSortable(document.querySelector("#results-table table"));
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("family-grid").innerHTML =

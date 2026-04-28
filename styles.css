@@ -81,9 +81,11 @@ h1.site-title .title-logo {
   font-size: 15px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--olive);
   margin: 0 0 24px;
 }
+
+footer strong { color: var(--olive); font-weight: 700; }
 
 .site-rule {
   border: 0;
@@ -173,6 +175,18 @@ li { margin-bottom: 6px; }
   text-transform: uppercase;
   color: var(--muted);
 }
+.tally-card.tally-pass         { background: var(--pass-bg);    border-color: var(--pass-text); }
+.tally-card.tally-pass .count,
+.tally-card.tally-pass .label  { color: var(--pass-text); }
+.tally-card.tally-pass-adjacent        { background: var(--passadj-bg); border-color: var(--passadj-text); }
+.tally-card.tally-pass-adjacent .count,
+.tally-card.tally-pass-adjacent .label { color: var(--passadj-text); }
+.tally-card.tally-verbose         { background: var(--verbose-bg); border-color: var(--verbose-text); }
+.tally-card.tally-verbose .count,
+.tally-card.tally-verbose .label  { color: var(--verbose-text); }
+.tally-card.tally-fail         { background: var(--fail-bg);    border-color: var(--fail-text); }
+.tally-card.tally-fail .count,
+.tally-card.tally-fail .label  { color: var(--fail-text); }
 
 /* Results table */
 .results-table {
@@ -194,6 +208,42 @@ li { margin-bottom: 6px; }
   text-transform: uppercase;
   color: var(--muted);
   border-bottom: 1px solid var(--ink);
+}
+.results-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-right: 22px;
+}
+.results-table th.sortable::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  opacity: 0.35;
+  background-image: linear-gradient(transparent 3px, currentColor 3px, currentColor 5px, transparent 5px);
+}
+.results-table th.sortable:hover { color: var(--ink); }
+.results-table th.sortable:hover::after { opacity: 0.65; }
+.results-table th.sort-asc, .results-table th.sort-desc { color: var(--ink); }
+.results-table th.sort-asc::after {
+  background-image: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid currentColor;
+  width: 0; height: 0;
+  opacity: 1;
+}
+.results-table th.sort-desc::after {
+  background-image: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  width: 0; height: 0;
+  opacity: 1;
 }
 .results-table td.col-id { font-family: var(--mono); color: var(--muted); width: 40px; }
 .results-table tr:hover td { background: var(--bg-alt); }

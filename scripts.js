@@ -73,70 +73,93 @@
   function renderTallyRow(t) {
     const order = ["pass", "pass-adjacent", "verbose", "fail"];
     return '<div class="tally-row">' + order.map(function (k) {
-      return '<div class="tally-card">' +
+      return '<div class="tally-card tally-' + k + '">' +
         '<span class="count">' + t[k] + '</span>' +
         '<span class="label">' + RESULT_LABELS[k] + '</span>' +
         '</div>';
     }).join("") + '</div>';
   }
 
+  const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3 };
+  const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "balanced": 3, "adaptive_on": 4, "on": 5 };
+
+  function buildRow(r, link) {
+    const idCell = link ? '<a href="' + link + '">#' + r.id + '</a>' : '#' + r.id;
+    const modelCell = link ? '<a href="' + link + '">' + escapeHTML(r.model) + '</a>' : escapeHTML(r.model);
+    return '<tr>' +
+      '<td class="col-id" data-sort="' + r.id + '">' + idCell + '</td>' +
+      '<td data-sort="' + escapeHTML(r.vendor.toLowerCase()) + '">' + escapeHTML(r.vendor) + '</td>' +
+      '<td data-sort="' + escapeHTML(r.model.toLowerCase()) + '">' + modelCell + '</td>' +
+      '<td class="col-thinking" data-sort="' + (THINKING_SORT_RANK[r.thinking] !== undefined ? THINKING_SORT_RANK[r.thinking] : 99) + '">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
+      '<td class="col-date" data-sort="' + escapeHTML(r.date) + '">' + escapeHTML(formatDate(r.date)) + '</td>' +
+      '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
+      '</tr>';
+  }
+
+  function buildHeader() {
+    return '<thead><tr>' +
+      '<th class="col-id sortable" data-sort-type="number" data-default-dir="asc">#</th>' +
+      '<th class="sortable" data-sort-type="string" data-default-dir="asc">Company</th>' +
+      '<th class="sortable" data-sort-type="string" data-default-dir="asc">Model</th>' +
+      '<th class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
+      '<th class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
+      '<th class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
+      '</tr></thead>';
+  }
+
   function renderResultsTable(runs, families) {
     const rows = runs.map(function (r) {
-      const slug = r.model_family;
-      const link = (families && families[slug])
-        ? "transcripts/" + slug + ".html#run-" + r.id
+      const link = (families && families[r.model_family])
+        ? "transcripts/" + r.model_family + ".html#run-" + r.id
         : null;
-      const idCell = link
-        ? '<a href="' + link + '">#' + r.id + '</a>'
-        : '#' + r.id;
-      const modelCell = link
-        ? '<a href="' + link + '">' + escapeHTML(r.model) + '</a>'
-        : escapeHTML(r.model);
-      return '<tr>' +
-        '<td class="col-id">' + idCell + '</td>' +
-        '<td>' + escapeHTML(r.vendor) + '</td>' +
-        '<td>' + modelCell + '</td>' +
-        '<td class="col-thinking">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
-        '<td class="col-date">' + escapeHTML(formatDate(r.date)) + '</td>' +
-        '<td><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
-        '</tr>';
+      return buildRow(r, link);
     }).join("");
-    return '<table class="results-table">' +
-      '<thead><tr>' +
-      '<th class="col-id">#</th>' +
-      '<th>Company</th>' +
-      '<th>Model</th>' +
-      '<th class="col-thinking">Thinking</th>' +
-      '<th class="col-date">Date</th>' +
-      '<th>Result</th>' +
-      '</tr></thead>' +
-      '<tbody>' + rows + '</tbody>' +
-      '</table>';
+    return '<table class="results-table">' + buildHeader() + '<tbody>' + rows + '</tbody></table>';
   }
 
   function renderResultsTableForFamily(runs) {
-    // Used on transcript pages — link to in-page anchors
     const rows = runs.map(function (r) {
-      return '<tr>' +
-        '<td class="col-id"><a href="#run-' + r.id + '">#' + r.id + '</a></td>' +
-        '<td>' + escapeHTML(r.vendor) + '</td>' +
-        '<td><a href="#run-' + r.id + '">' + escapeHTML(r.model) + '</a></td>' +
-        '<td class="col-thinking">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
-        '<td class="col-date">' + escapeHTML(formatDate(r.date)) + '</td>' +
-        '<td><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
-        '</tr>';
+      return buildRow(r, "#run-" + r.id);
     }).join("");
-    return '<table class="results-table">' +
-      '<thead><tr>' +
-      '<th class="col-id">#</th>' +
-      '<th>Company</th>' +
-      '<th>Model</th>' +
-      '<th class="col-thinking">Thinking</th>' +
-      '<th class="col-date">Date</th>' +
-      '<th>Result</th>' +
-      '</tr></thead>' +
-      '<tbody>' + rows + '</tbody>' +
-      '</table>';
+    return '<table class="results-table">' + buildHeader() + '<tbody>' + rows + '</tbody></table>';
+  }
+
+  function makeSortable(table) {
+    if (!table) return;
+    const headers = table.querySelectorAll("th.sortable");
+    headers.forEach(function (th, colIndex) {
+      th.addEventListener("click", function () {
+        const tbody = table.tBodies[0];
+        const rows = Array.prototype.slice.call(tbody.rows);
+        const type = th.getAttribute("data-sort-type");
+        const currentDir = th.getAttribute("data-dir");
+        const defaultDir = th.getAttribute("data-default-dir") || "asc";
+        const dir = currentDir
+          ? (currentDir === "asc" ? "desc" : "asc")
+          : defaultDir;
+
+        rows.sort(function (a, b) {
+          const av = a.cells[colIndex].getAttribute("data-sort");
+          const bv = b.cells[colIndex].getAttribute("data-sort");
+          let cmp;
+          if (type === "number") {
+            cmp = parseFloat(av) - parseFloat(bv);
+          } else {
+            cmp = av < bv ? -1 : av > bv ? 1 : 0;
+          }
+          return dir === "asc" ? cmp : -cmp;
+        });
+
+        rows.forEach(function (row) { tbody.appendChild(row); });
+
+        headers.forEach(function (other) {
+          other.removeAttribute("data-dir");
+          other.classList.remove("sort-asc", "sort-desc");
+        });
+        th.setAttribute("data-dir", dir);
+        th.classList.add(dir === "asc" ? "sort-asc" : "sort-desc");
+      });
+    });
   }
 
   function renderLegend() {
@@ -223,6 +246,7 @@
     renderTallyRow: renderTallyRow,
     renderResultsTable: renderResultsTable,
     renderResultsTableForFamily: renderResultsTableForFamily,
+    makeSortable: makeSortable,
     renderLegend: renderLegend,
     renderFamilyGrid: renderFamilyGrid,
     renderTitleLogo: renderTitleLogo,

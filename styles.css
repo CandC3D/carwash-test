@@ -396,6 +396,36 @@ details > div {
   font-style: italic;
 }
 
+.transcript-attachment {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--pumpkin);
+  background: var(--bg-alt);
+  font-size: 14px;
+}
+.transcript-attachment a { text-decoration: none; }
+.transcript-attachment a::before {
+  content: "↓ ";
+  color: var(--pumpkin);
+  font-weight: 700;
+  margin-right: 4px;
+}
+.transcript-attachment .attachment-label {
+  font-style: italic;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1px;
+}
+.transcript-attachment a:hover .attachment-label {
+  color: var(--pumpkin);
+  border-bottom-color: var(--pumpkin);
+}
+.transcript-attachment .attachment-desc {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 /* Change log timeline */
 .change-log {
   border-left: 1px solid var(--light);

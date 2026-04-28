@@ -192,10 +192,23 @@
     }).join("") + '</div>';
   }
 
-  function renderTranscriptEntry(run) {
+  function renderTranscriptEntry(run, basePath) {
+    basePath = basePath || "";
     const notesBlock = run.notes && run.notes.trim()
       ? '<div class="transcript-notes">' + escapeHTML(run.notes) + '</div>'
       : '';
+    let attachmentBlock = '';
+    if (run.attachment && run.attachment.url) {
+      const href = basePath + run.attachment.url;
+      const label = run.attachment.label || "Download attachment";
+      const desc = run.attachment.description ? '<span class="attachment-desc">' + escapeHTML(run.attachment.description) + '</span>' : '';
+      attachmentBlock = '<div class="transcript-attachment">' +
+        '<a href="' + escapeHTML(href) + '" target="_blank" rel="noopener">' +
+          '<span class="attachment-label">' + escapeHTML(label) + '</span>' +
+        '</a>' +
+        desc +
+        '</div>';
+    }
     return '<div class="transcript-entry" id="run-' + run.id + '">' +
       '<div class="transcript-header">' +
         '<span class="transcript-id">#' + run.id + '</span>' +
@@ -212,6 +225,7 @@
         '<div>' + escapeHTML(run.response) + '</div>' +
       '</details>' +
       notesBlock +
+      attachmentBlock +
       '</div>';
   }
 

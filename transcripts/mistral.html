@@ -68,7 +68,7 @@
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("transcripts").innerHTML =
-          familyRuns.map(CarwashTest.renderTranscriptEntry).join("");
+          familyRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
       } catch (err) {
         console.error(err);
         CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transcripts — The Carwash Test</title>
+  <meta name="description" content="Verbatim model outputs from The Carwash Test, organized by vendor family.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <h1 class="site-title">Transcripts</h1>
+      <p class="site-subtitle">Verbatim model outputs · organized by vendor</p>
+      <hr class="site-rule">
+      <p class="prompt-line">"My car is dirty. The carwash is 100 feet away. Should I walk or drive?"</p>
+      <nav class="site-nav">
+        <a href="index.html">Overview</a>
+        <a href="results.html">Results</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="transcripts.html" class="active">Transcripts</a>
+      </nav>
+    </header>
+
+    <section>
+      <p>Each card opens the family's transcript page, where every recorded run is preserved in full with its original spacing, line breaks, and any visible reasoning trace.</p>
+      <div id="family-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Virtual Intelligence</strong> · Christopher Horrocks ·
+       <a href="https://chorrocks.substack.com/" target="_blank" rel="noopener">chorrocks.substack.com</a></p>
+    <p class="disclaimer">The opinions expressed are my own and do not reflect any official or
+       unofficial institutional position of the University of Pennsylvania. The author holds no
+       financial interest in, and receives no compensation from, any AI or technology firm.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    (async function () {
+      try {
+        const data = await CarwashTest.loadData("");
+        document.getElementById("family-grid").innerHTML =
+          CarwashTest.renderFamilyGrid(data.runs, data.model_families, "");
+      } catch (err) {
+        console.error(err);
+        CarwashTest.showError("family-grid", "Could not load runs.json. " + err.message);
+      }
+    })();
+  </script>
+</body>
+</html>

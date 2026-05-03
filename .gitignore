@@ -1,3 +1,15 @@
 .claude/
 .DS_Store
 Thumbs.db
+
+# Pipeline artifacts from PDF extraction (May 3, 2026 batch)
+__pycache__/
+_batch1_pdfs/
+_batch2_pdfs/
+batch1_extracted.json
+batch1_extracted.md
+batch1_cid_decoded.json
+batch1_responses.json
+batch2_extracted.json
+batch2_extracted.md
+batch2_responses.json

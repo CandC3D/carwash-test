@@ -67,7 +67,11 @@
       <p>The Thinking column distinguishes how reasoning was configured for each run. Different vendors expose different controls, and the labels reflect what was actually selectable in the product surface at test time:</p>
       <ul>
         <li><strong>On / Off.</strong> User-toggled reasoning enabled or disabled.</li>
-        <li><strong>Adaptive On / Adaptive Off.</strong> The model autoselects whether to reason; the user can disable Adaptive entirely. Used by Anthropic for Opus 4.6, Sonnet 4.6, and Opus 4.7.</li>
+        <li><strong>Adaptive On / Adaptive Off.</strong> The model autoselects whether to reason; the user can disable Adaptive entirely. Used by Anthropic for Sonnet 4.6 and Opus 4.7. (Opus 4.6 reverted to Extended Thinking On/Off in May.)</li>
+        <li><strong>Auto.</strong> Vendor-specific adaptive picker that selects a reasoning depth tier on the model's behalf. Used by xAI Grok 4.3 and Qwen3.6-Plus.</li>
+        <li><strong>Fast.</strong> Reasoning suppressed in favor of latency. Used by xAI Grok 4.3, Qwen 3.6, and Mistral Medium 3.5.</li>
+        <li><strong>Expert.</strong> Maximum-deliberation tier. Used by xAI Grok 4.3.</li>
+        <li><strong>Contemplating.</strong> Multi-chain parallel reasoning. New mode added by Meta to Muse Spark in May.</li>
         <li><strong>Balanced.</strong> Mistral's default mode in the current UI (was "Fast" in March).</li>
         <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
       </ul>
@@ -75,24 +79,30 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and April 27, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and May 3, 2026:</p>
       <ul>
-        <li>Claude Opus 4.6 and Sonnet 4.6 (Anthropic, originally with extended thinking on/off; toggle removed since)</li>
-        <li>Claude Haiku 4.5 (Anthropic, extended thinking on and off)</li>
+        <li>Claude Opus 4.6 and Sonnet 4.6 (Anthropic; originally Extended Thinking On/Off, briefly Adaptive, reverted to Extended Thinking On/Off in May)</li>
+        <li>Claude Haiku 4.5 (Anthropic, Extended Thinking On and Off)</li>
         <li>Claude Opus 4.7 (Anthropic, Adaptive thinking)</li>
-        <li>ChatGPT 5.3, 5.4, and 5.5 (OpenAI Plus, with and without extended thinking where available)</li>
+        <li>ChatGPT 5.2, 5.3, 5.4, and 5.5 (OpenAI Plus, with and without extended thinking where available)</li>
         <li>GPT o3 (OpenAI Plus, reasoning architecturally on)</li>
-        <li>Meta AI / Llama 4 (fast and thinking modes; product no longer accessible)</li>
-        <li>Meta Muse Spark (Instant and Thinking modes)</li>
+        <li>Meta AI / Llama 4 (Fast and Thinking modes; product no longer accessible)</li>
+        <li>Meta Muse Spark (Instant, Thinking, and Contemplating modes; Contemplating added in May for multi-chain parallel reasoning)</li>
         <li>Gemini 3 (Google; Fast, Pro, and Thinking tiers)</li>
-        <li>Grok 4.20 (xAI, Expert and Fast modes)</li>
-        <li>Microsoft Copilot running GPT 5.2 Think Deeper, GPT 5.3 Quick, and GPT 5.4 Think Deeper</li>
-        <li>DeepSeek-V3.2 with and without extended reasoning (March 28 and April 27)</li>
-        <li>DeepSeek R1 in Expert mode with and without extended reasoning (April 27)</li>
-        <li>Mistral 3 (Le Chat; Fast/Balanced, Think, and Research modes)</li>
+        <li>Grok 4.20 (xAI, Expert and Fast modes; March/April only)</li>
+        <li>Grok 4.3 (xAI; Auto, Fast, and Expert modes; new in May)</li>
+        <li>DeepSeek-V3.2 with and without extended reasoning (March 28, April 27, and May 3)</li>
+        <li>DeepSeek R1 in Expert mode with and without extended reasoning (April 27 and May 3)</li>
+        <li>Mistral 3 (Le Chat; Fast/Balanced, Think, and Research modes; March only)</li>
+        <li>Mistral Medium 3.5 (Le Chat; Fast, Think, and Research modes; replaced Mistral 3 in late April)</li>
         <li>Perplexity (default configuration)</li>
+        <li>Qwen 3.6 (Alibaba; Plus, Max-Preview, and 27B model tiers, with Auto/Thinking/Fast toggles where available; new in May)</li>
+        <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
+        <li>Lumo (Proton; default configuration, no reasoning toggle exposed; new in May)</li>
+        <li>Microsoft Copilot running Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 in Quick Response and Think Deeper modes (May runs use the isolation prompt to suppress M365 retrieval)</li>
       </ul>
       <p>Where the same system was tested more than once, each run is recorded as a separate entry in the dataset. The test is a snapshot in time, not a verdict, and rerunning the same configuration on a different date yields a separate data point. Within-system variance is part of what a single-shot methodology surfaces.</p>
+      <p>Two prompt variants are in use. Runs 1–43 and 47–83 use the canonical short prompt: <em>My car is dirty. The carwash is 100 feet away. Should I walk or drive?</em> Runs 84–89 (Microsoft Copilot, May 3 only) use an isolation prompt that explicitly instructs the system to ignore web search, file search, workspace, and conversation context — added so the Copilot wrapper's retrieval surface does not contaminate the test.</p>
     </section>
 
     <section>

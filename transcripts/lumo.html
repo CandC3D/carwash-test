@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Transcripts — The Carwash Test</title>
+  <meta name="description" content="Verbatim Carwash Test transcripts for one model family.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <h1 class="site-title" id="family-title">Transcripts</h1>
+      <p class="site-subtitle">Carwash Test transcripts</p>
+      <hr class="site-rule">
+      <p class="prompt-line">"My car is dirty. The carwash is 100 feet away. Should I walk or drive?"</p>
+      <nav class="site-nav">
+        <a href="../index.html">Overview</a>
+        <a href="../results.html">Results</a>
+        <a href="../methodology.html">Methodology</a>
+        <a href="../transcripts.html" class="active">Transcripts</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>Results</h2>
+      <div id="tally"></div>
+      <div id="results-table"></div>
+      <div id="legend"></div>
+    </section>
+
+    <section>
+      <h2>Transcripts</h2>
+      <div id="transcripts"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="related-links">
+      <a href="https://candc3d.github.io/vi-framework/" target="_blank" rel="noopener">Virtual Intelligence Framework</a>
+      <a href="https://candc3d.github.io/sampo-framework/" target="_blank" rel="noopener">Sampo Framework</a>
+      <a href="https://candc3d.github.io/sampo-diagnostic/" target="_blank" rel="noopener">Sampo Diagnostic</a>
+      <a href="https://candc3d.github.io/containment-thesis/" target="_blank" rel="noopener">Containment Thesis</a>
+    </p>
+    <p><strong>Virtual Intelligence</strong> · Christopher Horrocks ·
+       <a href="https://chorrocks.substack.com/" target="_blank" rel="noopener">chorrocks.substack.com</a></p>
+    <p class="copyright">© 2026 Christopher Horrocks. All rights reserved.</p>
+    <p class="disclaimer">The opinions expressed are my own and do not reflect any official or
+       unofficial institutional position of the University of Pennsylvania. The author holds no
+       financial interest in, and receives no compensation from, any AI or technology firm.</p>
+  </footer>
+
+  <script src="../scripts.js"></script>
+  <script>
+    (async function () {
+      const SLUG = "lumo";
+      try {
+        const data = await CarwashTest.loadData("../");
+        const family = data.model_families[SLUG];
+        const familyRuns = data.runs.filter(function (r) { return r.model_family === SLUG; });
+
+        document.getElementById("family-title").innerHTML =
+          CarwashTest.renderTitleLogo(SLUG, "../") +
+          CarwashTest.escapeHTML(family.display_name);
+        document.title = family.display_name + " — The Carwash Test";
+
+        document.getElementById("tally").innerHTML =
+          CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
+        document.getElementById("results-table").innerHTML =
+          CarwashTest.renderResultsTableForFamily(familyRuns);
+        CarwashTest.makeSortable(document.querySelector("#results-table table"));
+        document.getElementById("legend").innerHTML =
+          CarwashTest.renderLegend();
+        document.getElementById("transcripts").innerHTML =
+          familyRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+      } catch (err) {
+        console.error(err);
+        CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);
+      }
+    })();
+  </script>
+</body>
+</html>

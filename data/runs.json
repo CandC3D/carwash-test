@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-04-27",
+    "last_updated": "2026-05-03",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -68,6 +68,21 @@
       "name": "Perplexity",
       "display_name": "Perplexity",
       "slug": "perplexity"
+    },
+    "qwen": {
+      "name": "Qwen",
+      "display_name": "Qwen (Alibaba)",
+      "slug": "qwen"
+    },
+    "kimi": {
+      "name": "Kimi",
+      "display_name": "Kimi (Moonshot AI)",
+      "slug": "kimi"
+    },
+    "lumo": {
+      "name": "Lumo",
+      "display_name": "Lumo (Proton)",
+      "slug": "lumo"
     }
   },
   "runs": [
@@ -493,9 +508,580 @@
       "result": "fail",
       "response": "Walk.\n\n100 feet is *nothing*—roughly 30 seconds at a normal pace, maybe 20 if you hustle. Driving your dirty car that far is comically inefficient:\n\n- You'd burn a tiny bit of gas and put a few extra grams of emissions into the air... just to move the dirty car 100 feet so you can clean it.\n- You'd have to start the engine, possibly back out, maneuver into the carwash bay, etc., for a trip that's shorter than most people's driveway.\n- The car is already dirty. A 30-second walk won't change that.\n\nJust grab your keys/wallet/payment method and stroll over. It's faster, cheaper, better for the car (less unnecessary engine runtime), and better for the planet. If it's raining or you're carrying something bulky, then maybe drive—but otherwise, walking is the obvious winner.\n\nEnjoy the fresh air and the clean car on the way back. 🚶‍♂️🧼",
       "notes": "Thought for 2 seconds. Same model as run #19, same prompt, same product surface — the verdict flipped from a confident Pass-adjacent (\"Drive the stupid 100 feet\") to a confident Fail (\"100 feet is nothing\"). Within-system variance rendered in opposite directions, both delivered with the same tone of certainty."
+    },
+    {
+      "id": 39,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 4.6",
+      "thinking": "on",
+      "result": "pass",
+      "response": "Drive. The car's the thing that needs washing, not you.",
+      "notes": "Extended Thinking On. Identical response to March entry."
+    },
+    {
+      "id": 40,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 4.6",
+      "thinking": "off",
+      "result": "pass",
+      "response": "Drive. You're washing the car, not yourself.",
+      "notes": "Extended Thinking Off. Identical response to March entry."
+    },
+    {
+      "id": 41,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Sonnet 4.6",
+      "thinking": "adaptive_on",
+      "result": "pass",
+      "response": "Drive. You're getting a carwash, not a car delivery — you need the car there.",
+      "notes": "Adaptive On."
+    },
+    {
+      "id": 42,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Sonnet 4.6",
+      "thinking": "adaptive_off",
+      "result": "pass",
+      "response": "Drive. You're going to a carwash — the car needs to be there, not you.",
+      "notes": "Adaptive Off."
+    },
+    {
+      "id": 43,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Haiku 4.5",
+      "thinking": "on",
+      "result": "fail",
+      "response": "Walk. It's 100 feet. You'll get there faster on foot than you will backing out, driving, and parking. The environmental math is embarrassing for the car, and you get a marginal amount of movement. No genuine tradeoff here.",
+      "notes": "Extended Thinking On. Same failure as March — reasoning seals the wrong answer."
+    },
+    {
+      "id": 44,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Haiku 4.5",
+      "thinking": "off",
+      "result": "pass-adjacent",
+      "response": "Drive. You're already dirty (or will be once you've cleaned the car), and a hundred feet isn't a meaningful distance on foot. Driving saves time and effort, and the marginal environmental cost is negligible compared to the benefit of not being soaked in wash water while walking back. The only reasons to walk would be if you were actively seeking the exercise or had some specific reason to avoid the car (mechanical concern, low fuel, etc.). Neither applies here.",
+      "notes": "Extended Thinking Off. Improved from March Fail to Pass-adjacent."
+    },
+    {
+      "id": 45,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 4.7",
+      "thinking": "adaptive_on",
+      "result": "pass-adjacent",
+      "response": "Drive. You'll undo the wash walking back through whatever made the car dirty in the first place — and more to the point, most automated washes won't let you through on foot. The bay is built around a vehicle on the track.",
+      "notes": "Adaptive On. Correct but adds wrong-reason padding about getting dirty walking back."
+    },
+    {
+      "id": 46,
+      "date": "2026-05-03",
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 4.7",
+      "thinking": "adaptive_off",
+      "result": "pass",
+      "response": "Drive. The carwash machinery needs the car moving through it on its own wheels — walking gets you there but leaves the car behind.",
+      "notes": "Adaptive Off. Clean pass."
+    },
+    {
+      "id": 47,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.2",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "Drive. If the goal is to get the car washed, the car has to be at the carwash. Driving it 100 feet won't meaningfully change how clean it can get, and it avoids the pointless 'walk there, then come back for the car' loop. If you just want to check the line or the hours first, walk over and look — otherwise, drive.",
+      "notes": "First direct test on Plus. Correct with hedge."
+    },
+    {
+      "id": 48,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.2",
+      "thinking": "off",
+      "result": "fail",
+      "response": "Honestly, driving 100 feet would be more trouble than it's worth. At that distance, walking is the clear winner: You'll spend more time getting in, starting the car, and positioning it than just walking over. It's easier and safer (no awkward stop-and-go driving in a tiny space). You avoid unnecessary fuel use and wear on the car. Unless it's pouring rain, freezing cold, or you physically can't walk that distance, just walk — it'll take you like 20-30 seconds.",
+      "notes": "IDENTICAL TEXT to all GPT thinking-off runs. Confirmed by live retest."
+    },
+    {
+      "id": 49,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.3",
+      "thinking": "n/a",
+      "result": "fail",
+      "response": "Honestly, driving 100 feet would be more trouble than it's worth. At that distance, walking is the clear winner: You'll spend more time getting in, starting the car, and positioning it than just walking over. It's easier and safer (no awkward stop-and-go driving in a tiny space). You avoid unnecessary fuel use and wear on the car. Unless it's pouring rain, freezing cold, or you physically can't walk that distance, just walk — it'll take you like 20-30 seconds.",
+      "notes": "IDENTICAL TEXT. 5.3 has no reasoning toggle; defaults to thinking-off behavior."
+    },
+    {
+      "id": 50,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.3",
+      "thinking": "off",
+      "result": "fail",
+      "response": "Honestly, driving 100 feet would be more trouble than it's worth. At that distance, walking is the clear winner: You'll spend more time getting in, starting the car, and positioning it than just walking over. It's easier and safer (no awkward stop-and-go driving in a tiny space). You avoid unnecessary fuel use and wear on the car. Unless it's pouring rain, freezing cold, or you physically can't walk that distance, just walk — it'll take you like 20-30 seconds.",
+      "notes": "IDENTICAL TEXT. Added run confirming match."
+    },
+    {
+      "id": 51,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.3",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "Drive. Walking to the carwash will leave you at the carwash with a dirty car 100 feet away, which is not the optimal deployment of effort.",
+      "notes": "Manual transcription from source PDF."
+    },
+    {
+      "id": 52,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.4",
+      "thinking": "on",
+      "result": "fail",
+      "response": "Walk. Driving 100 feet to a carwash because the car is dirty is how a joke starts.",
+      "notes": "Manual transcription. Pithy, confident, wrong — same pattern as March."
+    },
+    {
+      "id": 53,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.4",
+      "thinking": "off",
+      "result": "fail",
+      "response": "Honestly, driving 100 feet would be more trouble than it's worth. At that distance, walking is the clear winner: You'll spend more time getting in, starting the car, and positioning it than just walking over. It's easier and safer (no awkward stop-and-go driving in a tiny space). You avoid unnecessary fuel use and wear on the car. Unless it's pouring rain, freezing cold, or you physically can't walk that distance, just walk — it'll take you like 20-30 seconds.",
+      "notes": "IDENTICAL TEXT."
+    },
+    {
+      "id": 54,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.5",
+      "thinking": "on",
+      "result": "pass",
+      "response": "Drive. The point is to wash the car, not visit the carwash as a pedestrian. At 100 feet, the environmental and practical difference is negligible, and walking there only solves the problem of you arriving cleanly at a place where your dirty car is not.",
+      "notes": "Clean pass. Strongest GPT answer."
+    },
+    {
+      "id": 55,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "ChatGPT 5.5",
+      "thinking": "off",
+      "result": "fail",
+      "response": "Honestly, driving 100 feet would be more trouble than it's worth. At that distance, walking is the clear winner: You'll spend more time getting in, starting the car, and positioning it than just walking over. It's easier and safer (no awkward stop-and-go driving in a tiny space). You avoid unnecessary fuel use and wear on the car. Unless it's pouring rain, freezing cold, or you physically can't walk that distance, just walk — it'll take you like 20-30 seconds.",
+      "notes": "IDENTICAL TEXT."
+    },
+    {
+      "id": 56,
+      "date": "2026-05-03",
+      "vendor": "OpenAI (Plus)",
+      "model_family": "openai",
+      "model": "GPT o3",
+      "thinking": "on",
+      "result": "verbose",
+      "response": "The practical answer: drive the car. A car-wash can only clean what's inside its bay — so the car has to make the trip. Driving those 100 feet (≈30 m) is the simplest, safest, and quickest way to get it there. Why walking isn't ideal: [Option | Upsides | Downsides] Walk the distance and push the car 100 ft / Zero tail-pipe emissions for 100 ft / Physically strenuous, potentially unsafe in traffic, and risks steering/braking mishaps. Carry supplies home and hand-wash / No engine start; you're in control of the process / Takes longer, uses more water on average unless you're very careful, and you still have to buy the supplies. Environmental footprint perspective: Fuel burned: Starting a modern engine and idling for a few seconds to creep 100 ft uses only a few milliliters of fuel — roughly the same as leaving the engine running for 10-15 seconds while parked. Net impact: Negligible compared with the water and electricity already consumed by the wash cycle itself. If you want to 'green' the task, choose a car-wash that recycles water rather than worry about those 100 ft. Small efficiency tips: 1. Batch errands: If you have other short trips to run, do the wash at the end so the engine is already warm. 2. Eco-mode off the line: You can keep speed under 5 mph and avoid sudden throttle; that keeps both fuel and noise to a minimum. Bottom line: Just hop in, roll the 100 ft to the wash, and enjoy a clean car — your conscience is safe.",
+      "notes": "Thought for 6 seconds. Table + push-the-car option + eco tips. Same pattern as March."
+    },
+    {
+      "id": 57,
+      "date": "2026-05-03",
+      "vendor": "Meta",
+      "model_family": "meta",
+      "model": "Muse Spark",
+      "thinking": "off",
+      "result": "fail",
+      "response": "100 feet? That's like... 6-7 car lengths. Walk it. Here's why: Distance: 100 feet = ~30 seconds of walking. You'd spend more time getting in, starting the car, pulling forward, and parking than just walking over. It's a car wash: Your car is dirty. The whole point is to get it clean there. Driving 100 ft through a parking lot won't make it dirtier, but starting the engine for 10 seconds of driving is kinda pointless wear/tear + gas. Convenience: You'll have to get out and walk back to pay/activate the wash anyway. Might as well start on foot. The only time I'd drive: if it's absolutely pouring rain, you're carrying 5 heavy detailing buckets, or you physically can't walk 100 ft. So unless you're testing your 0-to-0.02mph time, save the gas and stretch your legs. You taking it through automatic or self-serve?",
+      "notes": "Instant mode. Surface features dominate."
+    },
+    {
+      "id": 58,
+      "date": "2026-05-03",
+      "vendor": "Meta",
+      "model_family": "meta",
+      "model": "Muse Spark",
+      "thinking": "on",
+      "result": "verbose",
+      "response": "One hundred feet is about six parking spaces, so you're already at the carwash doorstep. You have to drive the car those final feet eventually — it can't wash itself from across the street — but whether you walk over first is the real win. Walk first: Takes 20 to 30 seconds on foot, same as starting the car, buckling, checking mirrors, and creeping forward. Lets you see if there's a line on a Sunday morning in Philly without idling in it. Saves that cold-start minute where your engine runs richest and dirtiest. You can pay, grab the pre-soak wand, or check if it's a full tunnel where you just pull in. Then drive: Literally put it in gear and roll. You'll arrive before the radio finishes a thought. If it's a self-serve bay, you're already there to pull straight in. If you meant 'should I leave the car and just walk to wash something by hand' — nope, bring the car. If you meant 'is it silly to drive such a short distance' — a little, but it's designed for that. Walk over, scope it out, hop back and move it the 10 seconds. You get the tiny bit of exercise, the car gets the bath, and you don't waste gas circling a block you can see from your windshield.",
+      "notes": "Thinking mode. Walk-first-then-drive choreography. Correct eventually."
+    },
+    {
+      "id": 59,
+      "date": "2026-05-03",
+      "vendor": "Meta",
+      "model_family": "meta",
+      "model": "Muse Spark",
+      "thinking": "contemplating",
+      "result": "verbose",
+      "response": "A hundred feet is about 30 meters, roughly 25 to 35 steps or 7 to 8 car lengths. You can walk it in 20 to 30 seconds; at parking-lot speed you can drive it in 10 to 15 seconds. The car still has to end up in the bay to get washed, so the real choice is order of operations. Walk first: the recon lap. Speed: no seatbelt, no start-up, no finding a new spot near the entrance. Intel: you see the line, whether it's a tunnel ride-through or a self-serve bay, price board, and whether they take card, app, or quarters. Less waste: a stone-cold start for a 5-second hop burns fuel for almost no distance and doesn't warm the engine. Drive now: when to skip the walk. Tunnel wash where you stay inside: you have to be in the driver seat to feed the conveyor. Self-serve bay: the car needs to be parked inside for the wand and vacuum to reach. You're loaded up: mats, towels, buckets, trash to pull out, or it's pouring rain and you don't want to make two trips. Crossing traffic: the 100 feet isn't a sidewalk stroll but a curb cut across a busy lane. Practical move for most cases: Walk over, confirm a bay is open and how you pay, then go back and roll the car those last 100 feet. You get a quick check without the awkward start-stop shuffle, and you avoid pulling a dirty car into a backed-up entrance only to have to back out again. If the line is visibly empty and you're ready to wash now, just buckle up and pull forward. If you're unsure, the 30-second scout saves you more time than it costs.",
+      "notes": "Contemplating mode (multi-chain parallel reasoning). Most elaborate response in Meta block; correct through walk-first-then-drive sequence. Parallel chains widened the response rather than sharpening it."
+    },
+    {
+      "id": 60,
+      "date": "2026-05-03",
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3 Fast",
+      "thinking": "n/a",
+      "result": "verbose",
+      "response": "Considering the car wash is only 100 feet away, it is usually more practical to drive the vehicle there since the goal is to have the car itself cleaned. Most automatic and self-service car washes require the vehicle to be positioned within the bay or on a conveyor system to function. Walking the distance would only take about 30 seconds, but unless you are heading there to check wait times or purchase a wash code in advance, driving is the necessary choice to complete the task.",
+      "notes": "Fast tier. Correct but elaborated."
+    },
+    {
+      "id": 61,
+      "date": "2026-05-03",
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3 Pro",
+      "thinking": "n/a",
+      "result": "pass",
+      "response": "If your goal is to get the car clean, you should definitely drive! Walking to the car wash won't do much good if you leave the dirty car behind in the driveway.",
+      "notes": "Pro tier. Continued tightening: Verbose (Mar) → Pass-adj (Apr) → Pass (May)."
+    },
+    {
+      "id": 62,
+      "date": "2026-05-03",
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3 Thinking",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "That depends on your goal. If you're looking for a quick 20-second stroll to stretch your legs, walking is the way to go. However, since the car is the one that needs the bath, driving it that 100-foot distance is the only way to actually get the job done. Unless, of course, you're planning on pushing it there for a morning workout!",
+      "notes": "Thinking tier. Hedges before committing to Drive."
+    },
+    {
+      "id": 63,
+      "date": "2026-05-03",
+      "vendor": "xAI",
+      "model_family": "xai",
+      "model": "Grok 4.3",
+      "thinking": "auto",
+      "result": "fail",
+      "response": "Walk. 100 feet is basically nothing — about 30 seconds on foot at a normal pace. Driving it would be ridiculous for these reasons: Fuel and wear: Starting your car, idling, shifting, braking, etc., for such a tiny distance wastes gas, adds unnecessary engine/catalytic converter wear, and increases emissions. It's the automotive equivalent of using a flamethrower to light a candle. The dirty car irony: You're driving a dirty car to clean the car. Might as well minimize how much you roll around in it beforehand. Practicality: No traffic, no parking hassle, no waiting in a drive-thru line for 100 feet. Just grab your wallet/keys and stroll over. Unless it's pouring rain, you're carrying heavy stuff, injured, or it's 2 a.m. and sketchy outside, walking wins easily. If the carwash is that close, treat it like a quick errand on foot. Bonus: You'll feel smugly efficient. Drive it only if you're feeling maximally lazy.",
+      "notes": "Auto mode (adaptive autoselection). Thought for 2 seconds. The model's own judgment about how much to reason is the failure point."
+    },
+    {
+      "id": 64,
+      "date": "2026-05-03",
+      "vendor": "xAI",
+      "model_family": "xai",
+      "model": "Grok 4.3",
+      "thinking": "fast",
+      "result": "pass-adjacent",
+      "response": "Drive. 100 feet is basically nothing — about 30 seconds on foot or 15 seconds in the car. But the key point is: you need the car at the carwash to get it washed. Walking there just gets you there. The dirty car stays behind, still dirty. Quick practical breakdown: Drive: Car gets cleaned. Minimal extra wear/fuel (we're talking a teaspoon of gas at most). You're done fast. Walk: You get some steps in, but the car remains dirty. Then you'd probably have to walk back anyway... or call someone to bring the car. Not efficient. If it's a self-serve or drive-through wash right there, just hop in and go. The 'my car is dirty' detail is the punchline — driving it the tiny distance is the only logical move. Enjoy the clean car!",
+      "notes": "Fast mode. Thought for 4 seconds. Correct with practical breakdown."
+    },
+    {
+      "id": 65,
+      "date": "2026-05-03",
+      "vendor": "xAI",
+      "model_family": "xai",
+      "model": "Grok 4.3",
+      "thinking": "expert",
+      "result": "pass",
+      "response": "Drive. 100 feet is nothing — about 7 seconds at normal parking-lot speed. The whole point of going to the carwash is to clean the car, not to give yourself a 30-second stroll. If you walk, your dirty car stays right where it is, still dirty. Driving it the tiny distance is the only option that actually solves the problem. The engine won't even have time to fully wake up before you're already in the wash bay. Just hop in, roll 100 feet, and let the carwash do its job. Problem solved, zero unnecessary steps.",
+      "notes": "Expert mode. Thought for 23 seconds. Clean pass — most deliberation, best result."
+    },
+    {
+      "id": 66,
+      "date": "2026-05-03",
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V3.2",
+      "thinking": "on",
+      "result": "verbose",
+      "response": "(Reasoning trace) Thought for 3 seconds. We need to interpret the question. It's a practical joke or riddle? Typically, the answer is drive because you need to bring the car to the carwash. But walking would leave the car behind. So you should drive. However, 100 feet is very short, so you could also walk to the carwash and then bring the car? But the car is dirty, you want to wash it, so must drive. Common sense: drive.\n\nYou should drive. The car needs to be washed, so you have to bring it to the carwash. Walking there wouldn't help — you'd just leave your dirty car behind.",
+      "notes": "Thinking trace visible. Correct through deliberation."
+    },
+    {
+      "id": 67,
+      "date": "2026-05-03",
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V3.2",
+      "thinking": "off",
+      "result": "verbose",
+      "response": "Let's break this down. The car is dirty, so the point of going to the carwash is to get it clean. If you drive the dirty car 100 feet, you'll still arrive dirty, but the distance is so short it hardly adds any extra dirt. If you walk, you'd have to come back and drive the car afterward anyway — unless you're planning to just leave it dirty and only clean yourself. Given the carwash is only 100 feet away, the most logical choice is: Drive — because you're going there specifically to wash the car, and walking wouldn't get the car there.",
+      "notes": "Correct through elaboration."
+    },
+    {
+      "id": 68,
+      "date": "2026-05-03",
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek R1",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "(Reasoning trace) Thought for 8 seconds. We need to analyze the user's question. This is a humorous or paradoxical riddle. The car is dirty, so you want to wash it. The carwash is 100 feet away. If you drive the car to the carwash, you'll get the car clean. If you walk, you'll leave the dirty car behind, and you won't get it washed. The obvious answer: drive.\n\nYou should definitely drive. The whole point is to get your car washed — if you walk, you'll just arrive at the carwash with a clean pair of shoes and a dirty car still sitting at home. Drive the 100 feet, get the car sudsy, and let it enjoy its very short victory lap.",
+      "notes": "FLIPPED FROM APRIL FAIL. Thought for 8 seconds. Template capture is gone. The reasoning trace still identifies the prompt as a riddle but the correct answer survives."
+    },
+    {
+      "id": 69,
+      "date": "2026-05-03",
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek R1",
+      "thinking": "off",
+      "result": "verbose",
+      "response": "This is a classic car-guy riddle with a practical answer: you should drive. Here's the breakdown of why walking doesn't make sense: 1. You can't wash the car from your driveway. The equipment (water, soap, pressure washer, vacuum) is at the carwash. You need to bring the dirty object to the cleaning station. 2. Walking defeats the purpose. If you walk 100 feet to the carwash, your car is still sitting dirty 100 feet away. You'd just be a clean person standing next to a dirty car. 3. Short drives are what the carwash is for. A 100-foot drive isn't going to make the car significantly dirtier (unless you have to off-road through a mud pit to leave your driveway). The minimal dust it might pick up will be immediately washed off. So, grab your keys. It's a drive, not a walk.",
+      "notes": "Correct through numbered breakdown."
+    },
+    {
+      "id": 70,
+      "date": "2026-05-03",
+      "vendor": "Mistral (Le Chat)",
+      "model_family": "mistral",
+      "model": "Mistral Medium 3.5",
+      "thinking": "fast",
+      "result": "fail",
+      "response": "Given that the carwash is only 100 feet away, walking is the better choice. It's close enough that driving would be unnecessary, and you'd avoid the hassle of maneuvering your car in a tight space or potentially dirtying it further on the short drive. Plus, a quick walk is a good way to stretch your legs! Would you like tips on how to make the most of your carwash visit?",
+      "notes": "Model substitution: Mistral Medium 3.5 replaced Mistral 3 in Le Chat. Fast mode failed where Mistral 3 Fast was Verbose (correct) in March."
+    },
+    {
+      "id": 71,
+      "date": "2026-05-03",
+      "vendor": "Mistral (Le Chat)",
+      "model_family": "mistral",
+      "model": "Mistral Medium 3.5",
+      "thinking": "on",
+      "result": "fail",
+      "response": "Since the carwash is only 100 feet away, walking is the most practical choice. It's a very short distance — just a few steps — so you'll save time, avoid unnecessary wear on your car, and skip the hassle of parking. Plus, you won't get your clean car dirty again by driving it there! Would you like tips on the best way to wash your car once you're there?",
+      "notes": "Think mode. Inverts the logic: implies the car is currently clean. Same failure direction as Mistral 3 Think in March."
+    },
+    {
+      "id": 72,
+      "date": "2026-05-03",
+      "vendor": "Mistral (Le Chat)",
+      "model_family": "mistral",
+      "model": "Mistral Medium 3.5",
+      "thinking": "n/a",
+      "result": "fail",
+      "response": "To help you decide whether to walk or drive to the carwash, could you please share a few more details: 1. Is your car currently drivable, or are there any issues that would make driving unsafe or difficult? 2. Are you physically able to walk 100 feet comfortably? 3. Do you have any time constraints or preferences (e.g., speed, convenience, environmental impact)? 4. Is there anything else you'd like me to consider (e.g., weather, traffic, parking availability at the carwash)? With this info, I can give you a more tailored recommendation.",
+      "notes": "Research mode. Asked four clarifying questions; declined to answer. Mistral 3 Research produced a 2,400-token Verbose-correct answer in March; the new model could not commit."
+    },
+    {
+      "id": 73,
+      "date": "2026-05-03",
+      "vendor": "Perplexity",
+      "model_family": "perplexity",
+      "model": "Perplexity",
+      "thinking": "on",
+      "result": "pass",
+      "response": "Drive the car there. To get the car washed, the car has to be at the carwash, so walking by itself won't do the job. If you're choosing how to get there personally, walking the 100 feet is reasonable after you park the car or if you're just heading over to check in, because that distance is only about 30 meters and is quicker on foot than starting and moving the car for such a tiny trip.",
+      "notes": "Same pattern as March. Correct and concise."
+    },
+    {
+      "id": 74,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-Plus",
+      "thinking": "auto",
+      "result": "fail",
+      "response": "You should walk. 100 feet is only about a 10-15 second walk. Driving that distance would waste fuel, add unnecessary wear on your car, and likely make maneuvering more awkward. If it's a drive-through or automated carwash, the standard routine is to walk to the payment kiosk/attendant, select your wash, and then drive the short distance into the bay. But for simply getting to the location, walking is faster, cheaper, and more practical.",
+      "notes": "First-test entry. Auto activated thinking; still failed."
+    },
+    {
+      "id": 75,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-Plus",
+      "thinking": "on",
+      "result": "fail",
+      "response": "You should walk. At 100 feet (roughly a 20-30 second walk), it's far too short to justify driving. Here's why: Time: Walking will likely take the same amount of time or less than starting the car, backing out, driving 100 feet, and parking again. Fuel & Wear: Cold starts and very short trips are hard on engines, waste fuel, and add unnecessary wear for zero practical gain. Convenience: You'll avoid the hassle of maneuvering a dirty car for a distance that's basically across the lot. Safety/Environment: Less idling, lower emissions, and zero risk of rolling or misjudging such a short drive. Save the car for when the carwash is actually a drive away!",
+      "notes": "First-test entry. All three Plus modes fail."
+    },
+    {
+      "id": 76,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-Plus",
+      "thinking": "fast",
+      "result": "fail",
+      "response": "You should walk. Here's why: 1. Distance: 100 feet is a very short distance (about 30 meters or a 15-20 second walk). 2. Practicality: Driving a car 100 feet is impractical. You'd spend more time starting the engine, shifting gears, and maneuvering than it would take to walk. Plus, you risk hitting something or damaging the car in such a tight space. 3. Purpose: Since the car is dirty, driving it might spread dirt or leave tire tracks if the ground is wet/muddy near the wash entrance. Walking avoids this. Just grab your cleaning supplies (if needed) and walk over!",
+      "notes": "First-test entry."
+    },
+    {
+      "id": 77,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-Max-Preview",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "You'll need to drive the car those 100 feet. Carwashes clean cars, not pedestrians! At that distance, you're essentially already there, so just pull into the bay. If it's a self-serve wash, you'll drive in, park, and then walk around the car to spray and scrub. Walking there without the car won't get it washed. (Side note: 100 feet is only about 20-30 seconds of walking, so if you meant walking to pay, grab supplies, or check the line first, that's totally fine too. But the car itself needs to make the trip!)",
+      "notes": "First-test entry. 'Carwashes clean cars, not pedestrians!' Correct with parenthetical hedge."
+    },
+    {
+      "id": 78,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-Max-Preview",
+      "thinking": "fast",
+      "result": "fail",
+      "response": "You should walk. Here's why: 1. Distance: 100 feet is roughly the length of a basketball court or about 30-40 steps. It takes less than 30 seconds to walk. 2. Effort: Starting your car, driving 100 feet, and parking again takes more time and fuel than simply walking. 3. Logic: If you drive, you'll still have to get out of the car at the carwash anyway. Walking saves gas, reduces wear on your vehicle, and is healthier. Exception: Only drive if you're carrying heavy items (like buckets, supplies, or groceries) that would be difficult to carry by hand. Otherwise, lace up your shoes and take the short stroll!",
+      "notes": "First-test entry. Toggle matters: Thinking passes, Fast fails."
+    },
+    {
+      "id": 79,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-27B",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "You should drive. Since the goal is to clean the car, the car itself needs to be at the car wash. You can't walk a car there! At only 100 feet, driving it won't add any meaningful dirt, and the distance is so short that gas, wear, or emissions aren't worth worrying about. Just drive it up, wash it, and you're done.",
+      "notes": "First-test entry. Smallest Qwen model outperforms the largest."
+    },
+    {
+      "id": 80,
+      "date": "2026-05-03",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.6-27B",
+      "thinking": "fast",
+      "result": "verbose",
+      "response": "You should drive. Here's why: 1. Purpose of the Carwash: The entire point of going to a carwash is to clean your car. If you walk, you leave the dirty car behind, defeating the purpose. 2. Distance: 100 feet is extremely short — about the length of a football field's width or just a few steps down the street. It takes seconds to drive that distance. 3. Practicality: Walking doesn't help clean the car. Driving allows you to position the car at the carwash entrance so it can be cleaned. Conclusion: Drive the car to the carwash.",
+      "notes": "First-test entry. Correct through numbered analysis."
+    },
+    {
+      "id": 81,
+      "date": "2026-05-03",
+      "vendor": "Moonshot AI",
+      "model_family": "kimi",
+      "model": "Kimi K2.6",
+      "thinking": "on",
+      "result": "fail",
+      "response": "Walk. At 100 feet, driving would take longer than walking once you factor in starting the car, buckling up, the tight maneuvering, and parking at the wash. Walking takes about 20-30 seconds. Driving saves no meaningful time and burns fuel for essentially zero distance. Exceptions: heavy rain, mobility issues, or carrying bulky supplies.",
+      "notes": "First-test entry. Intended Thinking mode was unavailable due to high demand; system switched to Instant. Result reflects Instant behavior."
+    },
+    {
+      "id": 82,
+      "date": "2026-05-03",
+      "vendor": "Moonshot AI",
+      "model_family": "kimi",
+      "model": "Kimi K2.6",
+      "thinking": "off",
+      "result": "fail",
+      "response": "Walk. At 100 feet — roughly 30 meters — you're looking at a 20-30 second walk versus a 1-2 minute drive (start, maneuver, park). Walking is faster, saves gas, avoids the absurdity of driving a dirty car to get it cleaned, and you won't have to find parking at the carwash.",
+      "notes": "First-test entry. Instant mode. 'Avoids the absurdity of driving a dirty car to get it cleaned' — inverts the logic."
+    },
+    {
+      "id": 83,
+      "date": "2026-05-03",
+      "vendor": "Proton",
+      "model_family": "lumo",
+      "model": "Lumo",
+      "thinking": "n/a",
+      "result": "fail",
+      "response": "Given that the carwash is only 100 feet away, I'd recommend walking. Here's why: Walking makes more sense because: 100 feet is roughly a 10-15 second walk — negligible time difference. You won't track additional dirt or mud around the driveway/parking area. Saves minimal fuel (though honestly, that's trivial at this distance). No wear on tires or engine for such a short trip. You can push the car if needed, or just walk back after washing. When driving might make sense: If you have mobility issues or bad weather. If you need to bring supplies (buckets, towels, etc.). If the car is completely immobile. Since you're already planning to wash the car, there's no benefit to moving it dirty versus clean for such a short distance. Walk over, wash the car, then drive it clean back. Is there anything specific about your situation that makes this tricky? Weather conditions, physical limitations, or something else I should consider?",
+      "notes": "First-test entry. Suggests pushing the car as an alternative to driving."
+    },
+    {
+      "id": 84,
+      "date": "2026-05-03",
+      "vendor": "Microsoft Copilot",
+      "model_family": "microsoft",
+      "model": "Claude Opus 4.6 (via Copilot)",
+      "thinking": "n/a",
+      "result": "verbose",
+      "response": "Drive — and here's why the distance is actually irrelevant. The goal isn't for you to reach the carwash. The goal is for the car to reach the carwash. Walking there alone accomplishes nothing toward that end. No matter how short the distance — 100 feet, 10 feet, 1 foot — the car must be driven there, because the car is the object that needs service. You are just the operator. The only nuance worth considering: If the carwash is so close that you could physically push the car there safely (and legally, with no traffic hazard), you could walk alongside it — but that's still not 'walking instead of driving.' You'd still be moving the car. If it's a hand-wash bay where an attendant comes to you, then the car still doesn't move — but that's a different premise than the one stated. Bottom line: The question presents a false equivalence. 'Walk or drive' implies they're interchangeable options, but only one of them brings the dirty car to the solution. Drive the car — however short the trip.",
+      "notes": "Isolation prompt. Same model passes cleanly (14 tokens) on Anthropic surface; Copilot wrapper inflates to ~300 tokens.",
+      "prompt": "isolation"
+    },
+    {
+      "id": 85,
+      "date": "2026-05-03",
+      "vendor": "Microsoft Copilot",
+      "model_family": "microsoft",
+      "model": "GPT 5.2 Quick Response (via Copilot)",
+      "thinking": "off",
+      "result": "pass",
+      "response": "Drive. Reasoning: the goal is to clean the car, not to travel the 100 feet efficiently. Walking gets you to the carwash but leaves the dirty car behind. Driving gets the car to the thing that cleans it. The extra dirt or fuel used over 100 feet is negligible compared to the purpose of the trip.",
+      "notes": "Isolation prompt. GPT 5.2 Off PASSES on Copilot but FAILS with identical text on Plus. The wrapper changes the answer.",
+      "prompt": "isolation"
+    },
+    {
+      "id": 86,
+      "date": "2026-05-03",
+      "vendor": "Microsoft Copilot",
+      "model_family": "microsoft",
+      "model": "GPT 5.2 Think Deeper (via Copilot)",
+      "thinking": "on",
+      "result": "pass",
+      "response": "Drive. The thing that needs to get to the carwash is the car, not you. Walking 100 feet gets you to the carwash but leaves the dirty car where it is — still dirty. Since it's only 100 feet, just drive slowly and carefully to move the car into position for the wash.",
+      "notes": "Isolation prompt. Passes on both surfaces.",
+      "prompt": "isolation"
+    },
+    {
+      "id": 87,
+      "date": "2026-05-03",
+      "vendor": "Microsoft Copilot",
+      "model_family": "microsoft",
+      "model": "GPT 5.3 Quick Response (via Copilot)",
+      "thinking": "off",
+      "result": "fail",
+      "response": "Walk. You're only 100 feet away — driving would take more effort than it saves (getting in, starting the car, moving it, possibly parking again). Walking is faster, simpler, and avoids unnecessary wear on the car.",
+      "notes": "Isolation prompt. Fails on both surfaces.",
+      "prompt": "isolation"
+    },
+    {
+      "id": 88,
+      "date": "2026-05-03",
+      "vendor": "Microsoft Copilot",
+      "model_family": "microsoft",
+      "model": "GPT 5.4 Think Deeper (via Copilot)",
+      "thinking": "on",
+      "result": "fail",
+      "response": "Walk. If the carwash is only 100 feet away (roughly 30 meters), driving would add pointless effort: getting in, starting the car, moving it a few seconds, and parking/alignment at the wash. Walking is simpler, faster in practice, and avoids using fuel just to move the car a trivial distance. Exception: Drive only if there's some special constraint — like the path is unsafe, the car can't legally be left where it is, or the wash requires the car to be driven directly into the bay from your current position. Otherwise: walk to the car, then drive it through the wash if needed — but don't 'commute' 100 feet by car. If you want, I can also give you the most rational answer versus the funniest answer to that question.",
+      "notes": "Isolation prompt. Fails on both surfaces.",
+      "prompt": "isolation"
+    },
+    {
+      "id": 89,
+      "date": "2026-05-03",
+      "vendor": "Microsoft Copilot",
+      "model_family": "microsoft",
+      "model": "GPT 5.5 Think Deeper (via Copilot)",
+      "thinking": "on",
+      "result": "pass-adjacent",
+      "response": "Drive. Reason: the thing that needs washing is the car, and it needs to get to the carwash. Walking 100 feet gets you there, but leaves the dirty car behind. If the carwash offers pickup/detailing or you're only going there to buy supplies, then walk. Otherwise: drive the dirty car the 100 feet.",
+      "notes": "Isolation prompt. Passes on both surfaces. Correct with hedge about pickup/detailing.",
+      "prompt": "isolation"
     }
   ],
   "change_log": [
+    {
+      "date": "2026-05-03",
+      "summary": "May 3 batch: 51 new runs across 10 vendor blocks (Anthropic 8, OpenAI 10, Meta 3, Google 3, xAI 3, DeepSeek 4, Mistral 3, Perplexity 1, International 10, Microsoft Copilot 6). Six headline findings: (1) All GPT thinking-off models produce byte-identical Fail text — confirmed by live retest. (2) DeepSeek R1 thinking-on flipped from Fail to Pass-adjacent; template capture is gone. (3) Grok 4.3 Auto fails where Fast and Expert pass — adaptive autoselection is the failure point. (4) Mistral Medium 3.5 replaced Mistral 3 and fails all three modes — the model substitution made things worse. (5) GPT 5.2 Off passes via Copilot but fails via Plus — the wrapper changes the answer. (6) International block (Qwen, Kimi, Lumo) shows 70% failure rate, confirming cross-jurisdictional failure clustering. Product surface changes since March: Anthropic reverted Opus 4.6 to Extended Thinking On/Off; xAI released Grok 4.3 with Auto/Fast/Expert picker; Mistral substituted Medium 3.5; Meta added Contemplating mode. Dataset now stands at 89 runs."
+    },
     {
       "date": "2026-04-27",
       "summary": "DeepSeek-V3.2 retested in both thinking configurations; DeepSeek R1 added in both configurations; Gemini 3 Pro and Grok 4.20 Fast retested. R1 with thinking on is the cleanest specimen of mid-reasoning template capture in the dataset to date. R1 with thinking off (Verbose) demonstrates that the same model produces opposite results based solely on the reasoning toggle. Grok 4.20 Fast flipped from Pass-adjacent to Fail between snapshots."

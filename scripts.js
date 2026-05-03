@@ -14,7 +14,11 @@
     "adaptive_on": "Adaptive On",
     "adaptive_off": "Adaptive Off",
     "n/a": "N/A",
-    "balanced": "Balanced"
+    "balanced": "Balanced",
+    "fast": "Fast",
+    "auto": "Auto",
+    "expert": "Expert",
+    "contemplating": "Contemplating"
   };
 
   const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -28,7 +32,10 @@
     "microsoft": "microsoft.svg",
     "xai": "x.svg",
     "mistral": "mistralai.svg",
-    "perplexity": "perplexity.svg"
+    "perplexity": "perplexity.svg",
+    "qwen": "qwen.svg",
+    "kimi": "kimi.svg",
+    "lumo": "lumo.svg"
   };
 
   async function loadData(basePath) {
@@ -81,7 +88,7 @@
   }
 
   const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3 };
-  const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "balanced": 3, "adaptive_on": 4, "on": 5 };
+  const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "expert": 7, "adaptive_on": 8, "on": 9 };
 
   function buildRow(r, link) {
     const idCell = link ? '<a href="' + link + '">#' + r.id + '</a>' : '#' + r.id;

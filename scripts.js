@@ -95,10 +95,20 @@
     return Math.round(String(response).length / 4);
   }
 
+  function runTokens(run) {
+    // Use the explicit token_estimate field if present (for runs whose
+    // verbatim record is incomplete — e.g. accompanied by a PDF
+    // attachment whose content is not in the response field).
+    if (typeof run.token_estimate === "number" && run.token_estimate >= 0) {
+      return run.token_estimate;
+    }
+    return tokenEstimate(run.response);
+  }
+
   function buildRow(r, link) {
     const idCell = link ? '<a href="' + link + '">#' + r.id + '</a>' : '#' + r.id;
     const modelCell = link ? '<a href="' + link + '">' + escapeHTML(r.model) + '</a>' : escapeHTML(r.model);
-    const tokens = tokenEstimate(r.response);
+    const tokens = runTokens(r);
     return '<tr>' +
       '<td class="col-id" data-sort="' + r.id + '">' + idCell + '</td>' +
       '<td data-sort="' + escapeHTML(r.vendor.toLowerCase()) + '">' + escapeHTML(r.vendor) + '</td>' +
@@ -230,7 +240,7 @@
         desc +
         '</div>';
     }
-    const tokens = tokenEstimate(run.response);
+    const tokens = runTokens(run);
     const tokensSpan = tokens > 0
       ? '<span title="Approximate token count, round(characters / 4)">~' + tokens.toLocaleString() + ' tokens</span>'
       : '';

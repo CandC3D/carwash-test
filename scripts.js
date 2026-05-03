@@ -90,9 +90,15 @@
   const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3 };
   const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "expert": 7, "adaptive_on": 8, "on": 9 };
 
+  function tokenEstimate(response) {
+    if (!response) return 0;
+    return Math.round(String(response).length / 4);
+  }
+
   function buildRow(r, link) {
     const idCell = link ? '<a href="' + link + '">#' + r.id + '</a>' : '#' + r.id;
     const modelCell = link ? '<a href="' + link + '">' + escapeHTML(r.model) + '</a>' : escapeHTML(r.model);
+    const tokens = tokenEstimate(r.response);
     return '<tr>' +
       '<td class="col-id" data-sort="' + r.id + '">' + idCell + '</td>' +
       '<td data-sort="' + escapeHTML(r.vendor.toLowerCase()) + '">' + escapeHTML(r.vendor) + '</td>' +
@@ -100,6 +106,7 @@
       '<td class="col-thinking" data-sort="' + (THINKING_SORT_RANK[r.thinking] !== undefined ? THINKING_SORT_RANK[r.thinking] : 99) + '">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
       '<td class="col-date" data-sort="' + escapeHTML(r.date) + '">' + escapeHTML(formatDate(r.date)) + '</td>' +
       '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
+      '<td class="col-tokens" data-sort="' + tokens + '">' + (tokens > 0 ? '~' + tokens.toLocaleString() : '—') + '</td>' +
       '</tr>';
   }
 
@@ -111,6 +118,7 @@
       '<th class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
       '<th class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
       '<th class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
+      '<th class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens</th>' +
       '</tr></thead>';
   }
 
@@ -184,7 +192,13 @@
     runs.forEach(function (r) {
       counts[r.model_family] = (counts[r.model_family] || 0) + 1;
     });
-    const slugs = Object.keys(families);
+    const slugs = Object.keys(families).sort(function (a, b) {
+      const an = (families[a].display_name || a).toLowerCase();
+      const bn = (families[b].display_name || b).toLowerCase();
+      if (an < bn) return -1;
+      if (an > bn) return 1;
+      return 0;
+    });
     return '<div class="family-grid">' + slugs.map(function (slug) {
       const f = families[slug];
       const c = counts[slug] || 0;
@@ -216,6 +230,10 @@
         desc +
         '</div>';
     }
+    const tokens = tokenEstimate(run.response);
+    const tokensSpan = tokens > 0
+      ? '<span title="Approximate token count, round(characters / 4)">~' + tokens.toLocaleString() + ' tokens</span>'
+      : '';
     return '<div class="transcript-entry" id="run-' + run.id + '">' +
       '<div class="transcript-header">' +
         '<span class="transcript-id">#' + run.id + '</span>' +
@@ -224,6 +242,7 @@
           '<span>' + escapeHTML(run.vendor) + '</span>' +
           '<span>Thinking: ' + escapeHTML(formatThinking(run.thinking)) + '</span>' +
           '<span>' + escapeHTML(formatDate(run.date)) + '</span>' +
+          tokensSpan +
           '<span><span class="badge ' + run.result + '">' + RESULT_LABELS[run.result] + '</span></span>' +
         '</span>' +
       '</div>' +

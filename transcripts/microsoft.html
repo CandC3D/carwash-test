@@ -42,6 +42,9 @@
     </nav>
   </header>
 
+  <!-- carwash-vendor-rail -->
+  <div id="vendor-rail"></div>
+
   
   <main>
     <header class="site-header">
@@ -69,6 +72,8 @@
       <h2>Transcripts</h2>
       <div id="transcripts"></div>
     </section>
+  <!-- carwash-vendor-pagination -->
+    <div id="vendor-pagination"></div>
   </main>
 
   <footer>
@@ -109,6 +114,10 @@
           CarwashTest.renderLegend();
         document.getElementById("transcripts").innerHTML =
           familyRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+        document.getElementById("vendor-rail").innerHTML =
+          CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../");
+        document.getElementById("vendor-pagination").innerHTML =
+          CarwashTest.renderVendorPagination(SLUG, data.model_families);
       } catch (err) {
         console.error(err);
         CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);

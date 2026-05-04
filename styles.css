@@ -548,3 +548,115 @@ footer .related-links a:hover {
   .page-header { padding: 20px 16px 0; }
   .page-header-nav { gap: 12px; font-size: 11px; }
 }
+
+/* ── Per-vendor transcript navigation ──
+   On every transcripts/<slug>.html page: a non-sticky pill rail at the
+   top (back-link + all-vendors-as-pills) and a wrap-around prev/next
+   pair at the bottom. Pills wrap to multiple rows on narrow screens. */
+.vendor-rail {
+  background: var(--bg);
+  border-bottom: 1px solid var(--light);
+  padding: 14px 24px 12px;
+}
+.vendor-rail-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.vendor-rail-back {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 10px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+.vendor-rail-back:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.vendor-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+}
+.vendor-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 14px;
+  border: 1px solid var(--light);
+  color: var(--muted);
+  text-decoration: none;
+  background: transparent;
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+.vendor-pill:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.vendor-pill.active {
+  color: var(--bg);
+  background: var(--ink);
+  border-color: var(--ink);
+  cursor: default;
+}
+.vendor-pill .pill-logo {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  -webkit-mask: var(--logo-url) no-repeat center / contain;
+          mask: var(--logo-url) no-repeat center / contain;
+  flex: 0 0 auto;
+}
+.vendor-pill .pill-name { letter-spacing: 0.02em; }
+.vendor-pill .pill-count {
+  font-size: 10px;
+  opacity: 0.65;
+  margin-left: 2px;
+}
+.vendor-pill.active .pill-count { opacity: 0.7; }
+
+/* Bottom prev/next pair */
+.vendor-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 48px 0 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--light);
+  font-family: var(--sans);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.vendor-pagination a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  flex: 1 1 0;
+  max-width: 50%;
+}
+.vendor-pagination a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.vendor-pagination .pag-next { text-align: right; }
+
+@media (max-width: 720px) {
+  .vendor-rail { padding: 10px 14px 8px; }
+  .vendor-pill { padding: 4px 8px 4px 6px; font-size: 11px; }
+  .vendor-pill .pill-logo { width: 12px; height: 12px; }
+  .vendor-pagination { font-size: 11px; gap: 12px; margin-top: 32px; }
+}

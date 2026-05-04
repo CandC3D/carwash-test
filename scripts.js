@@ -223,6 +223,70 @@
     }).join("") + '</div>';
   }
 
+  // ── Per-vendor transcript navigation ─────────────────────────────────
+  // renderVendorRail: a sticky pill-rail at the top of every per-vendor
+  // transcript page. Shows all families alphabetized, with the current
+  // one highlighted; each pill is a direct-jump link. Includes a
+  // "← All Transcripts" back link above the pills.
+  //
+  // renderVendorPagination: a bottom prev/next pair that wraps around the
+  // alphabetical sequence (so the last vendor's "next" is the first).
+
+  function _alphaSortedSlugs(families) {
+    return Object.keys(families).sort(function (a, b) {
+      const an = (families[a].display_name || a).toLowerCase();
+      const bn = (families[b].display_name || b).toLowerCase();
+      if (an < bn) return -1;
+      if (an > bn) return 1;
+      return 0;
+    });
+  }
+
+  function renderVendorRail(currentSlug, families, runs, basePath) {
+    basePath = basePath || "";
+    const counts = {};
+    runs.forEach(function (r) {
+      counts[r.model_family] = (counts[r.model_family] || 0) + 1;
+    });
+    const slugs = _alphaSortedSlugs(families);
+    const pills = slugs.map(function (slug) {
+      const f = families[slug];
+      const c = counts[slug] || 0;
+      const isActive = slug === currentSlug;
+      const href = isActive ? "#" : slug + ".html";
+      const logo = LOGO_FILES[slug]
+        ? '<span class="pill-logo" style="--logo-url: url(' + basePath + 'assets/logos/' + LOGO_FILES[slug] + ')"></span>'
+        : '';
+      return '<a class="vendor-pill' + (isActive ? ' active' : '') + '" href="' + href + '"' +
+        (isActive ? ' aria-current="page"' : '') + '>' +
+        logo +
+        '<span class="pill-name">' + escapeHTML(f.name || f.display_name) + '</span>' +
+        '<span class="pill-count">' + c + '</span>' +
+        '</a>';
+    }).join("");
+    return '<div class="vendor-rail">' +
+      '<div class="vendor-rail-inner">' +
+        '<a class="vendor-rail-back" href="' + basePath + 'transcripts.html">← All Transcripts</a>' +
+        '<div class="vendor-pills">' + pills + '</div>' +
+      '</div>' +
+      '</div>';
+  }
+
+  function renderVendorPagination(currentSlug, families) {
+    const slugs = _alphaSortedSlugs(families);
+    const idx = slugs.indexOf(currentSlug);
+    if (idx === -1) return '';
+    const n = slugs.length;
+    const prevSlug = slugs[(idx - 1 + n) % n];
+    const nextSlug = slugs[(idx + 1) % n];
+    return '<nav class="vendor-pagination" aria-label="Adjacent vendors">' +
+      '<a class="pag-prev" href="' + prevSlug + '.html">← ' +
+        escapeHTML(families[prevSlug].display_name) + '</a>' +
+      '<a class="pag-next" href="' + nextSlug + '.html">' +
+        escapeHTML(families[nextSlug].display_name) + ' →</a>' +
+      '</nav>';
+  }
+
   function renderTranscriptEntry(run, basePath) {
     basePath = basePath || "";
     const notesBlock = run.notes && run.notes.trim()
@@ -302,6 +366,8 @@
     renderLegend: renderLegend,
     renderFamilyGrid: renderFamilyGrid,
     renderTitleLogo: renderTitleLogo,
+    renderVendorRail: renderVendorRail,
+    renderVendorPagination: renderVendorPagination,
     renderTranscriptEntry: renderTranscriptEntry,
     renderChangeLog: renderChangeLog,
     showError: showError

@@ -508,3 +508,47 @@ footer .related-links a:hover {
   .transcript-meta { margin-left: 0; }
   .transcript-header { gap: 8px; }
 }
+
+/* ── Cross-site Virtual Intelligence series header ──
+   Sits at the very top of every page, above the site-specific masthead.
+   Style modeled on vi-framework's page-header. */
+.page-header {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: var(--bg);
+  font-family: var(--sans);
+}
+.page-header-series {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.page-header-nav {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  font-size: 12px;
+  color: var(--light);
+}
+.page-header-link {
+  font-size: 12px;
+  color: var(--olive);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--olive);
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+.page-header-link:hover { opacity: 0.7; }
+@media (max-width: 720px) {
+  .page-header { padding: 0.75rem 1rem; }
+  .page-header-series { font-size: 12px; }
+  .page-header-link, .page-header-nav { font-size: 11px; }
+}

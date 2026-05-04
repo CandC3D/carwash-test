@@ -511,44 +511,40 @@ footer .related-links a:hover {
 
 /* ── Cross-site Virtual Intelligence series header ──
    Sits at the very top of every page, above the site-specific masthead.
-   Style modeled on vi-framework's page-header. */
+   Visual style matches the footer's related-links strip: uppercase,
+   letter-spaced, muted, framed with top + bottom rules. */
 .page-header {
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  background: var(--bg);
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
   font-family: var(--sans);
-}
-.page-header-series {
-  font-family: var(--serif);
-  font-size: 13px;
-  font-style: italic;
   color: var(--muted);
-  letter-spacing: 0.01em;
 }
+.page-header-series { display: none; } /* footer-style strip carries no inline label */
 .page-header-nav {
   display: flex;
-  align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.15rem;
+  gap: 18px;
   font-size: 12px;
-  color: var(--light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 16px 0;
+  border-top: 1px solid var(--light);
+  border-bottom: 1px solid var(--light);
 }
 .page-header-link {
-  font-size: 12px;
-  color: var(--olive);
+  color: var(--muted);
   text-decoration: none;
-  border-bottom: 0.5px solid var(--olive);
-  padding-bottom: 1px;
-  transition: opacity 0.2s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
 }
-.page-header-link:hover { opacity: 0.7; }
+.page-header-link:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
 @media (max-width: 720px) {
-  .page-header { padding: 0.75rem 1rem; }
-  .page-header-series { font-size: 12px; }
-  .page-header-link, .page-header-nav { font-size: 11px; }
+  .page-header { padding: 20px 16px 0; }
+  .page-header-nav { gap: 12px; font-size: 11px; }
 }

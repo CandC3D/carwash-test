@@ -45,6 +45,27 @@ a {
 }
 a:hover { color: var(--pumpkin); }
 
+:focus-visible {
+  outline: 3px solid var(--pumpkin);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -48px;
+  z-index: 1000;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 10px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--sans);
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 8px; color: var(--bg); }
+
 h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 400;

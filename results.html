@@ -109,7 +109,7 @@
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(overallTally);
+          CarwashTest.renderCharts(data.runs);
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTable(data.runs, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));

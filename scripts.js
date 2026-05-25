@@ -551,7 +551,88 @@
       escapeHTML(aria) + '" class="chart-svg chart-svg-pie">' + body + '</svg>';
   }
 
-  function renderCharts(t) {
+  // Tokens at/above this are treated as outliers: excluded from the median
+  // token chart and surfaced in a callout instead (the ~2,400-token Mistral
+  // 3 Research response).
+  const TOKEN_OUTLIER_MIN = 1500;
+
+  function _median(arr) {
+    if (!arr.length) return null;
+    const s = arr.slice().sort(function (a, b) { return a - b; });
+    const m = Math.floor(s.length / 2);
+    return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+  }
+
+  // Horizontal bar chart of median token cost per result type. Bars grow
+  // left→right across the full width of the paired charts above; shares
+  // their bottom-baseline + 5px gap treatment. Outliers (see
+  // TOKEN_OUTLIER_MIN) are excluded from the medians and named in a callout.
+  function renderMedianTokenChart(runs) {
+    const byCat = { "pass": [], "pass-adjacent": [], "verbose": [], "fail": [] };
+    let outlier = null;
+    runs.forEach(function (r) {
+      const tk = runTokens(r);
+      if (tk >= TOKEN_OUTLIER_MIN) {
+        if (!outlier || tk > outlier.tk) outlier = { tk: tk, model: r.model };
+        return;
+      }
+      if (byCat[r.result]) byCat[r.result].push(tk);
+    });
+    const medians = {};
+    RESULT_ORDER.forEach(function (k) { medians[k] = _median(byCat[k]); });
+    const max = Math.max.apply(null, RESULT_ORDER.map(function (k) {
+      return medians[k] || 0;
+    })) || 1;
+
+    const W = 680, H = 210, padX = 18, padTop = 14, padBottom = 24;
+    const baseY = H - padBottom;
+    const baseGap = 5;                 // match the paired charts' bottom gap
+    const areaTop = padTop, areaBottom = baseY - baseGap;
+    const labelSpace = 48;             // room for the value at the bar's end
+    const usableW = (W - padX * 2) - labelSpace;
+    const n = RESULT_ORDER.length;
+    const rowH = (areaBottom - areaTop) / n;
+    const barTh = Math.min(28, rowH * 0.62);
+
+    let body = "";
+    RESULT_ORDER.forEach(function (k, i) {
+      const med = medians[k];
+      const c = RESULT_COLORS[k];
+      const rowTop = areaTop + rowH * i;
+      const by = rowTop + (rowH - barTh) / 2;
+      const len = (med == null) ? 0 : (med / max) * usableW;
+      if (len > 0) {
+        body += '<rect x="' + padX + '" y="' + by.toFixed(1) + '" width="' +
+          len.toFixed(1) + '" height="' + barTh.toFixed(1) +
+          '" rx="3" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:1"/>';
+      }
+      const labelX = padX + len + 6;
+      const labelY = by + barTh / 2;
+      const txt = (med == null) ? "—" : Math.round(med).toLocaleString();
+      body += '<text x="' + labelX.toFixed(1) + '" y="' + labelY.toFixed(1) +
+        '" dominant-baseline="central" class="chart-value" style="fill:' + c.text + '">' +
+        txt + '</text>';
+    });
+    body += '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
+      '" y2="' + baseY + '" class="chart-axis"/>';
+
+    const aria = "Median tokens by result: " + RESULT_ORDER.map(function (k) {
+      return RESULT_LABELS[k] + " " +
+        (medians[k] == null ? "no data" : Math.round(medians[k]) + " tokens");
+    }).join(", ");
+    const svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' +
+      escapeHTML(aria) + '" class="chart-svg">' + body + '</svg>';
+    const callout = outlier
+      ? '<p class="chart-callout">Excludes one outlier set aside as a special case: ' +
+          escapeHTML(outlier.model) + ', ≈' + outlier.tk.toLocaleString() + ' tokens.</p>'
+      : '';
+    return '<figure class="chart-card chart-card-wide">' +
+      '<figcaption>Median tokens by result</figcaption>' + svg + callout +
+    '</figure>';
+  }
+
+  function renderCharts(runs) {
+    const t = tally(runs);
     return '<div class="charts-row">' +
       '<figure class="chart-card">' +
         '<figcaption>Runs by category</figcaption>' + renderBarChart(t) +
@@ -559,7 +640,8 @@
       '<figure class="chart-card">' +
         '<figcaption>Share of total</figcaption>' + renderPieChart(t) +
       '</figure>' +
-    '</div>';
+    '</div>' +
+    renderMedianTokenChart(runs);
   }
 
   // Filter runs to those whose model family belongs to the given category.

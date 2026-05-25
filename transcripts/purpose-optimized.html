@@ -120,7 +120,7 @@
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(CarwashTest.tally(catRuns));
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(CarwashTest.tally(catRuns));
+          CarwashTest.renderCharts(catRuns);
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTableForFamily(catRuns);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));

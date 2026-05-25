@@ -1103,7 +1103,7 @@
     },
     {
       "id": 90,
-      "date": "2026-05-19",
+      "date": "2026-05-25",
       "vendor": "Google",
       "model_family": "google",
       "model": "Gemini 3.1 Flash-Lite",
@@ -1114,7 +1114,7 @@
     },
     {
       "id": 91,
-      "date": "2026-05-19",
+      "date": "2026-05-25",
       "vendor": "Google",
       "model_family": "google",
       "model": "Gemini 3.5 Flash",
@@ -1152,7 +1152,7 @@
       "summary": "New category: Purpose-Optimized Models. Added Amazon Rufus (Pass-adjacent, tested May 12) and TIME AI (Fail, tested May 25). These are domain-specific systems where catalog optimization shapes the answer. Same mechanism, opposite results — Rufus's shopping catalog pulls toward 'drive' (the sellable object); TIME AI's media catalog pulls toward 'walk' (health and environment content). Dataset now stands at 93 runs across 14 model families."
     },
     {
-      "date": "2026-05-19",
+      "date": "2026-05-25",
       "summary": "Two new Google models added: Gemini 3.1 Flash-Lite (Fail) and Gemini 3.5 Flash (Pass). Both released May 19, 2026. Existing 'Gemini 3 Pro' entries corrected to 'Gemini 3.1 Pro' (the model's actual designation since its February 2026 release). Google block now spans 5 tiers from Flash-Lite to Thinking."
     },
     {

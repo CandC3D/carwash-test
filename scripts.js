@@ -491,18 +491,16 @@
     const baseY = padTop + plotH;
     // 5px gap between the content and each axis line: bars sit 5px above the
     // baseline, and the topline sits 5px above a full-height (100%) bar.
-    const gap = 5;
+    // Gap between content and the baseline, matched to the token chart's
+    // (its centered rows leave the widest content-to-baseline spacing).
+    const gap = 13;
     const usableH = plotH - gap;          // height of a 100%-extension bar
-    const barTopY = baseY - gap - usableH; // top of a full bar (= padTop)
-    const topLineY = barTopY;              // topline at the max bar height (value labels sit above it)
     const max = Math.max.apply(null, RESULT_ORDER.map(function (k) { return t[k]; })) || 1;
     const n = RESULT_ORDER.length;
     const slotW = (W - padX * 2) / n;
     const barW = slotW * 0.58;
     let body = '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
-      '" y2="' + baseY + '" class="chart-axis"/>' +
-      '<line x1="' + padX + '" y1="' + topLineY + '" x2="' + (W - padX) +
-      '" y2="' + topLineY + '" class="chart-axis"/>';
+      '" y2="' + baseY + '" class="chart-axis"/>';
     RESULT_ORDER.forEach(function (k, i) {
       const val = t[k] || 0;
       const bh = max > 0 ? (val / max) * usableH : 0;
@@ -529,13 +527,13 @@
     const W = 320, H = 240, padTop = 26, padBottom = 24, padX = 18;
     const plotH = H - padTop - padBottom;
     const baseY = padTop + plotH;
-    const gap = 5;
+    // Gap matched to the bar/token charts so all baselines line up.
+    const gap = 13;
     // Pie matches a 100%-extension bar exactly: top and bottom aligned with
-    // the max bar (top at padTop, bottom 5px above the baseline).
+    // the max bar (top at padTop, bottom `gap` above the baseline).
     const pieTopY = padTop, pieBottomY = baseY - gap;
     const r = (pieBottomY - pieTopY) / 2;
     const cx = W / 2, cy = pieTopY + r;
-    const topLineY = pieTopY;
     const total = RESULT_ORDER.reduce(function (s, k) { return s + (t[k] || 0); }, 0) || 1;
     let angle = -Math.PI / 2; // start at 12 o'clock
     let body = "";
@@ -567,11 +565,9 @@
         '" text-anchor="middle" dominant-baseline="central" class="chart-value" style="fill:' +
         c.text + '">' + pct + '%</text>';
     });
-    // Baseline + topline matching the bar chart's axes.
+    // Baseline matching the bar chart's axis.
     body += '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
-      '" y2="' + baseY + '" class="chart-axis"/>' +
-      '<line x1="' + padX + '" y1="' + topLineY + '" x2="' + (W - padX) +
-      '" y2="' + topLineY + '" class="chart-axis"/>';
+      '" y2="' + baseY + '" class="chart-axis"/>';
     const aria = "Pie chart of result share: " +
       RESULT_ORDER.map(function (k) {
         return RESULT_LABELS[k] + " " + Math.round((t[k] || 0) / total * 100) + "%";

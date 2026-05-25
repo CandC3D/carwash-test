@@ -17,6 +17,14 @@
   };
   const RESULT_ORDER = ["pass", "pass-adjacent", "verbose", "fail"];
 
+  // Short gloss for each category, shown beneath the label on the tally cards.
+  const RESULT_DESCRIPTIONS = {
+    "pass": "Correct and concise",
+    "pass-adjacent": "Correct but padded",
+    "verbose": "Correct but over-elaborated",
+    "fail": "Wrong answer — said walk"
+  };
+
   const THINKING_LABELS = {
     "on": "On",
     "off": "Off",
@@ -87,11 +95,11 @@
   }
 
   function renderTallyRow(t) {
-    const order = ["pass", "pass-adjacent", "verbose", "fail"];
-    return '<div class="tally-row">' + order.map(function (k) {
+    return '<div class="tally-row">' + RESULT_ORDER.map(function (k) {
       return '<div class="tally-card tally-' + k + '">' +
         '<span class="count">' + t[k] + '</span>' +
         '<span class="label">' + RESULT_LABELS[k] + '</span>' +
+        '<span class="desc">' + escapeHTML(RESULT_DESCRIPTIONS[k]) + '</span>' +
         '</div>';
     }).join("") + '</div>';
   }

@@ -197,23 +197,35 @@ li { margin-bottom: 6px; }
   margin-bottom: 6px;
 }
 .tally-card .label {
+  display: block;
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
 }
+.tally-card .desc {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.3;
+  opacity: 0.85;
+}
 .tally-card.tally-pass         { background: var(--pass-bg);    border-color: var(--pass-text); }
 .tally-card.tally-pass .count,
-.tally-card.tally-pass .label  { color: var(--pass-text); }
+.tally-card.tally-pass .label,
+.tally-card.tally-pass .desc   { color: var(--pass-text); }
 .tally-card.tally-pass-adjacent        { background: var(--passadj-bg); border-color: var(--passadj-text); }
 .tally-card.tally-pass-adjacent .count,
-.tally-card.tally-pass-adjacent .label { color: var(--passadj-text); }
+.tally-card.tally-pass-adjacent .label,
+.tally-card.tally-pass-adjacent .desc  { color: var(--passadj-text); }
 .tally-card.tally-verbose         { background: var(--verbose-bg); border-color: var(--verbose-text); }
 .tally-card.tally-verbose .count,
-.tally-card.tally-verbose .label  { color: var(--verbose-text); }
+.tally-card.tally-verbose .label,
+.tally-card.tally-verbose .desc   { color: var(--verbose-text); }
 .tally-card.tally-fail         { background: var(--fail-bg);    border-color: var(--fail-text); }
 .tally-card.tally-fail .count,
-.tally-card.tally-fail .label  { color: var(--fail-text); }
+.tally-card.tally-fail .label,
+.tally-card.tally-fail .desc   { color: var(--fail-text); }
 
 /* Results table */
 .results-table {

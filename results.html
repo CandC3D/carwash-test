@@ -73,6 +73,7 @@
       <h2>Tally</h2>
       <div id="tally"></div>
       <div id="legend"></div>
+      <div id="charts"></div>
     </section>
 
     <section>
@@ -102,10 +103,13 @@
     (async function () {
       try {
         const data = await CarwashTest.loadData("");
+        const overallTally = CarwashTest.tally(data.runs);
         document.getElementById("tally").innerHTML =
-          CarwashTest.renderTallyRow(CarwashTest.tally(data.runs));
+          CarwashTest.renderTallyRow(overallTally);
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
+        document.getElementById("charts").innerHTML =
+          CarwashTest.renderCharts(overallTally);
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTable(data.runs, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));

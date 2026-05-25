@@ -75,6 +75,7 @@
     <section>
       <h2>Results</h2>
       <div id="tally"></div>
+      <div id="charts"></div>
       <div id="results-table"></div>
       <div id="legend"></div>
     </section>
@@ -118,6 +119,8 @@
 
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
+        document.getElementById("charts").innerHTML =
+          CarwashTest.renderCharts(CarwashTest.tally(familyRuns));
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTableForFamily(familyRuns);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));

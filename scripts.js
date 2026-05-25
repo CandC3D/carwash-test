@@ -471,6 +471,11 @@
     const W = 320, H = 240, padTop = 26, padBottom = 24, padX = 18;
     const plotH = H - padTop - padBottom;
     const baseY = padTop + plotH;
+    // Lift the bars off the baseline by the same gap the pie's bottom leaves
+    // (the pie sits plotH/2 - r above the baseline, ≈ 5px), so the two charts'
+    // lowest points line up rather than the bars touching the axis.
+    const baseGap = plotH / 2 - 90;
+    const usableH = plotH - baseGap;
     const max = Math.max.apply(null, RESULT_ORDER.map(function (k) { return t[k]; })) || 1;
     const n = RESULT_ORDER.length;
     const slotW = (W - padX * 2) / n;
@@ -479,9 +484,9 @@
       '" y2="' + baseY + '" class="chart-axis"/>';
     RESULT_ORDER.forEach(function (k, i) {
       const val = t[k] || 0;
-      const bh = max > 0 ? (val / max) * plotH : 0;
+      const bh = max > 0 ? (val / max) * usableH : 0;
       const x = padX + slotW * i + (slotW - barW) / 2;
-      const y = baseY - bh;
+      const y = (baseY - baseGap) - bh;
       const c = RESULT_COLORS[k];
       body += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' +
         barW.toFixed(1) + '" height="' + bh.toFixed(1) +

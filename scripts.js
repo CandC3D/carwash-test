@@ -145,7 +145,7 @@
       '<th scope="col" class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
       '<th scope="col" class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
       '<th scope="col" class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
-      '<th scope="col" class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens</th>' +
+      '<th scope="col" class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens (est)</th>' +
       '</tr></thead>';
   }
 
@@ -676,7 +676,7 @@
     const lines = [];
     lines.push(cell("The Carwash Test") + "," + cell(SITE));
     lines.push("");
-    lines.push(["#", "Company", "Model", "Thinking", "Date", "Result", "Tokens"]
+    lines.push(["#", "Company", "Model", "Thinking", "Date", "Result", "Tokens (est)"]
       .map(cell).join(","));
     runs.slice().sort(function (a, b) { return a.id - b.id; }).forEach(function (r) {
       lines.push([

@@ -122,31 +122,53 @@
 
   function buildHeader() {
     return '<thead><tr>' +
-      '<th class="col-id sortable" data-sort-type="number" data-default-dir="asc">#</th>' +
-      '<th class="sortable" data-sort-type="string" data-default-dir="asc">Company</th>' +
-      '<th class="sortable" data-sort-type="string" data-default-dir="asc">Model</th>' +
-      '<th class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
-      '<th class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
-      '<th class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
-      '<th class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens</th>' +
+      '<th scope="col" class="col-id sortable" data-sort-type="number" data-default-dir="asc">#</th>' +
+      '<th scope="col" class="sortable" data-sort-type="string" data-default-dir="asc">Company</th>' +
+      '<th scope="col" class="sortable" data-sort-type="string" data-default-dir="asc">Model</th>' +
+      '<th scope="col" class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
+      '<th scope="col" class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
+      '<th scope="col" class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
+      '<th scope="col" class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens</th>' +
       '</tr></thead>';
+  }
+
+  // Build a <caption> from a set of runs: date range + run count.
+  function buildCaption(runs) {
+    if (!runs || !runs.length) return '';
+    const dates = runs.map(function (r) { return r.date; }).filter(Boolean).sort();
+    const lo = dates[0], hi = dates[dates.length - 1];
+    const range = lo === hi ? formatDate(lo) : formatDate(lo) + " – " + formatDate(hi);
+    const n = runs.length;
+    return '<caption>Carwash Test results, ' + escapeHTML(range) + ', ' +
+      n + ' run' + (n === 1 ? '' : 's') + '</caption>';
+  }
+
+  // Map a family slug to the transcript page that hosts it. Purpose-optimized
+  // families share a single combined page rather than one page per slug.
+  function familyPageHref(slug, families, basePath) {
+    basePath = basePath || "";
+    const f = families && families[slug];
+    if (f && f.category === "purpose-optimized") {
+      return basePath + "transcripts/purpose-optimized.html#run-";
+    }
+    return basePath + "transcripts/" + slug + ".html#run-";
   }
 
   function renderResultsTable(runs, families) {
     const rows = runs.map(function (r) {
       const link = (families && families[r.model_family])
-        ? "transcripts/" + r.model_family + ".html#run-" + r.id
+        ? familyPageHref(r.model_family, families, "") + r.id
         : null;
       return buildRow(r, link);
     }).join("");
-    return '<table class="results-table">' + buildHeader() + '<tbody>' + rows + '</tbody></table>';
+    return '<table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table>';
   }
 
   function renderResultsTableForFamily(runs) {
     const rows = runs.map(function (r) {
       return buildRow(r, "#run-" + r.id);
     }).join("");
-    return '<table class="results-table">' + buildHeader() + '<tbody>' + rows + '</tbody></table>';
+    return '<table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table>';
   }
 
   function makeSortable(table) {
@@ -196,31 +218,81 @@
     }).join("") + '</div>';
   }
 
+  // SVG icon for the Purpose-Optimized category: a small network graph
+  // (three connected nodes in a circle) signalling a system organized around
+  // internal connections rather than general-purpose reasoning.
+  const PURPOSE_OPTIMIZED_ICON =
+    '<svg role="img" aria-label="Purpose-optimized models category icon" ' +
+    'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ' +
+    'stroke="currentColor" stroke-width="1.5" stroke-linecap="round">' +
+    '<circle cx="12" cy="12" r="10"/>' +
+    '<circle cx="8" cy="9" r="1.5" fill="currentColor"/>' +
+    '<circle cx="16" cy="9" r="1.5" fill="currentColor"/>' +
+    '<circle cx="12" cy="16" r="1.5" fill="currentColor"/>' +
+    '<line x1="8" y1="9" x2="16" y2="9"/>' +
+    '<line x1="8" y1="9" x2="12" y2="16"/>' +
+    '<line x1="16" y1="9" x2="12" y2="16"/>' +
+    '</svg>';
+
+  function familyCategory(f) {
+    return (f && f.category) || "general";
+  }
+
+  function _slugsByCategory(families, category) {
+    return Object.keys(families)
+      .filter(function (slug) { return familyCategory(families[slug]) === category; })
+      .sort(function (a, b) {
+        const an = (families[a].display_name || a).toLowerCase();
+        const bn = (families[b].display_name || b).toLowerCase();
+        if (an < bn) return -1;
+        if (an > bn) return 1;
+        return 0;
+      });
+  }
+
+  function _familyCard(slug, families, counts, basePath) {
+    const f = families[slug];
+    const c = counts[slug] || 0;
+    const href = familyCategory(f) === "purpose-optimized"
+      ? basePath + "transcripts/purpose-optimized.html"
+      : basePath + "transcripts/" + slug + ".html";
+    const logo = LOGO_FILES[slug]
+      ? '<span class="family-logo" style="--logo-url: url(assets/logos/' + LOGO_FILES[slug] + ')"></span>'
+      : '';
+    return '<a class="family-card" href="' + href + '">' +
+      logo +
+      '<span class="family-name">' + escapeHTML(f.display_name) + '</span>' +
+      '<span class="family-count">' + c + ' run' + (c === 1 ? '' : 's') + '</span>' +
+      '</a>';
+  }
+
   function renderFamilyGrid(runs, families, basePath) {
     basePath = basePath || "";
     const counts = {};
     runs.forEach(function (r) {
       counts[r.model_family] = (counts[r.model_family] || 0) + 1;
     });
-    const slugs = Object.keys(families).sort(function (a, b) {
-      const an = (families[a].display_name || a).toLowerCase();
-      const bn = (families[b].display_name || b).toLowerCase();
-      if (an < bn) return -1;
-      if (an > bn) return 1;
-      return 0;
-    });
-    return '<div class="family-grid">' + slugs.map(function (slug) {
-      const f = families[slug];
-      const c = counts[slug] || 0;
-      const logo = LOGO_FILES[slug]
-        ? '<span class="family-logo" style="--logo-url: url(assets/logos/' + LOGO_FILES[slug] + ')"></span>'
-        : '';
-      return '<a class="family-card" href="' + basePath + 'transcripts/' + slug + '.html">' +
-        logo +
-        '<span class="family-name">' + escapeHTML(f.display_name) + '</span>' +
-        '<span class="family-count">' + c + ' run' + (c === 1 ? '' : 's') + '</span>' +
-        '</a>';
+    const generalSlugs = _slugsByCategory(families, "general");
+    const poSlugs = _slugsByCategory(families, "purpose-optimized");
+
+    let html = '<div class="family-grid">' + generalSlugs.map(function (slug) {
+      return _familyCard(slug, families, counts, basePath);
     }).join("") + '</div>';
+
+    if (poSlugs.length) {
+      html += '<div class="family-group-divider" role="separator"></div>' +
+        '<div class="family-group-heading">' +
+          '<span class="family-group-icon">' + PURPOSE_OPTIMIZED_ICON + '</span>' +
+          '<h3>Purpose-Optimized Models</h3>' +
+          '<p>Domain-specific systems where catalog optimization shapes the answer ' +
+          'as much as the underlying model’s reasoning. ' +
+          '<a href="' + basePath + 'transcripts/purpose-optimized.html">About this category →</a></p>' +
+        '</div>' +
+        '<div class="family-grid family-grid-purpose-optimized">' + poSlugs.map(function (slug) {
+          return _familyCard(slug, families, counts, basePath);
+        }).join("") + '</div>';
+    }
+    return html;
   }
 
   // ── Per-vendor transcript navigation ─────────────────────────────────
@@ -248,7 +320,7 @@
     runs.forEach(function (r) {
       counts[r.model_family] = (counts[r.model_family] || 0) + 1;
     });
-    const slugs = _alphaSortedSlugs(families);
+    const slugs = _slugsByCategory(families, "general");
     const pills = slugs.map(function (slug) {
       const f = families[slug];
       const c = counts[slug] || 0;
@@ -264,16 +336,34 @@
         '<span class="pill-count">' + c + '</span>' +
         '</a>';
     }).join("");
+
+    // Purpose-optimized families share one combined page; surface it as a
+    // single distinguished pill at the end of the rail.
+    const poSlugs = _slugsByCategory(families, "purpose-optimized");
+    let poPill = "";
+    if (poSlugs.length) {
+      const poCount = poSlugs.reduce(function (sum, s) { return sum + (counts[s] || 0); }, 0);
+      const isActive = currentSlug === "purpose-optimized";
+      const href = isActive ? "#" : "purpose-optimized.html";
+      poPill = '<span class="vendor-rail-sep" aria-hidden="true"></span>' +
+        '<a class="vendor-pill vendor-pill-purpose-optimized' + (isActive ? ' active' : '') + '" href="' + href + '"' +
+        (isActive ? ' aria-current="page"' : '') + '>' +
+        '<span class="pill-icon">' + PURPOSE_OPTIMIZED_ICON + '</span>' +
+        '<span class="pill-name">Purpose-Optimized</span>' +
+        '<span class="pill-count">' + poCount + '</span>' +
+        '</a>';
+    }
+
     return '<div class="vendor-rail">' +
       '<div class="vendor-rail-inner">' +
         '<a class="vendor-rail-back" href="' + basePath + 'transcripts.html">← All Transcripts</a>' +
-        '<div class="vendor-pills">' + pills + '</div>' +
+        '<div class="vendor-pills">' + pills + poPill + '</div>' +
       '</div>' +
       '</div>';
   }
 
   function renderVendorPagination(currentSlug, families) {
-    const slugs = _alphaSortedSlugs(families);
+    const slugs = _slugsByCategory(families, "general");
     const idx = slugs.indexOf(currentSlug);
     if (idx === -1) return '';
     const n = slugs.length;
@@ -353,7 +443,17 @@
     return '<span class="title-logo" style="--logo-url: url(' + url + ')"></span>';
   }
 
+  // Filter runs to those whose model family belongs to the given category.
+  function runsInCategory(runs, families, category) {
+    return runs.filter(function (r) {
+      const f = families[r.model_family];
+      return f && ((f.category || "general") === category);
+    });
+  }
+
   global.CarwashTest = {
+    PURPOSE_OPTIMIZED_ICON: PURPOSE_OPTIMIZED_ICON,
+    runsInCategory: runsInCategory,
     loadData: loadData,
     formatDate: formatDate,
     formatThinking: formatThinking,

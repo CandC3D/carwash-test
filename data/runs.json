@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-05-25",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -27,62 +27,86 @@
     "anthropic": {
       "name": "Anthropic",
       "display_name": "Anthropic (Claude)",
-      "slug": "anthropic"
+      "slug": "anthropic",
+      "category": "general"
     },
     "openai": {
       "name": "OpenAI",
       "display_name": "OpenAI (ChatGPT and GPT o3)",
-      "slug": "openai"
+      "slug": "openai",
+      "category": "general"
     },
     "deepseek": {
       "name": "DeepSeek",
       "display_name": "DeepSeek (V3.2 and R1)",
-      "slug": "deepseek"
+      "slug": "deepseek",
+      "category": "general"
     },
     "google": {
       "name": "Google",
       "display_name": "Google (Gemini)",
-      "slug": "google"
+      "slug": "google",
+      "category": "general"
     },
     "meta": {
       "name": "Meta",
       "display_name": "Meta (Llama and Muse Spark)",
-      "slug": "meta"
+      "slug": "meta",
+      "category": "general"
     },
     "microsoft": {
       "name": "Microsoft",
       "display_name": "Microsoft (Copilot)",
-      "slug": "microsoft"
+      "slug": "microsoft",
+      "category": "general"
     },
     "xai": {
       "name": "xAI",
       "display_name": "xAI (Grok)",
-      "slug": "xai"
+      "slug": "xai",
+      "category": "general"
     },
     "mistral": {
       "name": "Mistral",
       "display_name": "Mistral (Le Chat)",
-      "slug": "mistral"
+      "slug": "mistral",
+      "category": "general"
     },
     "perplexity": {
       "name": "Perplexity",
       "display_name": "Perplexity",
-      "slug": "perplexity"
+      "slug": "perplexity",
+      "category": "general"
     },
     "qwen": {
       "name": "Alibaba",
       "display_name": "Alibaba (Qwen)",
-      "slug": "qwen"
+      "slug": "qwen",
+      "category": "general"
     },
     "kimi": {
       "name": "Moonshot AI",
       "display_name": "Moonshot AI (Kimi)",
-      "slug": "kimi"
+      "slug": "kimi",
+      "category": "general"
     },
     "lumo": {
       "name": "Proton",
       "display_name": "Proton (Lumo)",
-      "slug": "lumo"
+      "slug": "lumo",
+      "category": "general"
+    },
+    "rufus": {
+      "name": "Amazon Rufus",
+      "display_name": "Amazon Rufus",
+      "slug": "rufus",
+      "category": "purpose-optimized"
+    },
+    "time_ai": {
+      "name": "TIME AI",
+      "display_name": "TIME AI",
+      "slug": "time-ai",
+      "category": "purpose-optimized"
     }
   },
   "runs": [
@@ -223,7 +247,7 @@
       "date": "2026-03-22",
       "vendor": "Google",
       "model_family": "google",
-      "model": "Gemini 3 Pro",
+      "model": "Gemini 3.1 Pro",
       "thinking": "n/a",
       "result": "verbose",
       "response": "You should definitely drive!\n\nIf you walk, you'll make it to the carwash, but your dirty car will still be sitting in its parking spot. Unless you've figured out a way to carry the car with you or bring the carwash home, you'll need to take the car to get it clean.\n\nWould you like me to check the local forecast to make sure it's not going to rain right after you wash it?",
@@ -493,7 +517,7 @@
       "date": "2026-04-27",
       "vendor": "Google",
       "model_family": "google",
-      "model": "Gemini 3 Pro",
+      "model": "Gemini 3.1 Pro",
       "thinking": "n/a",
       "result": "pass-adjacent",
       "response": "You should definitely drive. If you walk, the carwash is only going to wash *you*, and your car will still be dirty!",
@@ -757,7 +781,7 @@
       "date": "2026-05-03",
       "vendor": "Google",
       "model_family": "google",
-      "model": "Gemini 3 Pro",
+      "model": "Gemini 3.1 Pro",
       "thinking": "n/a",
       "result": "pass",
       "response": "If your goal is to get the car clean, you should definitely drive! Walking to the car wash won't do much good if you leave the dirty car behind in the driveway.",
@@ -1076,9 +1100,61 @@
       "response": "Drive. Reason: the thing that needs washing is the car, and it needs to get to the carwash. Walking 100 feet gets you there, but leaves the dirty car behind. If the carwash offers pickup/detailing or you're only going there to buy supplies, then walk. Otherwise: drive the dirty car the 100 feet.",
       "notes": "Isolation prompt. Passes on both surfaces. Correct with hedge about pickup/detailing.",
       "prompt": "isolation"
+    },
+    {
+      "id": 90,
+      "date": "2026-05-19",
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3.1 Flash-Lite",
+      "thinking": "n/a",
+      "result": "fail",
+      "response": "For a distance of only 100 feet, walking is the better choice.\n\n* Efficiency: Starting your car, maneuvering out of a parking spot, and driving such a short distance often takes more time than simply walking the length of about one-third of a football field.\n* Vehicle Health: Short trips (especially if the engine doesn't reach operating temperature) can lead to moisture buildup in the exhaust system and prevent the engine oil from reaching optimal operating conditions.\n* Convenience: You will arrive at the carwash almost instantly without the hassle of navigating traffic or parking lots.\n\nAre you planning to get a full detail, or just a quick exterior wash?",
+      "notes": "New model released May 19, 2026. Tier: 'Fastest answers.' Fails with bullet-point elaboration and follow-up question. 'One-third of a football field' reframing reinforces the surface-feature pressure."
+    },
+    {
+      "id": 91,
+      "date": "2026-05-19",
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3.5 Flash",
+      "thinking": "n/a",
+      "result": "pass",
+      "response": "Drive.\nWhile a 100-foot walk is great for your step count, it makes it incredibly difficult to wash the car.\nUnless you plan on carrying it, driving is the way to go.",
+      "notes": "New model released May 19, 2026. Tier: 'All-around help.' Clean pass — names the constraint through a joke that works because the joke is the logical object."
+    },
+    {
+      "id": 92,
+      "date": "2026-05-12",
+      "vendor": "Amazon",
+      "model_family": "rufus",
+      "model": "Amazon Rufus",
+      "thinking": "n/a",
+      "result": "pass-adjacent",
+      "response": "Since the car wash is only 100 feet away, driving there makes the most sense.",
+      "notes": "Purpose-optimized shopping assistant. Pass-adjacent: correct, but the sentence structure shows statistical pressure loading toward 'walk' before the logical object wins. The model then attempted to sell microfiber towels. If you're Amazon, you don't want to lose the object — it's money that's walking away."
+    },
+    {
+      "id": 93,
+      "date": "2026-05-25",
+      "vendor": "TIME",
+      "model_family": "time_ai",
+      "model": "TIME AI",
+      "thinking": "n/a",
+      "result": "fail",
+      "response": "Walk.",
+      "notes": "Purpose-optimized media assistant. Fail: optimization toward TIME's content catalog (health, environment, ecological effects of automobiles) overrides the logical object. Same mechanism as Rufus (catalog optimization shapes the answer), opposite direction — because the catalogs point at different things."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-05-25",
+      "summary": "New category: Purpose-Optimized Models. Added Amazon Rufus (Pass-adjacent, tested May 12) and TIME AI (Fail, tested May 25). These are domain-specific systems where catalog optimization shapes the answer. Same mechanism, opposite results — Rufus's shopping catalog pulls toward 'drive' (the sellable object); TIME AI's media catalog pulls toward 'walk' (health and environment content). Dataset now stands at 93 runs across 14 model families."
+    },
+    {
+      "date": "2026-05-19",
+      "summary": "Two new Google models added: Gemini 3.1 Flash-Lite (Fail) and Gemini 3.5 Flash (Pass). Both released May 19, 2026. Existing 'Gemini 3 Pro' entries corrected to 'Gemini 3.1 Pro' (the model's actual designation since its February 2026 release). Google block now spans 5 tiers from Flash-Lite to Thinking."
+    },
     {
       "date": "2026-05-03",
       "summary": "May 3 batch: 51 new runs across 10 vendor blocks (Anthropic 8, OpenAI 10, Meta 3, Google 3, xAI 3, DeepSeek 4, Mistral 3, Perplexity 1, International 10, Microsoft Copilot 6). Six headline findings: (1) All GPT thinking-off models produce byte-identical Fail text — confirmed by live retest. (2) DeepSeek R1 thinking-on flipped from Fail to Pass-adjacent; template capture is gone. (3) Grok 4.3 Auto fails where Fast and Expert pass — adaptive autoselection is the failure point. (4) Mistral Medium 3.5 replaced Mistral 3 and fails all three modes — the model substitution made things worse. (5) GPT 5.2 Off passes via Copilot but fails via Plus — the wrapper changes the answer. (6) International block (Qwen, Kimi, Lumo) shows 70% failure rate, confirming cross-jurisdictional failure clustering. Product surface changes since March: Anthropic reverted Opus 4.6 to Extended Thinking On/Off; xAI released Grok 4.3 with Auto/Fast/Expert picker; Mistral substituted Medium 3.5; Meta added Contemplating mode. Dataset now stands at 89 runs."

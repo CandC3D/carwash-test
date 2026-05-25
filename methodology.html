@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Methodology — The Carwash Test</title>
-  <meta name="description" content="How the Carwash Test is run: single-shot fresh-chat prompts, the four-tier Pass / Pass-adjacent / Verbose / Fail rubric, vendor system list, and change log.">
+  <title>The Carwash Test — Methodology | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Prompt, rubric, scoring criteria, model versions, and product surface change log.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -17,16 +17,16 @@
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Virtual Intelligence in Action">
-  <meta property="og:description" content="A single-prompt diagnostic measuring whether AI systems hold the logical object of a problem against statistical pressure in the wrong direction. 89 runs across 12 model families.">
+  <meta property="og:title" content="The Carwash Test — Methodology">
+  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Prompt, rubric, scoring criteria, model versions, and product surface change log.">
   <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Virtual Intelligence in Action">
-  <meta name="twitter:description" content="A single-prompt diagnostic measuring whether AI systems hold the logical object of a problem against statistical pressure in the wrong direction. 89 runs across 12 model families.">
+  <meta name="twitter:title" content="The Carwash Test — Methodology">
+  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Prompt, rubric, scoring criteria, model versions, and product surface change log.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -123,7 +123,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and May 3, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and May 25, 2026:</p>
       <ul>
         <li>Claude Opus 4.6 and Sonnet 4.6 (Anthropic; originally Extended Thinking On/Off, briefly Adaptive, reverted to Extended Thinking On/Off in May)</li>
         <li>Claude Haiku 4.5 (Anthropic, Extended Thinking On and Off)</li>
@@ -132,7 +132,7 @@
         <li>GPT o3 (OpenAI Plus, reasoning architecturally on)</li>
         <li>Meta AI / Llama 4 (Fast and Thinking modes; product no longer accessible)</li>
         <li>Meta Muse Spark (Instant, Thinking, and Contemplating modes; Contemplating added in May for multi-chain parallel reasoning)</li>
-        <li>Gemini 3 (Google; Fast, Pro, and Thinking tiers)</li>
+        <li>Gemini (Google; Gemini 3 Fast, Gemini 3.1 Pro, and Gemini 3 Thinking tiers, plus Gemini 3.1 Flash-Lite and Gemini 3.5 Flash added May 19)</li>
         <li>Grok 4.20 (xAI, Expert and Fast modes; March/April only)</li>
         <li>Grok 4.3 (xAI; Auto, Fast, and Expert modes; new in May)</li>
         <li>DeepSeek-V3.2 with and without extended reasoning (March 28, April 27, and May 3)</li>
@@ -144,9 +144,117 @@
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
         <li>Lumo (Proton; default configuration, no reasoning toggle exposed; new in May)</li>
         <li>Microsoft Copilot running Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 in Quick Response and Think Deeper modes (May runs use the isolation prompt to suppress M365 retrieval)</li>
+        <li>Amazon Rufus (purpose-optimized shopping assistant; no reasoning toggle exposed; tested May 12)</li>
+        <li>TIME AI (purpose-optimized media assistant; no reasoning toggle exposed; tested May 25)</li>
       </ul>
+      <p>Amazon Rufus and TIME AI are <a href="transcripts/purpose-optimized.html">purpose-optimized models</a> — domain-specific systems where catalog optimization shapes the answer as much as the underlying model's reasoning. They are grouped separately from the general-purpose families.</p>
       <p>Where the same system was tested more than once, each run is recorded as a separate entry in the dataset. The test is a snapshot in time, not a verdict, and rerunning the same configuration on a different date yields a separate data point. Within-system variance is part of what a single-shot methodology surfaces.</p>
-      <p>Two prompt variants are in use. Runs 1–43 and 47–83 use the canonical short prompt: <em>My car is dirty. The carwash is 100 feet away. Should I walk or drive?</em> Runs 84–89 (Microsoft Copilot, May 3 only) use an isolation prompt that explicitly instructs the system to ignore web search, file search, workspace, and conversation context — added so the Copilot wrapper's retrieval surface does not contaminate the test.</p>
+      <p>Two prompt variants are in use — the canonical prompt for nearly all runs, and a restraint prompt for Microsoft Copilot. Both are documented in <a href="#prompts">The two prompts</a> below.</p>
+    </section>
+
+    <section>
+      <h2>Testing timeline</h2>
+      <p>Each testing snapshot and the number of runs it added to the dataset:</p>
+      <table class="results-table methodology-table">
+        <caption>Carwash Test snapshots, March 22 – May 25, 2026</caption>
+        <thead>
+          <tr>
+            <th scope="col">Snapshot</th>
+            <th scope="col">Date</th>
+            <th scope="col">Runs added</th>
+            <th scope="col">Cumulative</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Original</td><td>March 22, 2026</td><td>20</td><td>20</td></tr>
+          <tr><td>DeepSeek / Mistral addendum</td><td>March 31, 2026</td><td>6</td><td>26</td></tr>
+          <tr><td>Opus 4.7 / Muse Spark / Grok addendum</td><td>April 16–17, 2026</td><td>4</td><td>30</td></tr>
+          <tr><td>ChatGPT 5.5 addendum</td><td>April 24, 2026</td><td>2</td><td>32</td></tr>
+          <tr><td>DeepSeek R1 / Grok 4.20 retest</td><td>April 27, 2026</td><td>6</td><td>38</td></tr>
+          <tr><td>May 3 batch</td><td>May 3, 2026</td><td>51</td><td>89</td></tr>
+          <tr><td>Gemini 3.1 Flash-Lite / 3.5 Flash</td><td>May 19, 2026</td><td>2</td><td>91</td></tr>
+          <tr><td>Amazon Rufus</td><td>May 12, 2026</td><td>1</td><td>92</td></tr>
+          <tr><td>TIME AI</td><td>May 25, 2026</td><td>1</td><td>93</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Model versions</h2>
+      <p>Where version numbers are exposed by the product surface, they are recorded here. This table is kept current as models are updated or substituted.</p>
+      <table class="results-table methodology-table">
+        <caption>Model versions and build details by vendor</caption>
+        <thead>
+          <tr>
+            <th scope="col">Vendor</th>
+            <th scope="col">Model</th>
+            <th scope="col">Version / Build</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Anthropic</td><td>Claude Opus</td><td>4.6</td><td>Extended Thinking On/Off toggle (reverted from Adaptive as of May 3)</td></tr>
+          <tr><td>Anthropic</td><td>Claude Sonnet</td><td>4.6</td><td>Adaptive On/Off toggle</td></tr>
+          <tr><td>Anthropic</td><td>Claude Haiku</td><td>4.5</td><td>Extended Thinking On/Off toggle</td></tr>
+          <tr><td>Anthropic</td><td>Claude Opus</td><td>4.7</td><td>Adaptive On/Off toggle; released April 16, 2026</td></tr>
+          <tr><td>OpenAI</td><td>ChatGPT</td><td>5.2, 5.3, 5.4, 5.5</td><td>Extended Thinking On/Off toggle (5.3 has no toggle on Plus)</td></tr>
+          <tr><td>OpenAI</td><td>GPT</td><td>o3</td><td>Reasoning architecturally always on; no user toggle</td></tr>
+          <tr><td>Meta</td><td>Muse Spark</td><td>—</td><td>Instant / Thinking / Contemplating modes; version not exposed</td></tr>
+          <tr><td>Google</td><td>Gemini 3</td><td>Fast, Thinking tiers</td><td>Version not exposed beyond tier label</td></tr>
+          <tr><td>Google</td><td>Gemini</td><td>3.1 Pro</td><td>Released February 2026</td></tr>
+          <tr><td>Google</td><td>Gemini</td><td>3.1 Flash-Lite</td><td>Released May 19, 2026. Tier: "Fastest answers"</td></tr>
+          <tr><td>Google</td><td>Gemini</td><td>3.5 Flash</td><td>Released May 19, 2026. Tier: "All-around help"</td></tr>
+          <tr><td>xAI</td><td>Grok</td><td>4.3</td><td>Auto/Fast/Expert picker; replaced Grok 4.20 on April 30, 2026</td></tr>
+          <tr><td>xAI</td><td>Grok</td><td>4.20</td><td>Historical entries only; deprecated April 30, 2026</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek-V3.2</td><td>—</td><td>Fast Mode / Expert Mode toggle; version not exposed beyond model name</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek R1</td><td>—</td><td>Fast Mode / Expert Mode toggle</td></tr>
+          <tr><td>Mistral</td><td>Mistral 3</td><td>—</td><td>Historical entries only; replaced by Medium 3.5 in Le Chat, late April 2026</td></tr>
+          <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Fast / Think / Research modes; replaced Mistral 3 in Le Chat</td></tr>
+          <tr><td>Perplexity</td><td>Perplexity</td><td>—</td><td>Default configuration; underlying model not exposed</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-27B</td><td>—</td><td>Thinking / Fast modes</td></tr>
+          <tr><td>Moonshot AI</td><td>Kimi K2.6</td><td>—</td><td>Instant / Thinking modes (Agent and Agent Swarm excluded)</td></tr>
+          <tr><td>Proton</td><td>Lumo</td><td>—</td><td>No reasoning toggle exposed</td></tr>
+          <tr><td>Amazon</td><td>Rufus</td><td>—</td><td>Shopping assistant; no reasoning toggle; version not exposed</td></tr>
+          <tr><td>TIME</td><td>TIME AI</td><td>—</td><td>Media assistant; no reasoning toggle; version not exposed</td></tr>
+          <tr><td>Microsoft</td><td>Copilot</td><td>—</td><td>Wrapper surface; exposes Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 via Quick Response / Think Deeper</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Product surface changes</h2>
+      <p>A chronological log of product surface changes that affected the test:</p>
+      <ul>
+        <li><strong>March 22, 2026:</strong> Initial test. All vendors at their default March configurations.</li>
+        <li><strong>April 16, 2026:</strong> Anthropic released Claude Opus 4.7.</li>
+        <li><strong>April 30, 2026:</strong> xAI released Grok 4.3 replacing Grok 4.20. Auto/Fast/Expert picker replaced the Fast/Expert binary toggle.</li>
+        <li><strong>Late April 2026:</strong> Mistral substituted Medium 3.5 as the default Le Chat model, replacing Mistral 3.</li>
+        <li><strong>Late April 2026:</strong> Meta added Contemplating (multi-chain parallel reasoning) to the Muse Spark mode picker.</li>
+        <li><strong>May 3, 2026:</strong> Anthropic reverted Opus 4.6 to Extended Thinking On/Off (had briefly used Adaptive On/Off). Sonnet 4.6 and Opus 4.7 retained Adaptive.</li>
+        <li><strong>May 19, 2026:</strong> Google added Gemini 3.1 Flash-Lite and Gemini 3.5 Flash to the consumer interface.</li>
+      </ul>
+    </section>
+
+    <section id="prompts">
+      <h2>The two prompts</h2>
+      <p>Two prompt variants are in use. Runs 1–43 and 47–83, and all non-Microsoft runs since, use the canonical prompt. Microsoft Copilot runs from the May 3 batch onward use a restraint prompt that suppresses the wrapper's retrieval channels.</p>
+
+      <h3>Canonical prompt</h3>
+      <p>Used for all vendors except Microsoft Copilot:</p>
+      <blockquote>
+        <p>My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
+      </blockquote>
+
+      <h3>Restraint prompt</h3>
+      <p>Used for Microsoft Copilot runs, May 3 batch onward:</p>
+      <blockquote>
+        <p>Do not search the web, do not search my files or documents, and do not use any workspace or conversation context. Answer the following question using only your own reasoning. Here is the question: My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
+      </blockquote>
+
+      <h3>Rationale</h3>
+      <p>The restraint prompt was introduced because Copilot's default behavior includes M365 workspace retrieval, which contaminated the original Copilot runs by pulling external context into the response. The restraint prompt suppresses four retrieval channels — web, files, workspace context, and conversation context — so the underlying model's reasoning can be observed through the wrapper without retrieval contamination. Copilot results under the restraint prompt are not directly comparable to other vendors' results under the canonical prompt; they are a distinct sub-study measuring wrapper effects.</p>
     </section>
 
     <section>

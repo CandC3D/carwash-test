@@ -351,6 +351,114 @@ li { margin-bottom: 6px; }
   color: var(--muted);
 }
 
+/* Purpose-optimized category grouping */
+.family-group-divider {
+  border: 0;
+  border-top: 1px solid var(--light);
+  margin: 36px 0 0;
+}
+.family-group-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  margin: 24px 0 4px;
+}
+.family-group-heading .family-group-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  color: var(--pumpkin);
+  align-self: center;
+}
+.family-group-heading .family-group-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.family-group-heading h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  margin: 0;
+}
+.family-group-heading p {
+  flex: 1 1 100%;
+  font-size: 14px;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+.family-grid-purpose-optimized { margin-top: 16px; }
+
+.category-intro {
+  font-size: 17px;
+  line-height: 1.6;
+  border-left: 2px solid var(--pumpkin);
+  padding-left: 18px;
+  color: var(--ink);
+  margin: 8px 0 0;
+}
+
+/* Purpose-optimized rail pill */
+.vendor-rail-sep {
+  display: inline-block;
+  width: 1px;
+  align-self: stretch;
+  background: var(--light);
+  margin: 0 4px;
+}
+.vendor-pill-purpose-optimized {
+  border-style: dashed;
+  border-color: var(--pumpkin);
+  color: var(--pumpkin);
+}
+.vendor-pill-purpose-optimized:hover {
+  color: var(--bg);
+  background: var(--pumpkin);
+  border-color: var(--pumpkin);
+}
+.vendor-pill-purpose-optimized.active {
+  color: var(--bg);
+  background: var(--pumpkin);
+  border-color: var(--pumpkin);
+}
+.vendor-pill .pill-icon {
+  display: inline-flex;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+.vendor-pill .pill-icon svg { width: 14px; height: 14px; display: block; }
+
+/* Title icon (purpose-optimized page header) */
+h1.site-title .title-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+  vertical-align: -6px;
+  color: var(--pumpkin);
+}
+h1.site-title .title-icon svg { width: 40px; height: 40px; display: block; }
+@media (max-width: 640px) {
+  h1.site-title .title-icon { width: 30px; height: 30px; margin-right: 12px; }
+  h1.site-title .title-icon svg { width: 30px; height: 30px; }
+}
+
+/* Static methodology tables */
+.methodology-table { margin: 16px 0 8px; }
+.methodology-table td { vertical-align: top; }
+
+/* Results table caption */
+.results-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 0 8px;
+}
+
 /* Transcript entries */
 .transcript-entry {
   border-top: 1px solid var(--light);

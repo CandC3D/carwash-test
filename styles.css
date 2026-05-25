@@ -335,6 +335,7 @@ li { margin-bottom: 6px; }
 .chart-axis { stroke: var(--light); stroke-width: 1; }
 .chart-card-wide {
   margin-top: 20px;
+  margin-bottom: 36px;
 }
 .chart-callout {
   font-size: 12px;

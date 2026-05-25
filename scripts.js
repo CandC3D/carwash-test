@@ -608,7 +608,7 @@
       }
       const labelX = padX + len + 6;
       const labelY = by + barTh / 2;
-      const txt = (med == null) ? "—" : Math.round(med).toLocaleString();
+      const txt = (med == null) ? "—" : "~" + Math.round(med).toLocaleString();
       body += '<text x="' + labelX.toFixed(1) + '" y="' + labelY.toFixed(1) +
         '" dominant-baseline="central" class="chart-value" style="fill:' + c.text + '">' +
         txt + '</text>';

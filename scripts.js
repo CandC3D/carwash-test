@@ -616,18 +616,38 @@
     body += '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
       '" y2="' + baseY + '" class="chart-axis"/>';
 
+    // Cost ratio: a wrong answer vs. the right answer (Fail vs. Pass median).
+    // Drawn in the upper-right — over the space the (always-shortest) Pass
+    // bar leaves empty. Only shown when both medians are available.
+    const passM = medians["pass"], failM = medians["fail"];
+    const ratio = (passM && failM && passM > 0) ? (failM / passM) : null;
+    if (ratio != null) {
+      const rx = W - padX, ry = padTop + 14;
+      body += '<text x="' + rx + '" y="' + ry + '" text-anchor="end" class="chart-annotation">' +
+        '<tspan x="' + rx + '" dy="0">A wrong answer costs ' + ratio.toFixed(1) + '× the</tspan>' +
+        '<tspan x="' + rx + '" dy="17">cost of the right answer.</tspan>' +
+        '</text>';
+    }
+
     const aria = "Median tokens by result: " + RESULT_ORDER.map(function (k) {
       return RESULT_LABELS[k] + " " +
         (medians[k] == null ? "no data" : Math.round(medians[k]) + " tokens");
     }).join(", ");
     const svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' +
       escapeHTML(aria) + '" class="chart-svg">' + body + '</svg>';
+    const ratioNote = (ratio != null)
+      ? '<p class="chart-note">A wrong answer costs ' + ratio.toFixed(1) +
+          '× the cost of the right answer — Fail median vs. Pass median.</p>'
+      : '';
     const callout = outlier
       ? '<p class="chart-callout">Excludes one outlier set aside as a special case: ' +
           escapeHTML(outlier.model) + ', ≈' + outlier.tk.toLocaleString() + ' tokens.</p>'
       : '';
+    const qualifier = '<p class="chart-note">Token counts are estimates based on ' +
+      'observed costs in major frontier models.</p>';
     return '<figure class="chart-card chart-card-wide">' +
-      '<figcaption>Median tokens by result</figcaption>' + svg + callout +
+      '<figcaption>Median tokens by result</figcaption>' + svg +
+      ratioNote + callout + qualifier +
     '</figure>';
   }
 

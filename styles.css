@@ -73,12 +73,12 @@ h1, h2, h3, h4 {
   color: var(--ink);
 }
 
-.site-header {
+.site-header-top {
   display: flex;
   align-items: flex-start;
   gap: 40px;
 }
-.site-header-text { flex: 1 1 auto; min-width: 0; }
+.site-header-titles { flex: 1 1 auto; min-width: 0; }
 .site-header-graphic {
   flex: 0 0 auto;
   width: 36%;
@@ -87,12 +87,12 @@ h1, h2, h3, h4 {
 }
 .header-graphic-img { width: 100%; height: auto; display: block; }
 @media (max-width: 720px) {
-  .site-header { flex-direction: column; align-items: stretch; gap: 4px; }
+  .site-header-top { flex-direction: column; align-items: stretch; gap: 4px; }
   .site-header-graphic {
     width: 100%;
     max-width: 460px;
     min-width: 0;
-    margin: 4px 0 12px;
+    margin: 4px 0 8px;
   }
 }
 

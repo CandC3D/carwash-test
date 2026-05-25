@@ -445,6 +445,60 @@
     }).join("") + '</div>';
   }
 
+  // Line-art header illustration: a car 100 ft from a carwash, with a green
+  // "Drive" arrow toward the wash and a coral "Walk" arrow pointing away.
+  // Decorative; injected to the right of the headline on the main pages.
+  function renderHeaderGraphic() {
+    return '' +
+'<svg viewBox="0 0 480 264" role="img" class="header-graphic-svg" ' +
+'aria-label="Schematic: a car 100 feet from a carwash, with a green Drive arrow pointing toward the carwash and a coral Walk arrow pointing away.">' +
+  '<line x1="14" y1="210" x2="466" y2="210" class="hg-line"/>' +
+  // car (faces right, toward the carwash)
+  '<g class="hg-line">' +
+    '<rect x="48" y="166" width="156" height="30" rx="10"/>' +
+    '<path d="M92 166 L106 146 L154 146 L172 166"/>' +
+    '<line x1="133" y1="146" x2="133" y2="166"/>' +
+    '<line x1="120" y1="166" x2="120" y2="196"/>' +
+    '<circle cx="78" cy="196" r="14"/>' +
+    '<circle cx="170" cy="196" r="14"/>' +
+    '<circle cx="78" cy="196" r="5"/>' +
+    '<circle cx="170" cy="196" r="5"/>' +
+  '</g>' +
+  // carwash
+  '<g class="hg-line">' +
+    '<rect x="360" y="118" width="104" height="92"/>' +
+    '<rect x="354" y="110" width="116" height="8"/>' +
+    '<rect x="372" y="130" width="80" height="10" rx="4"/>' +
+    '<rect x="372" y="144" width="8" height="54" rx="4"/>' +
+    '<rect x="444" y="144" width="8" height="54" rx="4"/>' +
+  '</g>' +
+  '<g class="hg-line" style="stroke-width:1.3">' +
+    '<line x1="398" y1="148" x2="398" y2="200"/>' +
+    '<line x1="410" y1="148" x2="410" y2="200"/>' +
+    '<line x1="422" y1="148" x2="422" y2="200"/>' +
+    '<line x1="434" y1="148" x2="434" y2="200"/>' +
+  '</g>' +
+  // Drive arrow (green) toward the carwash
+  '<path d="M188 128 Q250 102 326 106" style="fill:none;stroke:#1f9e77;stroke-width:9;stroke-linecap:round"/>' +
+  '<polygon points="346,106 326,97 326,115" style="fill:#1f9e77"/>' +
+  // Walk arrow (coral) away from the carwash
+  '<path d="M172 128 Q112 94 84 98" style="fill:none;stroke:#d9583f;stroke-width:9;stroke-linecap:round"/>' +
+  '<polygon points="62,98 82,89 82,107" style="fill:#d9583f"/>' +
+  '<text x="120" y="80" text-anchor="middle" class="hg-label" style="font-family:\'Instrument Sans\',system-ui,sans-serif;font-weight:700;font-size:22px;fill:#d9583f">Walk</text>' +
+  '<text x="256" y="84" text-anchor="middle" class="hg-label" style="font-family:\'Instrument Sans\',system-ui,sans-serif;font-weight:700;font-size:22px;fill:#1f9e77">Drive</text>' +
+  // 100 ft dimension
+  '<g class="hg-dim">' +
+    '<line x1="206" y1="214" x2="206" y2="244"/>' +
+    '<line x1="358" y1="214" x2="358" y2="244"/>' +
+    '<line x1="206" y1="236" x2="358" y2="236"/>' +
+  '</g>' +
+  '<polygon points="206,236 215,231 215,241" class="hg-dim-head"/>' +
+  '<polygon points="358,236 349,231 349,241" class="hg-dim-head"/>' +
+  '<rect x="255" y="227" width="54" height="18" class="hg-mask"/>' +
+  '<text x="282" y="240" text-anchor="middle" class="hg-dimtext" style="font-family:\'DM Mono\',ui-monospace,monospace;font-size:15px;fill:#2c2c2a">100 ft</text>' +
+'</svg>';
+  }
+
   function showError(containerId, message) {
     const el = document.getElementById(containerId);
     if (el) el.innerHTML = '<div class="load-error">' + escapeHTML(message) + '</div>';
@@ -721,6 +775,7 @@
     renderVendorPagination: renderVendorPagination,
     renderTranscriptEntry: renderTranscriptEntry,
     renderChangeLog: renderChangeLog,
+    renderHeaderGraphic: renderHeaderGraphic,
     showError: showError
   };
 })(window);

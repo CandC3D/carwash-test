@@ -1131,7 +1131,7 @@
       "model": "Amazon Rufus",
       "thinking": "n/a",
       "result": "pass-adjacent",
-      "response": "Since the car wash is only 100 feet away, driving there makes the most sense.",
+      "response": "That's a fun dilemma! Since the car wash is only 100 feet away, driving there makes the most sense — it's a car wash after all, so you'll want the car there!\nWhile I can't help with directions, I can help you keep your car clean between washes. Looking for any car care products like interior cleaners, microfiber towels, or detailing supplies?\n\n* Show car cleaning supplies\n* Best microfiber towels for cars\n* Car interior cleaning products",
       "notes": "Purpose-optimized shopping assistant. Pass-adjacent: correct, but the sentence structure shows statistical pressure loading toward 'walk' before the logical object wins. The model then attempted to sell microfiber towels. If you're Amazon, you don't want to lose the object — it's money that's walking away."
     },
     {
@@ -1142,7 +1142,7 @@
       "model": "TIME AI",
       "thinking": "n/a",
       "result": "fail",
-      "response": "Walk.",
+      "response": "{Thought for 17 seconds\n\nDiscovered 5 relevant TIME articles\n\nThe Surprising Power of a 10-Minute Walk\nHow to Maximize the Health Benefits of Walking\nWhy Walking Isn’t Enough When It Comes to Exercise\nAmericans’ Addiction to Parking Lots Is Bad for the Climate. California Wants to End It\nHow to Avoid Vehicle Pollution When You’re Stuck in Traffic\nPlanned out next steps\n\nSynthesizing health and climate insights\n\nI'm looking at the health benefits of walking alongside the environmental impacts of parking lots. The articles highlight that even short walks can contribute significantly to wellness, with a 10-minute walk being especially powerful. I'll reference the impact of driving on the environment, emphasizing the need for walking. I should cite sources for credibility, like \"The Surprising Power of a 10-Minute Walk\" and \"Americans’ Addiction to Parking Lots Is Bad for the Climate.\" Maybe I could also mention safety tips?}\n\nWalk. For a distance as short as 100 feet, walking is usually the faster, simpler, and lower-impact choice.\n\nShort walks add up: even brief walking improves circulation and energy and is recommended as a simple way to boost activity (see The Surprising Power of a 10-Minute Walk).\n\nHealth tips and small habits: TIME’s guidance on maximizing walking explains how short bouts of movement can be beneficial and easy to fit into daily life (How to Maximize the Health Benefits of Walking).\n\nDriving for tiny trips has environmental and infrastructure costs: TIME has reported that car-centric habits and short driving trips contribute to parking- and traffic-related harms to the climate and communities (Americans’ Addiction to Parking Lots Is Bad for the Climate. California Wants to End It).\n\nIf you want, I can:\n\nSummarize the walking tips from those articles.\n\nFind TIME articles on quick mobility habits or short-trip pollution.\n\nWould you like a brief summary of the walking tips?",
       "notes": "Purpose-optimized media assistant. Fail: optimization toward TIME's content catalog (health, environment, ecological effects of automobiles) overrides the logical object. Same mechanism as Rufus (catalog optimization shapes the answer), opposite direction — because the catalogs point at different things."
     }
   ],

@@ -288,6 +288,44 @@ li { margin-bottom: 6px; }
 }
 .legend-item { display: flex; align-items: center; gap: 8px; }
 
+/* Tally charts */
+.charts-row {
+  display: flex;
+  gap: 28px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.chart-card {
+  flex: 1 1 280px;
+  min-width: 0;
+  margin: 0;
+}
+.chart-card figcaption {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  text-align: center;
+}
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.chart-svg-pie { max-width: 260px; margin: 0 auto; }
+.chart-value {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 14px;
+}
+.chart-axis { stroke: var(--light); stroke-width: 1; }
+@media (max-width: 560px) {
+  .charts-row { gap: 20px; }
+}
+
 /* Badges */
 .badge {
   display: inline-flex;

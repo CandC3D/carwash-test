@@ -8,6 +8,15 @@
     "fail": "Fail"
   };
 
+  // Fill + label colors per result, matching the tally cards / badges.
+  const RESULT_COLORS = {
+    "pass":          { fill: "var(--pass-bg)",    text: "var(--pass-text)" },
+    "pass-adjacent": { fill: "var(--passadj-bg)", text: "var(--passadj-text)" },
+    "verbose":       { fill: "var(--verbose-bg)", text: "var(--verbose-text)" },
+    "fail":          { fill: "var(--fail-bg)",    text: "var(--fail-text)" }
+  };
+  const RESULT_ORDER = ["pass", "pass-adjacent", "verbose", "fail"];
+
   const THINKING_LABELS = {
     "on": "On",
     "off": "Off",
@@ -443,6 +452,95 @@
     return '<span class="title-logo" style="--logo-url: url(' + url + ')"></span>';
   }
 
+  // ── Tally charts ─────────────────────────────────────────────────────
+  // Two inline-SVG charts that read directly from a tally object: a bar
+  // chart of absolute counts and a pie chart of percentage share. Slice
+  // and bar colors match the tally cards; bars are labeled with absolute
+  // values and pie slices with percentages (the legend supplies the
+  // color key, so no category text is repeated on the charts).
+
+  function renderBarChart(t) {
+    const W = 320, H = 240, padTop = 26, padBottom = 24, padX = 18;
+    const plotH = H - padTop - padBottom;
+    const baseY = padTop + plotH;
+    const max = Math.max.apply(null, RESULT_ORDER.map(function (k) { return t[k]; })) || 1;
+    const n = RESULT_ORDER.length;
+    const slotW = (W - padX * 2) / n;
+    const barW = slotW * 0.58;
+    let body = '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
+      '" y2="' + baseY + '" class="chart-axis"/>';
+    RESULT_ORDER.forEach(function (k, i) {
+      const val = t[k] || 0;
+      const bh = max > 0 ? (val / max) * plotH : 0;
+      const x = padX + slotW * i + (slotW - barW) / 2;
+      const y = baseY - bh;
+      const c = RESULT_COLORS[k];
+      body += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' +
+        barW.toFixed(1) + '" height="' + bh.toFixed(1) +
+        '" rx="3" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:1"/>';
+      body += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 7).toFixed(1) +
+        '" text-anchor="middle" class="chart-value" style="fill:' + c.text + '">' + val + '</text>';
+    });
+    const aria = "Bar chart of run counts: " +
+      RESULT_ORDER.map(function (k) { return RESULT_LABELS[k] + " " + (t[k] || 0); }).join(", ");
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' +
+      escapeHTML(aria) + '" class="chart-svg">' + body + '</svg>';
+  }
+
+  function renderPieChart(t) {
+    const W = 240, H = 240, cx = 120, cy = 120, r = 94;
+    const total = RESULT_ORDER.reduce(function (s, k) { return s + (t[k] || 0); }, 0) || 1;
+    let angle = -Math.PI / 2; // start at 12 o'clock
+    let body = "";
+    RESULT_ORDER.forEach(function (k) {
+      const val = t[k] || 0;
+      if (val <= 0) return;
+      const frac = val / total;
+      const c = RESULT_COLORS[k];
+      let d;
+      if (frac >= 0.9999) {
+        // Single category at 100%: draw a full circle as two arcs.
+        d = "M " + cx + " " + (cy - r) + " A " + r + " " + r + " 0 1 1 " +
+          (cx - 0.01).toFixed(2) + " " + (cy - r) + " Z";
+      } else {
+        const a2 = angle + frac * 2 * Math.PI;
+        const x1 = cx + r * Math.cos(angle), y1 = cy + r * Math.sin(angle);
+        const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
+        const large = frac > 0.5 ? 1 : 0;
+        d = "M " + cx + " " + cy + " L " + x1.toFixed(2) + " " + y1.toFixed(2) +
+          " A " + r + " " + r + " 0 " + large + " 1 " + x2.toFixed(2) + " " + y2.toFixed(2) + " Z";
+        const mid = (angle + a2) / 2;
+        const lr = r * 0.62;
+        var lx = cx + lr * Math.cos(mid), ly = cy + lr * Math.sin(mid);
+        angle = a2;
+      }
+      body += '<path d="' + d + '" style="fill:' + c.fill + ';stroke:var(--bg);stroke-width:2"/>';
+      const pct = Math.round(frac * 100);
+      const px = (frac >= 0.9999) ? cx : lx;
+      const py = (frac >= 0.9999) ? cy : ly;
+      body += '<text x="' + px.toFixed(1) + '" y="' + py.toFixed(1) +
+        '" text-anchor="middle" dominant-baseline="central" class="chart-value" style="fill:' +
+        c.text + '">' + pct + '%</text>';
+    });
+    const aria = "Pie chart of result share: " +
+      RESULT_ORDER.map(function (k) {
+        return RESULT_LABELS[k] + " " + Math.round((t[k] || 0) / total * 100) + "%";
+      }).join(", ");
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' +
+      escapeHTML(aria) + '" class="chart-svg chart-svg-pie">' + body + '</svg>';
+  }
+
+  function renderCharts(t) {
+    return '<div class="charts-row">' +
+      '<figure class="chart-card">' +
+        '<figcaption>Runs by category</figcaption>' + renderBarChart(t) +
+      '</figure>' +
+      '<figure class="chart-card">' +
+        '<figcaption>Share of total</figcaption>' + renderPieChart(t) +
+      '</figure>' +
+    '</div>';
+  }
+
   // Filter runs to those whose model family belongs to the given category.
   function runsInCategory(runs, families, category) {
     return runs.filter(function (r) {
@@ -460,6 +558,7 @@
     escapeHTML: escapeHTML,
     tally: tally,
     renderTallyRow: renderTallyRow,
+    renderCharts: renderCharts,
     renderResultsTable: renderResultsTable,
     renderResultsTableForFamily: renderResultsTableForFamily,
     makeSortable: makeSortable,

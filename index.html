@@ -98,6 +98,7 @@
       <h2>Running tally</h2>
       <div id="tally"></div>
       <div id="legend"></div>
+      <div id="charts"></div>
     </section>
 
     <section id="recent-section">
@@ -130,10 +131,13 @@
         const runs = data.runs;
         const families = data.model_families;
 
+        const overallTally = CarwashTest.tally(runs);
         document.getElementById("tally").innerHTML =
-          CarwashTest.renderTallyRow(CarwashTest.tally(runs));
+          CarwashTest.renderTallyRow(overallTally);
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
+        document.getElementById("charts").innerHTML =
+          CarwashTest.renderCharts(overallTally);
 
         const recent = runs.slice().sort(function (a, b) {
           if (a.date === b.date) return b.id - a.id;

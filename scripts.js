@@ -665,6 +665,33 @@
     renderMedianTokenChart(runs, !!opts.includeTokenOutliers);
   }
 
+  // Build a CSV of the results table — the displayed columns only, no
+  // transcript text — sorted by run id, with a source attribution line
+  // (site URL) at the top of the file.
+  function buildResultsCSV(runs) {
+    const SITE = "https://candc3d.github.io/carwash-test/";
+    function cell(v) {
+      return '"' + (v == null ? "" : String(v)).replace(/"/g, '""') + '"';
+    }
+    const lines = [];
+    lines.push(cell("The Carwash Test") + "," + cell(SITE));
+    lines.push("");
+    lines.push(["#", "Company", "Model", "Thinking", "Date", "Result", "Tokens"]
+      .map(cell).join(","));
+    runs.slice().sort(function (a, b) { return a.id - b.id; }).forEach(function (r) {
+      lines.push([
+        r.id,
+        r.vendor,
+        r.model,
+        formatThinking(r.thinking),
+        r.date,
+        RESULT_LABELS[r.result] || r.result,
+        runTokens(r)
+      ].map(cell).join(","));
+    });
+    return lines.join("\r\n") + "\r\n";
+  }
+
   // Filter runs to those whose model family belongs to the given category.
   function runsInCategory(runs, families, category) {
     return runs.filter(function (r) {
@@ -676,6 +703,7 @@
   global.CarwashTest = {
     PURPOSE_OPTIMIZED_ICON: PURPOSE_OPTIMIZED_ICON,
     runsInCategory: runsInCategory,
+    buildResultsCSV: buildResultsCSV,
     loadData: loadData,
     formatDate: formatDate,
     formatThinking: formatThinking,

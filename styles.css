@@ -227,6 +227,28 @@ li { margin-bottom: 6px; }
 .tally-card.tally-fail .label,
 .tally-card.tally-fail .desc   { color: var(--fail-text); }
 
+/* Download CSV button */
+.csv-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: var(--bg-alt);
+  border: 1px solid var(--light);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+.csv-btn:hover {
+  border-color: var(--ink);
+  color: var(--bg);
+  background: var(--ink);
+}
+.csv-btn:focus-visible {
+  outline: 3px solid var(--pumpkin);
+  outline-offset: 2px;
+}
+
 /* Results table */
 .results-table {
   width: 100%;

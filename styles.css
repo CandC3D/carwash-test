@@ -306,7 +306,7 @@ li { margin-bottom: 6px; }
   gap: 28px;
   margin-top: 24px;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 .chart-card {
   flex: 1 1 280px;
@@ -327,7 +327,6 @@ li { margin-bottom: 6px; }
   height: auto;
   display: block;
 }
-.chart-svg-pie { max-width: 260px; margin: 0 auto; }
 .chart-value {
   font-family: var(--sans);
   font-weight: 700;

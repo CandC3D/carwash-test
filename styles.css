@@ -75,7 +75,7 @@ h1, h2, h3, h4 {
 
 .site-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 40px;
 }
 .site-header-text { flex: 1 1 auto; min-width: 0; }
@@ -85,19 +85,7 @@ h1, h2, h3, h4 {
   max-width: 380px;
   min-width: 230px;
 }
-.header-graphic-svg { width: 100%; height: auto; display: block; }
-.hg-line {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 2;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-.hg-dim { fill: none; stroke: var(--ink); stroke-width: 1.4; }
-.hg-dim-head { fill: var(--ink); }
-.hg-mask { fill: var(--bg); }
-.hg-label { font-family: var(--sans); font-weight: 700; font-size: 22px; }
-.hg-dimtext { font-family: var(--mono); font-size: 15px; fill: var(--ink); }
+.header-graphic-img { width: 100%; height: auto; display: block; }
 @media (max-width: 720px) {
   .site-header { flex-direction: column; align-items: stretch; gap: 4px; }
   .site-header-graphic {

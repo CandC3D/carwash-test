@@ -69,7 +69,7 @@
         <a href="transcripts.html">Transcripts</a>
       </nav>
       </div>
-      <div class="site-header-graphic" id="header-graphic"></div>
+      <div class="site-header-graphic"><img class="header-graphic-img" src="assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
     </header>
 
     <section>
@@ -105,8 +105,6 @@
   <script src="scripts.js"></script>
   <script>
     (async function () {
-      var __hg = document.getElementById("header-graphic");
-      if (__hg) __hg.innerHTML = CarwashTest.renderHeaderGraphic();
       try {
         const data = await CarwashTest.loadData("");
         const overallTally = CarwashTest.tally(data.runs);

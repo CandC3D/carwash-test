@@ -451,6 +451,23 @@
     if (el) el.innerHTML = '<div class="load-error">' + escapeHTML(message) + '</div>';
   }
 
+  // Render a family display name for the page H1: keep a trailing
+  // parenthetical together (so a long title breaks cleanly before "(" onto
+  // its own line rather than splitting the phrase), and keep hyphenated
+  // compounds from breaking at the hyphen.
+  function familyTitleHTML(name) {
+    name = String(name == null ? "" : name);
+    function nbHyphen(s) { return s.replace(/-/g, "‑"); }
+    const i = name.indexOf("(");
+    if (i > 0) {
+      const head = name.slice(0, i).trim();
+      const paren = name.slice(i);
+      return escapeHTML(nbHyphen(head)) + " " +
+        '<span class="title-paren">' + escapeHTML(paren) + '</span>';
+    }
+    return escapeHTML(nbHyphen(name));
+  }
+
   function renderTitleLogo(slug) {
     const file = LOGO_FILES[slug];
     if (!file) return "";
@@ -472,22 +489,25 @@
     const W = 320, H = 240, padTop = 26, padBottom = 24, padX = 18;
     const plotH = H - padTop - padBottom;
     const baseY = padTop + plotH;
-    // Lift the bars off the baseline by the same gap the pie's bottom leaves
-    // (the pie sits plotH/2 - r above the baseline, ≈ 5px), so the two charts'
-    // lowest points line up rather than the bars touching the axis.
-    const baseGap = plotH / 2 - 90;
-    const usableH = plotH - baseGap;
+    // 5px gap between the content and each axis line: bars sit 5px above the
+    // baseline, and the topline sits 5px above a full-height (100%) bar.
+    const gap = 5;
+    const usableH = plotH - gap;          // height of a 100%-extension bar
+    const barTopY = baseY - gap - usableH; // top of a full bar (= padTop)
+    const topLineY = barTopY;              // topline at the max bar height (value labels sit above it)
     const max = Math.max.apply(null, RESULT_ORDER.map(function (k) { return t[k]; })) || 1;
     const n = RESULT_ORDER.length;
     const slotW = (W - padX * 2) / n;
     const barW = slotW * 0.58;
     let body = '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
-      '" y2="' + baseY + '" class="chart-axis"/>';
+      '" y2="' + baseY + '" class="chart-axis"/>' +
+      '<line x1="' + padX + '" y1="' + topLineY + '" x2="' + (W - padX) +
+      '" y2="' + topLineY + '" class="chart-axis"/>';
     RESULT_ORDER.forEach(function (k, i) {
       const val = t[k] || 0;
       const bh = max > 0 ? (val / max) * usableH : 0;
       const x = padX + slotW * i + (slotW - barW) / 2;
-      const y = (baseY - baseGap) - bh;
+      const y = (baseY - gap) - bh;
       const c = RESULT_COLORS[k];
       body += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' +
         barW.toFixed(1) + '" height="' + bh.toFixed(1) +
@@ -509,7 +529,13 @@
     const W = 320, H = 240, padTop = 26, padBottom = 24, padX = 18;
     const plotH = H - padTop - padBottom;
     const baseY = padTop + plotH;
-    const cx = W / 2, cy = padTop + plotH / 2, r = 90;
+    const gap = 5;
+    // Pie matches a 100%-extension bar exactly: top and bottom aligned with
+    // the max bar (top at padTop, bottom 5px above the baseline).
+    const pieTopY = padTop, pieBottomY = baseY - gap;
+    const r = (pieBottomY - pieTopY) / 2;
+    const cx = W / 2, cy = pieTopY + r;
+    const topLineY = pieTopY;
     const total = RESULT_ORDER.reduce(function (s, k) { return s + (t[k] || 0); }, 0) || 1;
     let angle = -Math.PI / 2; // start at 12 o'clock
     let body = "";
@@ -541,9 +567,11 @@
         '" text-anchor="middle" dominant-baseline="central" class="chart-value" style="fill:' +
         c.text + '">' + pct + '%</text>';
     });
-    // Baseline matching the bar chart's axis.
+    // Baseline + topline matching the bar chart's axes.
     body += '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
-      '" y2="' + baseY + '" class="chart-axis"/>';
+      '" y2="' + baseY + '" class="chart-axis"/>' +
+      '<line x1="' + padX + '" y1="' + topLineY + '" x2="' + (W - padX) +
+      '" y2="' + topLineY + '" class="chart-axis"/>';
     const aria = "Pie chart of result share: " +
       RESULT_ORDER.map(function (k) {
         return RESULT_LABELS[k] + " " + Math.round((t[k] || 0) / total * 100) + "%";
@@ -718,6 +746,7 @@
     renderLegend: renderLegend,
     renderFamilyGrid: renderFamilyGrid,
     renderTitleLogo: renderTitleLogo,
+    familyTitleHTML: familyTitleHTML,
     renderVendorRail: renderVendorRail,
     renderVendorPagination: renderVendorPagination,
     renderTranscriptEntry: renderTranscriptEntry,

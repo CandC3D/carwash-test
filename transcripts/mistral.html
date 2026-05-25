@@ -119,7 +119,7 @@
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(familyRuns);
+          CarwashTest.renderCharts(familyRuns, { includeTokenOutliers: true });
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTableForFamily(familyRuns);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));

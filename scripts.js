@@ -567,12 +567,12 @@
   // left→right across the full width of the paired charts above; shares
   // their bottom-baseline + 5px gap treatment. Outliers (see
   // TOKEN_OUTLIER_MIN) are excluded from the medians and named in a callout.
-  function renderMedianTokenChart(runs) {
+  function renderMedianTokenChart(runs, includeOutliers) {
     const byCat = { "pass": [], "pass-adjacent": [], "verbose": [], "fail": [] };
     let outlier = null;
     runs.forEach(function (r) {
       const tk = runTokens(r);
-      if (tk >= TOKEN_OUTLIER_MIN) {
+      if (!includeOutliers && tk >= TOKEN_OUTLIER_MIN) {
         if (!outlier || tk > outlier.tk) outlier = { tk: tk, model: r.model };
         return;
       }
@@ -651,7 +651,8 @@
     '</figure>';
   }
 
-  function renderCharts(runs) {
+  function renderCharts(runs, opts) {
+    opts = opts || {};
     const t = tally(runs);
     return '<div class="charts-row">' +
       '<figure class="chart-card">' +
@@ -661,7 +662,7 @@
         '<figcaption>Share of total</figcaption>' + renderPieChart(t) +
       '</figure>' +
     '</div>' +
-    renderMedianTokenChart(runs);
+    renderMedianTokenChart(runs, !!opts.includeTokenOutliers);
   }
 
   // Filter runs to those whose model family belongs to the given category.

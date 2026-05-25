@@ -625,7 +625,7 @@
       const rx = W - padX, ry = padTop + 14;
       body += '<text x="' + rx + '" y="' + ry + '" text-anchor="end" class="chart-annotation">' +
         '<tspan x="' + rx + '" dy="0">A wrong answer costs ' + ratio.toFixed(1) + '× the</tspan>' +
-        '<tspan x="' + rx + '" dy="17">cost of the right answer.</tspan>' +
+        '<tspan x="' + rx + '" dy="17">tokens of the right answer.</tspan>' +
         '</text>';
     }
 
@@ -637,7 +637,7 @@
       escapeHTML(aria) + '" class="chart-svg">' + body + '</svg>';
     const ratioNote = (ratio != null)
       ? '<p class="chart-note">A wrong answer costs ' + ratio.toFixed(1) +
-          '× the cost of the right answer — Fail median vs. Pass median.</p>'
+          '× the tokens of the right answer — Fail median vs. Pass median.</p>'
       : '';
     const callout = outlier
       ? '<p class="chart-callout">Excludes one outlier set aside as a special case: ' +

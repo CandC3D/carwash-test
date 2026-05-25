@@ -113,7 +113,7 @@
         <li><strong>On / Off.</strong> User-toggled reasoning enabled or disabled.</li>
         <li><strong>Adaptive On / Adaptive Off.</strong> The model autoselects whether to reason; the user can disable Adaptive entirely. Used by Anthropic for Sonnet 4.6 and Opus 4.7. (Opus 4.6 reverted to Extended Thinking On/Off in May.)</li>
         <li><strong>Auto.</strong> Vendor-specific adaptive picker that selects a reasoning depth tier on the model's behalf. Used by xAI Grok 4.3 and Qwen3.6-Plus.</li>
-        <li><strong>Fast.</strong> Reasoning suppressed in favor of latency. Used by xAI Grok 4.3, Qwen 3.6, and Mistral Medium 3.5.</li>
+        <li><strong>Fast.</strong> Reasoning suppressed in favor of latency. Used by xAI Grok 4.3, Qwen 3.6 / 3.7, and Mistral Medium 3.5.</li>
         <li><strong>Expert.</strong> Maximum-deliberation tier. Used by xAI Grok 4.3.</li>
         <li><strong>Contemplating.</strong> Multi-chain parallel reasoning. New mode added by Meta to Muse Spark in May.</li>
         <li><strong>Balanced.</strong> Mistral's default mode in the current UI (was "Fast" in March).</li>
@@ -141,6 +141,7 @@
         <li>Mistral Medium 3.5 (Le Chat; Fast, Think, and Research modes; replaced Mistral 3 in late April)</li>
         <li>Perplexity (default configuration)</li>
         <li>Qwen 3.6 (Alibaba; Plus, Max-Preview, and 27B model tiers, with Auto/Thinking/Fast toggles where available; new in May)</li>
+        <li>Qwen 3.7 (Alibaba; Max with Fast and Thinking, plus Max-Preview and Plus-Preview in Thinking mode; tested May 25)</li>
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
         <li>Lumo (Proton; default configuration, no reasoning toggle exposed; new in May)</li>
         <li>Microsoft Copilot running Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 in Quick Response and Think Deeper modes (May runs use the isolation prompt to suppress M365 retrieval)</li>
@@ -175,6 +176,7 @@
           <tr><td>Gemini 3.1 Flash-Lite / 3.5 Flash</td><td>May 25, 2026</td><td>2</td><td>91</td></tr>
           <tr><td>Amazon Rufus</td><td>May 12, 2026</td><td>1</td><td>92</td></tr>
           <tr><td>TIME AI</td><td>May 25, 2026</td><td>1</td><td>93</td></tr>
+          <tr><td>Qwen 3.7 series</td><td>May 25, 2026</td><td>4</td><td>97</td></tr>
         </tbody>
       </table>
     </section>
@@ -214,6 +216,9 @@
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-27B</td><td>—</td><td>Thinking / Fast modes</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Max</td><td>—</td><td>Fast / Thinking modes; tested May 25, 2026</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Max-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Plus-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
           <tr><td>Moonshot AI</td><td>Kimi K2.6</td><td>—</td><td>Instant / Thinking modes (Agent and Agent Swarm excluded)</td></tr>
           <tr><td>Proton</td><td>Lumo</td><td>—</td><td>No reasoning toggle exposed</td></tr>
           <tr><td>Amazon</td><td>Rufus</td><td>—</td><td>Shopping assistant; no reasoning toggle; version not exposed</td></tr>

@@ -1144,9 +1144,57 @@
       "result": "fail",
       "response": "{Thought for 17 seconds\n\nDiscovered 5 relevant TIME articles\n\nThe Surprising Power of a 10-Minute Walk\nHow to Maximize the Health Benefits of Walking\nWhy Walking Isn’t Enough When It Comes to Exercise\nAmericans’ Addiction to Parking Lots Is Bad for the Climate. California Wants to End It\nHow to Avoid Vehicle Pollution When You’re Stuck in Traffic\nPlanned out next steps\n\nSynthesizing health and climate insights\n\nI'm looking at the health benefits of walking alongside the environmental impacts of parking lots. The articles highlight that even short walks can contribute significantly to wellness, with a 10-minute walk being especially powerful. I'll reference the impact of driving on the environment, emphasizing the need for walking. I should cite sources for credibility, like \"The Surprising Power of a 10-Minute Walk\" and \"Americans’ Addiction to Parking Lots Is Bad for the Climate.\" Maybe I could also mention safety tips?}\n\nWalk. For a distance as short as 100 feet, walking is usually the faster, simpler, and lower-impact choice.\n\nShort walks add up: even brief walking improves circulation and energy and is recommended as a simple way to boost activity (see The Surprising Power of a 10-Minute Walk).\n\nHealth tips and small habits: TIME’s guidance on maximizing walking explains how short bouts of movement can be beneficial and easy to fit into daily life (How to Maximize the Health Benefits of Walking).\n\nDriving for tiny trips has environmental and infrastructure costs: TIME has reported that car-centric habits and short driving trips contribute to parking- and traffic-related harms to the climate and communities (Americans’ Addiction to Parking Lots Is Bad for the Climate. California Wants to End It).\n\nIf you want, I can:\n\nSummarize the walking tips from those articles.\n\nFind TIME articles on quick mobility habits or short-trip pollution.\n\nWould you like a brief summary of the walking tips?",
       "notes": "Purpose-optimized media assistant. Fail: optimization toward TIME's content catalog (health, environment, ecological effects of automobiles) overrides the logical object. Same mechanism as Rufus (catalog optimization shapes the answer), opposite direction — because the catalogs point at different things."
+    },
+    {
+      "id": 94,
+      "date": "2026-05-25",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.7-Max",
+      "thinking": "fast",
+      "result": "pass",
+      "response": "You should **drive**.\nSince you are going to a carwash, you need to bring the car with you. Walking would leave your dirty car behind and defeat the purpose of the trip. The 100-foot distance is negligible for driving but would be an unnecessary inconvenience on foot when the vehicle itself is what needs service.",
+      "notes": "Qwen 3.7-Max, Fast mode. Pass — names the constraint directly ('the vehicle itself is what needs service') without the hedging that sank the 3.6 generation."
+    },
+    {
+      "id": 95,
+      "date": "2026-05-25",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.7-Max",
+      "thinking": "on",
+      "result": "pass",
+      "response": "You should **drive**. \nThe whole point of going to a carwash is to wash your car — so you need to bring the car with you! Walking there without it wouldn't do you any good. 😄",
+      "notes": "Qwen 3.7-Max, Thinking mode. Pass — concise, names the logical object; the emoji is the only ornament."
+    },
+    {
+      "id": 96,
+      "date": "2026-05-25",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.7-Max-Preview",
+      "thinking": "on",
+      "result": "pass",
+      "response": "You should **drive**. \nIf you walk, your car stays behind and doesn't get washed! You need to bring the car to the carwash so it can actually get cleaned.",
+      "notes": "Qwen 3.7-Max-Preview, Thinking mode (no Fast tier exposed). Pass — holds the object cleanly."
+    },
+    {
+      "id": 97,
+      "date": "2026-05-25",
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.7-Plus-Preview",
+      "thinking": "on",
+      "result": "pass",
+      "response": "You should **drive**. \nIf you walk, your car stays behind and doesn't get washed!",
+      "notes": "Qwen 3.7-Plus-Preview, Thinking mode (no Fast tier exposed). Pass — shortest of the four; states the constraint and stops."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-05-25",
+      "summary": "Qwen 3.7 series added: Qwen3.7-Max (Fast and Thinking), Qwen3.7-Max-Preview (Thinking), and Qwen3.7-Plus-Preview (Thinking) — all four Pass. A clean reversal from the Qwen 3.6 generation, which failed or padded across every tier. Dataset now stands at 97 runs across 14 model families."
+    },
     {
       "date": "2026-05-25",
       "summary": "New category: Purpose-Optimized Models. Added Amazon Rufus (Pass-adjacent, tested May 12) and TIME AI (Fail, tested May 25). These are domain-specific systems where catalog optimization shapes the answer. Same mechanism, opposite results — Rufus's shopping catalog pulls toward 'drive' (the sellable object); TIME AI's media catalog pulls toward 'walk' (health and environment content). Dataset now stands at 93 runs across 14 model families."

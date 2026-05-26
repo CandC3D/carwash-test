@@ -99,7 +99,7 @@
     },
     "rufus": {
       "name": "Amazon Rufus",
-      "display_name": "Amazon Rufus",
+      "display_name": "Amazon (Rufus shopping assistant)",
       "slug": "rufus",
       "category": "purpose-optimized",
       "notes": "Retired as the amazon.com shopping assistant in May 2026, replaced by Alexa. Entries retained as historical."
@@ -112,7 +112,7 @@
     },
     "alexa": {
       "name": "Alexa",
-      "display_name": "Alexa (Shopping Assistant)",
+      "display_name": "Amazon (Alexa shopping assistant)",
       "slug": "alexa",
       "category": "purpose-optimized"
     }

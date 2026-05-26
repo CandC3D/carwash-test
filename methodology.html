@@ -140,8 +140,8 @@
         <li>Gemini (Google; Gemini 3 Fast, Gemini 3.1 Pro, and Gemini 3 Thinking tiers, plus Gemini 3.1 Flash-Lite and Gemini 3.5 Flash added May 25)</li>
         <li>Grok 4.20 (xAI, Expert and Fast modes; March/April only)</li>
         <li>Grok 4.3 (xAI; Auto, Fast, and Expert modes; new in May)</li>
-        <li>DeepSeek-V3.2 with and without extended reasoning (March 28, April 27, and May 3)</li>
-        <li>DeepSeek R1 in Expert mode with and without extended reasoning (April 27 and May 3)</li>
+        <li>DeepSeek-V3.2 with and without extended reasoning (March 28 only; consumer interface routed to V3.2 before the April 24, 2026 V4 transition)</li>
+        <li>DeepSeek-V4-Flash (Instant) and DeepSeek-V4-Pro (Expert), with and without thinking (April 27 and May 3; V4 Preview replaced V3.2/R1 on April 24, 2026 — models self-report as V3)</li>
         <li>Mistral 3 (Le Chat; Fast/Balanced, Think, and Research modes; March only)</li>
         <li>Mistral Medium 3.5 (Le Chat; Fast, Think, and Research modes; replaced Mistral 3 in late April)</li>
         <li>Perplexity (default configuration)</li>
@@ -213,8 +213,11 @@
           <tr><td>Google</td><td>Gemini</td><td>3.5 Flash</td><td>Released May 25, 2026. Tier: "All-around help"</td></tr>
           <tr><td>xAI</td><td>Grok</td><td>4.3</td><td>Auto/Fast/Expert picker; replaced Grok 4.20 on April 30, 2026</td></tr>
           <tr><td>xAI</td><td>Grok</td><td>4.20</td><td>Historical entries only; deprecated April 30, 2026</td></tr>
-          <tr><td>DeepSeek</td><td>DeepSeek-V3.2</td><td>—</td><td>Fast Mode / Expert Mode toggle; version not exposed beyond model name</td></tr>
-          <tr><td>DeepSeek</td><td>DeepSeek R1</td><td>—</td><td>Fast Mode / Expert Mode toggle</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek-V3.2</td><td>V3.2</td><td>Historical entries only (pre-April 24, 2026). Instant Mode on consumer interface.</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek-V3.2 (thinking)</td><td>V3.2-thinking</td><td>Historical entries only. DeepThink toggle on consumer interface; marketed as R1.</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek-V4-Flash</td><td>V4 Preview</td><td>Current as of April 24, 2026. Instant Mode on consumer interface. 284B / 13B active params.</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek-V4-Pro</td><td>V4 Preview</td><td>Current as of April 24, 2026. Expert Mode on consumer interface. 1.6T / 49B active params.</td></tr>
+          <tr><td>DeepSeek</td><td>DeepSeek-V4-Pro (thinking)</td><td>V4 Preview</td><td>Expert Mode with DeepThink toggle on. V4 thinking mode, not standalone R1.</td></tr>
           <tr><td>Mistral</td><td>Mistral 3</td><td>—</td><td>Historical entries only; replaced by Medium 3.5 in Le Chat, late April 2026</td></tr>
           <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Fast / Think / Research modes; replaced Mistral 3 in Le Chat</td></tr>
           <tr><td>Perplexity</td><td>Perplexity</td><td>—</td><td>Default configuration; underlying model not exposed</td></tr>
@@ -239,12 +242,20 @@
       <ul>
         <li><strong>March 22, 2026:</strong> Initial test. All vendors at their default March configurations.</li>
         <li><strong>April 16, 2026:</strong> Anthropic released Claude Opus 4.7.</li>
+        <li><strong>April 24, 2026:</strong> DeepSeek launched V4 Preview, replacing V3.2 and R1 on the consumer chat interface. Instant Mode now routes to V4-Flash; Expert Mode routes to V4-Pro. The DeepThink toggle was rewired from invoking standalone R1 to toggling V4's built-in thinking mode. API legacy aliases <code>deepseek-chat</code> and <code>deepseek-reasoner</code> were repointed to V4 (scheduled for full retirement July 24, 2026).</li>
         <li><strong>April 30, 2026:</strong> xAI released Grok 4.3 replacing Grok 4.20. Auto/Fast/Expert picker replaced the Fast/Expert binary toggle.</li>
         <li><strong>Late April 2026:</strong> Mistral substituted Medium 3.5 as the default Le Chat model, replacing Mistral 3.</li>
         <li><strong>Late April 2026:</strong> Meta added Contemplating (multi-chain parallel reasoning) to the Muse Spark mode picker.</li>
         <li><strong>May 3, 2026:</strong> Anthropic reverted Opus 4.6 to Extended Thinking On/Off (had briefly used Adaptive On/Off). Sonnet 4.6 and Opus 4.7 retained Adaptive.</li>
         <li><strong>May 25, 2026:</strong> Google added Gemini 3.1 Flash-Lite and Gemini 3.5 Flash to the consumer interface.</li>
       </ul>
+    </section>
+
+    <section>
+      <h2>Model identification limitations</h2>
+      <blockquote>
+        <p><strong>DeepSeek self-identification discrepancy.</strong> DeepSeek models on the consumer interface self-report as "V3" when asked for version identification. Official DeepSeek documentation states V4 replaced V3.2 on the consumer interface on April 24, 2026 (api-docs.deepseek.com/news/news260424). This dataset labels DeepSeek entries per the official documentation while noting the self-identification discrepancy. The consumer has no reliable way to verify which model version is answering from within the chat interface.</p>
+      </blockquote>
     </section>
 
     <section id="prompts">

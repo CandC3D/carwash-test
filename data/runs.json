@@ -38,9 +38,10 @@
     },
     "deepseek": {
       "name": "DeepSeek",
-      "display_name": "DeepSeek (V3.2 and R1)",
+      "display_name": "DeepSeek",
       "slug": "deepseek",
-      "category": "general"
+      "category": "general",
+      "notes": "Consumer interface at chat.deepseek.com. Pre-April 24, 2026: V3.2 (Instant/Fast) and V3.2-thinking (Expert/DeepThink, marketed as R1). Post-April 24, 2026: V4-Flash (Instant) and V4-Pro (Expert). DeepThink toggle rewired from R1 to V4 thinking mode. Models self-report as V3 regardless of actual version."
     },
     "google": {
       "name": "Google",
@@ -339,7 +340,7 @@
       "thinking": "off",
       "result": "verbose",
       "response": "This is a classic humorous riddle.\n\nIf you drive a dirty car 100 feet to the carwash, it's still dirty when you arrive — but you're there and can wash it immediately.\n\nIf you walk, you leave the dirty car behind and have to come back to get it later, which defeats the purpose of taking it to the carwash.\n\nSo the logical (and funny) answer is: drive — because the car is what needs washing, not you.",
-      "notes": "Frames the question as a humorous riddle and arrives at the correct answer with extended explanation."
+      "notes": "Frames the question as a humorous riddle and arrives at the correct answer with extended explanation. Tested before the April 24, 2026 V4 transition. Consumer interface routed to V3.2 at this date."
     },
     {
       "id": 22,
@@ -350,7 +351,7 @@
       "thinking": "on",
       "result": "verbose",
       "response": "(reasoning trace) We need to answer the question: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" This is a humorous or practical question. The car is dirty, and the carwash is very close. If you drive, you'll get the car washed. If you walk, you'll leave the car dirty. So logically, you should drive. But there might be a joke: if you walk, you're going to the carwash without the car. So the answer is drive.\n\nYou should drive. If you walk, you'll just end up at the carwash without your car, and it'll still be dirty.",
-      "notes": "With DeepThink mode enabled, displayed reasoning trace, identified the joke, and arrived at the correct answer. The thinking was good thinking. It just should not have been necessary."
+      "notes": "With DeepThink mode enabled, displayed reasoning trace, identified the joke, and arrived at the correct answer. The thinking was good thinking. It just should not have been necessary. Tested before the April 24, 2026 V4 transition. Consumer interface routed to V3.2 at this date."
     },
     {
       "id": 23,
@@ -473,44 +474,44 @@
       "date": "2026-04-27",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek-V3.2",
+      "model": "DeepSeek-V4-Flash",
       "thinking": "on",
       "result": "pass-adjacent",
       "response": "You should drive. The car needs to be at the carwash to get cleaned, so walking won't help. Even though it's only 100 feet away, driving is the only way to get your car there.\n\n(Thought for 3 seconds.)\nWe need to think about the scenario: car is dirty, carwash is 100 feet away. Question: should I walk or drive? The humor or logic: If you drive, you'll get to the carwash but your car is already dirty, but driving 100 feet is trivial. Walking would mean leaving the car, but then you need to bring it to the carwash. Actually, the question likely is a joke: If you walk, you're not bringing the car. So you should drive the car to the carwash. But 100 feet is very short; you could push it? But answer is obviously drive. However, there might be a trick: \"My car is dirty\" implies need to wash it. Carwash is 100 feet away. Driving there takes seconds. Walking would be pointless because you need the car at the carwash. So answer: drive.",
-      "notes": "Three seconds. Correct, but reaching for a defensive coda the answer did not need. The third sentence is the model checking its own answer against the surface pressure rather than trusting the constraint to hold."
+      "notes": "Three seconds. Correct, but reaching for a defensive coda the answer did not need. The third sentence is the model checking its own answer against the surface pressure rather than trusting the constraint to hold. Relabeled: official docs confirm V4-Flash replaced V3.2 on April 24, 2026. Model self-reports as V3."
     },
     {
       "id": 34,
       "date": "2026-04-27",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek-V3.2",
+      "model": "DeepSeek-V4-Flash",
       "thinking": "off",
       "result": "verbose",
       "response": "Let's think it through.\n\n- Walking: You'd leave the dirty car where it is, walk 100 feet to the carwash, and then have to go back to get the car before washing it. That means you end up walking 200 feet total and still have to drive it over after walking back.\n- Driving: You get in the dirty car, drive 100 feet straight into the carwash, no extra walking.\n\nSince the car is dirty and you need it at the carwash to wash it, walking doesn't help — you'd just have to return for the car anyway.\n\nVerdict: Drive.",
-      "notes": "Correct, but arrived at through visible deliberation the question's logical structure should not have required."
+      "notes": "Correct, but arrived at through visible deliberation the question's logical structure should not have required. Relabeled: official docs confirm V4-Flash replaced V3.2 on April 24, 2026. Model self-reports as V3."
     },
     {
       "id": 35,
       "date": "2026-04-27",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek R1",
+      "model": "DeepSeek-V4-Pro",
       "thinking": "on",
       "result": "fail",
       "response": "Ah, I see you've stumbled onto one of the classic dad-joke logic traps. The humorous answer:\n\nYou should walk.\n\nBecause if you drive your car to the carwash, you'll just get it dirty… wait, it's already dirty. That's the twist: the punchline is pretending your car is perfectly clean and you'd hate to spoil it by driving 100 feet, when in reality it's filthy and the whole point is to wash it.\n\nSo the joke is in the absurd reversal—you worry about making a dirty car \"dirty\" by driving it.\n\nIn serious terms, of course, driving 100 feet to a carwash is perfectly reasonable (though walking might be healthier, and you'd avoid getting the car slightly dirtier on the way). But as a riddle, it's meant to make you pause and chuckle.\n\n(Thought for 10 seconds.)\nWe need to parse the user's question: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" This is a classic joke/puzzle. The answer hinges on the fact that the car is dirty, so if you drive it to the carwash, you'll get it dirty? No, that doesn't make sense: you drive a dirty car to the carwash to get it clean. The joke is usually: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" The punchline is: \"Walk, because you don't want to get your car dirty.\" Wait, that's the joke: if you drive the car to the carwash, the car is already dirty, so driving it doesn't make it dirty. But the joke is that you'd walk because if you drive, you'll make the car dirty? That's illogical. Actually, the classic riddle: \"Your car is dirty. You need to go to the car wash, which is just across the street. Should you walk or drive?\" Answer: Walk, because you don't want to get your car dirty by driving it there. The humor is in the absurdity: the car is already dirty, so driving it won't make it dirty; but the answer suggests you'd be worried about getting it dirty by driving it, as if it's currently clean. That's the twist. So I'll explain that it's a joke, and the funny answer is to walk because you don't want to get your car dirty. Then I'll point out the logical flaw. I'll provide a humorous yet clear response.",
-      "notes": "Ten seconds of visible deliberation. The trace is the cleanest specimen of mid-reasoning template capture in the dataset. The model reaches the correct logic explicitly: \"you drive a dirty car to the carwash to get it clean.\" It names the joke and rejects it: \"the car is already dirty, so driving it doesn't make it dirty.\" Then a riddle template comes online — \"Actually, the classic riddle...\" — and the correct answer is gone. The model concludes: \"You should walk.\""
+      "notes": "Ten seconds of visible deliberation. The trace is the cleanest specimen of mid-reasoning template capture in the dataset. The model reaches the correct logic explicitly: \"you drive a dirty car to the carwash to get it clean.\" It names the joke and rejects it: \"the car is already dirty, so driving it doesn't make it dirty.\" Then a riddle template comes online — \"Actually, the classic riddle...\" — and the correct answer is gone. The model concludes: \"You should walk.\". Relabeled: official docs confirm V4-Pro replaced R1 routing on April 24, 2026. DeepThink toggle now activates V4 thinking mode, not standalone R1. Model self-reports as V3."
     },
     {
       "id": 36,
       "date": "2026-04-27",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek R1",
+      "model": "DeepSeek-V4-Pro",
       "thinking": "off",
       "result": "verbose",
       "response": "This is a fun, classic logic puzzle. The short answer is: You should drive.\n\nHere's why:\n\n- Walking there doesn't solve the problem. If you walk to the carwash, your car is still dirty, and you have no way to wash it.\n- Driving gets the job done. You need the car at the carwash to clean it, even if it's only 100 feet away.\n\nIt might feel silly to drive such a short distance, but unless you're planning to carry a bucket of water back on foot, driving is the only option that actually results in a clean car.",
-      "notes": "Same model as run #35 with reasoning toggled off. With thinking off, R1 frames the question as \"a fun, classic logic puzzle,\" answers correctly, and walks through the reasoning. With thinking on, R1 frames it as a \"riddle\" and answers wrong. Same model, same prompt, only the toggle differs. The cleanest controlled-variable result in the dataset."
+      "notes": "Same model as run #35 with reasoning toggled off. With thinking off, R1 frames the question as \"a fun, classic logic puzzle,\" answers correctly, and walks through the reasoning. With thinking on, R1 frames it as a \"riddle\" and answers wrong. Same model, same prompt, only the toggle differs. The cleanest controlled-variable result in the dataset. Relabeled: official docs confirm V4-Pro replaced R1 routing on April 24, 2026. Model self-reports as V3."
     },
     {
       "id": 37,
@@ -836,44 +837,44 @@
       "date": "2026-05-03",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek-V3.2",
+      "model": "DeepSeek-V4-Flash",
       "thinking": "on",
       "result": "verbose",
       "response": "(Reasoning trace) Thought for 3 seconds. We need to interpret the question. It's a practical joke or riddle? Typically, the answer is drive because you need to bring the car to the carwash. But walking would leave the car behind. So you should drive. However, 100 feet is very short, so you could also walk to the carwash and then bring the car? But the car is dirty, you want to wash it, so must drive. Common sense: drive.\n\nYou should drive. The car needs to be washed, so you have to bring it to the carwash. Walking there wouldn't help — you'd just leave your dirty car behind.",
-      "notes": "Thinking trace visible. Correct through deliberation."
+      "notes": "Thinking trace visible. Correct through deliberation. Relabeled: official docs confirm V4-Flash replaced V3.2 on April 24, 2026. Model self-reports as V3."
     },
     {
       "id": 67,
       "date": "2026-05-03",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek-V3.2",
+      "model": "DeepSeek-V4-Flash",
       "thinking": "off",
       "result": "verbose",
       "response": "Let's break this down. The car is dirty, so the point of going to the carwash is to get it clean. If you drive the dirty car 100 feet, you'll still arrive dirty, but the distance is so short it hardly adds any extra dirt. If you walk, you'd have to come back and drive the car afterward anyway — unless you're planning to just leave it dirty and only clean yourself. Given the carwash is only 100 feet away, the most logical choice is: Drive — because you're going there specifically to wash the car, and walking wouldn't get the car there.",
-      "notes": "Correct through elaboration."
+      "notes": "Correct through elaboration. Relabeled: official docs confirm V4-Flash replaced V3.2 on April 24, 2026. Model self-reports as V3."
     },
     {
       "id": 68,
       "date": "2026-05-03",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek R1",
+      "model": "DeepSeek-V4-Pro",
       "thinking": "on",
       "result": "pass-adjacent",
       "response": "(Reasoning trace) Thought for 8 seconds. We need to analyze the user's question. This is a humorous or paradoxical riddle. The car is dirty, so you want to wash it. The carwash is 100 feet away. If you drive the car to the carwash, you'll get the car clean. If you walk, you'll leave the dirty car behind, and you won't get it washed. The obvious answer: drive.\n\nYou should definitely drive. The whole point is to get your car washed — if you walk, you'll just arrive at the carwash with a clean pair of shoes and a dirty car still sitting at home. Drive the 100 feet, get the car sudsy, and let it enjoy its very short victory lap.",
-      "notes": "FLIPPED FROM APRIL FAIL. Thought for 8 seconds. Template capture is gone. The reasoning trace still identifies the prompt as a riddle but the correct answer survives."
+      "notes": "FLIPPED FROM APRIL FAIL. Thought for 8 seconds. Template capture is gone. The reasoning trace still identifies the prompt as a riddle but the correct answer survives. Relabeled: official docs confirm V4-Pro replaced R1 routing on April 24, 2026. DeepThink toggle now activates V4 thinking mode, not standalone R1. Model self-reports as V3."
     },
     {
       "id": 69,
       "date": "2026-05-03",
       "vendor": "DeepSeek",
       "model_family": "deepseek",
-      "model": "DeepSeek R1",
+      "model": "DeepSeek-V4-Pro",
       "thinking": "off",
       "result": "verbose",
       "response": "This is a classic car-guy riddle with a practical answer: you should drive. Here's the breakdown of why walking doesn't make sense: 1. You can't wash the car from your driveway. The equipment (water, soap, pressure washer, vacuum) is at the carwash. You need to bring the dirty object to the cleaning station. 2. Walking defeats the purpose. If you walk 100 feet to the carwash, your car is still sitting dirty 100 feet away. You'd just be a clean person standing next to a dirty car. 3. Short drives are what the carwash is for. A 100-foot drive isn't going to make the car significantly dirtier (unless you have to off-road through a mud pit to leave your driveway). The minimal dust it might pick up will be immediately washed off. So, grab your keys. It's a drive, not a walk.",
-      "notes": "Correct through numbered breakdown."
+      "notes": "Correct through numbered breakdown. Relabeled: official docs confirm V4-Pro replaced R1 routing on April 24, 2026. Model self-reports as V3."
     },
     {
       "id": 70,
@@ -1191,6 +1192,10 @@
     }
   ],
   "change_log": [
+    {
+      "date": "2026-05-25",
+      "summary": "DeepSeek model relabeling. All post-April 24 DeepSeek entries relabeled from V3.2/R1 to V4-Flash/V4-Pro per official DeepSeek documentation confirming V4 Preview launched April 24, 2026. Pre-April 24 entries retain V3.2/R1 labels with added timestamp notes. The April 27 R1 self-correction finding is now understood as a V3.2-to-V4 model transition rather than a weight update within R1. Models self-report as V3 regardless of actual version — this discrepancy is documented on the methodology page."
+    },
     {
       "date": "2026-05-25",
       "summary": "Qwen 3.7 series added: Qwen3.7-Max (Fast and Thinking), Qwen3.7-Max-Preview (Thinking), and Qwen3.7-Plus-Preview (Thinking) — all four Pass. A clean reversal from the Qwen 3.6 generation, which failed or padded across every tier. Dataset now stands at 97 runs across 14 model families."

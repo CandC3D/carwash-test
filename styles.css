@@ -402,6 +402,15 @@ li { margin-bottom: 6px; }
   font-style: italic;
   fill: var(--ink);
 }
+.chart-tick { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+.chart-rowlabel { font-family: var(--sans); font-size: 12px; fill: var(--ink); }
+.chart-endlabel { font-family: var(--sans); font-weight: 700; font-size: 12px; }
+.chart-more {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  margin: 10px 0 0;
+}
 @media (max-width: 560px) {
   .charts-row { gap: 20px; }
 }

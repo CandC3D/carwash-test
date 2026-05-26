@@ -717,6 +717,195 @@
     return lines.join("\r\n") + "\r\n";
   }
 
+  // Compact dashboard (bar + pie only) for the overview/results pages, with
+  // a link through to the full metrics page.
+  function renderChartsMini(runs, metricsHref) {
+    const t = tally(runs);
+    return '<div class="charts-row">' +
+      '<figure class="chart-card"><figcaption>Runs by category</figcaption>' + renderBarChart(t) + '</figure>' +
+      '<figure class="chart-card"><figcaption>Share of total</figcaption>' + renderPieChart(t) + '</figure>' +
+    '</div>' +
+    '<p class="chart-more"><a href="' + (metricsHref || 'metrics.html') + '">Full metrics &amp; trends →</a></p>';
+  }
+
+  // ── Metrics-page charts ──────────────────────────────────────────────
+  function _sortedDates(runs) {
+    return Array.from(new Set(runs.map(function (r) { return r.date; }))).sort();
+  }
+  function _shortDate(iso) {
+    const p = iso.split("-");
+    return MONTHS[parseInt(p[1], 10) - 1] + " " + parseInt(p[2], 10);
+  }
+  function _metricTok(r) { return runTokens(r); }
+  // Cumulative medians (Pass/Fail token cost) at each snapshot date, outlier-excluded.
+  function _cumMedians(runs) {
+    return _sortedDates(runs).map(function (d) {
+      const upto = runs.filter(function (r) { return r.date <= d; });
+      function med(res) {
+        const v = upto.filter(function (r) {
+          return r.result === res && _metricTok(r) < TOKEN_OUTLIER_MIN;
+        }).map(_metricTok);
+        return _median(v);
+      }
+      return { date: d, pass: med("pass"), fail: med("fail") };
+    });
+  }
+
+  // #1 — cumulative runs by result (stacked area) over snapshots.
+  function renderCumulativeArea(runs) {
+    const W = 700, H = 300, padL = 40, padR = 18, padT = 18, padB = 42;
+    const plotW = W - padL - padR, plotH = H - padT - padB, baseY = padT + plotH;
+    const dates = _sortedDates(runs), n = dates.length, total = runs.length || 1;
+    const x = function (i) { return padL + (n <= 1 ? plotW / 2 : i * plotW / (n - 1)); };
+    const y = function (v) { return baseY - (v / total) * plotH; };
+    const cum = dates.map(function (d) {
+      const upto = runs.filter(function (r) { return r.date <= d; });
+      const c = {}; RESULT_ORDER.forEach(function (k) {
+        c[k] = upto.filter(function (r) { return r.result === k; }).length;
+      });
+      return c;
+    });
+    let body = '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" class="chart-axis"/>';
+    [0, Math.round(total / 2), total].forEach(function (v) {
+      body += '<text x="' + (padL - 6) + '" y="' + (y(v) + 3).toFixed(1) + '" text-anchor="end" class="chart-tick">' + v + '</text>';
+    });
+    let lower = dates.map(function () { return 0; });
+    RESULT_ORDER.forEach(function (k) {
+      const c = RESULT_COLORS[k];
+      const upper = dates.map(function (d, i) { return lower[i] + cum[i][k]; });
+      let pts = [];
+      for (let i = 0; i < n; i++) pts.push(x(i).toFixed(1) + "," + y(upper[i]).toFixed(1));
+      for (let i = n - 1; i >= 0; i--) pts.push(x(i).toFixed(1) + "," + y(lower[i]).toFixed(1));
+      body += '<polygon points="' + pts.join(" ") + '" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:1"/>';
+      lower = upper;
+    });
+    dates.forEach(function (d, i) {
+      body += '<text x="' + x(i).toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" class="chart-tick">' + escapeHTML(_shortDate(d)) + '</text>';
+    });
+    return '<figure class="chart-card chart-card-wide"><figcaption>Cumulative runs by result</figcaption>' +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Cumulative runs by result across ' + n + ' snapshots, ending at ' + total + ' runs." class="chart-svg">' + body + '</svg>' +
+      '<p class="chart-note">Each run is a different model on the lineup available that date — this tracks the growing corpus, not any single model over time.</p></figure>';
+  }
+
+  function _lineChart(opts) {
+    // opts: {dates, series:[{vals,color,label}], yMax, fmt, caption, note, aria}
+    const W = 700, H = 300, padL = 46, padR = 56, padT = 18, padB = 42;
+    const plotW = W - padL - padR, plotH = H - padT - padB, baseY = padT + plotH;
+    const n = opts.dates.length;
+    const x = function (i) { return padL + (n <= 1 ? plotW / 2 : i * plotW / (n - 1)); };
+    const y = function (v) { return baseY - (v / opts.yMax) * plotH; };
+    let body = '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" class="chart-axis"/>';
+    [0, opts.yMax].forEach(function (v) {
+      body += '<text x="' + (padL - 6) + '" y="' + (y(v) + 3).toFixed(1) + '" text-anchor="end" class="chart-tick">' + opts.fmt(v) + '</text>';
+    });
+    opts.series.forEach(function (s) {
+      let pts = [];
+      s.vals.forEach(function (v, i) { if (v != null) pts.push(x(i).toFixed(1) + "," + y(v).toFixed(1)); });
+      body += '<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + s.color + '" stroke-width="2.5" stroke-linejoin="round"/>';
+      s.vals.forEach(function (v, i) {
+        if (v != null) body += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="2.5" style="fill:' + s.color + '"/>';
+      });
+      // end label
+      let li = s.vals.length - 1; while (li >= 0 && s.vals[li] == null) li--;
+      if (li >= 0) body += '<text x="' + (x(li) + 6).toFixed(1) + '" y="' + (y(s.vals[li]) + 3).toFixed(1) + '" class="chart-endlabel" style="fill:' + s.color + '">' + escapeHTML(s.label) + '</text>';
+    });
+    opts.dates.forEach(function (d, i) {
+      body += '<text x="' + x(i).toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" class="chart-tick">' + escapeHTML(_shortDate(d)) + '</text>';
+    });
+    return '<figure class="chart-card chart-card-wide"><figcaption>' + escapeHTML(opts.caption) + '</figcaption>' +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + escapeHTML(opts.aria) + '" class="chart-svg">' + body + '</svg>' +
+      (opts.note ? '<p class="chart-note">' + escapeHTML(opts.note) + '</p>' : '') + '</figure>';
+  }
+
+  // #3 — verbosity creep: cumulative median Pass tokens, with Fail as reference.
+  function renderVerbosityTrend(runs) {
+    const stats = _cumMedians(runs);
+    const yMax = Math.max.apply(null, stats.map(function (s) { return Math.max(s.pass || 0, s.fail || 0); })) || 1;
+    return _lineChart({
+      dates: stats.map(function (s) { return s.date; }),
+      yMax: Math.ceil(yMax / 20) * 20,
+      fmt: function (v) { return "~" + Math.round(v); },
+      series: [
+        { vals: stats.map(function (s) { return s.fail; }), color: RESULT_COLORS.fail.text, label: "Fail" },
+        { vals: stats.map(function (s) { return s.pass; }), color: RESULT_COLORS.pass.text, label: "Pass" }
+      ],
+      caption: "Median tokens over time — Pass vs Fail (cumulative)",
+      note: "Cumulative median response length as the dataset grows. Pass length is creeping up while Fail holds flat. Token counts are estimates; the Mistral outlier is excluded.",
+      aria: "Line chart of cumulative median token cost over time for Pass and Fail responses."
+    });
+  }
+
+  // #4 — Fail ÷ Pass cost ratio over time (cumulative).
+  function renderCostRatioTrend(runs) {
+    const stats = _cumMedians(runs);
+    const ratios = stats.map(function (s) { return (s.pass && s.fail) ? s.fail / s.pass : null; });
+    const yMax = Math.ceil((Math.max.apply(null, ratios.filter(function (r) { return r != null; })) || 1));
+    return _lineChart({
+      dates: stats.map(function (s) { return s.date; }),
+      yMax: yMax,
+      fmt: function (v) { return v.toFixed(0) + "×"; },
+      series: [{ vals: ratios.map(function (r) { return r == null ? null : r; }), color: "var(--ink)", label: ratios[ratios.length - 1] != null ? ratios[ratios.length - 1].toFixed(1) + "×" : "" }],
+      caption: "Cost of a wrong answer (Fail ÷ Pass median tokens)",
+      note: "How many times more tokens the median wrong answer costs versus the median right answer. The gap is compressing as correct answers grow wordier.",
+      aria: "Line chart of the Fail-to-Pass median token cost ratio over time."
+    });
+  }
+
+  // Generic horizontal 100%-stacked proportion bars (one row per group).
+  function renderProportionBars(groups, caption, aria) {
+    const W = 720, rowH = 34, padT = 10, barX = 214, barRight = W - 44, barW = barRight - barX, barH = 18;
+    const H = padT * 2 + groups.length * rowH;
+    let body = "";
+    groups.forEach(function (g, gi) {
+      const cy = padT + gi * rowH + rowH / 2, by = cy - barH / 2;
+      body += '<text x="0" y="' + (cy + 4).toFixed(1) + '" class="chart-rowlabel">' + escapeHTML(g.label) + '</text>';
+      let cx = barX;
+      RESULT_ORDER.forEach(function (k) {
+        const v = g.counts[k] || 0; if (!v) return;
+        const w = (v / g.n) * barW, c = RESULT_COLORS[k];
+        body += '<rect x="' + cx.toFixed(1) + '" y="' + by + '" width="' + w.toFixed(1) + '" height="' + barH + '" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:0.75"/>';
+        cx += w;
+      });
+      body += '<text x="' + (barRight + 6) + '" y="' + (cy + 4).toFixed(1) + '" class="chart-tick">' + g.n + '</text>';
+    });
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + escapeHTML(aria) + '" class="chart-svg" style="max-width:' + W + 'px">' + body + '</svg>';
+  }
+
+  function _groupCounts(runs) {
+    const c = {}; RESULT_ORDER.forEach(function (k) { c[k] = 0; });
+    runs.forEach(function (r) { if (c.hasOwnProperty(r.result)) c[r.result]++; });
+    return c;
+  }
+
+  // #6 — result mix by thinking mode.
+  function renderResultByThinking(runs) {
+    const byT = {};
+    runs.forEach(function (r) { (byT[r.thinking] = byT[r.thinking] || []).push(r); });
+    const groups = Object.keys(byT).map(function (t) {
+      return { label: THINKING_LABELS[t] || t, counts: _groupCounts(byT[t]), n: byT[t].length };
+    }).sort(function (a, b) { return b.n - a.n; });
+    return '<figure class="chart-card chart-card-wide"><figcaption>Result mix by thinking mode</figcaption>' +
+      renderProportionBars(groups, "thinking", "Result distribution by thinking mode.") +
+      '<p class="chart-note">Each bar is one reasoning setting, normalized to 100%; the count is at right. Reasoning does not uniformly help — it lifts some systems and breaks others.</p></figure>';
+  }
+
+  // #8 — per-family comparison (sorted by fewest fails, then most clean passes).
+  function renderVendorComparison(runs, families) {
+    const byF = {};
+    runs.forEach(function (r) { (byF[r.model_family] = byF[r.model_family] || []).push(r); });
+    const groups = Object.keys(byF).map(function (slug) {
+      const c = _groupCounts(byF[slug]), n = byF[slug].length;
+      return { label: (families[slug] && families[slug].display_name) || slug, counts: c, n: n,
+        failShare: (c.fail || 0) / n, passShare: (c.pass || 0) / n };
+    }).sort(function (a, b) {
+      if (a.failShare !== b.failShare) return a.failShare - b.failShare;
+      return b.passShare - a.passShare;
+    });
+    return '<figure class="chart-card chart-card-wide"><figcaption>Result mix by model family</figcaption>' +
+      renderProportionBars(groups, "family", "Result distribution by model family, sorted by fewest failures.") +
+      '<p class="chart-note">Each bar is one model family, normalized to 100% (run count at right), ordered from fewest failures down. A single-shot snapshot, not a verdict.</p></figure>';
+  }
+
   // Filter runs to those whose model family belongs to the given category.
   function runsInCategory(runs, families, category) {
     return runs.filter(function (r) {
@@ -736,6 +925,12 @@
     tally: tally,
     renderTallyRow: renderTallyRow,
     renderCharts: renderCharts,
+    renderChartsMini: renderChartsMini,
+    renderCumulativeArea: renderCumulativeArea,
+    renderVerbosityTrend: renderVerbosityTrend,
+    renderCostRatioTrend: renderCostRatioTrend,
+    renderResultByThinking: renderResultByThinking,
+    renderVendorComparison: renderVendorComparison,
     renderResultsTable: renderResultsTable,
     renderResultsTableForFamily: renderResultsTableForFamily,
     makeSortable: makeSortable,

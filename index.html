@@ -87,6 +87,7 @@
       <nav class="site-nav">
         <a href="index.html" class="active">Overview</a>
         <a href="results.html">Results</a>
+        <a href="metrics.html">Metrics</a>
         <a href="methodology.html">Methodology</a>
         <a href="transcripts.html">Transcripts</a>
       </nav>
@@ -142,7 +143,7 @@
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(runs);
+          CarwashTest.renderChartsMini(runs, "metrics.html");
 
         const recent = runs.slice().sort(function (a, b) {
           if (a.date === b.date) return b.id - a.id;

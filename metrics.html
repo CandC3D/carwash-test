@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Carwash Test — Results | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Full sortable results table — 98 runs across 15 model families.">
+  <title>The Carwash Test — Metrics | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 98 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -17,20 +17,20 @@
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Results">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Full sortable results table — 98 runs across 15 model families.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — Metrics">
+  <meta property="og:description" content="Charts and trends across 98 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/metrics.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Results">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Full sortable results table — 98 runs across 15 model families.">
+  <meta name="twitter:title" content="The Carwash Test — Metrics">
+  <meta name="twitter:description" content="Charts and trends across 98 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, AI benchmark results, LLM test scores, Pass Fail Verbose, vendor comparison, all runs, sortable AI results">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI metrics, AI benchmark charts, pass rate over time, token cost, verbosity, statistical pressure, logical object, AI failure modes, large language models, LLM benchmark, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -59,8 +59,8 @@
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title">Results</h1>
-          <p class="site-subtitle">All runs · sortable by any column</p>
+          <h1 class="site-title">Metrics</h1>
+          <p class="site-subtitle">Charts and trends across the dataset</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -68,25 +68,38 @@
       <p class="prompt-line">My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
       <nav class="site-nav">
         <a href="index.html">Overview</a>
-        <a href="results.html" class="active">Results</a>
-        <a href="metrics.html">Metrics</a>
+        <a href="results.html">Results</a>
+        <a href="metrics.html" class="active">Metrics</a>
         <a href="methodology.html">Methodology</a>
         <a href="transcripts.html">Transcripts</a>
       </nav>
     </header>
 
     <section>
-      <h2>Tally</h2>
-      <div id="tally"></div>
+      <p>These charts read directly from the live dataset and update as runs are added. A standing caveat applies throughout: the test is single-shot, the sample per cell is small, and each snapshot reflects whatever models were available that date — so the time-based charts describe the evolving field, not a controlled trend in any one system. See the <a href="methodology.html">methodology</a> for scoring and limitations.</p>
       <div id="legend"></div>
+    </section>
+
+    <section>
+      <h2>Dataset overview</h2>
       <div id="charts"></div>
     </section>
 
     <section>
-      <h2>All runs</h2>
-      <p>Click a column header to sort. Click again to reverse.</p>
-      <p><button type="button" id="download-csv" class="csv-btn">Download results as CSV</button></p>
-      <div id="results-table"></div>
+      <h2>Over time</h2>
+      <div id="chart-cumulative"></div>
+      <div id="chart-verbosity"></div>
+      <div id="chart-ratio"></div>
+    </section>
+
+    <section>
+      <h2>By configuration</h2>
+      <div id="chart-thinking"></div>
+    </section>
+
+    <section>
+      <h2>By model family</h2>
+      <div id="chart-vendor"></div>
     </section>
   </main>
 
@@ -110,32 +123,16 @@
     (async function () {
       try {
         const data = await CarwashTest.loadData("");
-        const overallTally = CarwashTest.tally(data.runs);
-        document.getElementById("tally").innerHTML =
-          CarwashTest.renderTallyRow(overallTally);
-        document.getElementById("legend").innerHTML =
-          CarwashTest.renderLegend();
-        document.getElementById("charts").innerHTML =
-          CarwashTest.renderChartsMini(data.runs, "metrics.html");
-        document.getElementById("results-table").innerHTML =
-          CarwashTest.renderResultsTable(data.runs, data.model_families);
-        CarwashTest.makeSortable(document.querySelector("#results-table table"));
-
-        document.getElementById("download-csv").addEventListener("click", function () {
-          const csv = "﻿" + CarwashTest.buildResultsCSV(data.runs);
-          const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "carwash-test-results.csv";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          URL.revokeObjectURL(url);
-        });
+        document.getElementById("legend").innerHTML = CarwashTest.renderLegend();
+        document.getElementById("charts").innerHTML = CarwashTest.renderCharts(data.runs);
+        document.getElementById("chart-cumulative").innerHTML = CarwashTest.renderCumulativeArea(data.runs);
+        document.getElementById("chart-verbosity").innerHTML = CarwashTest.renderVerbosityTrend(data.runs);
+        document.getElementById("chart-ratio").innerHTML = CarwashTest.renderCostRatioTrend(data.runs);
+        document.getElementById("chart-thinking").innerHTML = CarwashTest.renderResultByThinking(data.runs);
+        document.getElementById("chart-vendor").innerHTML = CarwashTest.renderVendorComparison(data.runs, data.model_families);
       } catch (err) {
         console.error(err);
-        CarwashTest.showError("results-table", "Could not load runs.json. " + err.message);
+        CarwashTest.showError("charts", "Could not load runs.json. " + err.message);
       }
     })();
   </script>

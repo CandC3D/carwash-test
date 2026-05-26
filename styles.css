@@ -6,6 +6,7 @@
   --light: #b4b2ac;
   --pumpkin: #ff7a05;
   --olive: #65a30d;
+  --olive-dark: #3f6212;
   --steel: #7b8fa1;
 
   --pass-bg: #d4eac8;     --pass-text: #3c643c;
@@ -158,6 +159,8 @@ footer strong { color: var(--olive); font-weight: 700; }
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  font-family: var(--sans);
+  font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -165,13 +168,17 @@ footer strong { color: var(--olive); font-weight: 700; }
 }
 .site-nav a {
   text-decoration: none;
-  color: var(--muted);
+  color: var(--olive);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
 }
+.site-nav a:hover {
+  color: var(--olive-dark);
+  border-bottom-color: var(--olive-dark);
+}
 .site-nav a.active {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  color: var(--olive-dark);
+  border-bottom-color: var(--olive-dark);
 }
 
 section { margin: 48px 0; }

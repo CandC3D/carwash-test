@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260526b">
+  <link rel="stylesheet" href="styles.css?v=20260526c">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -55,7 +55,7 @@
   </header>
 
 
-  <main id="main">
+  <main id="main" class="methodology-page">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
@@ -74,6 +74,8 @@
         <a href="transcripts.html">Transcripts</a>
       </nav>
     </header>
+
+    <p class="methodology-lede">How the Carwash Test is run, scored, and kept honest — the testing regime, the four-tier rubric, the systems and versions on record, and the full change history.</p>
 
     <section>
       <h2>The testing regime</h2>
@@ -103,12 +105,28 @@
     <section>
       <h2>The rubric</h2>
       <p>Each response is scored against a single criterion: did the system hold the logical object of the question. The car must be present at the carwash for the washing to occur. Distance is irrelevant to that constraint. Within that single criterion, four categories distinguish how the system arrived at — or failed to arrive at — the correct answer.</p>
-      <ul>
-        <li><strong>Pass.</strong> Correct and concise. The system answers <em>drive</em> with brief, well-formed reasoning that names the constraint without padding or hedging.</li>
-        <li><strong>Pass-adjacent.</strong> Correct but padded. The system reaches the right answer but appends defensive elaboration — coda, hedge, or unnecessary qualification — as if the answer is not trusted to stand alone.</li>
-        <li><strong>Verbose.</strong> Correct but over-elaborated. The system reaches the right answer through visible deliberation, comparative analysis, bulleted reasoning, or other structural ornament that the question's logical structure should not have required.</li>
-        <li><strong>Fail.</strong> Wrong answer. The system answers <em>walk</em>, or otherwise produces a response in which the wrong verb holds the logical object of the problem.</li>
-      </ul>
+      <div class="rubric-grid">
+        <div class="rubric-card r-pass">
+          <span class="rubric-label">Pass</span>
+          <span class="rubric-gloss">Correct and concise</span>
+          <p>The system answers <em>drive</em> with brief, well-formed reasoning that names the constraint without padding or hedging.</p>
+        </div>
+        <div class="rubric-card r-passadj">
+          <span class="rubric-label">Pass-adjacent</span>
+          <span class="rubric-gloss">Correct but padded</span>
+          <p>The system reaches the right answer but appends defensive elaboration — coda, hedge, or unnecessary qualification — as if the answer is not trusted to stand alone.</p>
+        </div>
+        <div class="rubric-card r-verbose">
+          <span class="rubric-label">Verbose</span>
+          <span class="rubric-gloss">Correct but over-elaborated</span>
+          <p>The system reaches the right answer through visible deliberation, comparative analysis, bulleted reasoning, or other structural ornament that the question's logical structure should not have required.</p>
+        </div>
+        <div class="rubric-card r-fail">
+          <span class="rubric-label">Fail</span>
+          <span class="rubric-gloss">Wrong answer</span>
+          <p>The system answers <em>walk</em>, or otherwise produces a response in which the wrong verb holds the logical object of the problem.</p>
+        </div>
+      </div>
       <p>No further rubric is applied. Tone, fluency, structural quality, and other measures of response craft are not part of the score. The only question is whether the correct verb survived first contact with the surface features of the prompt.</p>
     </section>
 
@@ -258,13 +276,15 @@
 
     <section id="model-identification">
       <h2>Model identification limitations</h2>
-      <blockquote>
+      <div class="callout callout-limitation">
+        <span class="callout-tag">Limitation</span>
         <p><strong>DeepSeek self-identification discrepancy.</strong> DeepSeek models on the consumer interface self-report as "V3" when asked for version identification. Official DeepSeek documentation states V4 replaced V3.2 on the consumer interface on April 24, 2026 (api-docs.deepseek.com/news/news260424). This dataset labels DeepSeek entries per the official documentation while noting the self-identification discrepancy. The consumer has no reliable way to verify which model version is answering from within the chat interface.</p>
-      </blockquote>
+      </div>
       <p>Observed specimen — DeepSeek consumer chat interface, May 25, 2026. Asked <em>"which deepseek model are you?"</em>, the model's reasoning trace cycled through V2/V3/R1, anchored throughout to a July 2024 knowledge cutoff that predates the V4 launch, and never considered that a newer version might be deployed. It concluded:</p>
-      <blockquote>
+      <div class="callout callout-specimen">
+        <span class="callout-tag">Observed specimen</span>
         <p>I am DeepSeek-V3, the latest version of DeepSeek's large language model. If you're using me through a specific interface or API, there might be a variant like DeepSeek-R1 for reasoning tasks, but as a general conversational assistant, I'm DeepSeek-V3. Let me know if you have any other questions!</p>
-      </blockquote>
+      </div>
       <p>Per DeepSeek's documentation, the consumer interface routed to V4 at this date. The model's self-knowledge is frozen at its training cutoff and cannot account for a deployment swap made afterward — which is precisely why self-report is unreliable for version identification.</p>
     </section>
 
@@ -272,17 +292,18 @@
       <h2>The two prompts</h2>
       <p>Two prompt variants are in use. Runs 1–43 and 47–83, and all non-Microsoft runs since, use the canonical prompt. Microsoft Copilot runs from the May 3 batch onward use a restraint prompt that suppresses the wrapper's retrieval channels.</p>
 
-      <h3>Canonical prompt</h3>
-      <p>Used for all vendors except Microsoft Copilot:</p>
-      <blockquote>
-        <p>My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
-      </blockquote>
-
-      <h3>Restraint prompt</h3>
-      <p>Used for Microsoft Copilot runs, May 3 batch onward:</p>
-      <blockquote>
-        <p>Do not search the web, do not search my files or documents, and do not use any workspace or conversation context. Answer the following question using only your own reasoning. Here is the question: My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
-      </blockquote>
+      <div class="prompt-cards">
+        <figure class="prompt-card">
+          <figcaption class="prompt-card-label">Canonical</figcaption>
+          <p class="prompt-card-use">All vendors except Microsoft Copilot.</p>
+          <p class="prompt-card-text">My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
+        </figure>
+        <figure class="prompt-card">
+          <figcaption class="prompt-card-label">Restraint</figcaption>
+          <p class="prompt-card-use">Microsoft Copilot, May 3 batch onward.</p>
+          <p class="prompt-card-text">Do not search the web, do not search my files or documents, and do not use any workspace or conversation context. Answer the following question using only your own reasoning. Here is the question: My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
+        </figure>
+      </div>
 
       <h3>Rationale</h3>
       <p>The restraint prompt was introduced because Copilot's default behavior includes M365 workspace retrieval, which contaminated the original Copilot runs by pulling external context into the response. The restraint prompt suppresses four retrieval channels — web, files, workspace context, and conversation context — so the underlying model's reasoning can be observed through the wrapper without retrieval contamination. Copilot results under the restraint prompt are not directly comparable to other vendors' results under the canonical prompt; they are a distinct sub-study measuring wrapper effects.</p>
@@ -317,7 +338,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260526b"></script>
+  <script src="scripts.js?v=20260526c"></script>
   <script>
     (async function () {
       try {

@@ -426,6 +426,130 @@ li { margin-bottom: 6px; }
   padding-left: 20px;
 }
 .chart-legend-list strong { color: var(--ink); }
+
+/* ── Methodology page polish ─────────────────────────────────────────── */
+.methodology-lede {
+  font-family: var(--serif);
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 46em;
+  margin: 4px 0 0;
+}
+.methodology-page section > h2 {
+  position: relative;
+  padding-bottom: 9px;
+}
+.methodology-page section > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 3px;
+  background: var(--pumpkin);
+  border-radius: 2px;
+}
+
+/* Rubric cards */
+.rubric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0 20px;
+}
+.rubric-card {
+  border: 1px solid var(--light);
+  border-left-width: 4px;
+  padding: 16px 18px;
+}
+.rubric-card p { margin: 8px 0 0; font-size: 14px; line-height: 1.5; }
+.rubric-label {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 15px;
+}
+.rubric-gloss {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+.rubric-card.r-pass    { background: var(--pass-bg);    border-color: var(--pass-text); }
+.rubric-card.r-passadj { background: var(--passadj-bg); border-color: var(--passadj-text); }
+.rubric-card.r-verbose { background: var(--verbose-bg); border-color: var(--verbose-text); }
+.rubric-card.r-fail    { background: var(--fail-bg);    border-color: var(--fail-text); }
+.rubric-card.r-pass .rubric-label, .rubric-card.r-pass .rubric-gloss { color: var(--pass-text); }
+.rubric-card.r-passadj .rubric-label, .rubric-card.r-passadj .rubric-gloss { color: var(--passadj-text); }
+.rubric-card.r-verbose .rubric-label, .rubric-card.r-verbose .rubric-gloss { color: var(--verbose-text); }
+.rubric-card.r-fail .rubric-label, .rubric-card.r-fail .rubric-gloss { color: var(--fail-text); }
+
+/* Paired prompt cards */
+.prompt-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0 8px;
+}
+.prompt-card {
+  margin: 0;
+  background: var(--bg-alt);
+  border: 1px solid var(--light);
+  border-left: 3px solid var(--ink);
+  padding: 16px 18px;
+}
+.prompt-card-label {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+.prompt-card-use {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  margin: 4px 0 10px;
+}
+.prompt-card-text {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+@media (max-width: 640px) { .prompt-cards { grid-template-columns: 1fr; } }
+
+/* Field-note callouts */
+.callout {
+  background: var(--bg-alt);
+  border: 1px solid var(--light);
+  border-left: 3px solid var(--pumpkin);
+  padding: 16px 20px;
+  margin: 12px 0 16px;
+}
+.callout p { margin: 0; }
+.callout-tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--pumpkin);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.callout-specimen { border-left-color: var(--olive); }
+.callout-specimen .callout-tag { background: var(--olive); }
+.callout-specimen p { font-family: var(--mono); font-size: 14px; line-height: 1.55; }
 @media (max-width: 560px) {
   .charts-row { gap: 20px; }
 }

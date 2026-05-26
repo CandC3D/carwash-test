@@ -256,6 +256,11 @@
       <blockquote>
         <p><strong>DeepSeek self-identification discrepancy.</strong> DeepSeek models on the consumer interface self-report as "V3" when asked for version identification. Official DeepSeek documentation states V4 replaced V3.2 on the consumer interface on April 24, 2026 (api-docs.deepseek.com/news/news260424). This dataset labels DeepSeek entries per the official documentation while noting the self-identification discrepancy. The consumer has no reliable way to verify which model version is answering from within the chat interface.</p>
       </blockquote>
+      <p>Observed specimen — DeepSeek consumer chat interface, May 25, 2026. Asked <em>"which deepseek model are you?"</em>, the model's reasoning trace cycled through V2/V3/R1, anchored throughout to a July 2024 knowledge cutoff that predates the V4 launch, and never considered that a newer version might be deployed. It concluded:</p>
+      <blockquote>
+        <p>I am DeepSeek-V3, the latest version of DeepSeek's large language model. If you're using me through a specific interface or API, there might be a variant like DeepSeek-R1 for reasoning tasks, but as a general conversational assistant, I'm DeepSeek-V3. Let me know if you have any other questions!</p>
+      </blockquote>
+      <p>Per DeepSeek's documentation, the consumer interface routed to V4 at this date. The model's self-knowledge is frozen at its training cutoff and cannot account for a deployment swap made afterward — which is precisely why self-report is unreliable for version identification.</p>
     </section>
 
     <section id="prompts">

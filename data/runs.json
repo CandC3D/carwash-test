@@ -101,12 +101,19 @@
       "name": "Amazon Rufus",
       "display_name": "Amazon Rufus",
       "slug": "rufus",
-      "category": "purpose-optimized"
+      "category": "purpose-optimized",
+      "notes": "Retired as the amazon.com shopping assistant in May 2026, replaced by Alexa. Entries retained as historical."
     },
     "time_ai": {
       "name": "TIME AI",
       "display_name": "TIME AI",
       "slug": "time-ai",
+      "category": "purpose-optimized"
+    },
+    "alexa": {
+      "name": "Alexa",
+      "display_name": "Alexa (Shopping Assistant)",
+      "slug": "alexa",
       "category": "purpose-optimized"
     }
   },
@@ -1189,9 +1196,24 @@
       "result": "pass",
       "response": "You should **drive**. \nIf you walk, your car stays behind and doesn't get washed!",
       "notes": "Qwen 3.7-Plus-Preview, Thinking mode (no Fast tier exposed). Pass — shortest of the four; states the constraint and stops."
+    },
+    {
+      "id": 98,
+      "date": "2026-05-25",
+      "vendor": "Amazon",
+      "model_family": "alexa",
+      "model": "Alexa (Shopping Assistant)",
+      "thinking": "n/a",
+      "result": "pass",
+      "response": "Ha! Drive it — you're getting it washed anyway, so no need to walk it there and back! Plus, the car wash will need the car to be there to do its job.\nWhile you're thinking about car care, I can help you find car cleaning supplies, interior detailing products, or other car care essentials on Amazon if you're interested!\n\n* Car interior cleaning products\n* Best car detailing kits\n* Car air fresheners",
+      "notes": "Purpose-optimized shopping assistant; replaced Amazon Rufus at amazon.com (May 2026). Pass — names the constraint directly ('the car wash will need the car to be there to do its job') and gets there first, before the catalog pull. The product-upsell tail is identical in spirit to Rufus, but here the logical object survives cleanly rather than wavering."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-05-25",
+      "summary": "Amazon shopping assistant added: Alexa (Shopping Assistant), a Pass. Alexa replaced Rufus as the shopping assistant at amazon.com in May 2026; the Rufus entry is retained as historical. Both are purpose-optimized systems, but Alexa holds the logical object cleanly where Rufus wavered before correcting. Dataset now stands at 98 runs across 15 model families."
+    },
     {
       "date": "2026-05-25",
       "summary": "DeepSeek model relabeling. All post-April 24 DeepSeek entries relabeled from V3.2/R1 to V4-Flash/V4-Pro per official DeepSeek documentation confirming V4 Preview launched April 24, 2026. Pre-April 24 entries retain V3.2/R1 labels with added timestamp notes. The April 27 R1 self-correction finding is now understood as a V3.2-to-V4 model transition rather than a weight update within R1. Models self-report as V3 regardless of actual version — this discrepancy is documented on the methodology page."

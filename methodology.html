@@ -150,10 +150,11 @@
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
         <li>Lumo (Proton; default configuration, no reasoning toggle exposed; new in May)</li>
         <li>Microsoft Copilot running Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 in Quick Response and Think Deeper modes (May runs use the isolation prompt to suppress M365 retrieval)</li>
-        <li>Amazon Rufus (purpose-optimized shopping assistant; no reasoning toggle exposed; tested May 12)</li>
+        <li>Amazon Rufus (purpose-optimized shopping assistant; no reasoning toggle exposed; tested May 12; retired in favor of Alexa later in May)</li>
+        <li>Alexa (Amazon's shopping assistant at amazon.com; replaced Rufus; no reasoning toggle exposed; tested May 25)</li>
         <li>TIME AI (purpose-optimized media assistant; no reasoning toggle exposed; tested May 25)</li>
       </ul>
-      <p>Amazon Rufus and TIME AI are <a href="transcripts/purpose-optimized.html">purpose-optimized models</a> — domain-specific systems where catalog optimization shapes the answer as much as the underlying model's reasoning. They are grouped separately from the general-purpose families.</p>
+      <p>Amazon Rufus, Alexa, and TIME AI are <a href="transcripts/purpose-optimized.html">purpose-optimized models</a> — domain-specific systems where catalog optimization shapes the answer as much as the underlying model's reasoning. They are grouped separately from the general-purpose families.</p>
       <p>Where the same system was tested more than once, each run is recorded as a separate entry in the dataset. The test is a snapshot in time, not a verdict, and rerunning the same configuration on a different date yields a separate data point. Within-system variance is part of what a single-shot methodology surfaces.</p>
       <p>Two prompt variants are in use — the canonical prompt for nearly all runs, and a restraint prompt for Microsoft Copilot. Both are documented in <a href="#prompts">The two prompts</a> below.</p>
     </section>
@@ -182,6 +183,7 @@
           <tr><td>Amazon Rufus</td><td>May 12, 2026</td><td>1</td><td>92</td></tr>
           <tr><td>TIME AI</td><td>May 25, 2026</td><td>1</td><td>93</td></tr>
           <tr><td>Qwen 3.7 series</td><td>May 25, 2026</td><td>4</td><td>97</td></tr>
+          <tr><td>Alexa (Amazon shopping assistant)</td><td>May 25, 2026</td><td>1</td><td>98</td></tr>
         </tbody>
       </table>
     </section>
@@ -229,7 +231,8 @@
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Plus-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
           <tr><td>Moonshot AI</td><td>Kimi K2.6</td><td>—</td><td>Instant / Thinking modes (Agent and Agent Swarm excluded)</td></tr>
           <tr><td>Proton</td><td>Lumo</td><td>—</td><td>No reasoning toggle exposed</td></tr>
-          <tr><td>Amazon</td><td>Rufus</td><td>—</td><td>Shopping assistant; no reasoning toggle; version not exposed</td></tr>
+          <tr><td>Amazon</td><td>Rufus</td><td>—</td><td>Shopping assistant; no reasoning toggle; version not exposed. Historical — retired May 2026, replaced by Alexa.</td></tr>
+          <tr><td>Amazon</td><td>Alexa (Shopping Assistant)</td><td>—</td><td>Shopping assistant at amazon.com; replaced Rufus; no reasoning toggle; version not exposed.</td></tr>
           <tr><td>TIME</td><td>TIME AI</td><td>—</td><td>Media assistant; no reasoning toggle; version not exposed</td></tr>
           <tr><td>Microsoft</td><td>Copilot</td><td>—</td><td>Wrapper surface; exposes Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 via Quick Response / Think Deeper</td></tr>
         </tbody>
@@ -248,6 +251,7 @@
         <li><strong>Late April 2026:</strong> Meta added Contemplating (multi-chain parallel reasoning) to the Muse Spark mode picker.</li>
         <li><strong>May 3, 2026:</strong> Anthropic reverted Opus 4.6 to Extended Thinking On/Off (had briefly used Adaptive On/Off). Sonnet 4.6 and Opus 4.7 retained Adaptive.</li>
         <li><strong>May 25, 2026:</strong> Google added Gemini 3.1 Flash-Lite and Gemini 3.5 Flash to the consumer interface.</li>
+        <li><strong>May 2026:</strong> Amazon retired Rufus in favor of Alexa as the shopping assistant at amazon.com.</li>
       </ul>
     </section>
 

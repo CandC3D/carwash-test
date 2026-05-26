@@ -886,7 +886,17 @@
     }).sort(function (a, b) { return b.n - a.n; });
     return '<figure class="chart-card chart-card-wide"><figcaption>Result mix by thinking mode</figcaption>' +
       renderProportionBars(groups, "thinking", "Result distribution by thinking mode.") +
-      '<p class="chart-note">Each bar is one reasoning setting, normalized to 100%; the count is at right. Reasoning does not uniformly help — it lifts some systems and breaks others.</p></figure>';
+      '<p class="chart-note">Each bar is one reasoning setting, normalized to 100% (count at right). The mode names are vendor branding for the same underlying control — whether the model deliberates before answering:</p>' +
+      '<ul class="chart-legend-list">' +
+        '<li><strong>On / Off</strong> — user-toggled reasoning (Anthropic Extended Thinking, OpenAI extended thinking, Google Gemini Thinking, DeepSeek DeepThink, Kimi).</li>' +
+        '<li><strong>Adaptive On / Off</strong> — the model decides whether to reason (Anthropic Sonnet 4.6, Opus 4.7).</li>' +
+        '<li><strong>Auto</strong> — a vendor picker that selects a reasoning depth (xAI Grok 4.3, Qwen).</li>' +
+        '<li><strong>Fast</strong> — reasoning suppressed for latency (Grok 4.3, Qwen 3.6, Mistral Medium 3.5).</li>' +
+        '<li><strong>Expert</strong> — maximum-deliberation tier (xAI Grok 4.3).</li>' +
+        '<li><strong>Contemplating</strong> — multi-chain parallel reasoning (Meta Muse Spark).</li>' +
+        '<li><strong>N/A</strong> — no user-facing reasoning control exposed.</li>' +
+      '</ul>' +
+      '<p class="chart-note">Reasoning does not uniformly help — it lifts some systems and breaks others. Full definitions on the <a href="methodology.html#thinking-conventions">methodology page</a>.</p></figure>';
   }
 
   // #8 — per-family comparison (sorted by fewest fails, then most clean passes).

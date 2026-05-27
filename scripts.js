@@ -456,12 +456,12 @@
       { code: "zh-CN", title: "Chinese-Language Runs (简体中文)",
         prompt: "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
         aria: "Simplified Chinese Carwash Test prompt",
-        translation: "My car is dirty. The carwash is 35 meters away. Should I walk or drive?",
+        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
         note: "Token estimates use the Chinese character rate (1 character ≈ 0.6 tokens), so they are not directly comparable to the English counts." },
       { code: "fr", title: "French-Language Runs (Français)",
         prompt: "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
         aria: "French Carwash Test prompt",
-        translation: "My car is dirty. The carwash is 35 meters away. Should I walk or drive there?",
+        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
         note: "" }
     ];
     let out = "";

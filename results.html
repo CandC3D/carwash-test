@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260526c">
+  <link rel="stylesheet" href="styles.css?v=20260527a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -105,24 +105,25 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260526c"></script>
+  <script src="scripts.js?v=20260527a"></script>
   <script>
     (async function () {
       try {
         const data = await CarwashTest.loadData("");
-        const overallTally = CarwashTest.tally(data.runs);
+        const eng = CarwashTest.englishRuns(data.runs);
+        const overallTally = CarwashTest.tally(eng);
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(overallTally);
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderChartsMini(data.runs, "metrics.html");
+          CarwashTest.renderChartsMini(eng, "metrics.html");
         document.getElementById("results-table").innerHTML =
-          CarwashTest.renderResultsTable(data.runs, data.model_families);
+          CarwashTest.renderResultsTable(eng, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));
 
         document.getElementById("download-csv").addEventListener("click", function () {
-          const csv = "﻿" + CarwashTest.buildResultsCSV(data.runs);
+          const csv = "﻿" + CarwashTest.buildResultsCSV(eng);
           const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
           const url = URL.createObjectURL(blob);
           const a = document.createElement("a");

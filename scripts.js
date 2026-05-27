@@ -916,6 +916,18 @@
       '<p class="chart-note">Each bar is one model family, normalized to 100% (run count at right), ordered from fewest failures down. A single-shot snapshot, not a verdict.</p></figure>';
   }
 
+  // ── Language corpora ─────────────────────────────────────────────────
+  // Runs without a `language` field are English by convention. The English
+  // aggregate views (tally, charts, results table, CSV, family grid) must
+  // exclude other-language runs so corpora stay separate.
+  function runLang(r) { return r.language || "en"; }
+  function englishRuns(runs) {
+    return runs.filter(function (r) { return runLang(r) === "en"; });
+  }
+  function runsByLanguage(runs, lang) {
+    return runs.filter(function (r) { return runLang(r) === lang; });
+  }
+
   // Filter runs to those whose model family belongs to the given category.
   function runsInCategory(runs, families, category) {
     return runs.filter(function (r) {
@@ -927,6 +939,8 @@
   global.CarwashTest = {
     PURPOSE_OPTIMIZED_ICON: PURPOSE_OPTIMIZED_ICON,
     runsInCategory: runsInCategory,
+    englishRuns: englishRuns,
+    runsByLanguage: runsByLanguage,
     buildResultsCSV: buildResultsCSV,
     loadData: loadData,
     formatDate: formatDate,

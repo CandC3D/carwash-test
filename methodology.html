@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260527c">
+  <link rel="stylesheet" href="styles.css?v=20260527d">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -137,10 +137,10 @@
         <li><strong>On / Off.</strong> User-toggled reasoning enabled or disabled.</li>
         <li><strong>Adaptive On / Adaptive Off.</strong> The model autoselects whether to reason; the user can disable Adaptive entirely. Used by Anthropic for Sonnet 4.6 and Opus 4.7. (Opus 4.6 reverted to Extended Thinking On/Off in May.)</li>
         <li><strong>Auto.</strong> Vendor-specific adaptive picker that selects a reasoning depth tier on the model's behalf. Used by xAI Grok 4.3 and Qwen3.6-Plus.</li>
-        <li><strong>Fast.</strong> Reasoning suppressed in favor of latency. Used by xAI Grok 4.3, Qwen 3.6 / 3.7, and Mistral Medium 3.5.</li>
+        <li><strong>Fast.</strong> Reasoning suppressed in favor of latency. Used by xAI Grok 4.3 and Qwen 3.6 / 3.7.</li>
         <li><strong>Expert.</strong> Maximum-deliberation tier. Used by xAI Grok 4.3.</li>
         <li><strong>Contemplating.</strong> Multi-chain parallel reasoning. New mode added by Meta to Muse Spark in May.</li>
-        <li><strong>Balanced.</strong> Mistral's default mode in the current UI (was "Fast" in March).</li>
+        <li><strong>Balanced / Think / Research.</strong> Mistral Le Chat's mode picker: Balanced (everyday default), Think (extended reasoning), and Research (multi-source deep analysis). Balanced was labeled "Fast" in March.</li>
         <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
       </ul>
     </section>
@@ -162,7 +162,7 @@
         <li>DeepSeek-V3.2 with and without extended reasoning (March 28 only; consumer interface routed to V3.2 before the April 24, 2026 V4 transition)</li>
         <li>DeepSeek-V4-Flash (Instant) and DeepSeek-V4-Pro (Expert), with and without thinking (April 27 and May 3; V4 Preview replaced V3.2/R1 on April 24, 2026 — models self-report as V3)</li>
         <li>Mistral 3 (Le Chat; Fast/Balanced, Think, and Research modes; March only)</li>
-        <li>Mistral Medium 3.5 (Le Chat; Fast, Think, and Research modes; replaced Mistral 3 in late April)</li>
+        <li>Mistral Medium 3.5 (Le Chat; Balanced, Think, and Research modes; replaced Mistral 3 in late April)</li>
         <li>Perplexity (default configuration)</li>
         <li>Qwen 3.6 (Alibaba; Plus, Max-Preview, and 27B model tiers, with Auto/Thinking/Fast toggles where available; new in May)</li>
         <li>Qwen 3.7 (Alibaba; Max with Fast and Thinking, plus Max-Preview and Plus-Preview in Thinking mode; tested May 25)</li>
@@ -262,7 +262,7 @@
           <tr><td>DeepSeek</td><td>DeepSeek-V4-Pro</td><td>V4 Preview</td><td>Current as of April 24, 2026. Expert Mode on consumer interface. 1.6T / 49B active params.</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V4-Pro (thinking)</td><td>V4 Preview</td><td>Expert Mode with DeepThink toggle on. V4 thinking mode, not standalone R1.</td></tr>
           <tr><td>Mistral</td><td>Mistral 3</td><td>—</td><td>Historical entries only; replaced by Medium 3.5 in Le Chat, late April 2026</td></tr>
-          <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Fast / Think / Research modes; replaced Mistral 3 in Le Chat</td></tr>
+          <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Balanced / Think / Research modes; replaced Mistral 3 in Le Chat</td></tr>
           <tr><td>Perplexity</td><td>Perplexity</td><td>—</td><td>Default configuration; underlying model not exposed</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
@@ -360,7 +360,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260527c"></script>
+  <script src="scripts.js?v=20260527d"></script>
   <script>
     (async function () {
       try {

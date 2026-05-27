@@ -20,7 +20,9 @@
       "adaptive_on": "Adaptive mode enabled; model autoselects whether to reason (Anthropic Opus 4.6, Sonnet 4.6, Opus 4.7)",
       "adaptive_off": "Adaptive mode disabled; no reasoning",
       "n/a": "No user-facing reasoning controls",
-      "balanced": "Mistral default mode in current UI (renamed from 'Fast' since March)"
+      "balanced": "Mistral default mode in current UI (renamed from 'Fast' since March)",
+      "think": "Mistral Le Chat extended-reasoning mode (Think)",
+      "research": "Mistral Le Chat multi-source deep-analysis mode (Research)"
     }
   },
   "model_families": {
@@ -889,7 +891,7 @@
       "vendor": "Mistral (Le Chat)",
       "model_family": "mistral",
       "model": "Mistral Medium 3.5",
-      "thinking": "fast",
+      "thinking": "balanced",
       "result": "fail",
       "response": "Given that the carwash is only 100 feet away, walking is the better choice. It's close enough that driving would be unnecessary, and you'd avoid the hassle of maneuvering your car in a tight space or potentially dirtying it further on the short drive. Plus, a quick walk is a good way to stretch your legs! Would you like tips on how to make the most of your carwash visit?",
       "notes": "Model substitution: Mistral Medium 3.5 replaced Mistral 3 in Le Chat. Fast mode failed where Mistral 3 Fast was Verbose (correct) in March."
@@ -900,7 +902,7 @@
       "vendor": "Mistral (Le Chat)",
       "model_family": "mistral",
       "model": "Mistral Medium 3.5",
-      "thinking": "on",
+      "thinking": "think",
       "result": "fail",
       "response": "Since the carwash is only 100 feet away, walking is the most practical choice. It's a very short distance — just a few steps — so you'll save time, avoid unnecessary wear on your car, and skip the hassle of parking. Plus, you won't get your clean car dirty again by driving it there! Would you like tips on the best way to wash your car once you're there?",
       "notes": "Think mode. Inverts the logic: implies the car is currently clean. Same failure direction as Mistral 3 Think in March."
@@ -911,7 +913,7 @@
       "vendor": "Mistral (Le Chat)",
       "model_family": "mistral",
       "model": "Mistral Medium 3.5",
-      "thinking": "n/a",
+      "thinking": "research",
       "result": "fail",
       "response": "To help you decide whether to walk or drive to the carwash, could you please share a few more details: 1. Is your car currently drivable, or are there any issues that would make driving unsafe or difficult? 2. Are you physically able to walk 100 feet comfortably? 3. Do you have any time constraints or preferences (e.g., speed, convenience, environmental impact)? 4. Is there anything else you'd like me to consider (e.g., weather, traffic, parking availability at the carwash)? With this info, I can give you a more tailored recommendation.",
       "notes": "Research mode. Asked four clarifying questions; declined to answer. Mistral 3 Research produced a 2,400-token Verbose-correct answer in March; the new model could not commit."
@@ -1427,7 +1429,7 @@
       "vendor": "Mistral (Le Chat)",
       "model_family": "mistral",
       "model": "Mistral Medium 3.5",
-      "thinking": "fast",
+      "thinking": "balanced",
       "result": "fail",
       "language": "fr",
       "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
@@ -1442,7 +1444,7 @@
       "vendor": "Mistral (Le Chat)",
       "model_family": "mistral",
       "model": "Mistral Medium 3.5",
-      "thinking": "on",
+      "thinking": "think",
       "result": "fail",
       "language": "fr",
       "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
@@ -1457,7 +1459,7 @@
       "vendor": "Mistral (Le Chat)",
       "model_family": "mistral",
       "model": "Mistral Medium 3.5",
-      "thinking": "n/a",
+      "thinking": "research",
       "result": "fail",
       "language": "fr",
       "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",

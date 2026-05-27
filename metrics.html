@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260527c">
+  <link rel="stylesheet" href="styles.css?v=20260527d">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -118,7 +118,7 @@
           <tr><td>GPT 5.5</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td></tr>
           <tr><td>GPT 5.2</td><td>On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td></tr>
           <tr><td>GPT 5.2</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td></tr>
-          <tr><td>Mistral Medium 3.5</td><td>Fast</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Balanced</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
           <tr><td>Mistral Medium 3.5</td><td>Think</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
           <tr><td>Mistral Medium 3.5</td><td>Research</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
           <tr><td>Lumo</td><td>—</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
@@ -162,7 +162,6 @@
       <div class="corpus-summary">
         <p>The Carwash Test was extended to French using a metrically equivalent prompt. Nine runs across four vendors — Mistral, Lumo, OpenAI, and Anthropic — produced a 67% failure rate. A language-specific failure mode emerged: the inverted-logic pattern, in which the model argues that driving would make the car dirtier or that the car is already clean, appears across three vendors in French (Mistral, Lumo, and GPT) but in zero English-language runs. The toggle relationship itself proved language-dependent: GPT 5.2 passes with thinking off and fails with thinking on in French — the exact inverse of its English behavior. Claude Opus 4.7 produced one of the most concise correct answers in the entire dataset (“En voiture — sinon le lave-auto va laver le mauvais sujet”) while the same model, same toggle, same day, failed in Chinese with a two-character response. The kind of wrong answer depends on the language even when the fact of failure does not.</p>
         <p lang="fr">Le test du lave-auto a été étendu au français à l'aide d'un prompt métrique équivalent. Neuf tests répartis sur quatre fournisseurs — Mistral, Lumo, OpenAI et Anthropic — ont produit un taux d'échec de 67 %. Un mode d'échec propre à la langue est apparu : le raisonnement inversé, selon lequel le modèle soutient que conduire salirait davantage la voiture ou que la voiture est déjà propre, se manifeste chez trois fournisseurs en français (Mistral, Lumo et GPT) mais dans aucun test en anglais. La relation du commutateur de raisonnement s'est révélée dépendante de la langue : GPT 5.2 réussit sans raisonnement étendu et échoue avec en français — l'exact inverse de son comportement en anglais. Claude Opus 4.7 a produit l'une des réponses correctes les plus concises de l'ensemble du jeu de données (« En voiture — sinon le lave-auto va laver le mauvais sujet ») tandis que le même modèle, le même réglage, le même jour, a échoué en chinois avec une réponse de deux caractères. Le type de mauvaise réponse dépend de la langue, même lorsque le fait de l'échec n'en dépend pas.</p>
-        <p class="corpus-note"><em>French paragraph pending native-speaker verification before any print use.</em></p>
       </div>
     </section>
   </main>
@@ -182,7 +181,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260527c"></script>
+  <script src="scripts.js?v=20260527d"></script>
   <script>
     (async function () {
       try {

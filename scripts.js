@@ -32,6 +32,8 @@
     "adaptive_off": "Adaptive Off",
     "n/a": "N/A",
     "balanced": "Balanced",
+    "think": "Think",
+    "research": "Research",
     "fast": "Fast",
     "auto": "Auto",
     "expert": "Expert",
@@ -105,7 +107,7 @@
   }
 
   const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3 };
-  const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "expert": 7, "adaptive_on": 8, "on": 9 };
+  const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "think": 7, "expert": 8, "adaptive_on": 9, "on": 10, "research": 11 };
 
   function tokenEstimate(response) {
     if (!response) return 0;
@@ -935,7 +937,8 @@
         '<li><strong>On / Off</strong> — user-toggled reasoning (Anthropic Extended Thinking, OpenAI extended thinking, Google Gemini Thinking, DeepSeek DeepThink, Kimi).</li>' +
         '<li><strong>Adaptive On / Off</strong> — the model decides whether to reason (Anthropic Sonnet 4.6, Opus 4.7).</li>' +
         '<li><strong>Auto</strong> — a vendor picker that selects a reasoning depth (xAI Grok 4.3, Qwen).</li>' +
-        '<li><strong>Fast</strong> — reasoning suppressed for latency (Grok 4.3, Qwen 3.6, Mistral Medium 3.5).</li>' +
+        '<li><strong>Fast</strong> — reasoning suppressed for latency (xAI Grok 4.3, Qwen 3.6 / 3.7).</li>' +
+        '<li><strong>Balanced / Think / Research</strong> — Mistral Le Chat\'s mode picker (everyday / extended reasoning / multi-source deep analysis).</li>' +
         '<li><strong>Expert</strong> — maximum-deliberation tier (xAI Grok 4.3).</li>' +
         '<li><strong>Contemplating</strong> — multi-chain parallel reasoning (Meta Muse Spark).</li>' +
         '<li><strong>N/A</strong> — no user-facing reasoning control exposed.</li>' +

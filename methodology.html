@@ -207,6 +207,28 @@
       </table>
     </section>
 
+    <section id="language-corpora">
+      <h2>Language corpora</h2>
+      <p>On May 27, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
+      <table class="results-table methodology-table">
+        <caption>Language corpora added May 27, 2026 (separate from the 98-run English corpus)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Corpus</th>
+            <th scope="col">Date</th>
+            <th scope="col">Runs</th>
+            <th scope="col">Failure rate</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Simplified Chinese</td><td>May 27, 2026</td><td>14</td><td>50%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22% plus five US-trained control runs at 100%. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>French</td><td>May 27, 2026</td><td>9</td><td>67%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode. Distance 35 m ≈ 115 ft.</td></tr>
+        </tbody>
+      </table>
+      <p>Prompts were translated via Google Translate and back-translated to verify conformance with the English original; distance was converted to a metric equivalent. Chinese token estimates use the Chinese character rate (1 character ≈ 0.6 tokens) and are not directly comparable to the English counts.</p>
+    </section>
+
     <section>
       <h2>Model versions</h2>
       <p>Where version numbers are exposed by the product surface, they are recorded here. This table is kept current as models are updated or substituted.</p>

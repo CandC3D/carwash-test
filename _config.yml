@@ -1,0 +1,6 @@
+# GitHub Pages (Jekyll) config — keep development files out of the published site.
+# Everything else is served as-is (no layouts/front matter are used).
+exclude:
+  - CLAUDE.md
+  - _notes
+  - "*.py"

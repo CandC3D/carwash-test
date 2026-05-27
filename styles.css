@@ -427,6 +427,14 @@ li { margin-bottom: 6px; }
 }
 .chart-legend-list strong { color: var(--ink); }
 
+/* Per-vendor language subsections (transcript pages) */
+.lang-runs-section {
+  margin-top: 44px;
+  border-top: 2px solid var(--light);
+  padding-top: 8px;
+}
+.reasoning-trace summary { color: var(--steel); }
+
 /* ── Multilingual corpora (metrics page) ─────────────────────────────── */
 .corpus-divider { border: 0; border-top: 2px solid var(--light); margin: 48px 0 0; }
 .corpus-prompt {

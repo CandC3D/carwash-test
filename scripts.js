@@ -415,6 +415,13 @@
     const tokensSpan = tokens > 0
       ? '<span title="Approximate token count, round(characters / 4)">~' + tokens.toLocaleString() + ' tokens</span>'
       : '';
+    const langAttr = run.language ? ' lang="' + escapeHTML(run.language) + '"' : '';
+    const traceBlock = (run.reasoning_trace && run.reasoning_trace.trim())
+      ? '<details class="reasoning-trace">' +
+          '<summary>Reasoning trace</summary>' +
+          '<div' + langAttr + '>' + escapeHTML(run.reasoning_trace) + '</div>' +
+        '</details>'
+      : '';
     return '<div class="transcript-entry" id="run-' + run.id + '">' +
       '<div class="transcript-header">' +
         '<span class="transcript-id">#' + run.id + '</span>' +
@@ -427,13 +434,50 @@
           '<span><span class="badge ' + run.result + '">' + RESULT_LABELS[run.result] + '</span></span>' +
         '</span>' +
       '</div>' +
+      traceBlock +
       '<details>' +
         '<summary>Verbatim response</summary>' +
-        '<div>' + escapeHTML(run.response) + '</div>' +
+        '<div' + langAttr + '>' + escapeHTML(run.response) + '</div>' +
       '</details>' +
       notesBlock +
       attachmentBlock +
       '</div>';
+  }
+
+  // Per-vendor non-English subsections: for a family slug, render its
+  // Chinese/French runs (prompt block + results table + transcripts).
+  function renderVendorLanguageRuns(allRuns, slug, basePath) {
+    basePath = basePath || "";
+    const fam = allRuns.filter(function (r) { return r.model_family === slug && runLang(r) !== "en"; });
+    if (!fam.length) return "";
+    const LANGS = [
+      { code: "zh-CN", title: "Chinese-Language Runs (简体中文)",
+        prompt: "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+        aria: "Simplified Chinese Carwash Test prompt",
+        translation: "My car is dirty. The carwash is 35 meters away. Should I walk or drive?",
+        note: "Token estimates use the Chinese character rate (1 character ≈ 0.6 tokens), so they are not directly comparable to the English counts." },
+      { code: "fr", title: "French-Language Runs (Français)",
+        prompt: "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
+        aria: "French Carwash Test prompt",
+        translation: "My car is dirty. The carwash is 35 meters away. Should I walk or drive there?",
+        note: "" }
+    ];
+    let out = "";
+    LANGS.forEach(function (L) {
+      const rs = fam.filter(function (r) { return r.language === L.code; });
+      if (!rs.length) return;
+      out += '<section class="lang-runs-section">' +
+        '<h2>' + escapeHTML(L.title) + '</h2>' +
+        '<div class="corpus-prompt">' +
+          '<blockquote lang="' + L.code + '" aria-label="' + escapeHTML(L.aria) + '">' + escapeHTML(L.prompt) + '</blockquote>' +
+          '<p class="translation"><em>Translation: ' + escapeHTML(L.translation) + '</em></p>' +
+          (L.note ? '<p class="methodology-note"><em>' + escapeHTML(L.note) + '</em></p>' : '') +
+        '</div>' +
+        renderResultsTableForFamily(rs) +
+        rs.map(function (r) { return renderTranscriptEntry(r, basePath); }).join("") +
+      '</section>';
+    });
+    return out;
   }
 
   function renderChangeLog(entries) {
@@ -965,6 +1009,7 @@
     renderVendorRail: renderVendorRail,
     renderVendorPagination: renderVendorPagination,
     renderTranscriptEntry: renderTranscriptEntry,
+    renderVendorLanguageRuns: renderVendorLanguageRuns,
     renderChangeLog: renderChangeLog,
     showError: showError
   };

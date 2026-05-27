@@ -427,6 +427,50 @@ li { margin-bottom: 6px; }
 }
 .chart-legend-list strong { color: var(--ink); }
 
+/* ── Multilingual corpora (metrics page) ─────────────────────────────── */
+.corpus-divider { border: 0; border-top: 2px solid var(--light); margin: 48px 0 0; }
+.corpus-prompt {
+  background: var(--bg-alt);
+  border-left: 3px solid var(--olive);
+  padding: 16px 20px;
+  margin: 10px 0 14px;
+}
+.corpus-prompt-label {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin: 0 0 8px;
+}
+.corpus-prompt blockquote {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.translation, .methodology-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
+.corpus-tokennote { text-align: left; }
+.corpus-summary { margin-top: 16px; }
+.corpus-summary p { margin: 0 0 12px; line-height: 1.6; }
+.corpus-summary p[lang] { color: var(--muted); }
+.corpus-note {
+  font-size: 13.5px;
+  color: var(--ink);
+  border-left: 2px solid var(--pumpkin);
+  padding-left: 14px;
+}
+.findings-list { font-size: 14px; line-height: 1.55; margin: 14px 0 0; padding-left: 20px; }
+.findings-list li { margin-bottom: 8px; }
+.findings-list strong { color: var(--ink); }
+.cross-lang-table td, .cross-lang-table th { text-align: left; }
+.cross-lang-table .na { color: var(--muted); text-align: center; }
+
 /* ── Methodology page polish ─────────────────────────────────────────── */
 .methodology-lede {
   font-family: var(--serif);

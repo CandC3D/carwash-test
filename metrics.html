@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260527a">
+  <link rel="stylesheet" href="styles.css?v=20260527b">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -101,6 +101,70 @@
       <h2>By model family</h2>
       <div id="chart-vendor"></div>
     </section>
+
+    <hr class="corpus-divider">
+
+    <section>
+      <h2>Cross-language comparison</h2>
+      <p>The Carwash Test has been run in three languages, each kept as a separate corpus (the charts above are the English corpus, n=98). This table places the models tested in more than one language side by side. The English column follows the live dataset.</p>
+      <table class="results-table cross-lang-table">
+        <caption>Cross-language Carwash Test results for models tested in English, French, and Simplified Chinese</caption>
+        <thead>
+          <tr><th scope="col">Model</th><th scope="col">Toggle</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Claude Opus 4.7</td><td>Adaptive On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>GPT 5.5</td><td>On</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>GPT 5.5</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>GPT 5.2</td><td>On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>GPT 5.2</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Fast</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Think</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Research</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Lumo</td><td>—</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+        </tbody>
+      </table>
+      <ul class="findings-list">
+        <li><strong>Chinese defeats models that pass in English and French.</strong> Opus 4.7, GPT 5.5 On, and GPT 5.2 On all hold the constraint in English, hold (mostly) in French, and fail in Chinese. The language is an independent variable.</li>
+        <li><strong>The inverted-logic failure is language-triggered.</strong> Models argue that driving would make the car dirtier in French (Mistral, Lumo, both GPTs) and Chinese (GPT 5.5 Off) but never in English. The <em>kind</em> of wrong answer depends on the language.</li>
+        <li><strong>The toggle's effect is language-dependent.</strong> GPT 5.2 On passes in English but fails in French; GPT 5.2 Off fails in English but passes in French. The same reasoning mechanism helps in one language and hurts in another.</li>
+      </ul>
+    </section>
+
+    <section id="corpus-zh" lang="en">
+      <h2>Simplified Chinese corpus</h2>
+      <div class="corpus-prompt">
+        <p class="corpus-prompt-label">Simplified Chinese prompt (35 m ≈ 115 ft)</p>
+        <blockquote lang="zh-CN" aria-label="Simplified Chinese Carwash Test prompt">我的车脏了。洗车店在35米外。我是该走路去，还是开车去？</blockquote>
+        <p class="translation"><em>Translation: My car is dirty. The carwash is 35 meters away. Should I walk or drive?</em></p>
+        <p class="methodology-note"><em>Translated via Google Translate; back-translated to verify conformance with the English original. Distance converted to a metric equivalent.</em></p>
+      </div>
+      <p class="chart-note corpus-tokennote">Token calculation: DeepSeek documents that 1 Chinese character ≈ 0.6 tokens (vs ~0.25 per English character), so token estimates for Chinese runs use the Chinese rate. A 72-token Chinese response and a 72-token English response represent different amounts of visible text.</p>
+      <div id="zh-tally"></div>
+      <div id="zh-table"></div>
+      <div class="corpus-summary">
+        <p>The Carwash Test was extended to Simplified Chinese using a metrically equivalent prompt. Across the three Chinese-hosted vendors — DeepSeek, Kimi, and Qwen — nine runs produced a 22% failure rate, substantially lower than the failure rate the same vendors showed in English. The prompt's mechanism survived translation: surface features still pushed toward Walk, the logical constraint still pointed toward Drive. What changed was how the constraint was articulated. Chinese responses that passed consistently named the carwash as a business requiring the car's physical presence — “洗车店老板可没法帮你洗” (the carwash owner can't help you wash it) — a personalized framing that made the logical object harder to lose. One novel failure mode emerged only in Chinese: DeepSeek V4-Pro with reasoning disabled identified the constraint correctly, labeled it as a joke, and offered Walk as the “serious” practical advice — the correct answer visible to the model and dismissed as comedy.</p>
+        <p lang="zh-CN">洗车测试已扩展至简体中文，使用等效的公制提示语。针对三家中国厂商——深度求索（DeepSeek）、Kimi和通义千问（Qwen）——的九次测试中，失败率为22%，远低于同一批厂商在英文版测试中的失败率。提示语的核心机制经受住了翻译的考验：表面特征仍然推向"走路"，逻辑约束仍然指向"开车"。变化在于约束的表达方式。通过测试的中文回答普遍将洗车店描述为一个需要车辆到场的经营场所——"洗车店老板可没法帮你洗"——这种拟人化的表述使逻辑对象更难被忽视。一种全新的失败模式仅在中文测试中出现：深度求索V4-Pro在关闭推理功能时，正确识别了逻辑约束，却将其归类为笑话，然后将"走路"作为严肃的实用建议——正确答案对模型来说清晰可见，却被当作幽默而忽略。</p>
+        <p class="corpus-note"><strong>Control runs.</strong> Five US-trained control runs (ChatGPT 5.5 On/Off, ChatGPT 5.2 On/Off, Claude Opus 4.7) were then added; all five fail, bringing the full corpus to 14 runs and a 50% failure rate. The Chinese-hosted vendors fail at 22%; the US-trained controls fail at 100% — the US models handle the Chinese prompt <em>worse</em> than the Chinese-hosted models do, inverting the intuition that Chinese vendors would struggle more.</p>
+      </div>
+    </section>
+
+    <section id="corpus-fr" lang="en">
+      <h2>French-language corpus</h2>
+      <div class="corpus-prompt">
+        <p class="corpus-prompt-label">French-language prompt (35 m ≈ 115 ft)</p>
+        <blockquote lang="fr" aria-label="French Carwash Test prompt">Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?</blockquote>
+        <p class="translation"><em>Translation: My car is dirty. The carwash is 35 meters away. Should I walk or drive there?</em></p>
+        <p class="methodology-note"><em>Translated via Google Translate; back-translated to verify conformance with the English original. Distance converted to a metric equivalent. French uses Latin script, so the standard ~4 chars-per-token estimate applies.</em></p>
+      </div>
+      <div id="fr-tally"></div>
+      <div id="fr-table"></div>
+      <div class="corpus-summary">
+        <p>The Carwash Test was extended to French using a metrically equivalent prompt. Nine runs across four vendors — Mistral, Lumo, OpenAI, and Anthropic — produced a 67% failure rate. A language-specific failure mode emerged: the inverted-logic pattern, in which the model argues that driving would make the car dirtier or that the car is already clean, appears across three vendors in French (Mistral, Lumo, and GPT) but in zero English-language runs. The toggle relationship itself proved language-dependent: GPT 5.2 passes with thinking off and fails with thinking on in French — the exact inverse of its English behavior. Claude Opus 4.7 produced one of the most concise correct answers in the entire dataset (“En voiture — sinon le lave-auto va laver le mauvais sujet”) while the same model, same toggle, same day, failed in Chinese with a two-character response. The kind of wrong answer depends on the language even when the fact of failure does not.</p>
+        <p lang="fr">Le test du lave-auto a été étendu au français à l'aide d'un prompt métrique équivalent. Neuf tests répartis sur quatre fournisseurs — Mistral, Lumo, OpenAI et Anthropic — ont produit un taux d'échec de 67 %. Un mode d'échec propre à la langue est apparu : le raisonnement inversé, selon lequel le modèle soutient que conduire salirait davantage la voiture ou que la voiture est déjà propre, se manifeste chez trois fournisseurs en français (Mistral, Lumo et GPT) mais dans aucun test en anglais. La relation du commutateur de raisonnement s'est révélée dépendante de la langue : GPT 5.2 réussit sans raisonnement étendu et échoue avec en français — l'exact inverse de son comportement en anglais. Claude Opus 4.7 a produit l'une des réponses correctes les plus concises de l'ensemble du jeu de données (« En voiture — sinon le lave-auto va laver le mauvais sujet ») tandis que le même modèle, le même réglage, le même jour, a échoué en chinois avec une réponse de deux caractères. Le type de mauvaise réponse dépend de la langue, même lorsque le fait de l'échec n'en dépend pas.</p>
+        <p class="corpus-note"><em>French paragraph pending native-speaker verification before any print use.</em></p>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -118,7 +182,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260527a"></script>
+  <script src="scripts.js?v=20260527b"></script>
   <script>
     (async function () {
       try {
@@ -131,6 +195,16 @@
         document.getElementById("chart-ratio").innerHTML = CarwashTest.renderCostRatioTrend(eng);
         document.getElementById("chart-thinking").innerHTML = CarwashTest.renderResultByThinking(eng);
         document.getElementById("chart-vendor").innerHTML = CarwashTest.renderVendorComparison(eng, data.model_families);
+
+        // Multilingual corpora (kept separate from the English aggregate)
+        const zh = CarwashTest.runsByLanguage(data.runs, "zh-CN");
+        document.getElementById("zh-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(zh));
+        document.getElementById("zh-table").innerHTML = CarwashTest.renderResultsTable(zh, data.model_families);
+        CarwashTest.makeSortable(document.querySelector("#zh-table table"));
+        const fr = CarwashTest.runsByLanguage(data.runs, "fr");
+        document.getElementById("fr-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(fr));
+        document.getElementById("fr-table").innerHTML = CarwashTest.renderResultsTable(fr, data.model_families);
+        CarwashTest.makeSortable(document.querySelector("#fr-table table"));
       } catch (err) {
         console.error(err);
         CarwashTest.showError("charts", "Could not load runs.json. " + err.message);

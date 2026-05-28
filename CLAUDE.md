@@ -16,7 +16,7 @@ Static site published at `https://candc3d.github.io/carwash-test/` via GitHub Pa
 
 ## Language corpora (separate, not merged)
 - Runs without a `language` field are English. Other corpora use `language`
-  (`zh-CN`, `fr`). **English aggregates must stay English-only** via
+  (`zh-CN`, `fr`, `uk`). **English aggregates must stay English-only** via
   `CarwashTest.englishRuns(runs)` — this filters the index, results table + CSV,
   the transcripts-hub family grid, per-vendor pages, the vendor rail, and the
   English metrics charts. Other languages render in their own Metrics sections and

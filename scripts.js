@@ -115,8 +115,13 @@
   }
 
   function runTokens(run) {
-    // Use the explicit token_estimate field if present (for runs whose
-    // verbatim record is incomplete — e.g. accompanied by a PDF
+    // Prefer the real output-token count when we have it (API-console runs
+    // report it directly, and it includes hidden reasoning tokens).
+    if (typeof run.output_tokens === "number" && run.output_tokens >= 0) {
+      return run.output_tokens;
+    }
+    // Otherwise use the explicit token_estimate field if present (for runs
+    // whose verbatim record is incomplete — e.g. accompanied by a PDF
     // attachment whose content is not in the response field).
     if (typeof run.token_estimate === "number" && run.token_estimate >= 0) {
       return run.token_estimate;
@@ -414,8 +419,24 @@
         '</div>';
     }
     const tokens = runTokens(run);
+    const tokenTitle = (typeof run.output_tokens === "number")
+      ? "Output tokens reported by the API (includes hidden reasoning tokens)"
+      : "Approximate token count, round(characters / 4)";
     const tokensSpan = tokens > 0
-      ? '<span title="Approximate token count, round(characters / 4)">~' + tokens.toLocaleString() + ' tokens</span>'
+      ? '<span title="' + tokenTitle + '">~' + tokens.toLocaleString() + ' tokens</span>'
+      : '';
+    const SURFACE_LABELS = { api_console: "API console", consumer: "Consumer app" };
+    const surfaceSpan = run.surface
+      ? '<span>' + escapeHTML(SURFACE_LABELS[run.surface] || run.surface) + '</span>'
+      : '';
+    const effortSpan = run.effort
+      ? '<span>Effort: ' + escapeHTML(run.effort) + '</span>'
+      : '';
+    const verbositySpan = run.verbosity
+      ? '<span>Verbosity: ' + escapeHTML(run.verbosity) + '</span>'
+      : '';
+    const traceLangSpan = run.reasoning_trace_language
+      ? '<span title="Internal reasoning-trace language, distinct from the response language">Reasoned in: ' + escapeHTML(run.reasoning_trace_language) + '</span>'
       : '';
     const langAttr = run.language ? ' lang="' + escapeHTML(run.language) + '"' : '';
     const traceBlock = (run.reasoning_trace && run.reasoning_trace.trim())
@@ -430,7 +451,11 @@
         '<span class="transcript-model">' + escapeHTML(run.model) + '</span>' +
         '<span class="transcript-meta">' +
           '<span>' + escapeHTML(run.vendor) + '</span>' +
+          surfaceSpan +
           '<span>Thinking: ' + escapeHTML(formatThinking(run.thinking)) + '</span>' +
+          effortSpan +
+          verbositySpan +
+          traceLangSpan +
           '<span>' + escapeHTML(formatDate(run.date)) + '</span>' +
           tokensSpan +
           '<span><span class="badge ' + run.result + '">' + RESULT_LABELS[run.result] + '</span></span>' +
@@ -462,7 +487,12 @@
         prompt: "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
         aria: "French Carwash Test prompt",
         translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
-        note: "" }
+        note: "" },
+      { code: "uk", title: "Ukrainian-Language Runs (Українська)",
+        prompt: "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
+        aria: "Ukrainian Carwash Test prompt",
+        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+        note: "Native-speaker-translated prompt. Token counts for API-console runs are real output-token totals (including hidden reasoning); consumer-app runs use the measured Cyrillic rate (~0.5 tokens/character). Both differ from the English character-based estimates." }
     ];
     let out = "";
     LANGS.forEach(function (L) {

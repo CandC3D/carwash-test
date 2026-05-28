@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260527e">
+  <link rel="stylesheet" href="styles.css?v=20260528a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -143,6 +143,7 @@
         <li><strong>Balanced / Think / Research.</strong> Mistral Le Chat's mode picker: Balanced (everyday default), Think (extended reasoning), and Research (multi-source deep analysis). Balanced was labeled "Fast" in March.</li>
         <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
       </ul>
+      <p><strong>Reasoning-effort and verbosity selectors (May 28, 2026).</strong> Two vendors now expose the <em>amount</em> of reasoning as a graded control distinct from the on/off toggle. Anthropic added a model-specific effort selector — Opus 4.8: Low / Medium / High / Extra / Max; Sonnet 4.6: Low / Medium / High / Max (High is the default) — which coexists with the Adaptive toggle as an orthogonal control, so an Anthropic run now carries both an Adaptive state and an effort level. OpenAI's API console exposes effort (e.g. low / medium / extra-high) and verbosity (low / medium) as separate orthogonal settings, so a model can be told to think hard and still answer briefly. Where these settings were recorded they appear in the run's transcript metadata; the effort level is treated as an experimental variable on the <a href="metrics.html#cross-corpus">Metrics page</a>.</p>
     </section>
 
     <section>
@@ -182,7 +183,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – May 25, 2026</caption>
+        <caption>Carwash Test snapshots, March 22 – May 28, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -203,15 +204,17 @@
           <tr><td>TIME AI</td><td>May 25, 2026</td><td>1</td><td>93</td></tr>
           <tr><td>Qwen 3.7 series</td><td>May 25, 2026</td><td>4</td><td>97</td></tr>
           <tr><td>Alexa (Amazon shopping assistant)</td><td>May 25, 2026</td><td>1</td><td>98</td></tr>
+          <tr><td>Claude Opus 4.8 (flagship)</td><td>May 28, 2026</td><td>2</td><td>100</td></tr>
         </tbody>
       </table>
+      <p class="chart-note">Counts are the English corpus. The Simplified Chinese (14), French (9), and Ukrainian (17) runs are kept as separate corpora and are not included in this cumulative total.</p>
     </section>
 
     <section id="language-corpora">
       <h2>Language corpora</h2>
-      <p>On May 27, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
+      <p>On May 27–28, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27, 2026 (separate from the 98-run English corpus)</caption>
+        <caption>Language corpora added May 27–28, 2026 (separate from the 100-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -224,10 +227,11 @@
         <tbody>
           <tr><td>Simplified Chinese</td><td>May 27, 2026</td><td>14</td><td>50%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22% plus five US-trained control runs at 100%. Distance 35 m ≈ 115 ft.</td></tr>
           <tr><td>French</td><td>May 27, 2026</td><td>9</td><td>67%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Ukrainian</td><td>May 28, 2026</td><td>17</td><td>24%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
       </table>
-      <p>Prompts were translated via Google Translate and back-translated to verify conformance with the English original; distance was converted to a metric equivalent. Chinese token estimates use the Chinese character rate (1 character ≈ 0.6 tokens) and are not directly comparable to the English counts.</p>
-      <p>Before each non-English run, the user's language setting was changed to match the prompt language (Simplified Chinese or French). This ensures the system receives the prompt in a locale-consistent context rather than as a foreign-language input through an English-language interface.</p>
+      <p>The Chinese and French prompts were translated via Google Translate and back-translated to verify conformance with the English original; the Ukrainian prompt was translated by a native speaker. Distance was converted to a metric equivalent in every case. Token rates are script-specific and are not directly comparable to the English counts: Chinese estimates use ~0.6 tokens per character, and Cyrillic runs measured ~0.5 tokens per character (about double the English rate of ~0.25) — the first directly measured rate, taken from API output-token counts. Latin-script corpora (French) use the standard ~4-characters-per-token estimate.</p>
+      <p>Before each non-English run, the user's language setting was changed to match the prompt language. This ensures the system receives the prompt in a locale-consistent context rather than as a foreign-language input through an English-language interface.</p>
     </section>
 
     <section>
@@ -244,8 +248,9 @@
           </tr>
         </thead>
         <tbody>
+          <tr><td>Anthropic</td><td>Claude Opus</td><td>4.8</td><td>New flagship (May 28, 2026). Adaptive On/Off toggle plus a model-specific reasoning-effort selector: Low / Medium / High / Extra / Max (High default). The two controls are orthogonal.</td></tr>
+          <tr><td>Anthropic</td><td>Claude Sonnet</td><td>4.6</td><td>Default model. Adaptive On/Off toggle plus reasoning-effort selector: Low / Medium / High / Max (High default).</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.6</td><td>Extended Thinking On/Off toggle (reverted from Adaptive as of May 3)</td></tr>
-          <tr><td>Anthropic</td><td>Claude Sonnet</td><td>4.6</td><td>Adaptive On/Off toggle</td></tr>
           <tr><td>Anthropic</td><td>Claude Haiku</td><td>4.5</td><td>Extended Thinking On/Off toggle</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.7</td><td>Adaptive On/Off toggle; released April 16, 2026</td></tr>
           <tr><td>OpenAI</td><td>ChatGPT</td><td>5.2, 5.3, 5.4, 5.5</td><td>Extended Thinking On/Off toggle (5.3 has no toggle on Plus)</td></tr>
@@ -294,7 +299,13 @@
         <li><strong>May 3, 2026:</strong> Anthropic reverted Opus 4.6 to Extended Thinking On/Off (had briefly used Adaptive On/Off). Sonnet 4.6 and Opus 4.7 retained Adaptive.</li>
         <li><strong>May 25, 2026:</strong> Google added Gemini 3.1 Flash-Lite and Gemini 3.5 Flash to the consumer interface.</li>
         <li><strong>May 2026:</strong> Amazon retired Rufus in favor of Alexa as the shopping assistant at amazon.com.</li>
+        <li><strong>May 28, 2026:</strong> Anthropic released Claude Opus 4.8 as the new flagship and added a model-specific reasoning-effort selector (Opus 4.8: Low/Medium/High/Extra/Max; Sonnet 4.6: Low/Medium/High/Max) coexisting with the Adaptive toggle as an orthogonal control. The roster was tightened: Sonnet 4.6 is the default, with Opus 4.8, Haiku 4.5, Opus 4.7, Opus 4.6, and Opus 3 under "More models."</li>
+        <li><strong>May 28, 2026:</strong> OpenAI's API console exposed separate effort and verbosity controls as orthogonal settings.</li>
       </ul>
+      <div class="callout callout-note">
+        <span class="callout-tag">Note</span>
+        <p><strong>The Opus trajectory (4.6 → 4.7 → 4.8).</strong> Opus 4.6 passed the English test cleanly and concisely. Opus 4.7 introduced verbose Adaptive-On padding that pushed its English answer to pass-adjacent. Opus 4.8 returns to the 4.6 pattern: clean passes in both toggle states, the padding gone. The flagship's handling of the constraint is not monotonic with version number — it regressed at 4.7 and recovered at 4.8.</p>
+      </div>
     </section>
 
     <section id="model-identification">
@@ -361,7 +372,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260527e"></script>
+  <script src="scripts.js?v=20260528a"></script>
   <script>
     (async function () {
       try {

@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Metrics | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 98 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 100 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260527e">
+  <link rel="stylesheet" href="styles.css?v=20260528a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Metrics">
-  <meta property="og:description" content="Charts and trends across 98 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:description" content="Charts and trends across 100 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta property="og:url" content="https://candc3d.github.io/carwash-test/metrics.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Metrics">
-  <meta name="twitter:description" content="Charts and trends across 98 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="twitter:description" content="Charts and trends across 100 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -106,28 +106,32 @@
 
     <section>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in three languages, each kept as a separate corpus (the charts above are the English corpus, n=98). This table places the models tested in more than one language side by side. The English column follows the live dataset.</p>
+      <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=100). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language.</p>
       <table class="results-table cross-lang-table">
-        <caption>Cross-language Carwash Test results for models tested in English, French, and Simplified Chinese</caption>
+        <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian</caption>
         <thead>
-          <tr><th scope="col">Model</th><th scope="col">Toggle</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th></tr>
+          <tr><th scope="col">Model</th><th scope="col">Toggle</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th><th scope="col">Ukrainian</th></tr>
         </thead>
         <tbody>
-          <tr><td>Claude Opus 4.7</td><td>Adaptive On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td></tr>
-          <tr><td>GPT 5.5</td><td>On</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td></tr>
-          <tr><td>GPT 5.5</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td></tr>
-          <tr><td>GPT 5.2</td><td>On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td></tr>
-          <tr><td>GPT 5.2</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td></tr>
-          <tr><td>Mistral Medium 3.5</td><td>Balanced</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
-          <tr><td>Mistral Medium 3.5</td><td>Think</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
-          <tr><td>Mistral Medium 3.5</td><td>Research</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
-          <tr><td>Lumo</td><td>—</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Claude Opus 4.8</td><td>Adaptive On</td><td><span class="badge pass">Pass</span></td><td class="na">—</td><td class="na">—</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Claude Opus 4.8</td><td>Adaptive Off</td><td><span class="badge pass">Pass</span></td><td class="na">—</td><td class="na">—</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Claude Opus 4.7</td><td>Adaptive On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Claude Sonnet 4.6</td><td>On</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Claude Sonnet 4.6</td><td>Off</td><td class="na">—</td><td class="na">—</td><td class="na">—</td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>GPT 5.5</td><td>On</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>GPT 5.5</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>GPT 5.2</td><td>On</td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>GPT 5.2</td><td>Off</td><td><span class="badge fail">Fail</span></td><td><span class="badge pass-adjacent">Pass-adj</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Balanced</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td><td class="na">—</td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Think</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td><td class="na">—</td></tr>
+          <tr><td>Mistral Medium 3.5</td><td>Research</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td><td class="na">—</td></tr>
+          <tr><td>Lumo</td><td>—</td><td><span class="badge fail">Fail</span></td><td><span class="badge fail">Fail</span></td><td class="na">—</td><td class="na">—</td></tr>
         </tbody>
       </table>
       <ul class="findings-list">
         <li><strong>Chinese defeats models that pass in English and French.</strong> Opus 4.7, GPT 5.5 On, and GPT 5.2 On all hold the constraint in English, hold (mostly) in French, and fail in Chinese. The language is an independent variable.</li>
-        <li><strong>The inverted-logic failure is language-triggered.</strong> Models argue that driving would make the car dirtier in French (Mistral, Lumo, both GPTs) and Chinese (GPT 5.5 Off) but never in English. The <em>kind</em> of wrong answer depends on the language.</li>
-        <li><strong>The toggle's effect is language-dependent.</strong> GPT 5.2 On passes in English but fails in French; GPT 5.2 Off fails in English but passes in French. The same reasoning mechanism helps in one language and hurts in another.</li>
+        <li><strong>The inverted-logic failure is language-triggered.</strong> Models argue that driving would make the car dirtier in French (Mistral, Lumo, both GPTs), Chinese (GPT 5.5 Off), and Ukrainian (Sonnet 4.6 Off, both consumer Sonnet runs) but never in English. The <em>kind</em> of wrong answer depends on the language.</li>
+        <li><strong>The toggle's effect is language-dependent.</strong> GPT 5.2 On passes in English but fails in French; GPT 5.2 Off fails in English but passes in French. In Ukrainian, Sonnet 4.6 holds the constraint with thinking on and inverts it with thinking off. The same reasoning mechanism helps in one language and hurts in another.</li>
       </ul>
     </section>
 
@@ -164,6 +168,78 @@
         <p lang="fr">Le test du lave-auto a été étendu au français à l'aide d'un prompt métrique équivalent. Neuf tests répartis sur quatre fournisseurs — Mistral, Lumo, OpenAI et Anthropic — ont produit un taux d'échec de 67 %. Un mode d'échec propre à la langue est apparu : le raisonnement inversé, selon lequel le modèle soutient que conduire salirait davantage la voiture ou que la voiture est déjà propre, se manifeste chez trois fournisseurs en français (Mistral, Lumo et GPT) mais dans aucun test en anglais. La relation du commutateur de raisonnement s'est révélée dépendante de la langue : GPT 5.2 réussit sans raisonnement étendu et échoue avec en français — l'exact inverse de son comportement en anglais. Claude Opus 4.7 a produit l'une des réponses correctes les plus concises de l'ensemble du jeu de données (« En voiture — sinon le lave-auto va laver le mauvais sujet ») tandis que le même modèle, le même réglage, le même jour, a échoué en chinois avec une réponse de deux caractères. Le type de mauvaise réponse dépend de la langue, même lorsque le fait de l'échec n'en dépend pas.</p>
       </div>
     </section>
+
+    <section id="corpus-uk" lang="en">
+      <h2>Ukrainian-language corpus</h2>
+      <div class="corpus-prompt">
+        <p class="corpus-prompt-label">Ukrainian-language prompt (35 m ≈ 115 ft)</p>
+        <blockquote lang="uk" aria-label="Ukrainian Carwash Test prompt">У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?</blockquote>
+        <p class="translation"><em>Translation: My car is dirty. The car wash is 35 meters away. Should I walk there or drive?</em></p>
+        <p class="methodology-note"><em>Native-speaker-translated, not machine-translated. Distance converted to a metric equivalent.</em></p>
+      </div>
+      <p class="chart-note corpus-tokennote">Token calculation: this is the first corpus with a measured tokenization rate. API-console runs report real output-token counts (which include hidden reasoning tokens), and Cyrillic text runs at roughly 0.5 tokens per character — about double the English rate of ~0.25. Console runs are flagged distinctly because their token totals include reasoning the consumer interface hides. Consumer-app runs use the measured Cyrillic rate. None of these counts are directly comparable to the English character-based estimates.</p>
+      <div id="uk-tally"></div>
+      <div id="uk-table"></div>
+      <div class="corpus-summary">
+        <p>The Carwash Test was extended to Ukrainian using a native-speaker-translated prompt — 17 runs across Anthropic, OpenAI, DeepSeek, and Qwen, split between the API console and the consumer interface, for a 24% failure rate. The corpus was built to separate two things the earlier languages had confounded: the <em>reasoning-effort level</em> as a continuous variable, and the <em>surface</em> (developer console vs. consumer app). Both proved to matter. Claude Sonnet 4.6 holds the constraint at high effort and inverts it at low effort — the same model, same prompt, failing only when given less time to think. On the console, OpenAI's GPT 5.5 returned the same correct answer at 121 output tokens (low effort) and 565 (extra-high effort): a 4.7× cost difference for identical quality, almost all of it hidden reasoning. The cleanest pass in the corpus was Qwen3.7-Plus-Preview's two-sentence answer naming the constraint directly (“the washers would have nothing to wash”). The most elaborate failure in the entire dataset also appeared here: DeepSeek V4-Pro with reasoning off fabricated a “known Soviet riddle” about Zhiguli cars, complete with an invented canonical punchline, to justify walking — constraint-as-comedy escalated into a hallucinated cultural reference, which reasoning-on then repaired.</p>
+        <p lang="uk"><em>Резюме українською мовою готується; його перевірить носій мови перед публікацією.</em></p>
+      </div>
+    </section>
+
+    <section id="cross-corpus">
+      <h2>Cross-corpus findings</h2>
+      <p>Three findings emerge only when the corpora are read together — each isolates a variable that a single language could not.</p>
+
+      <h3>Models reason in a dominant internal language, then translate</h3>
+      <p>Several Ukrainian runs exposed a reasoning trace in a language other than the prompt or the answer. The model handled the logical constraint in its dominant internal language and translated only the final output into Ukrainian.</p>
+      <table class="results-table">
+        <caption>Reasoning-trace language vs. response language (Ukrainian corpus)</caption>
+        <thead><tr><th scope="col">Model</th><th scope="col">Surface / toggle</th><th scope="col">Reasoned in</th><th scope="col">Answered in</th></tr></thead>
+        <tbody>
+          <tr><td>DeepSeek V4-Flash</td><td>Consumer, DeepThink On</td><td>Russian</td><td>Ukrainian</td></tr>
+          <tr><td>Qwen3.7-Max</td><td>Consumer</td><td>English, then Chinese</td><td>Ukrainian</td></tr>
+          <tr><td>Qwen3.7-Max-Preview</td><td>Consumer</td><td>Ukrainian, then Chinese</td><td>Ukrainian</td></tr>
+          <tr><td>Claude Sonnet 4.6</td><td>API console, On / Adaptive On</td><td>English</td><td>Ukrainian</td></tr>
+        </tbody>
+      </table>
+      <p class="chart-note">DeepSeek reasoning in Russian on a Ukrainian prompt is notable given the political context; the trace language is a property of the training distribution, not the prompt.</p>
+
+      <h3>Reasoning effort is a continuous variable, not a toggle</h3>
+      <p>Anthropic's new effort selector (and OpenAI's console effort control) make the amount of reasoning a dial rather than an on/off switch. The same model can pass or fail depending on where the dial sits.</p>
+      <table class="results-table">
+        <caption>Claude Sonnet 4.6 on the Ukrainian prompt, by effort level</caption>
+        <thead><tr><th scope="col">Surface / toggle</th><th scope="col">Effort</th><th scope="col">Result</th></tr></thead>
+        <tbody>
+          <tr><td>Console, Thinking On</td><td>High</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Console, Adaptive On</td><td>High</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Console, Thinking Off</td><td>High</td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>Consumer, Adaptive On</td><td>Low</td><td><span class="badge fail">Fail</span></td></tr>
+          <tr><td>Consumer, Adaptive Off</td><td>Low</td><td><span class="badge fail">Fail</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Effort is pure cost once the answer is correct</h3>
+      <p>On the OpenAI console, effort and verbosity are orthogonal controls — you can think hard and speak briefly. GPT 5.5 produced the same correct Ukrainian answer at three effort settings; the extra effort bought nothing but hidden reasoning tokens.</p>
+      <table class="results-table">
+        <caption>GPT 5.5 on the Ukrainian prompt (API console), by effort</caption>
+        <thead><tr><th scope="col">Effort</th><th scope="col">Verbosity</th><th scope="col">Output tokens</th><th scope="col">Result</th></tr></thead>
+        <tbody>
+          <tr><td>Low</td><td>Low</td><td>121</td><td><span class="badge pass">Pass</span></td></tr>
+          <tr><td>Medium</td><td>Medium</td><td>250</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Extra-high</td><td>Low</td><td>565</td><td><span class="badge pass">Pass</span></td></tr>
+        </tbody>
+      </table>
+      <p class="chart-note">Low and extra-high effort return the same correct answer at 121 vs. 565 output tokens — a 4.7× cost difference for identical quality.</p>
+
+      <h3>The winner's circle: concise correct answers</h3>
+      <p>A “winner's-circle” pass names the constraint and stops. Because tokenization differs by script, the brevity threshold is script-specific: ≤30 tokens in Latin, ≤60 in Hanzi, ≤60 in Cyrillic. Charter members so far:</p>
+      <ul class="findings-list">
+        <li><strong>Claude Opus 4.8</strong> (English, both toggles) — “Drive. You're taking the car to the carwash.” (~10 tokens)</li>
+        <li><strong>Claude Opus 4.7</strong> (French) — “En voiture — sinon le lave-auto va laver le mauvais sujet.”</li>
+        <li><strong>Qwen3.7-Plus-Preview</strong> (Ukrainian) — names the constraint in two sentences (~60 tokens, Cyrillic).</li>
+      </ul>
+      <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>
+    </section>
   </main>
 
   <footer>
@@ -181,7 +257,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260527e"></script>
+  <script src="scripts.js?v=20260528a"></script>
   <script>
     (async function () {
       try {
@@ -204,6 +280,10 @@
         document.getElementById("fr-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(fr));
         document.getElementById("fr-table").innerHTML = CarwashTest.renderResultsTable(fr, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#fr-table table"));
+        const uk = CarwashTest.runsByLanguage(data.runs, "uk");
+        document.getElementById("uk-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(uk));
+        document.getElementById("uk-table").innerHTML = CarwashTest.renderResultsTable(uk, data.model_families);
+        CarwashTest.makeSortable(document.querySelector("#uk-table table"));
       } catch (err) {
         console.error(err);
         CarwashTest.showError("charts", "Could not load runs.json. " + err.message);

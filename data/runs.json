@@ -1421,7 +1421,7 @@
       "token_estimate": 2,
       "token_method": "Chinese chars × 0.6 (DeepSeek documented rate, applied uniformly)",
       "response": "走路。",
-      "notes": "Chinese-language control run. Fail: two characters. Most terse failure in the entire dataset. Opus 4.7 has never failed in English, produced one of the most elegant French responses ('sinon le lave-auto va laver le mauvais sujet'), and fails in Chinese with a single word."
+      "notes": "Chinese-language control run. Fail: two characters. Most terse failure in the entire dataset. Opus 4.7 has never failed in English, produced one of the most elegant French responses ('sinon le lave-auto va laver le mauvais sujet'), and fails in Chinese with a single word. Conducted through an English-language interface; Claude app's interface does not offer Simplified or Traditional Chinese as a UI language option. Locale mismatch may be a factor in the result."
     },
     {
       "id": 113,

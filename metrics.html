@@ -235,23 +235,23 @@
       <p>A “winner's-circle” pass names the constraint and stops. Because tokenization differs by script, the brevity threshold is script-specific: ≤30 tokens in Latin, ≤60 in Hanzi, ≤60 in Cyrillic. Every Pass that clears its threshold is listed below — runs #1/#39 and #2/#40 are the same verbatim answer produced in two separate test batches.</p>
       <table class="results-table">
         <caption>Winner&rsquo;s-circle passes: every Pass within the per-script token threshold</caption>
-        <thead><tr><th scope="col">Script</th><th scope="col">Run</th><th scope="col">Model</th><th scope="col">Language / config</th><th scope="col">Tokens</th><th scope="col">Response</th></tr></thead>
+        <thead><tr><th scope="col">Run</th><th scope="col">Script</th><th scope="col">Model</th><th scope="col">Language / config</th><th scope="col">Tokens</th><th scope="col">Response</th></tr></thead>
         <tbody>
-          <tr><td>Latin</td><td>#3</td><td>Claude Sonnet 4.6</td><td>English / On</td><td>8</td><td>Drive. You&#x27;re going to a carwash.</td></tr>
-          <tr><td>Latin</td><td>#122</td><td>Claude Opus 4.8</td><td>English / Adaptive Off</td><td>10</td><td>Drive. You&#x27;re taking the car to the carwash.</td></tr>
-          <tr><td>Latin</td><td>#2</td><td>Claude Opus 4.6</td><td>English / Off</td><td>11</td><td>Drive. You&#x27;re washing the car, not yourself.</td></tr>
-          <tr><td>Latin</td><td>#40</td><td>Claude Opus 4.6</td><td>English / Off</td><td>11</td><td>Drive. You&#x27;re washing the car, not yourself.</td></tr>
-          <tr><td>Latin</td><td>#123</td><td>Claude Opus 4.8</td><td>English / Adaptive On</td><td>12</td><td>Drive. You&#x27;d have to drive it through the carwash anyway.</td></tr>
-          <tr><td>Latin</td><td>#1</td><td>Claude Opus 4.6</td><td>English / On</td><td>14</td><td>Drive. The car&#x27;s the thing that needs washing, not you.</td></tr>
-          <tr><td>Latin</td><td>#39</td><td>Claude Opus 4.6</td><td>English / On</td><td>14</td><td>Drive. The car&#x27;s the thing that needs washing, not you.</td></tr>
-          <tr><td>Latin</td><td>#121</td><td>Claude Opus 4.7</td><td>French / Adaptive On</td><td>15</td><td><span lang="fr">En voiture — sinon le lave-auto va laver le mauvais sujet.</span></td></tr>
-          <tr><td>Latin</td><td>#4</td><td>Claude Sonnet 4.6</td><td>English / Off</td><td>17</td><td>Drive. You&#x27;re getting a carwash — the car needs to be there anyway.</td></tr>
-          <tr><td>Latin</td><td>#42</td><td>Claude Sonnet 4.6</td><td>English / Adaptive Off</td><td>18</td><td>Drive. You&#x27;re going to a carwash — the car needs to be there, not you.</td></tr>
-          <tr><td>Latin</td><td>#41</td><td>Claude Sonnet 4.6</td><td>English / Adaptive On</td><td>19</td><td>Drive. You&#x27;re getting a carwash, not a car delivery — you need the car there.</td></tr>
-          <tr><td>Latin</td><td>#97</td><td>Qwen3.7-Plus-Preview</td><td>English / On</td><td>20</td><td>You should drive.  If you walk, your car stays behind and doesn&#x27;t get washed!</td></tr>
-          <tr><td>Latin</td><td>#32</td><td>ChatGPT 5.5</td><td>English / On</td><td>22</td><td>Drive. Walking solves the &quot;100 feet away&quot; problem, but not the &quot;my car is dirty&quot; problem.</td></tr>
-          <tr><td>Hanzi</td><td>#106</td><td>Qwen3.7-Max-Preview</td><td>Chinese / —</td><td>54</td><td><span lang="zh-CN">当然是开车去！ 如果你走路去，人到了洗车店，车还在原地，洗车店老板可没法隔空帮你洗。你要洗的是车，不是你自己呀😂。 （除非你打算走路过去，把洗车店老板请过来，或者借个水管自己拉回来洗……）</span></td></tr>
-          <tr><td>Cyrillic</td><td>#140</td><td>Qwen3.7-Plus-Preview</td><td>Ukrainian / —</td><td>60</td><td><span lang="uk">Вам однозначно треба поїхати на машині. Інакше мийникам буде нічого мити (хіба що ви вирішите донести її на руках 😉).</span></td></tr>
+          <tr><td>#1</td><td>Latin</td><td>Claude Opus 4.6</td><td>English / On</td><td>14</td><td>Drive. The car&#x27;s the thing that needs washing, not you.</td></tr>
+          <tr><td>#2</td><td>Latin</td><td>Claude Opus 4.6</td><td>English / Off</td><td>11</td><td>Drive. You&#x27;re washing the car, not yourself.</td></tr>
+          <tr><td>#3</td><td>Latin</td><td>Claude Sonnet 4.6</td><td>English / On</td><td>8</td><td>Drive. You&#x27;re going to a carwash.</td></tr>
+          <tr><td>#4</td><td>Latin</td><td>Claude Sonnet 4.6</td><td>English / Off</td><td>17</td><td>Drive. You&#x27;re getting a carwash — the car needs to be there anyway.</td></tr>
+          <tr><td>#32</td><td>Latin</td><td>ChatGPT 5.5</td><td>English / On</td><td>22</td><td>Drive. Walking solves the &quot;100 feet away&quot; problem, but not the &quot;my car is dirty&quot; problem.</td></tr>
+          <tr><td>#39</td><td>Latin</td><td>Claude Opus 4.6</td><td>English / On</td><td>14</td><td>Drive. The car&#x27;s the thing that needs washing, not you.</td></tr>
+          <tr><td>#40</td><td>Latin</td><td>Claude Opus 4.6</td><td>English / Off</td><td>11</td><td>Drive. You&#x27;re washing the car, not yourself.</td></tr>
+          <tr><td>#41</td><td>Latin</td><td>Claude Sonnet 4.6</td><td>English / Adaptive On</td><td>19</td><td>Drive. You&#x27;re getting a carwash, not a car delivery — you need the car there.</td></tr>
+          <tr><td>#42</td><td>Latin</td><td>Claude Sonnet 4.6</td><td>English / Adaptive Off</td><td>18</td><td>Drive. You&#x27;re going to a carwash — the car needs to be there, not you.</td></tr>
+          <tr><td>#97</td><td>Latin</td><td>Qwen3.7-Plus-Preview</td><td>English / On</td><td>20</td><td>You should drive.  If you walk, your car stays behind and doesn&#x27;t get washed!</td></tr>
+          <tr><td>#106</td><td>Hanzi</td><td>Qwen3.7-Max-Preview</td><td>Chinese / —</td><td>54</td><td><span lang="zh-CN">当然是开车去！ 如果你走路去，人到了洗车店，车还在原地，洗车店老板可没法隔空帮你洗。你要洗的是车，不是你自己呀😂。 （除非你打算走路过去，把洗车店老板请过来，或者借个水管自己拉回来洗……）</span></td></tr>
+          <tr><td>#121</td><td>Latin</td><td>Claude Opus 4.7</td><td>French / Adaptive On</td><td>15</td><td><span lang="fr">En voiture — sinon le lave-auto va laver le mauvais sujet.</span></td></tr>
+          <tr><td>#122</td><td>Latin</td><td>Claude Opus 4.8</td><td>English / Adaptive Off</td><td>10</td><td>Drive. You&#x27;re taking the car to the carwash.</td></tr>
+          <tr><td>#123</td><td>Latin</td><td>Claude Opus 4.8</td><td>English / Adaptive On</td><td>12</td><td>Drive. You&#x27;d have to drive it through the carwash anyway.</td></tr>
+          <tr><td>#140</td><td>Cyrillic</td><td>Qwen3.7-Plus-Preview</td><td>Ukrainian / —</td><td>60</td><td><span lang="uk">Вам однозначно треба поїхати на машині. Інакше мийникам буде нічого мити (хіба що ви вирішите донести її на руках 😉).</span></td></tr>
         </tbody>
       </table>
       <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>

@@ -140,7 +140,7 @@
         <li><strong>Fast.</strong> Reasoning suppressed in favor of latency. Used by xAI Grok 4.3 and Qwen 3.6 / 3.7.</li>
         <li><strong>Expert.</strong> Maximum-deliberation tier. Used by xAI Grok 4.3.</li>
         <li><strong>Contemplating.</strong> Multi-chain parallel reasoning. New mode added by Meta to Muse Spark in May.</li>
-        <li><strong>Balanced / Think / Research.</strong> Mistral Le Chat's mode picker: Balanced (everyday default), Think (extended reasoning), and Research (multi-source deep analysis). Balanced was labeled "Fast" in March.</li>
+        <li><strong>Balanced / Think / Research.</strong> Mistral's mode picker (in the app now branded <strong>Vibe</strong>, formerly Le Chat): Balanced (everyday default), Think (extended reasoning), and Research (multi-source deep analysis). Balanced was labeled "Fast" in March.</li>
         <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
       </ul>
       <p><strong>Reasoning-effort and verbosity selectors (May 28, 2026).</strong> Two vendors now expose the <em>amount</em> of reasoning as a graded control distinct from the on/off toggle. Anthropic added a model-specific effort selector — Opus 4.8: Low / Medium / High / Extra / Max; Sonnet 4.6: Low / Medium / High / Max (High is the default) — which coexists with the Adaptive toggle as an orthogonal control, so an Anthropic run now carries both an Adaptive state and an effort level. OpenAI's API console exposes effort (e.g. low / medium / extra-high) and verbosity (low / medium) as separate orthogonal settings, so a model can be told to think hard and still answer briefly. Where these settings were recorded they appear in the run's transcript metadata; the effort level is treated as an experimental variable on the <a href="metrics.html#cross-corpus">Metrics page</a>.</p>
@@ -212,9 +212,9 @@
 
     <section id="language-corpora">
       <h2>Language corpora</h2>
-      <p>On May 27–28, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
+      <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27–28, 2026 (separate from the 100-run English corpus)</caption>
+        <caption>Language corpora added May 27–29, 2026 (separate from the 100-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -227,7 +227,7 @@
         <tbody>
           <tr><td>Simplified Chinese</td><td>May 27, 2026</td><td>14</td><td>50%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22% plus five US-trained control runs at 100%. Distance 35 m ≈ 115 ft.</td></tr>
           <tr><td>French</td><td>May 27, 2026</td><td>9</td><td>67%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode. Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>Ukrainian</td><td>May 28, 2026</td><td>17</td><td>24%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Ukrainian</td><td>May 28–29, 2026</td><td>27</td><td>26%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
       </table>
       <p>The Chinese and French prompts were translated via Google Translate and back-translated to verify conformance with the English original; the Ukrainian prompt was translated by a native speaker. Distance was converted to a metric equivalent in every case. Token rates are script-specific and are not directly comparable to the English counts: Chinese estimates use ~0.6 tokens per character, and Cyrillic runs measured ~0.5 tokens per character (about double the English rate of ~0.25) — the first directly measured rate, taken from API output-token counts. Latin-script corpora (French) use the standard ~4-characters-per-token estimate.</p>
@@ -268,7 +268,7 @@
           <tr><td>DeepSeek</td><td>DeepSeek-V4-Pro</td><td>V4 Preview</td><td>Current as of April 24, 2026. Expert Mode on consumer interface. 1.6T / 49B active params.</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V4-Pro (thinking)</td><td>V4 Preview</td><td>Expert Mode with DeepThink toggle on. V4 thinking mode, not standalone R1.</td></tr>
           <tr><td>Mistral</td><td>Mistral 3</td><td>—</td><td>Historical entries only; replaced by Medium 3.5 in Le Chat, late April 2026</td></tr>
-          <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Balanced / Think / Research modes; replaced Mistral 3 in Le Chat</td></tr>
+          <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Balanced / Think / Research modes; replaced Mistral 3 in Le Chat. App rebranded Le Chat → Vibe (May 2026); model unchanged.</td></tr>
           <tr><td>Perplexity</td><td>Perplexity</td><td>—</td><td>Default configuration; underlying model not exposed</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
@@ -301,6 +301,7 @@
         <li><strong>May 2026:</strong> Amazon retired Rufus in favor of Alexa as the shopping assistant at amazon.com.</li>
         <li><strong>May 28, 2026:</strong> Anthropic released Claude Opus 4.8 as the new flagship and added a model-specific reasoning-effort selector (Opus 4.8: Low/Medium/High/Extra/Max; Sonnet 4.6: Low/Medium/High/Max) coexisting with the Adaptive toggle as an orthogonal control. The roster was tightened: Sonnet 4.6 is the default, with Opus 4.8, Haiku 4.5, Opus 4.7, Opus 4.6, and Opus 3 under "More models."</li>
         <li><strong>May 28, 2026:</strong> OpenAI's API console exposed separate effort and verbosity controls as orthogonal settings.</li>
+        <li><strong>May 2026:</strong> Mistral rebranded its consumer app from Le Chat to <strong>Vibe</strong>. The Balanced / Think / Research mode picker and the Mistral Medium 3.5 model are unchanged.</li>
       </ul>
       <div class="callout callout-note">
         <span class="callout-tag">Note</span>

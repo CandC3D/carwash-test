@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260528a">
+  <link rel="stylesheet" href="styles.css?v=20260528b">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -181,7 +181,7 @@
       <div id="uk-tally"></div>
       <div id="uk-table"></div>
       <div class="corpus-summary">
-        <p>The Carwash Test was extended to Ukrainian using a native-speaker-translated prompt — 17 runs across Anthropic, OpenAI, DeepSeek, and Qwen, split between the API console and the consumer interface, for a 24% failure rate. The corpus was built to separate two things the earlier languages had confounded: the <em>reasoning-effort level</em> as a continuous variable, and the <em>surface</em> (developer console vs. consumer app). Both proved to matter. Claude Sonnet 4.6 holds the constraint at high effort and inverts it at low effort — the same model, same prompt, failing only when given less time to think. On the console, OpenAI's GPT 5.5 returned the same correct answer at ~121 output tokens (low effort) and ~565 (extra-high effort): a 4.7× cost difference for identical quality, almost all of it hidden reasoning. The cleanest pass in the corpus was Qwen3.7-Plus-Preview's two-sentence answer naming the constraint directly (“the washers would have nothing to wash”). The most elaborate failure in the entire dataset also appeared here: DeepSeek V4-Pro with reasoning off fabricated a “known Soviet riddle” about Zhiguli cars, complete with an invented canonical punchline, to justify walking — constraint-as-comedy escalated into a hallucinated cultural reference, which reasoning-on then repaired.</p>
+        <p>The Carwash Test was extended to Ukrainian using a native-speaker-translated prompt — 17 runs across Anthropic, OpenAI, DeepSeek, and Qwen, split between the API console and the consumer interface, for a 24% failure rate. The corpus was built to separate two things the earlier languages had confounded: the <em>reasoning-effort level</em> as a continuous variable, and the <em>surface</em> (developer console vs. consumer app). Both proved to matter. Claude Sonnet 4.6 holds the constraint at high effort and inverts it at low effort — the same model, same prompt, failing only when given less time to think. On the console, OpenAI's GPT 5.5 returned the same correct answer at 121 output tokens (low effort) and 565 (extra-high effort) — real console counts, not estimates: a 4.7× cost difference for identical quality, almost all of it hidden reasoning. The cleanest pass in the corpus was Qwen3.7-Plus-Preview's two-sentence answer naming the constraint directly (“the washers would have nothing to wash”). The most elaborate failure in the entire dataset also appeared here: DeepSeek V4-Pro with reasoning off fabricated a “known Soviet riddle” about Zhiguli cars, complete with an invented canonical punchline, to justify walking — constraint-as-comedy escalated into a hallucinated cultural reference, which reasoning-on then repaired.</p>
         <p lang="uk"><em>Резюме українською мовою готується; його перевірить носій мови перед публікацією.</em></p>
       </div>
     </section>
@@ -224,12 +224,12 @@
         <caption>GPT 5.5 on the Ukrainian prompt (API console), by effort</caption>
         <thead><tr><th scope="col">Effort</th><th scope="col">Verbosity</th><th scope="col">Output tokens</th><th scope="col">Result</th></tr></thead>
         <tbody>
-          <tr><td>Low</td><td>Low</td><td>~121</td><td><span class="badge pass">Pass</span></td></tr>
-          <tr><td>Medium</td><td>Medium</td><td>~250</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
-          <tr><td>Extra-high</td><td>Low</td><td>~565</td><td><span class="badge pass">Pass</span></td></tr>
+          <tr><td>Low</td><td>Low</td><td>121</td><td><span class="badge pass">Pass</span></td></tr>
+          <tr><td>Medium</td><td>Medium</td><td>250</td><td><span class="badge pass-adjacent">Pass-adj</span></td></tr>
+          <tr><td>Extra-high</td><td>Low</td><td>565</td><td><span class="badge pass">Pass</span></td></tr>
         </tbody>
       </table>
-      <p class="chart-note">Low and extra-high effort return the same correct answer at ~121 vs. ~565 output tokens — a 4.7× cost difference for identical quality.</p>
+      <p class="chart-note">Low and extra-high effort return the same correct answer at 121 vs. 565 output tokens (real console counts, not estimates) — a 4.7× cost difference for identical quality.</p>
 
       <h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:7px;color:var(--pumpkin)"><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5H4.5a2.5 2.5 0 0 0 2.8 3.8"/><path d="M17 5h2.5a2.5 2.5 0 0 1-2.8 3.8"/><path d="M12 13v3"/><path d="M9.5 19h5l-1-3h-3z"/></svg>The winner's circle: concise correct answers</h3>
       <p>A “winner's-circle” pass names the constraint and stops. Because tokenization differs by script, the brevity threshold is script-specific: ≤30 tokens in Latin, ≤60 in Hanzi, ≤60 in Cyrillic. Every Pass that clears its threshold is listed below — runs #1/#39 and #2/#40 are the same verbatim answer produced in two separate test batches.</p>
@@ -273,7 +273,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260528a"></script>
+  <script src="scripts.js?v=20260528b"></script>
   <script>
     (async function () {
       try {

@@ -129,6 +129,17 @@
     return tokenEstimate(run.response);
   }
 
+  // Real output-token counts (reported by an API console) are exact and are
+  // shown without the "~" approximation marker; character-based estimates keep it.
+  function tokensMeasured(run) {
+    return typeof run.output_tokens === "number" && run.output_tokens >= 0;
+  }
+  function tokenDisplay(run) {
+    const t = runTokens(run);
+    if (!(t > 0)) return "—";
+    return (tokensMeasured(run) ? "" : "~") + t.toLocaleString();
+  }
+
   function buildRow(r, link) {
     const idCell = link ? '<a href="' + link + '">#' + r.id + '</a>' : '#' + r.id;
     const modelCell = link ? '<a href="' + link + '">' + escapeHTML(r.model) + '</a>' : escapeHTML(r.model);
@@ -140,7 +151,7 @@
       '<td class="col-thinking" data-sort="' + (THINKING_SORT_RANK[r.thinking] !== undefined ? THINKING_SORT_RANK[r.thinking] : 99) + '">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
       '<td class="col-date" data-sort="' + escapeHTML(r.date) + '">' + escapeHTML(formatDate(r.date)) + '</td>' +
       '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
-      '<td class="col-tokens" data-sort="' + tokens + '">' + (tokens > 0 ? '~' + tokens.toLocaleString() : '—') + '</td>' +
+      '<td class="col-tokens" data-sort="' + tokens + '">' + tokenDisplay(r) + '</td>' +
       '</tr>';
   }
 
@@ -423,7 +434,7 @@
       ? "Output tokens reported by the API (includes hidden reasoning tokens)"
       : "Approximate token count, round(characters / 4)";
     const tokensSpan = tokens > 0
-      ? '<span title="' + tokenTitle + '">~' + tokens.toLocaleString() + ' tokens</span>'
+      ? '<span title="' + tokenTitle + '">' + tokenDisplay(run) + ' tokens</span>'
       : '';
     const SURFACE_LABELS = { api_console: "API console", consumer: "Consumer app" };
     const surfaceSpan = run.surface

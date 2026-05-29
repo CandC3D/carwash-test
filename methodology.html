@@ -225,12 +225,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Simplified Chinese</td><td>May 27, 2026</td><td>14</td><td>50%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22% plus five US-trained control runs at 100%. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Simplified Chinese</td><td>May 27 &amp; 29, 2026</td><td>25</td><td>52%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, and a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds. Distance 35 m ≈ 115 ft.</td></tr>
           <tr><td>French</td><td>May 27 &amp; 29, 2026</td><td>16</td><td>38%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint. Distance 35 m ≈ 115 ft.</td></tr>
           <tr><td>Ukrainian</td><td>May 28–29, 2026</td><td>27</td><td>26%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
       </table>
       <p>The Chinese and French prompts were translated via Google Translate and back-translated to verify conformance with the English original; the Ukrainian prompt was translated by a native speaker. Distance was converted to a metric equivalent in every case. Token rates are script-specific and are not directly comparable to the English counts: Chinese estimates use ~0.6 tokens per character, and Cyrillic runs measured ~0.5 tokens per character (about double the English rate of ~0.25) — the first directly measured rate, taken from API output-token counts. Latin-script corpora (French) use the standard ~4-characters-per-token estimate.</p>
+      <div class="callout callout-note">
+        <span class="callout-tag">Note</span>
+        <p><strong>Tokenizer cost is vendor-specific, and dramatically so for CJK.</strong> The same Chinese sentence costs a wildly different number of tokens depending on whose tokenizer encodes it. Measured rates for the carwash responses:</p>
+        <table class="results-table">
+          <caption>Output tokens per character of Chinese text, by tokenizer</caption>
+          <thead><tr><th scope="col">Tokenizer</th><th scope="col">Tokens / character</th><th scope="col">Tokens / Han ideograph</th><th scope="col">Basis</th></tr></thead>
+          <tbody>
+            <tr><td>English baseline</td><td>~0.25</td><td>—</td><td>standard estimate</td></tr>
+            <tr><td>DeepSeek (CJK-aware)</td><td>~0.60</td><td>—</td><td>vendor documentation</td></tr>
+            <tr><td>OpenAI <code>o200k</code> (GPT&nbsp;5.5)</td><td>~0.79</td><td>~1.01</td><td>two samples, tiktoken-exact</td></tr>
+            <tr><td>Anthropic (Opus&nbsp;4.8 / Sonnet&nbsp;4.6)</td><td>~1.7</td><td>~2.3</td><td>two samples, billed output tokens</td></tr>
+          </tbody>
+        </table>
+        <p>On Chinese, Anthropic costs roughly <strong>2× OpenAI and 3× DeepSeek per character</strong>. The mechanism is in the per-Han column: OpenAI's <code>o200k</code> vocabulary carries most common Han characters as single tokens (~1.0 each), while Anthropic's English-centric byte-pair vocabulary falls back to near-byte-level encoding (~2.3 each — roughly two tokens per 3-byte character). It is a tokenizer-vocabulary difference, not a verbosity difference, so cross-vendor token counts in a non-Latin script measure the tokenizer as much as the answer. (Separately, on reasoning models the billed output also carries hidden reasoning tokens — e.g. a GPT&nbsp;5.5 medium-effort Chinese reply was ~47 visible tokens but ~148 billed — which the per-character tokenizer rate does not capture.)</p>
+      </div>
       <p>Before each non-English run, the user's language setting was changed to match the prompt language. This ensures the system receives the prompt in a locale-consistent context rather than as a foreign-language input through an English-language interface.</p>
     </section>
 

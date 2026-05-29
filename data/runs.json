@@ -2011,7 +2011,7 @@
     },
     {
       "date": "2026-05-29",
-      "summary": "Product rename: Mistral's Le Chat is now branded “Vibe.” The Balanced / Think / Research mode picker and the underlying Mistral Medium 3.5 model are unchanged; runs from this date forward are labeled vendor “Mistral (Vibe).”"
+      "summary": "Product rename: Mistral's Le Chat is now branded “Vibe,” a unified agent split into Vibe Work (productivity chat), Vibe Code (developer CLI / VS Code / web), and Vibe Chat (the original turn-based conversation). Same URL and login; docs moved to docs.mistral.ai. The Balanced / Think / Research reasoning picker and the underlying Mistral Medium 3.5 model are unchanged; runs from this date forward are labeled vendor “Mistral (Vibe).”"
     },
     {
       "date": "2026-05-28",

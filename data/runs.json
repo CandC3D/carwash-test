@@ -1874,7 +1874,8 @@
       "response": "Їдь. Це ж і є сенс автомийки — пригнати туди брудну машину. Пішки прийдеш — мити нічого.",
       "notes": "Consumer, Adaptive On, effort Extra (4.7 default). Pass: terse, names the constraint and stops. Winner's circle (Cyrillic, ≤60 tokens).",
       "id": 141,
-      "token_estimate": 44
+      "token_estimate": 44,
+      "date": "2026-05-29"
     },
     {
       "vendor": "Anthropic",
@@ -1889,7 +1890,8 @@
       "response": "Поїхати, звісно. Машину ж миєш, а не себе.",
       "notes": "Consumer, Adaptive Off, effort Extra (4.7 default). Pass: one-line, names the constraint. Cleanest Ukrainian answer in the set. Winner's circle (Cyrillic, ≤60 tokens).",
       "id": 142,
-      "token_estimate": 21
+      "token_estimate": 21,
+      "date": "2026-05-29"
     },
     {
       "vendor": "OpenAI (Plus)",
@@ -1903,7 +1905,8 @@
       "response": "Якщо автомийка справді лише за 35 метрів від вас, то найрозумніше — сісти в машину й повільно під'їхати до неї.\n\nЙти пішки має сенс, якщо ви збираєтеся помити машину вручну самостійно і вам не потрібно переганяти автомобіль. Але якщо автомийка обслуговує автомобілі, машина все одно має опинитися біля неї.\n\n35 метрів — це приблизно 10–15 секунд їзди або менш ніж хвилину ходьби, тож різниця майже символічна. Для самої машини простіше просто під'їхати.",
       "notes": "Consumer, Instant (Thinking Off). Pass-adjacent: lands on drive as 'найрозумніше', names the constraint, but pads with a manual-wash caveat and a 'difference is symbolic' hedge. Off holds the object in Ukrainian where it failed in English/French/Chinese.",
       "id": 143,
-      "token_estimate": 226
+      "token_estimate": 226,
+      "date": "2026-05-29"
     },
     {
       "vendor": "OpenAI (Plus)",
@@ -1917,7 +1920,8 @@
       "response": "Краще **поїхати на машині**.\n\nАвтомийка за 35 метрів — це дуже близько, але мити треба саме машину, а не вас. Пішки йти має сенс лише якщо ви хочете спочатку уточнити ціну, чергу чи спосіб оплати. Якщо автомийка працює і приймає машини — сідайте й повільно під'їдьте.",
       "notes": "Consumer, Thinking On. Pass: names the constraint cleanly ('мити треба саме машину, а не вас'), brief edge-case hedge only. Matches GPT 5.5 On passing in English.",
       "id": 144,
-      "token_estimate": 134
+      "token_estimate": 134,
+      "date": "2026-05-29"
     },
     {
       "vendor": "OpenAI (Plus)",
@@ -1931,7 +1935,8 @@
       "response": "Якщо мета — помити машину на автомийці, її все одно потрібно доставити туди. За 35 метрів логічніше просто сісти за кермо й повільно під'їхати.\n\nПішки варто йти лише в тому випадку, якщо ви спочатку хочете щось уточнити (черга, ціни, режим роботи) або якщо це автомийка самообслуговування і ви плануєте спочатку підготувати місце.\n\nЗ практичної точки зору різниця мінімальна: 35 метрів — це кілька секунд руху. Тому раціональний вибір — під'їхати на машині.",
       "notes": "Consumer, Instant (Thinking Off). Pass-adjacent: names the constraint ('її все одно потрібно доставити туди'), recommends drive, padded with edge cases. GPT 5.2 inverts again: Off holds, On fails — same as French.",
       "id": 145,
-      "token_estimate": 228
+      "token_estimate": 228,
+      "date": "2026-05-29"
     },
     {
       "vendor": "OpenAI (Plus)",
@@ -1945,7 +1950,8 @@
       "response": "За 35 метрів майже завжди краще йти пішки.\n\nЇхати має сенс лише якщо:\n\n* це автомийка “для самообслуговування”, де ти миєш машину сам і треба під'їхати до боксу/воріт;\n* на дворі злива, ожеледиця, дуже сильний вітер, або ти несеш щось важке (монети, хімію, килимки тощо);\n* є причина не залишати машину навіть на хвилину (безпека/паркування).\n\nВ інших випадках: припаркуйся біля будинку (або вже стоїть), дійди пішки, домовся/оплати/перевір чергу — і вже тоді, якщо потрібно, просто під'їдь на машині.",
       "notes": "Consumer, Thinking On. FAIL: the first answer in the set that isn't definitive, but it leans heavily toward the wrong choice — leads with 'майже завжди краще йти пішки' (almost always better to walk) and relegates the actual logical object (a self-service bay requires the car) to one bullet among weather/safety exceptions. Scored on the lean. Thinking inverts the answer — the same On/Off flip seen for GPT 5.2 in French.",
       "id": 146,
-      "token_estimate": 250
+      "token_estimate": 250,
+      "date": "2026-05-29"
     },
     {
       "vendor": "Proton",
@@ -1959,7 +1965,8 @@
       "response": "Це цікава логістична дилема! 😄\n\nОскільки автомийка знаходиться всього за 35 метрів, я б радив просто сісти в машину і проїхати ці 35 метрів. Ось чому:\n\nЧому краще їхати:\n\n35 метрів — це близько 30-40 секунд їзди\nВам все одно потрібно загнати автомобіль на автомийку\nНе треба ходити туди-сюди пішки\nЧому йти пішки не має сенсу:\n\nВи дійдете до автомийки, але потім все одно повернетесь до машини\nЦе зайві 70 метрів ходьби (туди і назад)\nВтрачаєте час\nНайпростіший варіант: Просто підійдіть до своєї машини (якщо вона поруч), сядьте в неї і проїдьте ці 35 метрів до автомийки. Це найефективніше рішення!\n\nА якщо ваша машина вже стоїть на автомийці (ви її просто помили і тепер вона брудна знову), то тоді дійсно варто просто пішки підійти до каси або черги.\n\nЯкий у вас випадок? Машина поруч чи вже на території автомийки?",
       "notes": "Consumer. Pass-adjacent: correct core — names the constraint ('вам все одно потрібно загнати автомобіль на автомийку') — but heavily padded and ends with a clarifying question. Lumo fails in English and French but holds the object in Ukrainian.",
       "id": 147,
-      "token_estimate": 410
+      "token_estimate": 410,
+      "date": "2026-05-29"
     },
     {
       "vendor": "Mistral (Vibe)",
@@ -1973,7 +1980,8 @@
       "response": "Якщо ваша машина брудна і ви хочете її помити, то логічніше **поїхати на машині** до автомийки. Адже ви все одно плануєте мити саме цю машину, а 35 метрів — це дуже близька відстань, щоб їхати пішки.\n\nАле якщо ви маєте на увазі, що хочете пішки дійти до автомийки, щоб, наприклад, перевірити чергу або ціни, то це теж можливо. Уточніть, будь ласка, що саме ви маєте на думці!",
       "notes": "Consumer, Vibe Balanced. Pass-adjacent: names the constraint, recommends drive, mild hedge and a clarifying question. Le Chat is now branded Vibe.",
       "id": 148,
-      "token_estimate": 188
+      "token_estimate": 188,
+      "date": "2026-05-29"
     },
     {
       "vendor": "Mistral (Vibe)",
@@ -1987,7 +1995,8 @@
       "response": "Краще **йти пішки** — 35 метрів це дуже близька відстань. Навіть якщо ти рухатимешся повільно, дійдеш за менше ніж хвилину. Крім того, це безпечніше для інших відвідувачів автомийки та для самої машини.",
       "notes": "Consumer, Vibe Think. FAIL: recommends walking on the distance frame and misses that the car must be at the carwash; 'безпечніше для самої машини' edges toward inverted logic. Think mode fails where Balanced holds — same toggle-hurts pattern.",
       "id": 149,
-      "token_estimate": 101
+      "token_estimate": 101,
+      "date": "2026-05-29"
     },
     {
       "vendor": "Mistral (Vibe)",
@@ -2001,7 +2010,8 @@
       "response": "Щоб допомогти вам вирішити, чи краще йти пішки чи поїхати на машині до автомийки, яка знаходиться за 35 метрів, мені потрібно знати кілька додаткових деталей:\n\n1. Чи є у вас можливість залишити машину біля автомийки, поки ви будете мити її?\n2. Чи є у вас вантаж, який важко нести пішки (наприклад, важкі сумки, дитина тощо)?\n3. Чи є у вас обмеження за часом, тобто чи потрібно вам швидко дістатися до автомийки?\n4. Чи є у вас можливість поїхати на машині до автомийки, залишити її там, а потім пішки повернутися додому?",
       "notes": "Consumer, Vibe Research. FAIL: gives no recommendation at all — returns four clarifying questions, never holding the logical object. Behavior change: in earlier versions Research mode triggered extensive autonomous output (the ~2,400-token transcript with a PDF attachment); that no longer happens. Flagged as a likely candidate to drop from future runs, since this mode now declines to answer rather than reasoning to a conclusion.",
       "id": 150,
-      "token_estimate": 260
+      "token_estimate": 260,
+      "date": "2026-05-29"
     },
     {
       "vendor": "Anthropic",

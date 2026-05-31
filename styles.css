@@ -626,6 +626,9 @@ li { margin-bottom: 6px; }
 .badge.pass-adjacent{ background: var(--passadj-bg); color: var(--passadj-text); }
 .badge.verbose      { background: var(--verbose-bg); color: var(--verbose-text); }
 .badge.fail         { background: var(--fail-bg);    color: var(--fail-text); }
+/* Result-pill cells: center the fixed-width pill so it sits consistently in
+   both the tight results tables and the wider cross-corpus tables. */
+td:has(> .badge) { text-align: center; }
 
 /* Family card grid */
 .family-grid {

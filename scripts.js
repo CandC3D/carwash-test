@@ -334,20 +334,6 @@
       return _familyCard(slug, families, counts, basePath);
     }).join("") + '</div>';
 
-    if (poSlugs.length) {
-      html += '<div class="family-group-divider" role="separator"></div>' +
-        '<div class="family-group-heading">' +
-          '<span class="family-group-icon">' + PURPOSE_OPTIMIZED_ICON + '</span>' +
-          '<h3>Purpose-Optimized Models</h3>' +
-          '<p>Domain-specific systems where catalog optimization shapes the answer ' +
-          'as much as the underlying model’s reasoning. ' +
-          '<a href="' + basePath + 'transcripts/purpose-optimized.html">About this category →</a></p>' +
-        '</div>' +
-        '<div class="family-grid family-grid-purpose-optimized">' + poSlugs.map(function (slug) {
-          return _familyCard(slug, families, counts, basePath);
-        }).join("") + '</div>';
-    }
-
     if (owSlugs.length) {
       html += '<div class="family-group-divider" role="separator"></div>' +
         '<div class="family-group-heading">' +
@@ -359,6 +345,20 @@
         '</div>' +
         '<div class="family-grid family-grid-open-weight">' + owSlugs.map(function (slug) {
           return _familyCard(slug, families, owCounts, basePath);
+        }).join("") + '</div>';
+    }
+
+    if (poSlugs.length) {
+      html += '<div class="family-group-divider" role="separator"></div>' +
+        '<div class="family-group-heading">' +
+          '<span class="family-group-icon">' + PURPOSE_OPTIMIZED_ICON + '</span>' +
+          '<h3>Purpose-Optimized Models</h3>' +
+          '<p>Domain-specific systems where catalog optimization shapes the answer ' +
+          'as much as the underlying model’s reasoning. ' +
+          '<a href="' + basePath + 'transcripts/purpose-optimized.html">About this category →</a></p>' +
+        '</div>' +
+        '<div class="family-grid family-grid-purpose-optimized">' + poSlugs.map(function (slug) {
+          return _familyCard(slug, families, counts, basePath);
         }).join("") + '</div>';
     }
     return html;

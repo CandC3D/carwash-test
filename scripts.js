@@ -54,7 +54,8 @@
     "perplexity": "perplexity.svg",
     "qwen": "qwen.svg",
     "kimi": "kimi.svg",
-    "lumo": "lumo.svg"
+    "lumo": "lumo.svg",
+    "gemma": "gemma.svg"
   };
 
   async function loadData(basePath) {
@@ -439,9 +440,12 @@
           const c = owCounts[slug] || 0;
           const isActive = slug === currentSlug;
           const href = isActive ? "#" : slug + ".html";
+          const mark = LOGO_FILES[slug]
+            ? '<span class="pill-logo" style="--logo-url: url(' + basePath + 'assets/logos/' + LOGO_FILES[slug] + ')"></span>'
+            : '<span class="pill-icon">' + OPEN_WEIGHT_ICON + '</span>';
           return '<a class="vendor-pill vendor-pill-open-weight' + (isActive ? ' active' : '') + '" href="' + href + '"' +
             (isActive ? ' aria-current="page"' : '') + '>' +
-            '<span class="pill-icon">' + OPEN_WEIGHT_ICON + '</span>' +
+            mark +
             '<span class="pill-name">' + escapeHTML(f.display_name) + '</span>' +
             '<span class="pill-count">' + c + '</span>' +
             '</a>';

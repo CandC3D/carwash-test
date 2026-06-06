@@ -119,8 +119,8 @@
       "category": "purpose-optimized"
     },
     "gemma": {
-      "name": "Gemma (Google, open-weight)",
-      "display_name": "Gemma 4",
+      "name": "Google",
+      "display_name": "Google (Gemma)",
       "slug": "gemma",
       "category": "open-weight",
       "deployment_class": "open_weight",

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260529a">
+  <link rel="stylesheet" href="styles.css?v=20260606a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -208,7 +208,17 @@
           <tr><td>Claude Opus 4.8 (flagship)</td><td>May 28, 2026</td><td>2</td><td>100</td></tr>
         </tbody>
       </table>
-      <p class="chart-note">Counts are the English corpus. The Simplified Chinese (14), French (9), and Ukrainian (17) runs are kept as separate corpora and are not included in this cumulative total.</p>
+      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (25), French (16), and Ukrainian (27) language corpora, and the open-weight Gemma runs (8), are kept separate and are not included in this cumulative total.</p>
+    </section>
+
+    <section id="deployment-classes">
+      <h2>Deployment classes</h2>
+      <p>The same model can behave differently depending on how it is reached. Results are grouped into three deployment classes, and findings in one class are not evidence for another.</p>
+      <ul>
+        <li><strong>Commercial consumer.</strong> The vendor's shipping chat product (ChatGPT, Claude, the Gemini app, Le Chat/Vibe, and so on). What an ordinary user gets: a consumer system prompt, an RLHF-tuned product layer, and whatever wrapper the vendor places around the raw model. This is the default surface for most runs.</li>
+        <li><strong>API console.</strong> The developer console or API (e.g. the Anthropic and OpenAI consoles). Exposes controls the consumer app hides — reasoning-effort and verbosity selectors — and reports real output-token counts, including hidden reasoning tokens. Flagged distinctly because the token economics and available controls differ from the consumer app.</li>
+        <li><strong>Open-weight playground.</strong> Models published as downloadable weights (e.g. Gemma 4), tested in a developer playground such as Google AI Studio. These reflect the model as a raw artifact — no consumer system prompt, no product-layer cleanup. They are relevant to developers, self-hosters, and small-office deployers who run the model on their own hardware. <strong>Findings about an open-weight model are not evidence for what the corresponding commercial product (e.g. Gemini) will do, and vice versa</strong> — the cross-language signatures can be opposites. Open-weight runs are excluded from the commercial corpora and the cross-language comparison, and live on their own <a href="transcripts/gemma.html">transcript page</a>.</li>
+      </ul>
     </section>
 
     <section id="language-corpora">
@@ -389,7 +399,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260529a"></script>
+  <script src="scripts.js?v=20260606a"></script>
   <script>
     (async function () {
       try {

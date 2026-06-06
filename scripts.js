@@ -269,6 +269,18 @@
     '<line x1="16" y1="9" x2="12" y2="16"/>' +
     '</svg>';
 
+  // SVG icon for the Open-Weight deployment class: an open padlock, signalling
+  // a model published as a raw artifact (downloadable weights) rather than
+  // gated behind a commercial product surface.
+  const OPEN_WEIGHT_ICON =
+    '<svg role="img" aria-label="Open-weight models icon" ' +
+    'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ' +
+    'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="4" y="11" width="14" height="9" rx="2"/>' +
+    '<path d="M8 11V7a4 4 0 0 1 7.6-1.7"/>' +
+    '<circle cx="11" cy="15.5" r="1.2" fill="currentColor" stroke="none"/>' +
+    '</svg>';
+
   function familyCategory(f) {
     return (f && f.category) || "general";
   }
@@ -303,12 +315,19 @@
 
   function renderFamilyGrid(runs, families, basePath) {
     basePath = basePath || "";
+    // `runs` is the full dataset; count the commercial English corpus for the
+    // general/purpose-optimized cards and the full open-weight set separately.
     const counts = {};
-    runs.forEach(function (r) {
+    englishRuns(runs).forEach(function (r) {
       counts[r.model_family] = (counts[r.model_family] || 0) + 1;
+    });
+    const owCounts = {};
+    openWeightRuns(runs).forEach(function (r) {
+      owCounts[r.model_family] = (owCounts[r.model_family] || 0) + 1;
     });
     const generalSlugs = _slugsByCategory(families, "general");
     const poSlugs = _slugsByCategory(families, "purpose-optimized");
+    const owSlugs = _slugsByCategory(families, "open-weight");
 
     let html = '<div class="family-grid">' + generalSlugs.map(function (slug) {
       return _familyCard(slug, families, counts, basePath);
@@ -325,6 +344,20 @@
         '</div>' +
         '<div class="family-grid family-grid-purpose-optimized">' + poSlugs.map(function (slug) {
           return _familyCard(slug, families, counts, basePath);
+        }).join("") + '</div>';
+    }
+
+    if (owSlugs.length) {
+      html += '<div class="family-group-divider" role="separator"></div>' +
+        '<div class="family-group-heading">' +
+          '<span class="family-group-icon">' + OPEN_WEIGHT_ICON + '</span>' +
+          '<h3>Open-Weight Models</h3>' +
+          '<p>Models published as downloadable weights and tested in a developer ' +
+          'playground — raw artifacts with no consumer product layer. Findings here ' +
+          'do not predict the vendor’s commercial product, or vice versa.</p>' +
+        '</div>' +
+        '<div class="family-grid family-grid-open-weight">' + owSlugs.map(function (slug) {
+          return _familyCard(slug, families, owCounts, basePath);
         }).join("") + '</div>';
     }
     return html;
@@ -351,9 +384,15 @@
 
   function renderVendorRail(currentSlug, families, runs, basePath) {
     basePath = basePath || "";
+    // `runs` is the full dataset; commercial pills count the English corpus,
+    // open-weight pills count the full open-weight set.
     const counts = {};
-    runs.forEach(function (r) {
+    englishRuns(runs).forEach(function (r) {
       counts[r.model_family] = (counts[r.model_family] || 0) + 1;
+    });
+    const owCounts = {};
+    openWeightRuns(runs).forEach(function (r) {
+      owCounts[r.model_family] = (owCounts[r.model_family] || 0) + 1;
     });
     const slugs = _slugsByCategory(families, "general");
     const pills = slugs.map(function (slug) {
@@ -389,10 +428,30 @@
         '</a>';
     }
 
+    // Open-weight families: each links to its own per-vendor page, in a
+    // distinguished pill style with the open-padlock icon.
+    const owSlugs = _slugsByCategory(families, "open-weight");
+    let owPills = "";
+    if (owSlugs.length) {
+      owPills = '<span class="vendor-rail-sep" aria-hidden="true"></span>' +
+        owSlugs.map(function (slug) {
+          const f = families[slug];
+          const c = owCounts[slug] || 0;
+          const isActive = slug === currentSlug;
+          const href = isActive ? "#" : slug + ".html";
+          return '<a class="vendor-pill vendor-pill-open-weight' + (isActive ? ' active' : '') + '" href="' + href + '"' +
+            (isActive ? ' aria-current="page"' : '') + '>' +
+            '<span class="pill-icon">' + OPEN_WEIGHT_ICON + '</span>' +
+            '<span class="pill-name">' + escapeHTML(f.display_name) + '</span>' +
+            '<span class="pill-count">' + c + '</span>' +
+            '</a>';
+        }).join("");
+    }
+
     return '<div class="vendor-rail">' +
       '<div class="vendor-rail-inner">' +
         '<a class="vendor-rail-back" href="' + basePath + 'transcripts.html">← All Transcripts</a>' +
-        '<div class="vendor-pills">' + pills + poPill + '</div>' +
+        '<div class="vendor-pills">' + pills + poPill + owPills + '</div>' +
       '</div>' +
       '</div>';
   }
@@ -1009,11 +1068,17 @@
   // aggregate views (tally, charts, results table, CSV, family grid) must
   // exclude other-language runs so corpora stay separate.
   function runLang(r) { return r.language || "en"; }
+  // Open-weight runs (e.g. Gemma in AI Studio) are a separate deployment
+  // class and must NOT merge into the commercial-product corpora.
+  function isOpenWeight(r) { return r.deployment_class === "open_weight"; }
+  function openWeightRuns(runs) {
+    return runs.filter(isOpenWeight);
+  }
   function englishRuns(runs) {
-    return runs.filter(function (r) { return runLang(r) === "en"; });
+    return runs.filter(function (r) { return runLang(r) === "en" && !isOpenWeight(r); });
   }
   function runsByLanguage(runs, lang) {
-    return runs.filter(function (r) { return runLang(r) === lang; });
+    return runs.filter(function (r) { return runLang(r) === lang && !isOpenWeight(r); });
   }
 
   // Filter runs to those whose model family belongs to the given category.
@@ -1026,9 +1091,11 @@
 
   global.CarwashTest = {
     PURPOSE_OPTIMIZED_ICON: PURPOSE_OPTIMIZED_ICON,
+    OPEN_WEIGHT_ICON: OPEN_WEIGHT_ICON,
     runsInCategory: runsInCategory,
     englishRuns: englishRuns,
     runsByLanguage: runsByLanguage,
+    openWeightRuns: openWeightRuns,
     buildResultsCSV: buildResultsCSV,
     loadData: loadData,
     formatDate: formatDate,

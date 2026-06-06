@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Anthropic (Claude) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude (Opus, Sonnet, Haiku) results on the Carwash Test.">
+  <title id="page-title">The Carwash Test — Gemma 4 (Google, open-weight) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Gemma 4 open-weight results, tested in Google AI Studio and kept separate from the commercial Gemini product.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -17,20 +17,20 @@
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Anthropic (Claude)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude (Opus, Sonnet, Haiku) results on the Carwash Test.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — Gemma 4 (open-weight)">
+  <meta property="og:description" content="Gemma 4 open-weight results on the Carwash Test, tested in Google AI Studio — distinct from the commercial Gemini product.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/gemma.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Anthropic (Claude)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude (Opus, Sonnet, Haiku) results on the Carwash Test.">
+  <meta name="twitter:title" content="The Carwash Test — Gemma 4 (open-weight)">
+  <meta name="twitter:description" content="Gemma 4 open-weight results on the Carwash Test, tested in Google AI Studio — distinct from the commercial Gemini product.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Anthropic, Claude, Claude Opus 4.6, Claude Opus 4.7, Claude Sonnet 4.6, Claude Haiku 4.5, Extended Thinking, Adaptive thinking, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weight LLM, Gemma, Gemma 4, Gemma 4 31B, Gemma 4 26B A4B, mixture of experts, MoE, Google AI Studio, self-hosted LLM, local LLM, statistical pressure, logical object, AI failure modes, cross-language AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -42,6 +42,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -56,13 +57,12 @@
   <!-- carwash-vendor-rail -->
   <div id="vendor-rail"></div>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title" id="family-title">Gemma 4</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -78,7 +78,30 @@
     </header>
 
     <section>
-      <h2>Results</h2>
+      <div class="callout callout-note">
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>Gemma 4 is an open-weight model line, not the commercial Gemini product.</strong> These runs were taken in Google AI Studio's playground (Thinking Level: High, Temperature 1, Grounding off) — the model as a raw artifact, with no consumer system prompt, no RLHF-tuned product layer, and no wrapper doing cleanup. Gemma is not reachable through the Gemini consumer app; it lives in AI Studio, on Hugging Face, and in self-hosted deployments. These results are relevant to developers, self-hosters, and small-office deployers, and they are <em>not</em> evidence for what the Gemini consumer product will do, or vice versa. They are kept as a separate deployment class and excluded from the commercial corpora.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cross-language matrix</h2>
+      <p>Two Gemma 4 models across four languages. <strong>No clean main effect for model size or language:</strong> each model fails in exactly one language, but different ones. The dense 31B fails in Ukrainian where the 4B-active MoE passes; the MoE fails in English — its best-resourced language — where the 31B passes. The signature inverts the commercial pattern (which tends to hold in English and break elsewhere).</p>
+      <table class="results-table">
+        <caption>Gemma 4 cross-language results (AI Studio, Thinking: High)</caption>
+        <thead>
+          <tr><th scope="col">Model</th><th scope="col">Params (active)</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th><th scope="col">Ukrainian</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gemma 4 26B A4B IT</td><td>26B total / 4B active (MoE)</td><td><span class="badge fail">Fail</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge verbose">Verbose</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
+          <tr><td>Gemma 4 31B IT</td><td>31B dense</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td></tr>
+        </tbody>
+      </table>
+      <p class="chart-note">The 26B MoE's Chinese reasoning trace, visible in AI Studio, ran in English throughout and even issued itself a "Keep it brief and witty" self-correction — which failed to prevent verbose Chinese output. The English-space self-monitoring did not govern the language-specific output. The 31B dense model produced a concise Chinese answer with no such self-correction.</p>
+    </section>
+
+    <section>
+      <h2>Results (English)</h2>
       <div id="tally"></div>
       <div id="charts"></div>
       <div id="results-table"></div>
@@ -86,13 +109,11 @@
     </section>
 
     <section>
-      <h2>Transcripts</h2>
+      <h2>Transcripts (English)</h2>
       <div id="transcripts"></div>
     </section>
 
     <div id="lang-runs"></div>
-  <!-- carwash-vendor-pagination -->
-    <div id="vendor-pagination"></div>
   </main>
 
   <footer>
@@ -113,16 +134,16 @@
   <script src="../scripts.js?v=20260606a"></script>
   <script>
     (async function () {
-      const SLUG = "anthropic";
+      const SLUG = "gemma";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];
         const familyRuns = data.runs.filter(function (r) { return r.model_family === SLUG && (!r.language || r.language === "en"); });
 
         document.getElementById("family-title").innerHTML =
-          CarwashTest.renderTitleLogo(SLUG, "../") +
+          '<span class="title-icon">' + CarwashTest.OPEN_WEIGHT_ICON + '</span>' +
           CarwashTest.familyTitleHTML(family.display_name);
-        document.title = family.display_name + " — The Carwash Test";
+        document.title = family.display_name + " (open-weight) — The Carwash Test";
 
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
@@ -139,8 +160,6 @@
           CarwashTest.renderVendorLanguageRuns(data.runs, SLUG, "../");
         document.getElementById("vendor-rail").innerHTML =
           CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../");
-        document.getElementById("vendor-pagination").innerHTML =
-          CarwashTest.renderVendorPagination(SLUG, data.model_families);
       } catch (err) {
         console.error(err);
         CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);

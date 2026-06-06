@@ -745,6 +745,19 @@ td:has(> .badge) { text-align: center; }
   background: var(--pumpkin);
   border-color: var(--pumpkin);
 }
+/* Open-weight rail pill (distinct olive accent vs. the pumpkin purpose-optimized) */
+.family-grid-open-weight { margin-top: 16px; }
+.vendor-pill-open-weight {
+  border-style: dashed;
+  border-color: var(--olive);
+  color: var(--olive);
+}
+.vendor-pill-open-weight:hover,
+.vendor-pill-open-weight.active {
+  color: var(--bg);
+  background: var(--olive);
+  border-color: var(--olive);
+}
 .vendor-pill .pill-icon {
   display: inline-flex;
   width: 14px;

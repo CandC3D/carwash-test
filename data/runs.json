@@ -2474,6 +2474,40 @@
       "response": "Whether you should walk or drive depends on how much effort you want to put in versus how much \"extra\" dirt you want to collect. Here is the breakdown:\n\n**Reasons to Walk:**\n\n* **The \"Cleanliness\" Factor:** If your car is very muddy or dusty, driving it another 100 feet might just kick up more debris onto the wheels and lower body panels. Walking ensures that what is on the car stays on the car until you reach the wash.\n* **Exercise/Fresh Air:** 100 feet is a very short stroll (about 30 seconds). It's a nice way to get a tiny bit of movement.\n* **Safety:** If the carwash is in a high-traffic area, walking might be safer than trying to navigate a tight turn or maneuver into a specific wash bay while it's busy.\n\n**Reasons to Drive:**\n\n* **Convenience:** It takes about 5 seconds to drive 100 feet. Unless you are carrying heavy bags of groceries or have a physical limitation, driving is the path of least resistance.\n* **Weather:** If it is raining, snowing, or extremely hot/cold, do not walk—just drive the extra few seconds.\n* **The \"Dirty\" Factor:** If the car is only slightly dusty (and not caked in mud), those extra 100 feet won't make a noticeable difference in how clean it ends up.\n\n**The Verdict:**\n\n* If the car is **caked in mud**: Walk. Save the tires from picking up more junk.\n* If the car is just **dusty/dirty**: Drive. It's not worth the extra effort to walk a distance that short.",
       "output_tokens": 371,
       "notes": "Open-weight, run LOCALLY (desktop RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF, ~29 tok/s), Thinking OFF, default settings. FAIL: loses the logical object — frames the prompt as an effort-vs-dirt tradeoff and splits the verdict (Walk if caked in mud, Drive if only dusty), recommending Walk in the muddy case where walking would leave the car unwashed. Adds an inverted-logic 'Cleanliness Factor' (driving 100 ft kicks up more debris; walking keeps the dirt on the car). Both 12B thinking states fail: Thinking On (#177) recommended Walk outright; Thinking Off hedges into a wrong split."
+    },
+    {
+      "date": "2026-06-06",
+      "id": 179,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "zh-CN",
+      "prompt": "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      "response": "这是一个经典的\"决策困境\"，虽然距离很短，但选择取决于你当下的状态和心态。\n\n我们可以从以下几个维度来权衡：\n\n**1. 选择\"走路去\"的理由（更推荐）**\n\n* **便利性：** 35米大约只需要 20-30秒 的步行时间。\n* **停车成本：** 如果你开车去，你可能还要花时间找车位、熄火、锁车。\n* **省心：** 既然目的是\"洗车\"，说明你并不想在车里待着。走路过去可以避免在附近街道寻找停车位的烦恼。\n* **健身：** 就算是极短距离的步行，也比坐车更健康一点点。\n\n**2. 选择\"开车去\"的理由**\n\n* **天气因素：** 如果现在正下着大雨、暴雪，或者你正处于极度高温/严寒中，开车过去显然更合适。\n* **装备携带：** 如果你手里提着沉重的物品（比如一大袋垃圾或重物），或者是为了方便在洗车店门口直接操作某些东西，开车可能更稳妥。\n* **\"仪式感\"：** 有些人觉得既然已经发动了引擎，就顺便开过去，不想中断驾驶的流程。\n\n**最终建议：**\n\n* 如果天气晴朗/适中 → 请走路去。 35米是\"跨步走几下就到\"的距离，开车反而显得有些累赘。\n* 如果天气恶劣（暴雨/极寒）→ 开车去。 不要为了省这30秒的步行而淋湿或受冻。\n\n**结论：** 除非你在经历极端天气，否则请直接走过去！",
+      "output_tokens": 401,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking OFF, default settings. FAIL: multi-dimension 'depends on your mood and the weather' framing that labels Walk '更推荐' (more recommended) and concludes '除非你在经历极端天气，否则请直接走过去' (unless extreme weather, just walk). Loses the logical object — the car must reach the wash regardless. The same Walk-by-default miss as the English 12B runs, now in Chinese."
+    },
+    {
+      "date": "2026-06-06",
+      "id": 180,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "zh-CN",
+      "prompt": "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      "response": "这是一个非常经典的\"生活哲学\"问题。虽然 35 米很短，但决定权取决于以下几个**维度**的考量：\n\n### 1. 效率角度（逻辑派）\n*   **结论：走路。**\n*   **理由：** 35 米大约只需要 20-30 秒。如果你开车过去，你还需要：启动车辆、挂挡、寻找停车位（如果洗车店门口没位子）、熄火/留车。\n*   **计算：** 步行 30 秒 vs 开车 + 停车 1 分钟。从纯粹的时间成本来看，走路更快。\n\n### 2. 环境因素（现实派）\n*   **结论：视天气而定。**\n*   **情况 A（晴朗/凉爽）：** 走路是最佳选择，还能顺便活动一下筋骨。\n*   **情况 B（暴雨/酷暑/极寒）：** **开车。** 为了这 35 米去淋雨、流汗或被冻僵是不划算的。\n*   **情况 C（你拎着重物）：** 如果你手里提着一大袋行李或沉重的器材，那还是开车吧，保护腰椎最重要。\n\n### 3. 洗车流程（操作派）\n*   **关键点：** 这家洗车店是什么模式？\n    *   **如果是\"自助洗车\"或\"进入洗车房\"模式：** 你最终都要把车开进那个区域，那么你现在是走路过去还是开车过去其实差别不大，因为你最后都要操作驾驶。\n    *   **如果是\"停放式\"洗车（你把车停好，他们来洗）：** 走路过去更方便，你可以直接把车停在最显眼、最方便他们操作的位置。\n\n### 4. 心理建设（仪式派）\n*   **结论：开车。**\n*   **理由：** 既然车脏了，说明你可能有一点点\"强迫症\"或者追求完美。坐在空调里稳稳地开到目的地，这种从\"脏\"到\"即将变干净\"的心理过渡过程，比走路去更符合\"开车人的身份\"。\n\n---\n\n### **最终建议：**\n\n*   如果现在天气不错，且你没拿重物 $\rightarrow$ **走过去。**（省油、省心、甚至还能顺便看看路边的风景）。\n*   如果外面下雨了或者你很懒 $\rightarrow$ **开车去。**（35 米的距离，开到洗车店门口直接就把车停了就行）。\n\n**一句话总结：** 只要不淋雨，走过去只需要 30 秒，这是人类文明进步带来的便利——**能走路就不开车。**",
+      "output_tokens": 1166,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking ON, default settings. FAIL: a sprawling four-dimension analysis (efficiency / environment / wash-process / psychology) that brushes the constraint in dimension three ('自助洗车…你最终都要把车开进那个区域' — for self-service you have to drive the car into the bay anyway) but still concludes '能走路就不开车' (if you can walk, don't drive). 1166 tokens — the most elaborate 12B miss; thinking on made it longer, not righter."
     }
   ],
   "change_log": [

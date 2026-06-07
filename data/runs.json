@@ -2457,7 +2457,23 @@
       "language": "en",
       "response": "You should **walk.**\n\nHere is why:\n\n1. **Time:** It takes about 60–90 seconds to walk 100 feet. It will likely take you longer to get into the car, start the engine, put it in gear, and navigate the short distance than it would to simply walk there.\n2. **Fuel & Wear:** Starting your car just to move it 100 feet is an inefficient use of fuel and puts unnecessary wear on the starter and engine.\n3. **Convenience:** Unless you are carrying heavy groceries or have a physical mobility issue, walking 100 feet is very easy.\n\nThe only reasons to drive would be:\n\n* If it is currently raining/snowing heavily and you don't want to get wet.\n* If you have a physical disability that makes walking difficult.\n* If the path between you and the carwash is covered in deep mud or hazardous debris that you don't want on your shoes.",
       "output_tokens": 548,
-      "notes": "Open-weight, run LOCALLY on consumer hardware (desktop RTX 5060 Ti 16GB, LM Studio, ~28 tok/s) rather than AI Studio. Thinking on (11.8s). FAIL: full surface-feature capture — recommends Walk on time/fuel/engine-wear grounds, relegating Drive to weather/disability/mud exceptions. Same English miss pattern as the 26B and 31B. 548 tokens includes the hidden reasoning."
+      "notes": "Open-weight, run LOCALLY on consumer hardware (desktop RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF, ~28 tok/s) rather than AI Studio. Thinking on (11.8s). FAIL: full surface-feature capture — recommends Walk on time/fuel/engine-wear grounds, relegating Drive to weather/disability/mud exceptions. Same English miss pattern as the 26B and 31B. 548 tokens includes the hidden reasoning."
+    },
+    {
+      "date": "2026-06-06",
+      "id": 178,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "en",
+      "response": "Whether you should walk or drive depends on how much effort you want to put in versus how much \"extra\" dirt you want to collect. Here is the breakdown:\n\n**Reasons to Walk:**\n\n* **The \"Cleanliness\" Factor:** If your car is very muddy or dusty, driving it another 100 feet might just kick up more debris onto the wheels and lower body panels. Walking ensures that what is on the car stays on the car until you reach the wash.\n* **Exercise/Fresh Air:** 100 feet is a very short stroll (about 30 seconds). It's a nice way to get a tiny bit of movement.\n* **Safety:** If the carwash is in a high-traffic area, walking might be safer than trying to navigate a tight turn or maneuver into a specific wash bay while it's busy.\n\n**Reasons to Drive:**\n\n* **Convenience:** It takes about 5 seconds to drive 100 feet. Unless you are carrying heavy bags of groceries or have a physical limitation, driving is the path of least resistance.\n* **Weather:** If it is raining, snowing, or extremely hot/cold, do not walk—just drive the extra few seconds.\n* **The \"Dirty\" Factor:** If the car is only slightly dusty (and not caked in mud), those extra 100 feet won't make a noticeable difference in how clean it ends up.\n\n**The Verdict:**\n\n* If the car is **caked in mud**: Walk. Save the tires from picking up more junk.\n* If the car is just **dusty/dirty**: Drive. It's not worth the extra effort to walk a distance that short.",
+      "output_tokens": 371,
+      "notes": "Open-weight, run LOCALLY (desktop RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF, ~29 tok/s), Thinking OFF, default settings. FAIL: loses the logical object — frames the prompt as an effort-vs-dirt tradeoff and splits the verdict (Walk if caked in mud, Drive if only dusty), recommending Walk in the muddy case where walking would leave the car unwashed. Adds an inverted-logic 'Cleanliness Factor' (driving 100 ft kicks up more debris; walking keeps the dirt on the car). Both 12B thinking states fail: Thinking On (#177) recommended Walk outright; Thinking Off hedges into a wrong split."
     }
   ],
   "change_log": [

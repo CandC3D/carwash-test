@@ -2508,12 +2508,80 @@
       "response": "这是一个非常经典的\"生活哲学\"问题。虽然 35 米很短，但决定权取决于以下几个**维度**的考量：\n\n### 1. 效率角度（逻辑派）\n*   **结论：走路。**\n*   **理由：** 35 米大约只需要 20-30 秒。如果你开车过去，你还需要：启动车辆、挂挡、寻找停车位（如果洗车店门口没位子）、熄火/留车。\n*   **计算：** 步行 30 秒 vs 开车 + 停车 1 分钟。从纯粹的时间成本来看，走路更快。\n\n### 2. 环境因素（现实派）\n*   **结论：视天气而定。**\n*   **情况 A（晴朗/凉爽）：** 走路是最佳选择，还能顺便活动一下筋骨。\n*   **情况 B（暴雨/酷暑/极寒）：** **开车。** 为了这 35 米去淋雨、流汗或被冻僵是不划算的。\n*   **情况 C（你拎着重物）：** 如果你手里提着一大袋行李或沉重的器材，那还是开车吧，保护腰椎最重要。\n\n### 3. 洗车流程（操作派）\n*   **关键点：** 这家洗车店是什么模式？\n    *   **如果是\"自助洗车\"或\"进入洗车房\"模式：** 你最终都要把车开进那个区域，那么你现在是走路过去还是开车过去其实差别不大，因为你最后都要操作驾驶。\n    *   **如果是\"停放式\"洗车（你把车停好，他们来洗）：** 走路过去更方便，你可以直接把车停在最显眼、最方便他们操作的位置。\n\n### 4. 心理建设（仪式派）\n*   **结论：开车。**\n*   **理由：** 既然车脏了，说明你可能有一点点\"强迫症\"或者追求完美。坐在空调里稳稳地开到目的地，这种从\"脏\"到\"即将变干净\"的心理过渡过程，比走路去更符合\"开车人的身份\"。\n\n---\n\n### **最终建议：**\n\n*   如果现在天气不错，且你没拿重物 $\rightarrow$ **走过去。**（省油、省心、甚至还能顺便看看路边的风景）。\n*   如果外面下雨了或者你很懒 $\rightarrow$ **开车去。**（35 米的距离，开到洗车店门口直接就把车停了就行）。\n\n**一句话总结：** 只要不淋雨，走过去只需要 30 秒，这是人类文明进步带来的便利——**能走路就不开车。**",
       "output_tokens": 1166,
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking ON, default settings. FAIL: a sprawling four-dimension analysis (efficiency / environment / wash-process / psychology) that brushes the constraint in dimension three ('自助洗车…你最终都要把车开进那个区域' — for self-service you have to drive the car into the bay anyway) but still concludes '能走路就不开车' (if you can walk, don't drive). 1166 tokens — the most elaborate 12B miss; thinking on made it longer, not righter."
+    },
+    {
+      "date": "2026-06-06",
+      "id": 181,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "fr",
+      "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
+      "response": "C'est un dilemme classique ! Voici une analyse pour vous aider à décider :\n\n**L'argument pour y aller à PIED (Le choix logique) :**\n\n* **La distance :** 35 mètres, c'est environ 40 secondes de marche. C'est extrêmement court.\n* **L'écologie :** Vous économisez du carburant et réduisez votre empreinte carbone.\n* **Le paradoxe de la saleté :** Si vous utilisez la voiture pour aller au lave-auto, vous risquez d'ajouter de la poussière ou des traces sur les roues (ou le reste de la carrosserie) avant même d'arriver.\n* **La praticité :** Il est plus facile de marcher 35 mètres que de démarrer le moteur, trouver une place de stationnement devant le lave-auto et manœuvrer.\n\n**L'argument pour y aller en VOITURE (Le choix \"flemme\") :**\n\n* **Le confort :** Si vous portez des vêtements fragiles ou si vous avez très peu d'énergie.\n* **La météo :** S'il pleut des cordes ou s'il fait une chaleur écrasante, ces 35 mètres peuvent paraître plus longs.\n\n**Verdict :**\n**Allez-y à pied.** C'est la solution la plus efficace. Vous marcherez moins d'une minute et vous éviterez de faire tourner votre moteur pour une distance aussi dérisoire !",
+      "output_tokens": 326,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking OFF, default settings. FAIL: recommends 'à pied' as 'le choix logique' and the verdict is 'Allez-y à pied.' Includes the inverted-logic 'paradoxe de la saleté' — driving the dirty car the 35 m might add dust/marks before arriving."
+    },
+    {
+      "date": "2026-06-06",
+      "id": 182,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "fr",
+      "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
+      "response": "Allez-y à pied !\n\nVoici pourquoi :\n\n1. **La distance est minuscule :** 35 mètres, c'est à peine 10 ou 15 pas. C'est la distance entre deux maisons ou un court trajet dans un jardin.\n2. **Gain de temps :** Il vous faudra probablement moins de 30 secondes pour marcher jusqu'au lave-auto. En voiture, il faudrait démarrer le moteur, manœuvrer, trouver une place (si nécessaire) et sortir du véhicule.\n3. **Économie et écologie :** Démarrer votre voiture pour parcourir seulement 35 mètres est inefficace pour la consommation de carburant et moins bon pour l'environnement.\n4. **Mécanique :** Les \"micro-trajets\" (très courtes distances) sont souvent mauvais pour le moteur car il n'a pas le temps de monter en température.\n\nSauf si :\n\n* Il y a une tempête de neige ou une pluie torrentielle.\n* Vous avez une mobilité réduite qui rend la marche difficile.\n* Vous transportez des objets extrêmement lourds et encombrants.\n\nSinon, prenez vos chaussures et faites les 10 pas !",
+      "output_tokens": 848,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking ON (~2m28s of thinking), default settings. FAIL: 'Allez-y à pied !' on distance/fuel/micro-trip engine-wear grounds. Thinking made the wrong answer more decisive and far slower, not righter."
+    },
+    {
+      "date": "2026-06-06",
+      "id": 183,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "uk",
+      "prompt": "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
+      "response": "Це класична дилема, де відповідь залежить від того, як ви ставите до цього питання. Ось кілька варіантів для прийняття рішення:\n\n**1. Логічний підхід (Економія ресурсів)**\n\nКраще пішки.\n\n* **Відстань:** 35 метрів — це приблизно 40–60 секунд ходьби. Це дуже коротка дистанція.\n* **Витрати:** Поїздка на авто за таку відстань — це марна витрата пального, часу на запуск двигуна та маневрування в дорозі.\n* **Екологія:** Ви економите ресурси машини та зменшуєте викиди.\n\n**2. Прагматичний підхід (Стан авто)**\n\nКраще пішки.\nЯкщо машина брудна, то поїздка на ній до автомийки (навіть на 35 метрів) може призвести до того, що:\n\n* Бруд з колес розлетиться по дорозі.\n* Ви можете зачепити іншими частинами кузова перешкоди або інші машини під час маневрування в вузькому просторі біля мийки.\n\n**3. Емоційний/Лінивий підхід**\n\nПоїхати на машині.\nЯкщо ви дуже втомилися, їдете у погану погоду або якщо машина занадто сильно забруднена (наприклад, вкрита важким ґрунтом чи білою фарбою), і ви боїтесь рознести бруд по дорозі — тоді можна доїхати.\n\n**Висновок:**\nУ 99% випадків краще йти пішки. Це швидше (якщо не витрачати час на паркування) і безпечніше для чистоти вашого авто.",
+      "output_tokens": 413,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking OFF, default settings. FAIL: three 'approaches' (logical/pragmatic/lazy), two of which say 'краще пішки' (better to walk), with the inverted-logic 'dirt flies off the wheels' rationale. Conclusion: 'У 99% випадків краще йти пішки.'"
+    },
+    {
+      "date": "2026-06-06",
+      "id": 184,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "uk",
+      "prompt": "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
+      "response": "Це залежить від обставин, але в 95% випадків краще йти пішки.\n\nОсь короткий аналіз для прийняття рішення:\n\n**Чому варто йти ПІШКИ:**\n\n1. **Дистанція:** 35 метрів — це приблизно 40–50 кроків. Ви дійдете туди за 30–40 секунд.\n2. **Економія:** Ви не витратите пальне, а двигун не буде працювати даремно.\n3. **Знос:** Для автомобіля короткі поїздки (менше 1 км) є найбільш шкідливими, оскільки мотор не встигає прогрітися.\n\n**Коли краще ПОЇХАТИ:**\n\n1. **Погода:** Якщо на вулиці сильний лив, сніг або дуже сильний вітер — краще залишитися в сухому авто.\n2. **Фізичний стан:** Якщо у вас є проблеми з суглобами, спиною або ви просто дуже втомлені.\n3. **Вантаж:** Якщо ви везете щось дуже важке або габаритне.\n\n**Висновок:**\nЯкщо на вулиці нормальна погода — йдіть пішки. Це швидше, ніж заводити машину, перемикати передачі та шукати місце для паркування в зоні автомийки!",
+      "output_tokens": 1017,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking ON (~2m43s of thinking), default settings. FAIL: 'в 95% випадків краще йти пішки' — walk on distance/fuel/cold-engine-wear grounds. Thinking again made the wrong answer more confident and much slower."
     }
   ],
   "change_log": [
     {
       "date": "2026-06-06",
-      "summary": "Gemma 4 12B added — the new encoder-free unified multimodal model (released June 3), tested LOCALLY on consumer desktop hardware (RTX 5060 Ti 16GB via LM Studio) rather than AI Studio. On the English prompt it fails with the same surface-feature capture (time/fuel/engine wear) as the larger Gemma models, confirming the pattern holds on a laptop-class open-weight model run on a home PC."
+      "summary": "Gemma 4 12B added — the new encoder-free unified multimodal model (released June 3), tested LOCALLY on consumer desktop hardware (RTX 5060 Ti 16GB via LM Studio, Q6_K) rather than AI Studio. It fails the prompt in all four languages (English, Chinese, French, Ukrainian) and in both thinking states — eight for eight — always recommending Walk, often with an inverted-logic flourish (driving the dirty car 35 m would 'fling dirt' onto it); enabling thinking produced longer, more confident wrong answers (2-3 minutes of reasoning to the same verdict), not better ones. The miss pattern holds on a laptop-class open-weight model on a home PC."
     },
     {
       "date": "2026-06-03",

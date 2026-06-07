@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260606c">
+  <link rel="stylesheet" href="styles.css?v=20260606d">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -217,7 +217,7 @@
       <ul>
         <li><strong>Commercial consumer.</strong> The vendor's shipping chat product (ChatGPT, Claude, the Gemini app, Le Chat/Vibe, and so on). What an ordinary user gets: a consumer system prompt, an RLHF-tuned product layer, and whatever wrapper the vendor places around the raw model. This is the default surface for most runs.</li>
         <li><strong>API console.</strong> The developer console or API (e.g. the Anthropic and OpenAI consoles). Exposes controls the consumer app hides — reasoning-effort and verbosity selectors — and reports real output-token counts, including hidden reasoning tokens. Flagged distinctly because the token economics and available controls differ from the consumer app.</li>
-        <li><strong>Open-weight playground.</strong> Models published as downloadable weights (e.g. Gemma 4), tested in a developer playground such as Google AI Studio. These reflect the model as a raw artifact — no consumer system prompt, no product-layer cleanup. They are relevant to developers, self-hosters, and small-office deployers who run the model on their own hardware. <strong>Findings about an open-weight model are not evidence for what the corresponding commercial product (e.g. Gemini) will do, and vice versa</strong> — the cross-language signatures can be opposites. Open-weight runs are excluded from the commercial corpora and the cross-language comparison, and live on their own <a href="transcripts/gemma.html">transcript page</a>.</li>
+        <li><strong>Open-weight.</strong> Models published as downloadable weights (e.g. Gemma 4), tested either in a developer playground such as Google AI Studio or run locally on consumer hardware via a runtime like LM Studio or Ollama. These reflect the model as a raw artifact — no consumer system prompt, no product-layer cleanup. They are relevant to developers, self-hosters, and small-office deployers who run the model on their own hardware. <strong>Findings about an open-weight model are not evidence for what the corresponding commercial product (e.g. Gemini) will do, and vice versa</strong> — the cross-language signatures can be opposites. Open-weight runs are excluded from the commercial corpora and the cross-language comparison, and live on their own <a href="transcripts/gemma.html">transcript page</a>.</li>
       </ul>
     </section>
 
@@ -288,6 +288,7 @@
           <tr><td>Google</td><td>Gemini</td><td>3.5 Flash</td><td>Released May 25, 2026. Tier: "All-around help"</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 26B A4B IT</td><td><code>gemma-4-26b-a4b-it</code></td><td>Open-weight Mixture-of-Experts: 26B total parameters, only 4B active per inference — high-performance reasoning at a fraction of the memory cost. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 31B IT</td><td><code>gemma-4-31b-it</code></td><td>Open-weight dense flagship (Google DeepMind), all 31B parameters active — built for maximum quality in data-center environments; 256K context window. Tested in AI Studio, not the Gemini consumer product.</td></tr>
+          <tr><td>Google (open-weight)</td><td>Gemma 4 12B</td><td><code>gemma-4-12b</code></td><td>Open-weight, encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone). Released June 3, 2026; runs locally in ~16&nbsp;GB VRAM. Tested on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio, not AI Studio.</td></tr>
           <tr><td>xAI</td><td>Grok</td><td>4.3</td><td>Auto/Fast/Expert picker; replaced Grok 4.20 on April 30, 2026</td></tr>
           <tr><td>xAI</td><td>Grok</td><td>4.20</td><td>Historical entries only; deprecated April 30, 2026</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V3.2</td><td>V3.2</td><td>Historical entries only (pre-April 24, 2026). Instant Mode on consumer interface.</td></tr>
@@ -401,7 +402,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260606c"></script>
+  <script src="scripts.js?v=20260606d"></script>
   <script>
     (async function () {
       try {

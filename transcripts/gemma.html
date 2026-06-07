@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260606c">
+  <link rel="stylesheet" href="../styles.css?v=20260606d">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -80,7 +80,7 @@
     <section>
       <div class="callout callout-note">
         <span class="callout-tag">Open-weight</span>
-        <p><strong>Gemma 4 is an open-weight model line, not the commercial Gemini product.</strong> These runs were taken in Google AI Studio's playground (Thinking Level: High, Temperature 1, Grounding off) — the model as a raw artifact, with no consumer system prompt, no RLHF-tuned product layer, and no wrapper doing cleanup. Gemma is not reachable through the Gemini consumer app; it lives in AI Studio, on Hugging Face, and in self-hosted deployments. These results are relevant to developers, self-hosters, and small-office deployers, and they are <em>not</em> evidence for what the Gemini consumer product will do, or vice versa. They are kept as a separate deployment class and excluded from the commercial corpora.</p>
+        <p><strong>Gemma 4 is an open-weight model line, not the commercial Gemini product.</strong> Most of these runs were taken in Google AI Studio's playground (Thinking Level: High, Temperature 1, Grounding off); the 12B was run locally on consumer hardware via LM Studio. Either way it is the model as a raw artifact — no consumer system prompt, no RLHF-tuned product layer, and no wrapper doing cleanup. Gemma is not reachable through the Gemini consumer app; it lives in AI Studio, on Hugging Face, and in self-hosted deployments. These results are relevant to developers, self-hosters, and small-office deployers, and they are <em>not</em> evidence for what the Gemini consumer product will do, or vice versa. They are kept as a separate deployment class and excluded from the commercial corpora.</p>
       </div>
     </section>
 
@@ -98,6 +98,7 @@
         </tbody>
       </table>
       <p class="chart-note">The 26B MoE's Chinese reasoning trace, visible in AI Studio, ran in English throughout and even issued itself a "Keep it brief and witty" self-correction — which failed to prevent verbose Chinese output. The English-space self-monitoring did not govern the language-specific output. The 31B dense model produced a concise Chinese answer with no such self-correction.</p>
+      <p class="chart-note"><strong>Gemma 4 12B</strong> — the new encoder-free multimodal model (released June 3, built to run on a laptop) — was tested separately on <strong>consumer hardware</strong>: a desktop RTX 5060 Ti (16&nbsp;GB) running it locally in LM Studio at ~28 tokens/sec, rather than in AI Studio. On the English prompt it failed with the same surface-feature capture (time, fuel, engine wear) as the larger models' English misses — evidence the pattern holds on a laptop-class model run on a home PC. It appears in the English results below.</p>
     </section>
 
     <section>
@@ -131,7 +132,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260606c"></script>
+  <script src="../scripts.js?v=20260606d"></script>
   <script>
     (async function () {
       const SLUG = "gemma";

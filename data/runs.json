@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-06-03",
+    "last_updated": "2026-06-06",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -2442,9 +2442,29 @@
       "notes": "Open-weight dense, 31B active. Fail: full surface-feature capture. Engine wear, fuel, battery. The 31B dense flagship fails in Ukrainian where the 4B-active MoE passes — no clean size-dominance pattern.",
       "date": "2026-06-03",
       "id": 176
+    },
+    {
+      "date": "2026-06-06",
+      "id": 177,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B",
+      "model_notes": "gemma-4-12b — encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone); 12B params, runs locally in ~16GB VRAM. Released June 3, 2026; Apache 2.0.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "en",
+      "response": "You should **walk.**\n\nHere is why:\n\n1. **Time:** It takes about 60–90 seconds to walk 100 feet. It will likely take you longer to get into the car, start the engine, put it in gear, and navigate the short distance than it would to simply walk there.\n2. **Fuel & Wear:** Starting your car just to move it 100 feet is an inefficient use of fuel and puts unnecessary wear on the starter and engine.\n3. **Convenience:** Unless you are carrying heavy groceries or have a physical mobility issue, walking 100 feet is very easy.\n\nThe only reasons to drive would be:\n\n* If it is currently raining/snowing heavily and you don't want to get wet.\n* If you have a physical disability that makes walking difficult.\n* If the path between you and the carwash is covered in deep mud or hazardous debris that you don't want on your shoes.",
+      "output_tokens": 548,
+      "notes": "Open-weight, run LOCALLY on consumer hardware (desktop RTX 5060 Ti 16GB, LM Studio, ~28 tok/s) rather than AI Studio. Thinking on (11.8s). FAIL: full surface-feature capture — recommends Walk on time/fuel/engine-wear grounds, relegating Drive to weather/disability/mud exceptions. Same English miss pattern as the 26B and 31B. 548 tokens includes the hidden reasoning."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-06",
+      "summary": "Gemma 4 12B added — the new encoder-free unified multimodal model (released June 3), tested LOCALLY on consumer desktop hardware (RTX 5060 Ti 16GB via LM Studio) rather than AI Studio. On the English prompt it fails with the same surface-feature capture (time/fuel/engine wear) as the larger Gemma models, confirming the pattern holds on a laptop-class open-weight model run on a home PC."
+    },
     {
       "date": "2026-06-03",
       "summary": "Gemma 4 open-weight results added as a separate deployment class (Google AI Studio playground, not the commercial Gemini product). Two models — Gemma 4 26B A4B IT (MoE, 4B active) and Gemma 4 31B IT (dense) — across English, French, Chinese, and Ukrainian. No clean size or language main effect: each model fails in exactly one language, but different ones (the MoE fails only in English, its best-resourced language; the dense 31B fails only in Ukrainian). The cross-language signature inverts the commercial pattern, which is why open-weight results are kept separate from the Gemini consumer entries."

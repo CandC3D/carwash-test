@@ -499,7 +499,7 @@
     const tokensSpan = tokens > 0
       ? '<span title="' + tokenTitle + '">' + tokenDisplay(run) + ' tokens</span>'
       : '';
-    const SURFACE_LABELS = { api_console: "API console", consumer: "Consumer app" };
+    const SURFACE_LABELS = { api_console: "API console", consumer: "Consumer app", ai_studio_playground: "AI Studio", local: "Local (LM Studio)" };
     const surfaceSpan = run.surface
       ? '<span>' + escapeHTML(SURFACE_LABELS[run.surface] || run.surface) + '</span>'
       : '';

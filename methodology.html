@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260606d">
+  <link rel="stylesheet" href="styles.css?v=20260609a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -102,6 +102,21 @@
       </blockquote>
     </section>
 
+    <section id="context-pollution">
+      <h2>Context pollution and run validity</h2>
+      <div class="callout callout-limitation">
+        <span class="callout-tag">Methods finding</span>
+        <p><strong>The June 9 context-pollution episode.</strong> On Claude Fable 5's launch day, four runs (English, French, Chinese, Ukrainian) were initially conducted from a mobile device. Two of the four — English and French — were later found to have been conducted inside a project workspace whose context included the Carwash Test documentation, the scoring rubric, and the winner's-circle thresholds. The reasoning traces from those two runs explicitly named the test and cited the 30-token Latin-script threshold ("I'm being tested with a logic puzzle—the Carwash Test... I should keep my response minimal and stay under the 30-token threshold"). The two runs conducted outside the project (Chinese, Ukrainian) showed no test-awareness in their traces.</p>
+      </div>
+      <p>The polluted English and French runs were discarded and rerun in fresh chats outside any project. The cold reruns passed with generic riddle-recognition traces and no test-awareness. The 2×2 pattern — test-naming traces exactly where the test was in context, and nowhere else — confirms context injection rather than training contamination as the mechanism. The invalidated runs do not appear in the dataset; the episode is documented only here.</p>
+      <p>Two lessons are recorded. First: all Carwash runs must be conducted in fresh chats verified to be outside any project or workspace whose context could contain test documentation. Second: the mobile interface did not make project scope visible at the time of the runs — a product-surface finding in its own right. Context a user cannot see can shape model reasoning invisibly; the validation protocol above now guards against it.</p>
+      <p>The training-contamination risk remains open as a slower, standard concern: the test, its dataset, and its thresholds are public, and models trained after their publication may absorb them. Unpublished prompt variants are maintained offline against this risk.</p>
+      <div class="callout callout-specimen">
+        <span class="callout-tag">Observed specimen</span>
+        <p>NON-CANONICAL PROMPT — excluded from the dataset, retained here as a robustness note. A June 9 Fable 5 run was conducted with a corrupted prompt ("My car is dirty. The car was is 100 feet away. Should I walk or drive?" — "carwash" corrupted to "car was"). The model reconstructed the intended question through the typo and named the constraint: "Drive. The car has to be at the wash regardless; walking just means a second trip back for it. The 100 feet of driving is the entire point of the errand." (~40 tokens.) Resilient parsing, but not a canonical-prompt data point; it is not counted in any tally and does not appear on the transcript pages.</p>
+      </div>
+    </section>
+
     <section>
       <h2>The rubric</h2>
       <p>Each response is scored against a single criterion: did the system hold the logical object of the question. The car must be present at the carwash for the washing to occur. Distance is irrelevant to that constraint. Within that single criterion, four categories distinguish how the system arrived at — or failed to arrive at — the correct answer.</p>
@@ -143,13 +158,14 @@
         <li><strong>Balanced / Think / Research.</strong> Mistral's mode picker (in the app now branded <strong>Vibe</strong>, formerly Le Chat): Balanced (everyday default), Think (extended reasoning), and Research (multi-source deep analysis). Balanced was labeled "Fast" in March.</li>
         <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
       </ul>
-      <p><strong>Reasoning-effort and verbosity selectors (May 28, 2026).</strong> Two vendors now expose the <em>amount</em> of reasoning as a graded control distinct from the on/off toggle. Anthropic added a model-specific effort selector — Opus 4.8: Low / Medium / High / Extra / Max; Sonnet 4.6: Low / Medium / High / Max (High is the default) — which coexists with the Adaptive toggle as an orthogonal control, so an Anthropic run now carries both an Adaptive state and an effort level. OpenAI's API console exposes effort (e.g. low / medium / extra-high) and verbosity (low / medium) as separate orthogonal settings, so a model can be told to think hard and still answer briefly. Where these settings were recorded they appear in the run's transcript metadata; the effort level is treated as an experimental variable on the <a href="metrics.html#cross-corpus">Metrics page</a>.</p>
+      <p><strong>Reasoning-effort and verbosity selectors (May 28, 2026).</strong> Two vendors now expose the <em>amount</em> of reasoning as a graded control distinct from the on/off toggle. Anthropic added a model-specific effort selector — Opus 4.8: Low / Medium / High / Extra / Max; Sonnet 4.6: Low / Medium / High / Max (High is the default) — which coexists with the Adaptive toggle as an orthogonal control, so an Anthropic run now carries both an Adaptive state and an effort level. OpenAI's API console exposes effort (e.g. low / medium / extra-high) and verbosity (low / medium) as separate orthogonal settings, so a model can be told to think hard and still answer briefly. Where these settings were recorded they appear in the run's transcript metadata; the effort level is treated as an experimental variable on the <a href="metrics.html#cross-corpus">Metrics page</a>. Claude Fable 5 (June 9, 2026) takes this to its endpoint: it exposes <em>only</em> the effort selector (default High) with no Adaptive or Extended-thinking toggle at all, so Fable runs carry an effort level and a Thinking value of n/a.</p>
     </section>
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and May 29, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and June 9, 2026:</p>
       <ul>
+        <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
         <li>Claude Opus 4.6 and Sonnet 4.6 (Anthropic; originally Extended Thinking On/Off, briefly Adaptive, reverted to Extended Thinking On/Off in May; Sonnet 4.6 now carries an effort selector — Low/Medium/High/Max)</li>
         <li>Claude Haiku 4.5 (Anthropic, Extended Thinking On and Off)</li>
@@ -184,7 +200,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – May 28, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – June 9, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -206,9 +222,10 @@
           <tr><td>Qwen 3.7 series</td><td>May 25, 2026</td><td>4</td><td>97</td></tr>
           <tr><td>Alexa (Amazon shopping assistant)</td><td>May 25, 2026</td><td>1</td><td>98</td></tr>
           <tr><td>Claude Opus 4.8 (flagship)</td><td>May 28, 2026</td><td>2</td><td>100</td></tr>
+          <tr><td>Claude Fable 5 (Mythos-class launch)</td><td>June 9, 2026</td><td>2</td><td>102</td></tr>
         </tbody>
       </table>
-      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (25), French (16), and Ukrainian (27) language corpora, and the open-weight Gemma runs (8), are kept separate and are not included in this cumulative total.</p>
+      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (26), French (17), and Ukrainian (28) language corpora, and the open-weight Gemma runs (16), are kept separate and are not included in this cumulative total.</p>
     </section>
 
     <section id="deployment-classes">
@@ -225,7 +242,7 @@
       <h2>Language corpora</h2>
       <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27–29, 2026 (separate from the 100-run English corpus)</caption>
+        <caption>Language corpora added May 27 – June 9, 2026 (separate from the 102-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -236,9 +253,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Simplified Chinese</td><td>May 27 &amp; 29, 2026</td><td>25</td><td>52%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, and a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds. Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>French</td><td>May 27 &amp; 29, 2026</td><td>16</td><td>38%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint. Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>Ukrainian</td><td>May 28–29, 2026</td><td>27</td><td>26%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Simplified Chinese</td><td>May 27 – June 9, 2026</td><td>26</td><td>50%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe), and Fable 5 on launch day (June 9). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds; Fable 5 passes. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>French</td><td>May 27 – June 9, 2026</td><td>17</td><td>35%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint; Fable 5 passes (June 9). Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Ukrainian</td><td>May 28 – June 9, 2026</td><td>28</td><td>25%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison; Fable 5 passes (June 9). Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
       </table>
       <p>The Chinese and French prompts were translated via Google Translate and back-translated to verify conformance with the English original; the Ukrainian prompt was translated by a native speaker. Distance was converted to a metric equivalent in every case. Token rates are script-specific and are not directly comparable to the English counts: Chinese estimates use ~0.6 tokens per character, and Cyrillic runs measured ~0.5 tokens per character (about double the English rate of ~0.25) — the first directly measured rate, taken from API output-token counts. Latin-script corpora (French) use the standard ~4-characters-per-token estimate.</p>
@@ -274,6 +291,7 @@
           </tr>
         </thead>
         <tbody>
+          <tr><td>Anthropic</td><td>Claude Fable</td><td>5</td><td>First public Mythos-class model (June 9, 2026); Mythos 5 itself is restricted to approved organizations. Reasoning-effort selector only (default High) — no thinking toggle. Silently falls back to Opus 4.8 in high-risk topic areas with no per-response indicator.</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.8</td><td>New flagship (May 28, 2026). Adaptive On/Off toggle plus a model-specific reasoning-effort selector: Low / Medium / High / Extra / Max (High default). The two controls are orthogonal.</td></tr>
           <tr><td>Anthropic</td><td>Claude Sonnet</td><td>4.6</td><td>Default model. Adaptive On/Off toggle plus reasoning-effort selector: Low / Medium / High / Max (High default).</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.6</td><td>Extended Thinking On/Off toggle (reverted from Adaptive as of May 3)</td></tr>
@@ -331,6 +349,9 @@
         <li><strong>May 28, 2026:</strong> Anthropic released Claude Opus 4.8 as the new flagship and added a model-specific reasoning-effort selector (Opus 4.8: Low/Medium/High/Extra/Max; Sonnet 4.6: Low/Medium/High/Max) coexisting with the Adaptive toggle as an orthogonal control. The roster was tightened: Sonnet 4.6 is the default, with Opus 4.8, Haiku 4.5, Opus 4.7, Opus 4.6, and Opus 3 under "More models."</li>
         <li><strong>May 28, 2026:</strong> OpenAI's API console exposed separate effort and verbosity controls as orthogonal settings.</li>
         <li><strong>May 29, 2026:</strong> Mistral rebranded Le Chat to <strong>Vibe</strong>, a unified agent split into three product modes — Vibe Work (the productivity chat interface), Vibe Code (a developer CLI / VS Code extension / web tool), and Vibe Chat (the original turn-based conversation). Same URL (chat.mistral.ai), same login and history; product docs moved to docs.mistral.ai. The Balanced / Think / Research reasoning picker and the underlying Mistral Medium 3.5 model are unchanged. Carwash runs use the turn-based conversation (Vibe Chat / Work).</li>
+        <li><strong>June 9, 2026:</strong> Anthropic launched <strong>Claude Fable 5</strong>, the first public Mythos-class model. Control surface: reasoning-effort selector only (default High) — no Adaptive/Extended thinking toggle, a third Anthropic control configuration in three months. Pricing: $10/M input, $50/M output — double Opus 4.8. Fallback architecture: in high-risk topic areas Fable blocks and silently falls back to Opus 4.8 (vendor reports ≥95% of sessions run fully on Fable); no interface indicator shows which model answered. Mandatory 30-day traffic retention applies to all Fable/Mythos traffic, superseding prior zero-retention agreements.</li>
+        <li><strong>June 9, 2026:</strong> Fable 5 staged rollout: included on Pro/Max/Team/seat-based Enterprise at no extra cost June 9–22; removed from those plans June 23 and gated behind usage credits thereafter, with stated intent to restore. The access population for Fable testing changes on June 23 — community replications will cluster in the free window. Subscription quantity tiers (5x/10x/25x Max) do not purchase access to the capability tier after June 23.</li>
+        <li><strong>June 9, 2026:</strong> Mobile-interface scope ambiguity documented: at the time of the June 9 runs, the Claude mobile interface did not make it visible whether a new chat was inside or outside a project workspace. Two launch-day runs were invalidated by unrecognized project context and rerun cold. Filed as both a methodology constraint and a product-surface finding; see <a href="#context-pollution">Context pollution and run validity</a>.</li>
       </ul>
       <div class="callout callout-note">
         <span class="callout-tag">Note</span>
@@ -402,7 +423,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260606d"></script>
+  <script src="scripts.js?v=20260609a"></script>
   <script>
     (async function () {
       try {

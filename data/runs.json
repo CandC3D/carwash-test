@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-06-06",
+    "last_updated": "2026-06-09",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -125,6 +125,12 @@
       "category": "open-weight",
       "deployment_class": "open_weight",
       "notes": "Google's open-weight model line, distinct from the commercial Gemini product. Tested in Google AI Studio playground. Not available through the Gemini consumer interface."
+    },
+    "fable": {
+      "name": "Anthropic (Fable)",
+      "display_name": "Anthropic (Fable)",
+      "slug": "fable",
+      "notes": "Public-facing version of Anthropic's Mythos model line, launched June 9, 2026. Mythos 5 itself is restricted to approved organizations. Reasoning-effort selector only (default High) — no Adaptive/Extended thinking toggle, unlike the Opus line. ARCHITECTURAL CAVEAT: in high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8; Anthropic reports >=95% of sessions run entirely on Fable. No interface indicator shows which model answered. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to all Fable entries as a class."
     }
   },
   "runs": [
@@ -2576,9 +2582,111 @@
       "response": "Це залежить від обставин, але в 95% випадків краще йти пішки.\n\nОсь короткий аналіз для прийняття рішення:\n\n**Чому варто йти ПІШКИ:**\n\n1. **Дистанція:** 35 метрів — це приблизно 40–50 кроків. Ви дійдете туди за 30–40 секунд.\n2. **Економія:** Ви не витратите пальне, а двигун не буде працювати даремно.\n3. **Знос:** Для автомобіля короткі поїздки (менше 1 км) є найбільш шкідливими, оскільки мотор не встигає прогрітися.\n\n**Коли краще ПОЇХАТИ:**\n\n1. **Погода:** Якщо на вулиці сильний лив, сніг або дуже сильний вітер — краще залишитися в сухому авто.\n2. **Фізичний стан:** Якщо у вас є проблеми з суглобами, спиною або ви просто дуже втомлені.\n3. **Вантаж:** Якщо ви везете щось дуже важке або габаритне.\n\n**Висновок:**\nЯкщо на вулиці нормальна погода — йдіть пішки. Це швидше, ніж заводити машину, перемикати передачі та шукати місце для паркування в зоні автомийки!",
       "output_tokens": 1017,
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q6_K GGUF), Thinking ON (~2m43s of thinking), default settings. FAIL: 'в 95% випадків краще йти пішки' — walk on distance/fuel/cold-engine-wear grounds. Thinking again made the wrong answer more confident and much slower."
+    },
+    {
+      "vendor": "Anthropic",
+      "model_family": "fable",
+      "model": "Claude Fable 5",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "consumer",
+      "result": "pass",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Drive. The car has to be at the carwash.",
+      "token_estimate": 10,
+      "notes": "Launch-day run, effort High (default; Fable has no thinking toggle). Pass: constraint as bare tautology. Winner's circle (Latin, <=30).",
+      "date": "2026-06-09",
+      "id": 185
+    },
+    {
+      "vendor": "Anthropic",
+      "model_family": "fable",
+      "model": "Claude Fable 5",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "consumer",
+      "result": "pass",
+      "language": "en",
+      "prompt": "My car is dirty. The car wash is 100 feet away. Should I walk or drive?",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "There's a joke or riddle here about a car needing to go to the car wash, and I'm thinking through the punchline or answer in a concise way.",
+      "response": "Drive. The car is the one that needs washing; walking gets you a clean you standing next to a dirty car.",
+      "token_estimate": 26,
+      "notes": "Launch-day replication. Pass: constraint as tautology ('walking gets you a clean you standing next to a dirty car'). Winner's circle (Latin, <=30). Reasoning trace in English — trace-language match.",
+      "date": "2026-06-09",
+      "id": 186
+    },
+    {
+      "vendor": "Anthropic",
+      "model_family": "fable",
+      "model": "Claude Fable 5",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "consumer",
+      "result": "pass",
+      "language": "fr",
+      "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
+      "reasoning_trace_language": "French",
+      "reasoning_trace": "Prendre la voiture — c'est celle qui a besoin d'un lavage.",
+      "response": "En voiture — c'est elle qui est sale, pas vous. Le lave-auto fait peu pour un piéton propre.",
+      "token_estimate": 23,
+      "notes": "Launch-day run. Pass: constraint as tautology. Winner's circle (Latin, <=30). Reasoning trace in French — trace-language match.",
+      "date": "2026-06-09",
+      "id": 187
+    },
+    {
+      "vendor": "Anthropic",
+      "model_family": "fable",
+      "model": "Claude Fable 5",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "consumer",
+      "result": "pass",
+      "language": "zh-CN",
+      "prompt": "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      "reasoning_trace_language": "Chinese",
+      "reasoning_trace": "这是个经典的逻辑笑话——既然车很脏需要洗，当然应该开车去洗车场，而不是走路去。",
+      "response": "开车去。要洗的是车，不是你——车留在家里的话,洗车店那35米就白走了。",
+      "token_estimate": 21,
+      "token_method": "Chinese chars × 0.6",
+      "notes": "Launch-day run. Pass: '要洗的是车，不是你' — what needs washing is the car, not you. Winner's circle (Hanzi, <=60). First Anthropic flagship-tier pass in Chinese — both Opus generations fail Chinese in every toggle state (Opus 4.7's '走路。' is the tersest failure in the dataset); the mid-tier Sonnet 4.6 holds it. Reasoning trace in Chinese — trace-language match. Locale caveat: Claude offers no Chinese UI option; run conducted through the English-language interface.",
+      "date": "2026-06-09",
+      "id": 188
+    },
+    {
+      "vendor": "Anthropic",
+      "model_family": "fable",
+      "model": "Claude Fable 5",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "consumer",
+      "result": "pass",
+      "language": "uk",
+      "prompt": "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
+      "reasoning_trace_language": "Ukrainian",
+      "reasoning_trace": "Це жарт про те, що машина брудна, а автомийня всього 35 метрів далеко — йти пішки чи їхати? Звичайно, їхати, бо машина має бути там. Коротка, стисла відповідь.",
+      "response": "Машиною. Мийка миє машину, а не вас — пішки ви прийдете чистим, а машина залишиться брудною на стоянці. 35 метрів — це, мабуть, найкоротша поїздка у вашому житті, але без неї весь задум втрачає сенс.",
+      "token_estimate": 100,
+      "token_method": "Cyrillic chars × 0.5 (measured rate)",
+      "notes": "Launch-day run. Pass: 'Мийка миє машину, а не вас' — the wash washes the car, not you. At ~100 tokens (Cyrillic measured rate) it exceeds the 60-token winner's-circle threshold — a clean pass, but not a winner's-circle entry. Reasoning trace in Ukrainian with a self-instruction ('Коротка, стисла відповідь' — short, concise answer) that the output honored. Trace-language match.",
+      "date": "2026-06-09",
+      "id": 189
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-09",
+      "summary": "Anthropic launched Claude Fable 5, the first public Mythos-class model. Control surface: reasoning-effort selector only (default High) — no Adaptive/Extended thinking toggle, a third Anthropic control configuration in three months. Pricing: $10/M input, $50/M output — double Opus 4.8. Fallback architecture: in high-risk topic areas Fable blocks and silently falls back to Opus 4.8 (vendor reports >=95% of sessions run fully on Fable); no interface indicator shows which model answered. Mandatory 30-day traffic retention applies to all Fable/Mythos traffic, superseding prior zero-retention agreements."
+    },
+    {
+      "date": "2026-06-09",
+      "summary": "Fable 5 staged rollout: included on Pro/Max/Team/seat-based Enterprise at no extra cost June 9–22; removed from those plans June 23 and gated behind usage credits thereafter, with stated intent to restore. The access population for Fable testing changes on June 23 — community replications will cluster in the free window. Subscription quantity tiers (5x/10x/25x Max) do not purchase access to the capability tier after June 23."
+    },
+    {
+      "date": "2026-06-09",
+      "summary": "Mobile-interface scope ambiguity documented: at the time of the June 9 runs, the Claude mobile interface did not make it visible whether a new chat was inside or outside a project workspace. Two launch-day runs were invalidated by unrecognized project context and rerun cold. Filed as both a methodology constraint and a product-surface finding; see the methodology page's context-pollution note."
+    },
     {
       "date": "2026-06-06",
       "summary": "Gemma 4 12B added — the new encoder-free unified multimodal model (released June 3), tested LOCALLY on consumer desktop hardware (RTX 5060 Ti 16GB via LM Studio, Q6_K) rather than AI Studio. It fails the prompt in all four languages (English, Chinese, French, Ukrainian) and in both thinking states — eight for eight — always recommending Walk, often with an inverted-logic flourish (driving the dirty car 35 m would 'fling dirt' onto it); enabling thinking produced longer, more confident wrong answers (2-3 minutes of reasoning to the same verdict), not better ones. The miss pattern holds on a laptop-class open-weight model on a home PC."

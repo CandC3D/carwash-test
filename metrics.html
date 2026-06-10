@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Metrics | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 100 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 102 runs and 16 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260606d">
+  <link rel="stylesheet" href="styles.css?v=20260609a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Metrics">
-  <meta property="og:description" content="Charts and trends across 100 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:description" content="Charts and trends across 102 runs and 16 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta property="og:url" content="https://candc3d.github.io/carwash-test/metrics.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Metrics">
-  <meta name="twitter:description" content="Charts and trends across 100 runs and 15 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="twitter:description" content="Charts and trends across 102 runs and 16 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -106,13 +106,14 @@
 
     <section>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=100). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language.</p>
+      <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=102). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language.</p>
       <table class="results-table cross-lang-table">
         <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian</caption>
         <thead>
           <tr><th scope="col">Model</th><th scope="col">Toggle</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th><th scope="col">Ukrainian</th></tr>
         </thead>
         <tbody>
+          <tr><td>Claude Fable 5</td><td>Effort High (default)</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td></tr>
           <tr><td>Claude Opus 4.8</td><td>Adaptive On</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
           <tr><td>Claude Opus 4.8</td><td>Adaptive Off</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
           <tr><td>Claude Opus 4.7</td><td>Adaptive On</td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge fail">Fail</span></td><td><span class="badge pass">Pass</span></td></tr>
@@ -132,6 +133,7 @@
         </tbody>
       </table>
       <ul class="findings-list">
+        <li><strong>Fable 5 is the first model with a clean four-language pass record.</strong> Before June 9, every model tested in more than one language failed in at least one: Chinese defeated both Opus generations and every GPT; Ukrainian broke Sonnet 4.6's thinking-off states. Whether the clean sweep reflects Mythos-class capability, training-data composition, or the trace-language match documented below is undetermined: one model, one snapshot. The question for the next frontier releases is whether this is what the frontier now looks like, or whether Fable is an outlier.</li>
         <li><strong>Chinese defeats models that pass in English and French.</strong> Opus 4.7, GPT 5.5 On, and GPT 5.2 On all hold the constraint in English, hold (mostly) in French, and fail in Chinese. The language is an independent variable.</li>
         <li><strong>The flagship fails Chinese where the mid-tier holds it.</strong> Both Opus generations (4.7 and 4.8) fail the Chinese prompt in <em>every</em> toggle state — recommending walking, or naming the constraint and then dismissing it — even though Opus 4.8 passes English and French cleanly. The smaller Claude Sonnet 4.6 holds the constraint in Chinese across all four states. More reasoning budget on the larger model does not help here; in this language it hurts.</li>
         <li><strong>The inverted-logic failure is language-triggered.</strong> Models argue that driving would make the car dirtier in French (Mistral, Lumo, both GPTs), Chinese (GPT 5.5 Off), and Ukrainian (Sonnet 4.6 Off, both consumer Sonnet runs) but never in English. The <em>kind</em> of wrong answer depends on the language.</li>
@@ -156,7 +158,7 @@
         <p>The Carwash Test was extended to Simplified Chinese using a metrically equivalent prompt. Across the three Chinese-hosted vendors — DeepSeek, Kimi, and Qwen — nine runs produced a 22% failure rate, substantially lower than the failure rate the same vendors showed in English. The prompt's mechanism survived translation: surface features still pushed toward Walk, the logical constraint still pointed toward Drive. What changed was how the constraint was articulated. Chinese responses that passed consistently named the carwash as a business requiring the car's physical presence — “洗车店老板可没法帮你洗” (the carwash owner can't help you wash it) — a personalized framing that made the logical object harder to lose. One novel failure mode emerged only in Chinese: DeepSeek V4-Pro with reasoning disabled identified the constraint correctly, labeled it as a joke, and offered Walk as the “serious” practical advice — the correct answer visible to the model and dismissed as comedy.</p>
         <p lang="zh-CN">洗车测试已扩展至简体中文，使用等效的公制提示语。针对三家中国厂商——深度求索（DeepSeek）、Kimi和通义千问（Qwen）——的九次测试中，失败率为22%，远低于同一批厂商在英文版测试中的失败率。提示语的核心机制经受住了翻译的考验：表面特征仍然推向"走路"，逻辑约束仍然指向"开车"。变化在于约束的表达方式。通过测试的中文回答普遍将洗车店描述为一个需要车辆到场的经营场所——"洗车店老板可没法帮你洗"——这种拟人化的表述使逻辑对象更难被忽视。一种全新的失败模式仅在中文测试中出现：深度求索V4-Pro在关闭推理功能时，正确识别了逻辑约束，却将其归类为笑话，然后将"走路"作为严肃的实用建议——正确答案对模型来说清晰可见，却被当作幽默而忽略。</p>
         <p class="corpus-note"><strong>Control runs.</strong> Five US-trained control runs (ChatGPT 5.5 On/Off, ChatGPT 5.2 On/Off, Claude Opus 4.7) were then added; all five fail, bringing the corpus to 14 runs and a 50% failure rate. The Chinese-hosted vendors fail at 22%; the US-trained controls fail at 100% — the US models handle the Chinese prompt <em>worse</em> than the Chinese-hosted models do, inverting the intuition that Chinese vendors would struggle more.</p>
-        <p class="corpus-note"><strong>May 29 Anthropic sweep.</strong> Eleven more runs (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe) brought the corpus to 25 runs and a 52% failure rate, and surfaced a clean model-size inversion: <strong>both Opus generations fail Chinese in every toggle state</strong> — recommending Walk on cold-start/parking grounds, or naming the constraint and then dismissing it — while the smaller <strong>Sonnet 4.6 holds the constraint in all four states</strong>. Opus 4.8 passes English and French cleanly, so this is language-specific, not a general regression; in Chinese the larger model's extra reasoning argues itself out of the right answer. Vibe (Le Chat's successor) fails all three modes; Lumo holds.</p>
+        <p class="corpus-note"><strong>May 29 Anthropic sweep.</strong> Eleven more runs (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe) brought the corpus to 25 runs and a 52% failure rate, and surfaced a clean model-size inversion: <strong>both Opus generations fail Chinese in every toggle state</strong> — recommending Walk on cold-start/parking grounds, or naming the constraint and then dismissing it — while the smaller <strong>Sonnet 4.6 holds the constraint in all four states</strong>. Opus 4.8 passes English and French cleanly, so this is language-specific, not a general regression; in Chinese the larger model's extra reasoning argues itself out of the right answer. Vibe (Le Chat's successor) fails all three modes; Lumo holds. Claude Fable 5's launch-day pass (June 9) brings the corpus to 26 runs and a 50% failure rate — the first Anthropic flagship-tier Chinese pass.</p>
       </div>
     </section>
 
@@ -171,7 +173,7 @@
       <div id="fr-tally"></div>
       <div id="fr-table"></div>
       <div class="corpus-summary">
-        <p>The Carwash Test was extended to French using a metrically equivalent prompt. The first nine runs across four vendors — Mistral, Lumo, OpenAI, and Anthropic — produced a 67% failure rate. A language-specific failure mode emerged: the inverted-logic pattern, in which the model argues that driving would make the car dirtier or that the car is already clean, appears across three vendors in French (Mistral, Lumo, and GPT) but in zero English-language runs. The toggle relationship itself proved language-dependent: GPT 5.2 passes with thinking off and fails with thinking on in French — the exact inverse of its English behavior. Claude Opus 4.7 produced one of the most concise correct answers in the entire dataset (“En voiture — sinon le lave-auto va laver le mauvais sujet”) while the same model, same toggle, same day, failed in Chinese with a two-character response. The kind of wrong answer depends on the language even when the fact of failure does not. A May 29 sweep added seven more Anthropic runs — Opus 4.7, Opus 4.8, and Sonnet 4.6 across both toggle states, plus two console turns — and every one held the constraint, bringing the corpus to 16 runs and a 38% failure rate. The five consumer answers were terse winner's-circle passes (“En voiture. Tu dois la laver, pas toi.”); the language that breaks GPT and Mistral leaves the Claude models untouched.</p>
+        <p>The Carwash Test was extended to French using a metrically equivalent prompt. The first nine runs across four vendors — Mistral, Lumo, OpenAI, and Anthropic — produced a 67% failure rate. A language-specific failure mode emerged: the inverted-logic pattern, in which the model argues that driving would make the car dirtier or that the car is already clean, appears across three vendors in French (Mistral, Lumo, and GPT) but in zero English-language runs. The toggle relationship itself proved language-dependent: GPT 5.2 passes with thinking off and fails with thinking on in French — the exact inverse of its English behavior. Claude Opus 4.7 produced one of the most concise correct answers in the entire dataset (“En voiture — sinon le lave-auto va laver le mauvais sujet”) while the same model, same toggle, same day, failed in Chinese with a two-character response. The kind of wrong answer depends on the language even when the fact of failure does not. A May 29 sweep added seven more Anthropic runs — Opus 4.7, Opus 4.8, and Sonnet 4.6 across both toggle states, plus two console turns — and every one held the constraint, bringing the corpus to 16 runs and a 38% failure rate. The five consumer answers were terse winner's-circle passes (“En voiture. Tu dois la laver, pas toi.”); the language that breaks GPT and Mistral leaves the Claude models untouched. Claude Fable 5 passed on launch day (June 9), bringing the corpus to 17 runs and a 35% failure rate.</p>
         <p lang="fr">Le test du lave-auto a été étendu au français à l'aide d'un prompt métrique équivalent. Les neuf premiers tests répartis sur quatre fournisseurs — Mistral, Lumo, OpenAI et Anthropic — ont produit un taux d'échec de 67 %. Un mode d'échec propre à la langue est apparu : le raisonnement inversé, selon lequel le modèle soutient que conduire salirait davantage la voiture ou que la voiture est déjà propre, se manifeste chez trois fournisseurs en français (Mistral, Lumo et GPT) mais dans aucun test en anglais. La relation du commutateur de raisonnement s'est révélée dépendante de la langue : GPT 5.2 réussit sans raisonnement étendu et échoue avec en français — l'exact inverse de son comportement en anglais. Claude Opus 4.7 a produit l'une des réponses correctes les plus concises de l'ensemble du jeu de données (« En voiture — sinon le lave-auto va laver le mauvais sujet ») tandis que le même modèle, le même réglage, le même jour, a échoué en chinois avec une réponse de deux caractères. Le type de mauvaise réponse dépend de la langue, même lorsque le fait de l'échec n'en dépend pas. Une série du 29 mai a ajouté sept tests Anthropic — Opus 4.7, Opus 4.8 et Sonnet 4.6 dans les deux états du commutateur, plus deux requêtes via la console — qui ont tous tenu la contrainte, portant le corpus à seize tests et un taux d'échec de 38 %.</p>
       </div>
     </section>
@@ -188,7 +190,7 @@
       <div id="uk-tally"></div>
       <div id="uk-table"></div>
       <div class="corpus-summary">
-        <p>The Carwash Test was extended to Ukrainian using a native-speaker-translated prompt — 27 runs across Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split between the API console and the consumer interface, for a 26% failure rate. The corpus was built to separate two things the earlier languages had confounded: the <em>reasoning-effort level</em> as a continuous variable, and the <em>surface</em> (developer console vs. consumer app). Both proved to matter. Claude Sonnet 4.6 holds the constraint at high effort and inverts it at low effort — the same model, same prompt, failing only when given less time to think. On the console, OpenAI's GPT 5.5 returned the same correct answer at 121 output tokens (low effort) and 565 (extra-high effort) — real console counts, not estimates: a 4.7× cost difference for identical quality, almost all of it hidden reasoning. The cleanest pass in the corpus was Qwen3.7-Plus-Preview's two-sentence answer naming the constraint directly (“the washers would have nothing to wash”). The most elaborate failure in the entire dataset also appeared here: DeepSeek V4-Pro with reasoning off fabricated a “known Soviet riddle” about Zhiguli cars, complete with an invented canonical punchline, to justify walking — constraint-as-comedy escalated into a hallucinated cultural reference, which reasoning-on then repaired.</p>
+        <p>The Carwash Test was extended to Ukrainian using a native-speaker-translated prompt — 28 runs across Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split between the API console and the consumer interface, for a 25% failure rate. The corpus was built to separate two things the earlier languages had confounded: the <em>reasoning-effort level</em> as a continuous variable, and the <em>surface</em> (developer console vs. consumer app). Both proved to matter. Claude Sonnet 4.6 holds the constraint at high effort and inverts it at low effort — the same model, same prompt, failing only when given less time to think. On the console, OpenAI's GPT 5.5 returned the same correct answer at 121 output tokens (low effort) and 565 (extra-high effort) — real console counts, not estimates: a 4.7× cost difference for identical quality, almost all of it hidden reasoning. The cleanest pass in the corpus was Qwen3.7-Plus-Preview's two-sentence answer naming the constraint directly (“the washers would have nothing to wash”). The most elaborate failure in the entire dataset also appeared here: DeepSeek V4-Pro with reasoning off fabricated a “known Soviet riddle” about Zhiguli cars, complete with an invented canonical punchline, to justify walking — constraint-as-comedy escalated into a hallucinated cultural reference, which reasoning-on then repaired.</p>
         <p lang="uk"><em>Резюме українською мовою готується; його перевірить носій мови перед публікацією.</em></p>
       </div>
     </section>
@@ -200,16 +202,19 @@
       <h3>Models reason in a dominant internal language, then translate</h3>
       <p>Several Ukrainian runs exposed a reasoning trace in a language other than the prompt or the answer. The model handled the logical constraint in its dominant internal language and translated only the final output into Ukrainian.</p>
       <table class="results-table">
-        <caption>Reasoning-trace language vs. response language (Ukrainian corpus)</caption>
+        <caption>Reasoning-trace language vs. response language, where the trace was observable</caption>
         <thead><tr><th scope="col">Model</th><th scope="col">Surface / toggle</th><th scope="col">Reasoned in</th><th scope="col">Answered in</th></tr></thead>
         <tbody>
           <tr><td>DeepSeek V4-Flash</td><td>Consumer, DeepThink On</td><td>Russian</td><td>Ukrainian</td></tr>
           <tr><td>Qwen3.7-Max</td><td>Consumer</td><td>English, then Chinese</td><td>Ukrainian</td></tr>
           <tr><td>Qwen3.7-Max-Preview</td><td>Consumer</td><td>Ukrainian, then Chinese</td><td>Ukrainian</td></tr>
           <tr><td>Claude Sonnet 4.6</td><td>API console, On / Adaptive On</td><td>English</td><td>Ukrainian</td></tr>
+          <tr><td>Gemma 4 26B A4B IT</td><td>AI Studio, Thinking High (open-weight)</td><td>English</td><td>Chinese</td></tr>
+          <tr><td><strong>Claude Fable 5</strong></td><td>Consumer, Effort High</td><td><strong>Same as prompt — all four languages</strong></td><td>English / French / Chinese / Ukrainian</td></tr>
         </tbody>
       </table>
       <p class="chart-note">DeepSeek reasoning in Russian on a Ukrainian prompt is notable given the political context; the trace language is a property of the training distribution, not the prompt.</p>
+      <p>Fable 5 is the first model in the dataset observed reasoning in the prompt's language in every language tested — and the first model with a clean four-language pass record. Every previously tested model that exposed a trace reasoned in a dominant internal language (English, Russian, or Chinese) and translated outward, and every previously tested model failed in at least one language. The correlation supports the trace-language-match hypothesis: language-dependent failures may enter at the translation boundary between the model's internal working language and its output language. One model; correlation only; stated at that weight. The July study will collect trace language systematically across all models that expose it.</p>
 
       <h3>Reasoning effort is a continuous variable, not a toggle</h3>
       <p>Anthropic's new effort selector (and OpenAI's console effort control) make the amount of reasoning a dial rather than an on/off switch. The same model can pass or fail depending on where the dial sits.</p>
@@ -239,7 +244,7 @@
       <p class="chart-note">Low and extra-high effort return the same correct answer at 121 vs. 565 output tokens (real console counts, not estimates) — a 4.7× cost difference for identical quality.</p>
 
       <h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:7px;color:var(--pumpkin)"><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5H4.5a2.5 2.5 0 0 0 2.8 3.8"/><path d="M17 5h2.5a2.5 2.5 0 0 1-2.8 3.8"/><path d="M12 13v3"/><path d="M9.5 19h5l-1-3h-3z"/></svg>The winner's circle: concise correct answers</h3>
-      <p>A “winner's-circle” pass names the constraint and stops. Because tokenization differs by script, the brevity threshold is script-specific: ≤30 tokens in Latin, ≤60 in Hanzi, ≤60 in Cyrillic. Every Pass that clears its threshold is listed below — runs #1/#39 and #2/#40 are the same verbatim answer produced in two separate test batches.</p>
+      <p>A “winner's-circle” pass names the constraint and stops. Because tokenization differs by script, the brevity threshold is script-specific: ≤30 tokens in Latin, ≤60 in Hanzi, ≤60 in Cyrillic. Every Pass that clears its threshold is listed below — runs #1/#39 and #2/#40 are the same verbatim answer produced in two separate test batches. Claude Fable 5 enters in three of its four languages (English ×2, French, Chinese); its Ukrainian run passes but, at ~100 tokens by the measured Cyrillic rate, exceeds the 60-token threshold.</p>
       <table class="results-table">
         <caption>Winner&rsquo;s-circle passes: every Pass within the per-script token threshold</caption>
         <thead><tr><th scope="col">Run</th><th scope="col">Script</th><th scope="col">Model</th><th scope="col">Language / config</th><th scope="col">Tokens</th><th scope="col">Response</th></tr></thead>
@@ -268,6 +273,10 @@
           <tr><td>#155</td><td>Latin</td><td>Claude Sonnet 4.6</td><td>French / Adaptive On</td><td>~12</td><td><span lang="fr">En voiture — sinon tu arrives à pied au lave-auto.</span></td></tr>
           <tr><td>#161</td><td>Hanzi</td><td>Claude Sonnet 4.6</td><td>Chinese / Adaptive Off</td><td>~15</td><td><span lang="zh-CN">开车去。35米步行也到不了，但你得把车开进洗车道。</span></td></tr>
           <tr><td>#162</td><td>Hanzi</td><td>Claude Sonnet 4.6</td><td>Chinese / Adaptive On</td><td>~9</td><td><span lang="zh-CN">开车去。走路把车推回来比较难。</span></td></tr>
+          <tr><td>#185</td><td>Latin</td><td>Claude Fable 5</td><td>English / Effort High</td><td>~10</td><td>Drive. The car has to be at the carwash.</td></tr>
+          <tr><td>#186</td><td>Latin</td><td>Claude Fable 5</td><td>English / Effort High</td><td>~26</td><td>Drive. The car is the one that needs washing; walking gets you a clean you standing next to a dirty car.</td></tr>
+          <tr><td>#187</td><td>Latin</td><td>Claude Fable 5</td><td>French / Effort High</td><td>~23</td><td><span lang="fr">En voiture — c'est elle qui est sale, pas vous. Le lave-auto fait peu pour un piéton propre.</span></td></tr>
+          <tr><td>#188</td><td>Hanzi</td><td>Claude Fable 5</td><td>Chinese / Effort High</td><td>~21</td><td><span lang="zh-CN">开车去。要洗的是车，不是你——车留在家里的话,洗车店那35米就白走了。</span></td></tr>
         </tbody>
       </table>
       <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>
@@ -289,7 +298,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260606d"></script>
+  <script src="scripts.js?v=20260609a"></script>
   <script>
     (async function () {
       try {

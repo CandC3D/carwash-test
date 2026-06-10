@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Microsoft (Copilot) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Microsoft Copilot results on the Carwash Test, under the retrieval-isolation prompt.">
+  <title id="page-title">The Carwash Test — Anthropic (Fable) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude Fable 5 (Mythos-class) results on the Carwash Test.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -17,20 +17,20 @@
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Microsoft (Copilot)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Microsoft Copilot results on the Carwash Test, under the retrieval-isolation prompt.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — Anthropic (Fable)">
+  <meta property="og:description" content="Claude Fable 5 (Mythos-class) results on the Carwash Test — the first model with a clean four-language pass record.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/fable.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Microsoft (Copilot)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Microsoft Copilot results on the Carwash Test, under the retrieval-isolation prompt.">
+  <meta name="twitter:title" content="The Carwash Test — Anthropic (Fable)">
+  <meta name="twitter:description" content="Claude Fable 5 (Mythos-class) results on the Carwash Test — the first model with a clean four-language pass record.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Microsoft Copilot, Copilot, Copilot Quick Response, Copilot Think Deeper, GPT via Copilot, Opus via Copilot, M365 Copilot, isolation prompt, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, Claude Fable 5, Fable 5, Mythos, Mythos-class, Anthropic Fable, reasoning effort selector, model fallback architecture, cross-language AI evaluation, statistical pressure, logical object, AI failure modes, large language models, LLM benchmark, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -42,6 +42,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -56,18 +57,17 @@
   <!-- carwash-vendor-rail -->
   <div id="vendor-rail"></div>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
+          <h1 class="site-title" id="family-title">Anthropic (Fable)</h1>
           <p class="site-subtitle">Carwash Test transcripts</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
       <hr class="site-rule">
-      <p class="prompt-line">Canonical prompt (runs 15–17, 20): "My car is dirty. The carwash is 100 feet away. Should I walk or drive?"</p>
+      <p class="prompt-line">My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
       <nav class="site-nav">
         <a href="../index.html">Overview</a>
         <a href="../results.html">Results</a>
@@ -76,6 +76,17 @@
         <a href="../transcripts.html" class="active">Transcripts</a>
       </nav>
     </header>
+
+    <section>
+      <div class="callout callout-note">
+        <span class="callout-tag">Mythos-class</span>
+        <p><strong>Claude Fable 5 is the public-facing version of Anthropic's Mythos model line</strong>, launched June 9, 2026 — a different line from Opus/Sonnet/Haiku. Mythos 5 itself is restricted to approved organizations. Fable's control surface is a reasoning-effort selector only (default High); unlike the Opus line, there is no Adaptive or Extended-thinking toggle. All runs here were taken at the default effort.</p>
+      </div>
+      <div class="callout callout-limitation">
+        <span class="callout-tag">Limitation</span>
+        <p><strong>Fallback architecture.</strong> In high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8; Anthropic reports ≥95% of sessions run entirely on Fable. No interface indicator shows which model answered a given response. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to every Fable entry as a class: any individual response could in principle have been served by Opus 4.8.</p>
+      </div>
+    </section>
 
     <section>
       <h2>Results</h2>
@@ -113,7 +124,7 @@
   <script src="../scripts.js?v=20260609a"></script>
   <script>
     (async function () {
-      const SLUG = "microsoft";
+      const SLUG = "fable";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];

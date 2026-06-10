@@ -601,6 +601,8 @@ li { margin-bottom: 6px; }
 }
 .callout-specimen { border-left-color: var(--olive); }
 .callout-specimen .callout-tag { background: var(--olive); }
+.callout-methods { border-left-color: #4682b4; }
+.callout-methods .callout-tag { background: #4682b4; }
 .callout-specimen p { font-family: var(--mono); font-size: 14px; line-height: 1.55; }
 @media (max-width: 560px) {
   .charts-row { gap: 20px; }

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260609a">
+  <link rel="stylesheet" href="styles.css?v=20260609b">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -104,17 +104,13 @@
 
     <section id="context-pollution">
       <h2>Context pollution and run validity</h2>
-      <div class="callout callout-limitation">
+      <div class="callout callout-methods">
         <span class="callout-tag">Methods finding</span>
         <p><strong>The June 9 context-pollution episode.</strong> On Claude Fable 5's launch day, four runs (English, French, Chinese, Ukrainian) were initially conducted from a mobile device. Two of the four — English and French — were later found to have been conducted inside a project workspace whose context included the Carwash Test documentation, the scoring rubric, and the winner's-circle thresholds. The reasoning traces from those two runs explicitly named the test and cited the 30-token Latin-script threshold ("I'm being tested with a logic puzzle—the Carwash Test... I should keep my response minimal and stay under the 30-token threshold"). The two runs conducted outside the project (Chinese, Ukrainian) showed no test-awareness in their traces.</p>
       </div>
       <p>The polluted English and French runs were discarded and rerun in fresh chats outside any project. The cold reruns passed with generic riddle-recognition traces and no test-awareness. The 2×2 pattern — test-naming traces exactly where the test was in context, and nowhere else — confirms context injection rather than training contamination as the mechanism. The invalidated runs do not appear in the dataset; the episode is documented only here.</p>
       <p>Two lessons are recorded. First: all Carwash runs must be conducted in fresh chats verified to be outside any project or workspace whose context could contain test documentation. Second: the mobile interface did not make project scope visible at the time of the runs — a product-surface finding in its own right. Context a user cannot see can shape model reasoning invisibly; the validation protocol above now guards against it.</p>
       <p>The training-contamination risk remains open as a slower, standard concern: the test, its dataset, and its thresholds are public, and models trained after their publication may absorb them. Unpublished prompt variants are maintained offline against this risk.</p>
-      <div class="callout callout-specimen">
-        <span class="callout-tag">Observed specimen</span>
-        <p>NON-CANONICAL PROMPT — excluded from the dataset, retained here as a robustness note. A June 9 Fable 5 run was conducted with a corrupted prompt ("My car is dirty. The car was is 100 feet away. Should I walk or drive?" — "carwash" corrupted to "car was"). The model reconstructed the intended question through the typo and named the constraint: "Drive. The car has to be at the wash regardless; walking just means a second trip back for it. The 100 feet of driving is the entire point of the errand." (~40 tokens.) Resilient parsing, but not a canonical-prompt data point; it is not counted in any tally and does not appear on the transcript pages.</p>
-      </div>
     </section>
 
     <section>
@@ -423,7 +419,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260609a"></script>
+  <script src="scripts.js?v=20260609b"></script>
   <script>
     (async function () {
       try {

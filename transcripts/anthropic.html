@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260609b">
+  <link rel="stylesheet" href="../styles.css?v=20260609c">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -78,6 +78,13 @@
     </header>
 
     <section>
+      <div class="callout callout-note">
+        <span class="callout-tag">Fable 5</span>
+        <p><strong>Claude Fable 5 (June 9, 2026) is the public-facing version of Anthropic's Mythos model line</strong> — a different line from Opus/Sonnet/Haiku; Mythos 5 itself is restricted to approved organizations. Its control surface is a reasoning-effort selector only (default High), with no Adaptive or Extended-thinking toggle. Caveat: in high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8 (Anthropic reports ≥95% of sessions run entirely on Fable), and no interface indicator shows which model answered. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to every Fable entry as a class.</p>
+      </div>
+    </section>
+
+    <section>
       <h2>Results</h2>
       <div id="tally"></div>
       <div id="charts"></div>
@@ -110,7 +117,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260609b"></script>
+  <script src="../scripts.js?v=20260609c"></script>
   <script>
     (async function () {
       const SLUG = "anthropic";

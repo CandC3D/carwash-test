@@ -125,12 +125,6 @@
       "category": "open-weight",
       "deployment_class": "open_weight",
       "notes": "Google's open-weight model line, distinct from the commercial Gemini product. Tested in Google AI Studio playground. Not available through the Gemini consumer interface."
-    },
-    "fable": {
-      "name": "Anthropic (Fable)",
-      "display_name": "Anthropic (Fable)",
-      "slug": "fable",
-      "notes": "Public-facing version of Anthropic's Mythos model line, launched June 9, 2026. Mythos 5 itself is restricted to approved organizations. Reasoning-effort selector only (default High) — no Adaptive/Extended thinking toggle, unlike the Opus line. ARCHITECTURAL CAVEAT: in high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8; Anthropic reports >=95% of sessions run entirely on Fable. No interface indicator shows which model answered. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to all Fable entries as a class."
     }
   },
   "runs": [
@@ -2585,23 +2579,7 @@
     },
     {
       "vendor": "Anthropic",
-      "model_family": "fable",
-      "model": "Claude Fable 5",
-      "thinking": "n/a",
-      "effort": "high",
-      "surface": "consumer",
-      "result": "pass",
-      "language": "en",
-      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
-      "response": "Drive. The car has to be at the carwash.",
-      "token_estimate": 10,
-      "notes": "Launch-day run, effort High (default; Fable has no thinking toggle). Pass: constraint as bare tautology. Winner's circle (Latin, <=30).",
-      "date": "2026-06-09",
-      "id": 185
-    },
-    {
-      "vendor": "Anthropic",
-      "model_family": "fable",
+      "model_family": "anthropic",
       "model": "Claude Fable 5",
       "thinking": "n/a",
       "effort": "high",
@@ -2615,11 +2593,11 @@
       "token_estimate": 26,
       "notes": "Launch-day replication. Pass: constraint as tautology ('walking gets you a clean you standing next to a dirty car'). Winner's circle (Latin, <=30). Reasoning trace in English — trace-language match.",
       "date": "2026-06-09",
-      "id": 186
+      "id": 185
     },
     {
       "vendor": "Anthropic",
-      "model_family": "fable",
+      "model_family": "anthropic",
       "model": "Claude Fable 5",
       "thinking": "n/a",
       "effort": "high",
@@ -2633,11 +2611,11 @@
       "token_estimate": 23,
       "notes": "Launch-day run. Pass: constraint as tautology. Winner's circle (Latin, <=30). Reasoning trace in French — trace-language match.",
       "date": "2026-06-09",
-      "id": 187
+      "id": 186
     },
     {
       "vendor": "Anthropic",
-      "model_family": "fable",
+      "model_family": "anthropic",
       "model": "Claude Fable 5",
       "thinking": "n/a",
       "effort": "high",
@@ -2652,11 +2630,11 @@
       "token_method": "Chinese chars × 0.6",
       "notes": "Launch-day run. Pass: '要洗的是车，不是你' — what needs washing is the car, not you. Winner's circle (Hanzi, <=60). First Anthropic flagship-tier pass in Chinese — both Opus generations fail Chinese in every toggle state (Opus 4.7's '走路。' is the tersest failure in the dataset); the mid-tier Sonnet 4.6 holds it. Reasoning trace in Chinese — trace-language match. Locale caveat: Claude offers no Chinese UI option; run conducted through the English-language interface.",
       "date": "2026-06-09",
-      "id": 188
+      "id": 187
     },
     {
       "vendor": "Anthropic",
-      "model_family": "fable",
+      "model_family": "anthropic",
       "model": "Claude Fable 5",
       "thinking": "n/a",
       "effort": "high",
@@ -2671,7 +2649,7 @@
       "token_method": "Cyrillic chars × 0.5 (measured rate)",
       "notes": "Launch-day run. Pass: 'Мийка миє машину, а не вас' — the wash washes the car, not you. At ~100 tokens (Cyrillic measured rate) it exceeds the 60-token winner's-circle threshold — a clean pass, but not a winner's-circle entry. Reasoning trace in Ukrainian with a self-instruction ('Коротка, стисла відповідь' — short, concise answer) that the output honored. Trace-language match.",
       "date": "2026-06-09",
-      "id": 189
+      "id": 188
     }
   ],
   "change_log": [
@@ -2682,10 +2660,6 @@
     {
       "date": "2026-06-09",
       "summary": "Fable 5 staged rollout: included on Pro/Max/Team/seat-based Enterprise at no extra cost June 9–22; removed from those plans June 23 and gated behind usage credits thereafter, with stated intent to restore. The access population for Fable testing changes on June 23 — community replications will cluster in the free window. Subscription quantity tiers (5x/10x/25x Max) do not purchase access to the capability tier after June 23."
-    },
-    {
-      "date": "2026-06-09",
-      "summary": "Mobile-interface scope ambiguity documented: at the time of the June 9 runs, the Claude mobile interface did not make it visible whether a new chat was inside or outside a project workspace. Two launch-day runs were invalidated by unrecognized project context and rerun cold. Filed as both a methodology constraint and a product-surface finding; see the methodology page's context-pollution note."
     },
     {
       "date": "2026-06-06",

@@ -2722,9 +2722,49 @@
       "response": "Technically, you should drive, but there are two ways to look at this:\n\n**1. The Practical Reason (Drive)**\nIf your car is dirty, it is likely covered in dust, mud, or grime. Driving it 100 feet will just spread that dirt around your driveway or onto your garage floor. Additionally, if the car is really dirty (like mud or salt), you might want to avoid driving it to prevent scratching the paint with grit, though 100 feet is negligible.\n\n**2. The \"Efficiency\" Reason (Walk)**\nIf you are looking for a way to get some steps in and save a tiny bit of gas, you could walk. However, 100 feet is about 30–40 steps. It will take you roughly 15 seconds to walk, versus 10 seconds to drive. The difference is too small to justify the effort of starting the engine.\n\n**The Verdict:**\nDrive. It's a tiny distance, but it's more convenient. Just be prepared to drive through a tiny bit of whatever dirt is currently on your tires!",
       "output_tokens": 238,
       "notes": "Open-weight, run LOCALLY (Q4_0 QAT MoE), Thinking OFF. Verbose: leads with 'Technically, you should drive' and the Verdict is 'Drive', but reaches it through a muddled two-option comparison (its 'Practical Reason (Drive)' is actually an anti-driving dirt-spreading argument) and lands on Drive via convenience, never cleanly naming the constraint. Correct verb held. 238 tokens. Inverts the 31B QAT: for the MoE, thinking OFF gets it right and thinking ON talks it into Walk; for the dense 31B, the opposite (on passes, off fails)."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 193,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B QAT (Q4_0)",
+      "model_notes": "gemma-4-12b QAT (Q4_0) — quantization-aware-trained 4-bit build of the encoder-free multimodal 12B, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio). Distinct from the Q6_K GGUF 12B tested earlier.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "Context: Car is dirty.\nDistance: 100 feet (very short).\n\nDecision: Walk or drive?\n\nOption A: Driving.\n\nPros: Faster (negligible difference at 100ft), easier if carrying something.\nCons: Fuel consumption, emissions, extra wear on the car, potential traffic (unlikely at 100ft), more \"driving\" while the car is dirty.\nOption B: Walking.\n\nPros: Good exercise, saves gas, less wear on the car, convenient for such a short distance.\nCons: Takes a bit more time (maybe 1-2 minutes), weather dependent.\nSince 100 feet is an extremely short distance (about 30-40 steps), the \"logistics\" of driving are almost counterproductive.\n\nDirect Answer: Walk.\n\nReasoning:\n\nDistance: 100 feet is too short to justify starting the engine.\nFuel/Environment: It's a waste of gas.\nExercise: A tiny bit of walking is good.\nExceptions:\n\nBad weather (snow, heavy rain).\nPhysical limitations (injury, heavy load).\nSafety concerns (unsafe to walk there).\nMake it helpful, slightly humorous (since the choice is almost trivial), and clear.",
+      "response": "You should walk.\n\nHere is why:\n\nThe Distance: 100 feet is only about 30–40 steps. It will take you roughly 30 to 60 seconds to walk there, which is about the same amount of time it takes to start your car, pull out, and navigate into a wash bay.\nFuel & Environment: Starting the engine just to move 100 feet is a waste of gas and unnecessary emissions.\nWear and Tear: It keeps extra mileage off your odometer and saves your brake pads and tires from unnecessary use.\nExercise: It's a tiny bit of movement for your legs!\nThe only reasons to drive are:\n\nIt is currently snowing, hailing, or pouring rain.\nYou have a physical injury that prevents you from walking.\nThe path to the car wash is through a dangerous area where it isn't safe to walk.",
+      "output_tokens": 551,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT), Thinking ON. FAIL: the trace itself concludes 'Direct Answer: Walk' — it never grasps that the car must be at the wash — and the answer recommends Walk on distance/fuel/wear/exercise grounds. 551 tokens incl. trace. Unlike the dense 31B QAT (whose trace reasons to Drive), the 12B's reasoning lands on Walk."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 194,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 12B QAT (Q4_0)",
+      "model_notes": "gemma-4-12b QAT (Q4_0) — quantization-aware-trained 4-bit build of the encoder-free multimodal 12B, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio). Distinct from the Q6_K GGUF 12B tested earlier.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Technically, you should walk.\n\nHere is why:\n\nEfficiency: 100 feet is a very short distance (about 30–45 seconds of walking). It takes longer to start the engine, navigate traffic, and find a spot in the wash bay than it does to simply walk there.\nThe Irony: If you drive a dirty car to a car wash, you are just moving the dirt from one location to another. If you walk, you keep the \"dirt\" contained in one spot while you go do the work.\nLogistics: Most car washes require you to park. If you drive there, you still have to get out of the car to pay or move it into the bay. You might as well be walking anyway!\nVerdict: Walk over there, enjoy the fresh air, and save the gas.",
+      "output_tokens": 188,
+      "notes": "Open-weight, run LOCALLY (Q4_0 QAT), Thinking OFF. FAIL: 'Technically, you should walk,' with the inverted-logic 'Irony' that driving a dirty car 'just moves the dirt from one location to another.' Verdict: Walk. The 12B QAT fails both thinking states, matching the Q6_K 12B's 0-for-8 across languages."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-10",
+      "summary": "Gemma 4 12B QAT (Q4_0) added — local quantized build of the 12B. Fails English in both thinking states (both recommend Walk); the thinking-on trace itself concludes 'Direct Answer: Walk,' never grasping the constraint. Completes the three-size local QAT picture: enabling reasoning rescues the dense 31B QAT (on passes), sinks the MoE 26B QAT (only off is correct), and leaves the 12B QAT unmoved (wrong either way)."
+    },
     {
       "date": "2026-06-10",
       "summary": "Gemma 4 26B A4B QAT (Q4_0) added — local quantized build of the 26B MoE (4B active). It inverts the 31B QAT's toggle behavior: Thinking On talks itself into Walk (Fail) despite explicitly entertaining the correct logic in its trace; Thinking Off reaches Drive (correct, though over-elaborated). For the dense 31B QAT the opposite holds (on passes, off fails) — so within local quantized Gemma the thinking toggle helps or hurts depending on architecture."

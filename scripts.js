@@ -792,17 +792,11 @@
       '" y2="' + baseY + '" class="chart-axis"/>';
 
     // Cost ratio: a wrong answer vs. the right answer (Fail vs. Pass median).
-    // Drawn in the upper-right — over the space the (always-shortest) Pass
-    // bar leaves empty. Only shown when both medians are available.
+    // Stated in the caption below the chart (ratioNote) rather than drawn
+    // inside it — an in-chart label collides with the value of whichever bar
+    // is longest, which is not always Pass.
     const passM = medians["pass"], failM = medians["fail"];
     const ratio = (passM && failM && passM > 0) ? (failM / passM) : null;
-    if (ratio != null) {
-      const rx = W - padX, ry = padTop + 14;
-      body += '<text x="' + rx + '" y="' + ry + '" text-anchor="end" class="chart-annotation">' +
-        '<tspan x="' + rx + '" dy="0">A wrong answer costs ' + ratio.toFixed(1) + '× the</tspan>' +
-        '<tspan x="' + rx + '" dy="17">tokens of the right answer.</tspan>' +
-        '</text>';
-    }
 
     const aria = "Median tokens by result: " + RESULT_ORDER.map(function (k) {
       return RESULT_LABELS[k] + " " +

@@ -805,8 +805,8 @@
     const svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' +
       escapeHTML(aria) + '" class="chart-svg">' + body + '</svg>';
     const ratioNote = (ratio != null)
-      ? '<p class="chart-note">A wrong answer costs ' + ratio.toFixed(1) +
-          '× the tokens of the right answer — Fail median vs. Pass median.</p>'
+      ? '<p class="chart-ratio-callout">A wrong answer costs <strong>' + ratio.toFixed(1) +
+          '×</strong> the tokens of the right answer<span class="chart-ratio-sub"> — Fail median vs. Pass median.</span></p>'
       : '';
     const callout = outlier
       ? '<p class="chart-callout">Excludes one outlier set aside as a special case: ' +

@@ -403,6 +403,20 @@ li { margin-bottom: 6px; }
   margin: 6px 0 0;
   text-align: center;
 }
+.chart-ratio-callout {
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 12px 0 2px;
+  text-align: center;
+}
+.chart-ratio-callout strong { color: var(--pumpkin); font-weight: 700; }
+.chart-ratio-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
 .chart-annotation {
   font-family: var(--sans);
   font-size: 13px;

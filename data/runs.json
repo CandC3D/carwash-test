@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-06-09",
+    "last_updated": "2026-06-10",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -2650,9 +2650,49 @@
       "notes": "Launch-day run. Pass: 'Мийка миє машину, а не вас' — the wash washes the car, not you. At ~100 tokens (Cyrillic measured rate) it exceeds the 60-token winner's-circle threshold — a clean pass, but not a winner's-circle entry. Reasoning trace in Ukrainian with a self-instruction ('Коротка, стисла відповідь' — short, concise answer) that the output honored. Trace-language match.",
       "date": "2026-06-09",
       "id": 188
+    },
+    {
+      "date": "2026-06-10",
+      "id": 189,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 31B QAT (Q4_0)",
+      "model_notes": "gemma-4-31b QAT (Q4_0) — quantization-aware-trained 4-bit build of the dense 31B, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio). QAT preserves quality near full precision at ~Q4 memory cost.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "Situation: Car is dirty.\nGoal: Get the car to the car wash.\n\nDistance: 100 feet.\n\nQuestion: Walk or drive?\n\nDistance = 100 feet.\n\nWalking distance: Very short (about 30-60 seconds).\n\nDriving distance: Very short (about 5-10 seconds).\n\nDriving:\n\nPros: Faster (marginally).\nCons: Using gas/battery, starting the engine, potentially maneuvering into a queue.\nWalking:\n\nPros: Healthier, no fuel used, simpler.\nCons: Slower (marginally).\nThe objective is to get the car washed.\n\nIf you walk, the car stays where it is. You can't wash the car if you are just standing at the car wash without the car.\n\nTherefore, you must drive the car to the car wash.\n\nDirect Answer: Drive.\n\nReasoning: You can't wash your car if you leave it 100 feet away.\n\nDoes the user mean \"Should I walk there first to check if it's open/busy and then come back with the car?\" (Possible, but unlikely given the phrasing).\n\nDoes the user mean \"Should I push the car?\" (Too far/too heavy).\n\n\"You should drive. Otherwise, your car will still be dirty and 100 feet away from the car wash!\"",
+      "response": "You should drive.\n\nIf you walk, you'll be at the car wash, but your dirty car will still be 100 feet away!",
+      "output_tokens": 402,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT), Thinking ON (default; ~2m19s of reasoning). PASS: the visible answer is a concise tautology naming the constraint; the reasoning trace works the logical object explicitly ('you can't wash the car if you are just standing at the car wash without the car. Therefore, you must drive'). 402 tokens is the total incl. the reasoning trace; the visible answer is ~26 tokens. Quantized 31B holds with thinking on where the local 12B failed in both states."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 190,
+      "vendor": "Google (open-weight)",
+      "model_family": "gemma",
+      "model": "Gemma 4 31B QAT (Q4_0)",
+      "model_notes": "gemma-4-31b QAT (Q4_0) — quantization-aware-trained 4-bit build of the dense 31B, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio). QAT preserves quality near full precision at ~Q4 memory cost.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Walk.\n\nHere is why:\n\nEfficiency: By the time you start the car, shift into gear, and pull into the bay, you could have already walked there.\nTraffic/Parking: You don't have to worry about navigating a short distance or idling your engine for a trip that takes about 15 seconds on foot.\nThe Goal: The purpose of the trip is to clean the car; driving it for 100 feet doesn't make it any cleaner!",
+      "output_tokens": 111,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT), Thinking OFF. FAIL: recommends Walk on efficiency/parking grounds, ending 'driving it for 100 feet doesn't make it any cleaner' — loses the logical object (the car must reach the wash). Same model passes with thinking on; the toggle is the variable."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-10",
+      "summary": "Gemma 4 31B QAT (Q4_0) added — a quantization-aware-trained 4-bit build of the dense 31B, run locally on consumer hardware (LM Studio). It splits on the thinking toggle in English: Thinking On reasons explicitly to the constraint and passes; Thinking Off recommends Walk and fails. The quantized 31B holds with thinking on where the local 12B failed in both states — within local quantized Gemma, the toggle is the variable and size helps once reasoning is enabled."
+    },
     {
       "date": "2026-06-09",
       "summary": "Anthropic launched Claude Fable 5, the first public Mythos-class model. Control surface: reasoning-effort selector only (default High) — no Adaptive/Extended thinking toggle, a third Anthropic control configuration in three months. Pricing: $10/M input, $50/M output — double Opus 4.8. Fallback architecture: in high-risk topic areas Fable blocks and silently falls back to Opus 4.8 (vendor reports >=95% of sessions run fully on Fable); no interface indicator shows which model answered. Mandatory 30-day traffic retention applies to all Fable/Mythos traffic, superseding prior zero-retention agreements."

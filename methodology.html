@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260610c">
+  <link rel="stylesheet" href="styles.css?v=20260619a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -148,7 +148,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and June 9, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and June 19, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
@@ -185,7 +185,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – June 9, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – June 19, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -208,9 +208,10 @@
           <tr><td>Alexa (Amazon shopping assistant)</td><td>May 25, 2026</td><td>1</td><td>98</td></tr>
           <tr><td>Claude Opus 4.8 (flagship)</td><td>May 28, 2026</td><td>2</td><td>100</td></tr>
           <tr><td>Claude Fable 5 (Mythos-class launch)</td><td>June 9, 2026</td><td>1</td><td>101</td></tr>
+          <tr><td>Perplexity (search-grounded)</td><td>June 19, 2026</td><td>1</td><td>102</td></tr>
         </tbody>
       </table>
-      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (26), French (17), and Ukrainian (28) language corpora, and the open-weight runs (Gemma 22, Qwen 8), are kept separate and are not included in this cumulative total.</p>
+      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (27), French (18), and Ukrainian (29) language corpora, and the open-weight runs (Gemma 22, Qwen 8), are kept separate and are not included in this cumulative total.</p>
     </section>
 
     <section id="deployment-classes">
@@ -228,7 +229,7 @@
       <h2>Language corpora</h2>
       <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27 – June 9, 2026 (separate from the 101-run English corpus)</caption>
+        <caption>Language corpora added May 27 – June 19, 2026 (separate from the 102-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -239,9 +240,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Simplified Chinese</td><td>May 27 – June 9, 2026</td><td>26</td><td>50%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe), and Fable 5 on launch day (June 9). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds; Fable 5 passes. Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>French</td><td>May 27 – June 9, 2026</td><td>17</td><td>35%</td><td>Mistral, Lumo, OpenAI, Anthropic. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint; Fable 5 passes (June 9). Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>Ukrainian</td><td>May 28 – June 9, 2026</td><td>28</td><td>25%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), and Mistral (Vibe), split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison; Fable 5 passes (June 9). Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Simplified Chinese</td><td>May 27 – June 19, 2026</td><td>27</td><td>48%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe), Fable 5 on launch day (June 9), and a search-grounded Perplexity pass (June 19, cites prior web coverage of the puzzle). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds; Fable 5 passes. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>French</td><td>May 27 – June 19, 2026</td><td>18</td><td>33%</td><td>Mistral, Lumo, OpenAI, Anthropic, Perplexity. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19, citing French press coverage of the puzzle). Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Ukrainian</td><td>May 28 – June 19, 2026</td><td>29</td><td>24%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), Mistral (Vibe), and Perplexity, split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19). Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
       </table>
       <p>The Chinese and French prompts were translated via Google Translate and back-translated to verify conformance with the English original; the Ukrainian prompt was translated by a native speaker. Distance was converted to a metric equivalent in every case. Token rates are script-specific and are not directly comparable to the English counts: Chinese estimates use ~0.6 tokens per character, and Cyrillic runs measured ~0.5 tokens per character (about double the English rate of ~0.25) — the first directly measured rate, taken from API output-token counts. Latin-script corpora (French) use the standard ~4-characters-per-token estimate.</p>
@@ -409,7 +410,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260610c"></script>
+  <script src="scripts.js?v=20260619a"></script>
   <script>
     (async function () {
       try {

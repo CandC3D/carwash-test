@@ -2910,9 +2910,74 @@
       "response": "Краще йти пішки.\n\nОсь чому:\n\nМета — помити машину. Якщо ви поїдете на брудній машині до автомийки, ви просто перемістите бруд з одного місця на інше, але машина все одно залишиться брудною. Вам все одно доведеться виходити з неї, щоб мити її, або залишити її там, що незручно.\nВідстань дуже мала. 35 метрів — це буквально кілька хвилин ходьби. Це навіть швидше, ніж завести машину, проїхати 35 метрів, вимкнути двигун і вийти.\nЕкономія пального та знос. Навіть якщо у вас електромобіль, краще не витрачати енергію на таку коротку поїздку, коли можна просто піти.\nВисновок: Ідіть пішки до автомийки, а машину залиште там, де вона є, або (якщо це дозволяє формат автомийки) відвіжайте її, поки машина буде митися. Але якщо це самообслуговування, то просто підійдіть пішки — це найлогічніший і найшвидший варіант. 😊🚗💦",
       "output_tokens": 310,
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. FAIL: 'Краще йти пішки' — inverted logic ('ви просто перемістите бруд з одного місця на інше'). Thinking on passes; off fails — the EN/ZH/UK pattern."
+    },
+    {
+      "date": "2026-06-19",
+      "id": 203,
+      "vendor": "Perplexity",
+      "model_family": "perplexity",
+      "model": "Perplexity (default)",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Drive. The car needs to be at the car wash to get cleaned, so walking would just add an extra trip without helping. [news.ycombinator]\n\nAt 100 feet, the drive itself is trivial, and the simplest way to solve the actual problem is to take the car there. [news.ycombinator]",
+      "token_estimate": 68,
+      "notes": "Perplexity (consumer default, search-grounded). PASS: 'Drive' — names the constraint (the car has to be at the wash to be cleaned), two tight sentences. As is standard for Perplexity, the answer cites web sources; here two Hacker News threads that discuss this very puzzle. The pass is retrieval-grounded — Perplexity surfaces prior coverage of the Carwash Test rather than reasoning it out cold."
+    },
+    {
+      "date": "2026-06-19",
+      "id": 204,
+      "vendor": "Perplexity",
+      "model_family": "perplexity",
+      "model": "Perplexity (default)",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "language": "zh-CN",
+      "prompt": "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      "response": "如果你是去给车洗车，那就应该开车去；因为车本身要到洗车店，走路过去并不能把车带过去。 [finance.sina.com]\n\n如果你只是去问价、预约，或看看店里情况，那就走路去更合理，35 米真的很近。 [today.line]\n\n最实用的判断是：\n- 需要把车交给洗车店处理：开车去。\n- 只是去前台沟通：走路去。 [moomoo]",
+      "token_estimate": 100,
+      "token_method": "Chinese chars × 0.6 (DeepSeek documented rate, applied uniformly)",
+      "notes": "Perplexity (search-grounded), Chinese. PASS-ADJACENT: lands on drive for the wash goal and names the constraint ('车本身要到洗车店'), but hedges with a second conditional branch (walk if you only want to ask the price or book), so it is correct but padded. Cites Chinese-language sources (Sina Finance, LINE Today, moomoo) — retrieval-grounded."
+    },
+    {
+      "date": "2026-06-19",
+      "id": 205,
+      "vendor": "Perplexity",
+      "model_family": "perplexity",
+      "model": "Perplexity (default)",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "language": "fr",
+      "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
+      "response": "En voiture. Si le lave-auto est à 35 mètres, le but est d’y amener la voiture pour la laver, donc marcher n’a pas de sens pratique ici. [numerama]\n\nPourquoi\nLe lave-auto fonctionne pour un véhicule qui se présente sur place, et les sources sur ce type de question vont dans ce sens même pour des distances très courtes. [mariefrance]\nÀ pied, vous iriez jusqu’au lave-auto, mais votre voiture resterait ailleurs, donc vous ne pourriez pas la faire laver. [mariefrance]\nÀ 35 mètres, la différence d’effort est minime, donc la solution logique reste de conduire jusqu’au lave-auto. [numerama]",
+      "token_estimate": 147,
+      "notes": "Perplexity (search-grounded), French. PASS-ADJACENT: 'En voiture', with the constraint stated plainly ('votre voiture resterait ailleurs, donc vous ne pourriez pas la faire laver'), elaborated under a 'Pourquoi' heading. Notably cites French press coverage of the puzzle itself — numerama and mariefrance articles about AI flubbing the carwash question — so the pass reflects retrieval of the test's own coverage."
+    },
+    {
+      "date": "2026-06-19",
+      "id": 206,
+      "vendor": "Perplexity",
+      "model_family": "perplexity",
+      "model": "Perplexity (default)",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "language": "uk",
+      "prompt": "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
+      "response": "Краще їхати на машині: якщо мета — помити авто, то за 35 метрів логічно доїхати, а не йти пішки, бо машина все одно має опинитися на автомийці. [tongwing.woon]\n\nЯкщо вам важлива безпека або немає зручного виїзду, тоді можна й пройти ці 35 метрів пішки, але для самої мийки транспорт краще підганяти автомобілем. [infostat.com]",
+      "token_estimate": 163,
+      "token_method": "Cyrillic chars × 0.5 (measured rate)",
+      "notes": "Perplexity (search-grounded), Ukrainian. PASS-ADJACENT: 'Краще їхати на машині' naming the constraint ('машина все одно має опинитися на автомийці'), with a brief safety caveat. Cites a blog post that restates the exact riddle ('the car wash is 50 meters away, should I walk or drive') — again a retrieval-grounded pass."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-19",
+      "summary": "Perplexity (default, search-grounded) tested across English, Simplified Chinese, French and Ukrainian. All four answer Drive (English a clean pass; the three non-English answers correct but hedged/elaborated). The distinguishing trait is retrieval: several citations are prior coverage of the Carwash Test itself (Hacker News threads, French press write-ups, a blog restating the riddle), so the passes are search-grounded rather than reasoned from scratch."
+    },
     {
       "date": "2026-06-19",
       "summary": "Open-weight Qwen3.6 27B (Q4_K_M) tested in French and Ukrainian (local), completing four languages. Toggle behavior is language-dependent: in English, Chinese and Ukrainian thinking on passes and thinking off fails, but French inverts (thinking off passes, thinking on reasons itself into Walk). Every non-English thinking-on trace is in English — the Ukrainian one deliberates for over seven minutes before landing on Drive."

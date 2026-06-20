@@ -394,14 +394,14 @@ li { margin-bottom: 6px; }
   font-size: 12px;
   color: var(--muted);
   margin: 6px 0 0;
-  text-align: center;
+  text-align: left;
   font-style: italic;
 }
 .chart-note {
   font-size: 12px;
   color: var(--muted);
   margin: 6px 0 0;
-  text-align: center;
+  text-align: left;
 }
 .chart-ratio-callout {
   font-size: 20px;

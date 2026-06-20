@@ -2802,9 +2802,49 @@
       "response": "You should walk.\n\nHere's why:\n\nDistance: 100 feet is a very short distance—about a 10–15 second walk.\nPurpose: The car is dirty, and you're going to a car wash. Driving a dirty car a short distance to get it cleaned is counterproductive and unnecessary.\nEfficiency: Walking takes less time than starting the car, driving 100 feet, parking, and getting out. Plus, you avoid any risk of minor scratches or dirt transfer while driving.\nSo, just walk to the car wash! 🚶‍♂️🚗",
       "output_tokens": 144,
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. FAIL: 'You should walk,' with inverted logic ('driving a dirty car a short distance to get it cleaned is counterproductive'). The toggle is the variable — the same model passes with thinking on."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 197,
+      "vendor": "Alibaba (open-weight)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.6 27B (Q4_K_M)",
+      "model_notes": "Qwen3.6 27B — open-weight, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF). Distinct from Alibaba's cloud Qwen product.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass",
+      "language": "zh-CN",
+      "prompt": "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "Here's a thinking process:\n\nAnalyze User Input:\nProblem: The user's car is dirty.\nDistance: The car wash is 35 meters away.\nQuestion: Should they walk to the car wash or drive the car there?\nIdentify Key Factors/Constraints:\nDistance is very short (35 meters).\nCar is dirty (needs washing).\nPracticality, convenience, safety, and common sense apply.\nDriving a dirty car 35 meters to a car wash is standard practice.\nWalking 35 meters to a car wash while leaving the dirty car behind doesn't make sense unless they plan to get it washed without moving it (which isn't how typical car washes work).\nEvaluate Options:\nOption 1: Walk to the car wash.\nPros: Avoids driving a dirty car (but 35m is negligible).\nCons: You still need to get the car to the wash. Walking there doesn't solve the problem. You'd have to walk back, drive the car there anyway, or arrange for someone/something else to move it.\nOption 2: Drive the car to the car wash.\nPros: Directly solves the problem. 35 meters is extremely short, takes seconds. Standard practice.\nCons: Technically driving a dirty car, but irrelevant for such a short distance.\nApply Common Sense/Logic:\nCar washes require the vehicle to be physically present.\n35 meters is about 1-2 seconds of driving.\nWalking there first doesn't help unless you're just to inquire/pay, but even then, you'd still need to drive the car over.\nThe most logical, efficient, and standard answer is to drive it.\nFormulate Response:\nAcknowledge the short distance.\nExplain why driving is the obvious choice.\nKeep it concise, slightly humorous if appropriate, but factual.\nStructure: Direct answer first, then brief reasoning.\nDraft: 建议直接开车去。35米开车只需几秒钟，洗车店本来就需要把车开进去才能清洗。走路过去并不能解决\"车怎么到洗车店\"的问题，反而多此一举。直接开过去最省事。\n\nSelf-Correction/Refinement:\nCheck tone: Neutral, helpful.\nCheck logic: Sound. 35m is trivial. Car must be at the wash.\nAny edge cases? Maybe if it's a self-service wash vs. full-service, but doesn't change the answer. Maybe if the car is broken? Not stated. Assume normal conditions.\nThe response is solid. No need to overcomplicate.\nFinal matches draft. Ready.\nOutput matches the refined version.✅",
+      "response": "建议直接开车去。\n\n原因很简单：\n\n洗车必须把车开到店里，走路过去并不能让车\"自动\"到达洗车位置。\n35米开车只需几秒钟，距离极短，完全不需要担心\"开脏车\"的问题。\n走路反而多此一举：你得先走过去，再走回来把车开过去，或另想办法挪车，效率更低。\n直接发动汽车开过去，是最省事、最符合常理的做法。",
+      "output_tokens": 753,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF), Thinking ON (~3m1s). PASS: names the constraint directly ('洗车必须把车开到店里' — washing requires driving the car to the store). REASONING TRACE WAS IN ENGLISH despite the Chinese prompt and Chinese answer — it reasons in English (with the draft answer in Chinese) then outputs Chinese; a trace-language mismatch. 753 tokens incl. trace."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 198,
+      "vendor": "Alibaba (open-weight)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.6 27B (Q4_K_M)",
+      "model_notes": "Qwen3.6 27B — open-weight, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF). Distinct from Alibaba's cloud Qwen product.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "zh-CN",
+      "prompt": "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      "response": "建议走路去。\n\n原因很简单：\n\n距离极近：35米大概只是走几步路的距离，开车反而需要找车位、熄火、下车，比直接走过去更麻烦。\n逻辑矛盾：车脏了才要去洗车，如果开车去，到了洗车店还得把脏车停好再下车，不如直接步行过去让工作人员处理，或者如果洗车店提供\"上门取送\"服务，也可以电话预约。\n所以，走路去是最合理的选择。😄",
+      "output_tokens": 113,
+      "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. FAIL: '建议走路去' (recommends walking), with an inverted-logic '逻辑矛盾' claim that driving to the wash is the contradiction. Same toggle split as the English Qwen runs — thinking on passes, off fails."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-10",
+      "summary": "Open-weight Qwen3.6 27B (Q4_K_M) tested in Chinese (local). Same thinking-toggle split as English — Thinking On passes (names the constraint), Thinking Off fails (Walk). Notable trace-language mismatch: the thinking-on run reasons in English on the Chinese prompt and answers in Chinese, joining the set of models that reason in a dominant internal language then translate."
+    },
     {
       "date": "2026-06-10",
       "summary": "Qwen3.6 27B (Q4_K_M) added as a second open-weight model line, run locally on consumer hardware (LM Studio) and kept on its own open-weight page, distinct from the Alibaba cloud Qwen product. It splits on the thinking toggle in English: Thinking On reasons explicitly to Drive and passes; Thinking Off recommends Walk and fails — the same reasoning-rescues pattern seen on the dense Gemma 31B QAT."

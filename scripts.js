@@ -55,7 +55,8 @@
     "qwen": "qwen.svg",
     "kimi": "kimi.svg",
     "lumo": "lumo.svg",
-    "gemma": "gemma.svg"
+    "gemma": "gemma.svg",
+    "qwen_ow": "qwen.svg"
   };
 
   async function loadData(basePath) {

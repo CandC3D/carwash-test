@@ -125,6 +125,14 @@
       "category": "open-weight",
       "deployment_class": "open_weight",
       "notes": "Google's open-weight model line, distinct from the commercial Gemini product. Tested in Google AI Studio playground. Not available through the Gemini consumer interface."
+    },
+    "qwen_ow": {
+      "name": "Alibaba",
+      "display_name": "Alibaba (Qwen, open-weight)",
+      "slug": "qwen_ow",
+      "category": "open-weight",
+      "deployment_class": "open_weight",
+      "notes": "Qwen's open-weight models run locally on consumer hardware (LM Studio), distinct from Alibaba's cloud Qwen product, which is tested separately under Alibaba (Qwen). These reflect the model as a raw artifact, and are kept as a separate deployment class — excluded from the commercial corpora."
     }
   },
   "runs": [
@@ -2758,9 +2766,49 @@
       "response": "Technically, you should walk.\n\nHere is why:\n\nEfficiency: 100 feet is a very short distance (about 30–45 seconds of walking). It takes longer to start the engine, navigate traffic, and find a spot in the wash bay than it does to simply walk there.\nThe Irony: If you drive a dirty car to a car wash, you are just moving the dirt from one location to another. If you walk, you keep the \"dirt\" contained in one spot while you go do the work.\nLogistics: Most car washes require you to park. If you drive there, you still have to get out of the car to pay or move it into the bay. You might as well be walking anyway!\nVerdict: Walk over there, enjoy the fresh air, and save the gas.",
       "output_tokens": 188,
       "notes": "Open-weight, run LOCALLY (Q4_0 QAT), Thinking OFF. FAIL: 'Technically, you should walk,' with the inverted-logic 'Irony' that driving a dirty car 'just moves the dirt from one location to another.' Verdict: Walk. The 12B QAT fails both thinking states, matching the Q6_K 12B's 0-for-8 across languages."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 195,
+      "vendor": "Alibaba (open-weight)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.6 27B (Q4_K_M)",
+      "model_notes": "Qwen3.6 27B — open-weight, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF). Distinct from Alibaba's cloud Qwen product.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "Here's a thinking process:\n\nAnalyze User Input:\nProblem: Car is dirty\nLocation: Car wash is 100 feet away\nQuestion: Should I walk or drive?\nIdentify Key Factors:\nDistance: 100 feet (very short, about 30 meters)\nGoal: Clean the car\nOptions: Walk vs. Drive\nImplicit considerations: Efficiency, logic, practicality, potential consequences\nEvaluate Options:\nDrive:\nPros: Convenient if you're already in the car\nCons: Driving a dirty car to a car wash defeats the purpose (you'll just drive it dirty for 100 feet, which is trivial, but more importantly, car washes typically require you to drive through them anyway). Wait, actually, car washes are designed for driving through. So driving is actually the standard method.\nBut the question seems to hint at a logical/practical puzzle: If the car is dirty and the wash is only 100 feet away, walking might make more sense if you're going to wash it yourself, but if it's a commercial car wash, you drive through it.\nWait, let's think deeper: If it's a self-service car wash, you might walk over and use a hose. If it's an automatic drive-through, you drive. But the question is likely testing common sense/logic.\nActually, the classic answer to this type of question is: Drive, because car washes are designed for vehicles to drive through. Walking to a car wash doesn't clean your car.\nAlternatively, if it's a self-service bay, you'd still need to get to your car first. But if you're already at your car, you just drive it.\nLet's consider the phrasing: \"My car is dirty. The car wash is 100 feet away. Should I walk or drive?\" This is a common riddle/logic question. The intended answer is usually drive, because you need to get the car to the wash, and 100 feet is too short to matter either way, but driving is how car washes work.\nWait, another angle: If you walk, your car stays dirty. If you drive, you take the dirty car to the wash. So you must drive.\nCould there be a trick? \"100 feet away\" is very close. Maybe the joke is that it's so close you could just wash it yourself, but the question specifically says \"car wash\".\nLet's think about practical reality: You drive your car to a car wash. That's how they work. Walking doesn't help clean the car.\nFormulate Response:\nAcknowledge the distance (100 feet is very short)\nExplain the logic: Car washes are designed for vehicles, so you need to drive the car to get it cleaned\nNote that walking won't clean the car\nAdd practical advice: Just drive it through, since it's only 100 feet away\nKeep it concise and clear\nDraft: You should drive. Car washes are designed for vehicles to drive through, so walking won't clean your car. Since it's only 100 feet away, just drive it over and get it washed!\n\nSelf-Correction/Refinement:\nIs there any scenario where walking makes sense? Maybe if it's a self-service wash and you're already outside, but you'd still need to get to your car first. The question implies you're deciding how to get to the wash.\nThe core logic holds: You can't clean a car by walking to a car wash. You must drive the car there.\nThe response is accurate, logical, and addresses the implicit puzzle aspect.\nI'll make it slightly more engaging but keep it direct.\nFinal check: Matches common sense, addresses the question directly, explains the reasoning clearly. No overcomplication. Ready.✅",
+      "response": "You should drive.\n\nCar washes are designed for vehicles to drive through, so walking to one won't clean your car. Since it's only 100 feet away, just drive it over, run it through the wash, and you'll be good to go!",
+      "output_tokens": 951,
+      "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF), Thinking ON (~4m8s). PASS: names the constraint cleanly ('car washes are designed for vehicles to drive through, so walking won't clean your car'). The trace works the puzzle and lands firmly on Drive ('If you walk, your car stays dirty... So you must drive'). 951 tokens incl. trace; visible answer ~50 tokens. Like the dense Gemma 31B QAT, reasoning rescues it."
+    },
+    {
+      "date": "2026-06-10",
+      "id": 196,
+      "vendor": "Alibaba (open-weight)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.6 27B (Q4_K_M)",
+      "model_notes": "Qwen3.6 27B — open-weight, run locally on consumer hardware (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF). Distinct from Alibaba's cloud Qwen product.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "language": "en",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "You should walk.\n\nHere's why:\n\nDistance: 100 feet is a very short distance—about a 10–15 second walk.\nPurpose: The car is dirty, and you're going to a car wash. Driving a dirty car a short distance to get it cleaned is counterproductive and unnecessary.\nEfficiency: Walking takes less time than starting the car, driving 100 feet, parking, and getting out. Plus, you avoid any risk of minor scratches or dirt transfer while driving.\nSo, just walk to the car wash! 🚶‍♂️🚗",
+      "output_tokens": 144,
+      "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. FAIL: 'You should walk,' with inverted logic ('driving a dirty car a short distance to get it cleaned is counterproductive'). The toggle is the variable — the same model passes with thinking on."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-06-10",
+      "summary": "Qwen3.6 27B (Q4_K_M) added as a second open-weight model line, run locally on consumer hardware (LM Studio) and kept on its own open-weight page, distinct from the Alibaba cloud Qwen product. It splits on the thinking toggle in English: Thinking On reasons explicitly to Drive and passes; Thinking Off recommends Walk and fails — the same reasoning-rescues pattern seen on the dense Gemma 31B QAT."
+    },
     {
       "date": "2026-06-10",
       "summary": "Gemma 4 12B QAT (Q4_0) added — local quantized build of the 12B. Fails English in both thinking states (both recommend Walk); the thinking-on trace itself concludes 'Direct Answer: Walk,' never grasping the constraint. Completes the three-size local QAT picture: enabling reasoning rescues the dense 31B QAT (on passes), sinks the MoE 26B QAT (only off is correct), and leaves the 12B QAT unmoved (wrong either way)."

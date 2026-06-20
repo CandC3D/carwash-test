@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Carwash Test — Purpose-Optimized Models | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Results for domain-specific AI systems including Amazon Rufus and TIME AI.">
+  <title id="page-title">The Carwash Test — Alibaba (Qwen, open-weight) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Open-weight Qwen results, run locally and kept separate from Alibaba's cloud Qwen product.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -16,21 +16,21 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Carwash Test — Virtual Intelligence">
-  <meta property="og:title" content="The Carwash Test — Purpose-Optimized Models">
-  <meta property="og:description" content="Results for domain-specific AI systems including Amazon Rufus and TIME AI.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/purpose-optimized.html">
+  <meta property="og:site_name" content="The Carwash Test">
+  <meta property="og:title" content="The Carwash Test — Alibaba (Qwen, open-weight)">
+  <meta property="og:description" content="Open-weight Qwen run locally on the Carwash Test — distinct from Alibaba's cloud Qwen product.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/qwen_ow.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Purpose-Optimized Models">
-  <meta name="twitter:description" content="Results for domain-specific AI systems including Amazon Rufus and TIME AI.">
+  <meta name="twitter:title" content="The Carwash Test — Alibaba (Qwen, open-weight)">
+  <meta name="twitter:description" content="Open-weight Qwen run locally on the Carwash Test — distinct from Alibaba's cloud Qwen product.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, purpose-optimized models, domain-specific AI, shopping assistant, media assistant, catalog optimization, Amazon Rufus, TIME AI, statistical pressure, logical object, AI failure modes, large language models, LLM benchmark, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weight LLM, Qwen, Qwen3.6, Qwen3.6 27B, Alibaba Qwen, self-hosted LLM, local LLM, LM Studio, quantization, Q4_K_M, statistical pressure, logical object, AI failure modes, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -57,13 +57,12 @@
   <!-- carwash-vendor-rail -->
   <div id="vendor-rail"></div>
 
-
   <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Purpose-Optimized Models</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title" id="family-title">Alibaba (Qwen, open-weight)</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -79,7 +78,11 @@
     </header>
 
     <section>
-      <p class="category-intro">These systems are not general-purpose chat models. They are LLMs optimized for a specific domain — shopping, media, customer service — where the optimization target shapes the response as much as the underlying model's reasoning does. The Carwash Test reveals how that optimization interacts with the prompt's surface features: the same mechanism produces opposite answers depending on what the system has been trained to find.</p>
+      <div class="callout callout-note">
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>Qwen's open-weight models, run locally — not Alibaba's cloud Qwen product.</strong> These runs were taken on consumer hardware (a desktop RTX 5060 Ti 16&nbsp;GB, via LM Studio, Q4_K_M GGUF) — the model as a raw artifact, with no consumer system prompt or product-layer cleanup. Alibaba's cloud Qwen (Qwen3.6/3.7-Plus, -Max, etc.) is tested separately under <a href="qwen.html">Alibaba (Qwen)</a>. Findings about the open-weight model are <em>not</em> evidence for the cloud product, or vice versa; these are kept as a separate deployment class and excluded from the commercial corpora.</p>
+      </div>
+      <p class="chart-note"><strong>Qwen3.6 27B (Q4_K_M)</strong> splits on the thinking toggle in English. With <strong>thinking on</strong> it reasons explicitly to the constraint ("If you walk, your car stays dirty… So you must drive") and <strong>passes</strong>; with <strong>thinking off</strong> it recommends Walk and <strong>fails</strong>. The toggle is the variable — the same reasoning-rescues pattern seen on the dense Gemma 31B QAT.</p>
     </section>
 
     <section>
@@ -94,6 +97,10 @@
       <h2>Transcripts</h2>
       <div id="transcripts"></div>
     </section>
+
+    <div id="lang-runs"></div>
+  <!-- carwash-vendor-pagination -->
+    <div id="vendor-pagination"></div>
   </main>
 
   <footer>
@@ -114,28 +121,34 @@
   <script src="../scripts.js?v=20260610c"></script>
   <script>
     (async function () {
-      const CATEGORY = "purpose-optimized";
+      const SLUG = "qwen_ow";
       try {
         const data = await CarwashTest.loadData("../");
-        const catRuns = CarwashTest.runsInCategory(CarwashTest.englishRuns(data.runs), data.model_families, CATEGORY);
+        const family = data.model_families[SLUG];
+        const familyRuns = data.runs.filter(function (r) { return r.model_family === SLUG && (!r.language || r.language === "en"); });
 
         document.getElementById("family-title").innerHTML =
-          '<span class="title-icon">' + CarwashTest.PURPOSE_OPTIMIZED_ICON + '</span>' +
-          CarwashTest.familyTitleHTML("Purpose-Optimized Models");
+          CarwashTest.renderTitleLogo(SLUG, "../") +
+          CarwashTest.familyTitleHTML(family.display_name);
+        document.title = family.display_name + " — The Carwash Test";
 
         document.getElementById("tally").innerHTML =
-          CarwashTest.renderTallyRow(CarwashTest.tally(catRuns));
+          CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(catRuns);
+          CarwashTest.renderCharts(familyRuns);
         document.getElementById("results-table").innerHTML =
-          CarwashTest.renderResultsTableForFamily(catRuns);
+          CarwashTest.renderResultsTableForFamily(familyRuns);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("transcripts").innerHTML =
-          catRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+          familyRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+        document.getElementById("lang-runs").innerHTML =
+          CarwashTest.renderVendorLanguageRuns(data.runs, SLUG, "../");
         document.getElementById("vendor-rail").innerHTML =
-          CarwashTest.renderVendorRail(CATEGORY, data.model_families, data.runs, "../");
+          CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../");
+        document.getElementById("vendor-pagination").innerHTML =
+          CarwashTest.renderVendorPagination(SLUG, data.model_families);
       } catch (err) {
         console.error(err);
         CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);

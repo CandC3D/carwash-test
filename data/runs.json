@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-06-10",
+    "last_updated": "2026-06-19",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -2660,7 +2660,7 @@
       "id": 188
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 189,
       "vendor": "Google (open-weight)",
       "model_family": "gemma",
@@ -2679,7 +2679,7 @@
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT), Thinking ON (default; ~2m19s of reasoning). PASS: the visible answer is a concise tautology naming the constraint; the reasoning trace works the logical object explicitly ('you can't wash the car if you are just standing at the car wash without the car. Therefore, you must drive'). 402 tokens is the total incl. the reasoning trace; the visible answer is ~26 tokens. Quantized 31B holds with thinking on where the local 12B failed in both states."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 190,
       "vendor": "Google (open-weight)",
       "model_family": "gemma",
@@ -2696,7 +2696,7 @@
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT), Thinking OFF. FAIL: recommends Walk on efficiency/parking grounds, ending 'driving it for 100 feet doesn't make it any cleaner' — loses the logical object (the car must reach the wash). Same model passes with thinking on; the toggle is the variable."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 191,
       "vendor": "Google (open-weight)",
       "model_family": "gemma",
@@ -2715,7 +2715,7 @@
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT MoE, 4B active), Thinking ON (default; ~27.6s). FAIL: a long pros/cons sprawl whose Verdict is 'Walk' on negligible-distance/efficiency grounds. The trace explicitly entertains the correct logic ('if you drive a dirty car 100 feet, you're just moving dirt... Actually, that's not true'), even labels Walk 'the correct answer' with a nonsensical justification, then abandons it and lands on Walk anyway — it never holds the logical object. Carries a 'Keep it lighthearted but helpful' self-correction, echoing the AI Studio 26B's self-instructions that don't govern output. 1082 tokens incl. trace."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 192,
       "vendor": "Google (open-weight)",
       "model_family": "gemma",
@@ -2732,7 +2732,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_0 QAT MoE), Thinking OFF. Verbose: leads with 'Technically, you should drive' and the Verdict is 'Drive', but reaches it through a muddled two-option comparison (its 'Practical Reason (Drive)' is actually an anti-driving dirt-spreading argument) and lands on Drive via convenience, never cleanly naming the constraint. Correct verb held. 238 tokens. Inverts the 31B QAT: for the MoE, thinking OFF gets it right and thinking ON talks it into Walk; for the dense 31B, the opposite (on passes, off fails)."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 193,
       "vendor": "Google (open-weight)",
       "model_family": "gemma",
@@ -2751,7 +2751,7 @@
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_0 QAT), Thinking ON. FAIL: the trace itself concludes 'Direct Answer: Walk' — it never grasps that the car must be at the wash — and the answer recommends Walk on distance/fuel/wear/exercise grounds. 551 tokens incl. trace. Unlike the dense 31B QAT (whose trace reasons to Drive), the 12B's reasoning lands on Walk."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 194,
       "vendor": "Google (open-weight)",
       "model_family": "gemma",
@@ -2768,7 +2768,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_0 QAT), Thinking OFF. FAIL: 'Technically, you should walk,' with the inverted-logic 'Irony' that driving a dirty car 'just moves the dirt from one location to another.' Verdict: Walk. The 12B QAT fails both thinking states, matching the Q6_K 12B's 0-for-8 across languages."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 195,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2787,7 +2787,7 @@
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF), Thinking ON (~4m8s). PASS: names the constraint cleanly ('car washes are designed for vehicles to drive through, so walking won't clean your car'). The trace works the puzzle and lands firmly on Drive ('If you walk, your car stays dirty... So you must drive'). 951 tokens incl. trace; visible answer ~50 tokens. Like the dense Gemma 31B QAT, reasoning rescues it."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 196,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2804,7 +2804,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. FAIL: 'You should walk,' with inverted logic ('driving a dirty car a short distance to get it cleaned is counterproductive'). The toggle is the variable — the same model passes with thinking on."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 197,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2823,7 +2823,7 @@
       "notes": "Open-weight, run LOCALLY (RTX 5060 Ti 16GB, LM Studio, Q4_K_M GGUF), Thinking ON (~3m1s). PASS: names the constraint directly ('洗车必须把车开到店里' — washing requires driving the car to the store). REASONING TRACE WAS IN ENGLISH despite the Chinese prompt and Chinese answer — it reasons in English (with the draft answer in Chinese) then outputs Chinese; a trace-language mismatch. 753 tokens incl. trace."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 198,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2840,7 +2840,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. FAIL: '建议走路去' (recommends walking), with an inverted-logic '逻辑矛盾' claim that driving to the wash is the contradiction. Same toggle split as the English Qwen runs — thinking on passes, off fails."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 199,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2859,7 +2859,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking ON (~5m15s). FAIL: 'Vous devriez y aller à pied' — reasons itself into Walk on distance/ecology/cold-start/'bon sens' grounds. INVERSION: in English, Chinese and Ukrainian this model passes with thinking on; in French, thinking on makes it fail (and thinking off passes). Reasoning trace in English despite the French prompt and answer."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 200,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2876,7 +2876,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking OFF. PASS: 'Vous devriez y aller en voiture' — names the constraint ('votre voiture reste sale là où vous l'avez garée') and flags the 'question piège classique.' In French the toggle inverts: thinking off passes, thinking on fails."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 201,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2895,7 +2895,7 @@
       "notes": "Open-weight, run LOCALLY (Q4_K_M GGUF), Thinking ON (~7m36s). PASS: 'Обов'язково їдьте на машині' — names the constraint ('Автомийка призначена для миття автомобіля'). The trace is a long English deliberation that wrestles back and forth ('I suspect this might be a joke... So logically, drive') for over seven minutes before landing on Drive. Reasoning trace in English despite the Ukrainian prompt and answer. 1961 tokens incl. trace."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "id": 202,
       "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
@@ -2914,27 +2914,27 @@
   ],
   "change_log": [
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "summary": "Open-weight Qwen3.6 27B (Q4_K_M) tested in French and Ukrainian (local), completing four languages. Toggle behavior is language-dependent: in English, Chinese and Ukrainian thinking on passes and thinking off fails, but French inverts (thinking off passes, thinking on reasons itself into Walk). Every non-English thinking-on trace is in English — the Ukrainian one deliberates for over seven minutes before landing on Drive."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "summary": "Open-weight Qwen3.6 27B (Q4_K_M) tested in Chinese (local). Same thinking-toggle split as English — Thinking On passes (names the constraint), Thinking Off fails (Walk). Notable trace-language mismatch: the thinking-on run reasons in English on the Chinese prompt and answers in Chinese, joining the set of models that reason in a dominant internal language then translate."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "summary": "Qwen3.6 27B (Q4_K_M) added as a second open-weight model line, run locally on consumer hardware (LM Studio) and kept on its own open-weight page, distinct from the Alibaba cloud Qwen product. It splits on the thinking toggle in English: Thinking On reasons explicitly to Drive and passes; Thinking Off recommends Walk and fails — the same reasoning-rescues pattern seen on the dense Gemma 31B QAT."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "summary": "Gemma 4 12B QAT (Q4_0) added — local quantized build of the 12B. Fails English in both thinking states (both recommend Walk); the thinking-on trace itself concludes 'Direct Answer: Walk,' never grasping the constraint. Completes the three-size local QAT picture: enabling reasoning rescues the dense 31B QAT (on passes), sinks the MoE 26B QAT (only off is correct), and leaves the 12B QAT unmoved (wrong either way)."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "summary": "Gemma 4 26B A4B QAT (Q4_0) added — local quantized build of the 26B MoE (4B active). It inverts the 31B QAT's toggle behavior: Thinking On talks itself into Walk (Fail) despite explicitly entertaining the correct logic in its trace; Thinking Off reaches Drive (correct, though over-elaborated). For the dense 31B QAT the opposite holds (on passes, off fails) — so within local quantized Gemma the thinking toggle helps or hurts depending on architecture."
     },
     {
-      "date": "2026-06-10",
+      "date": "2026-06-19",
       "summary": "Gemma 4 31B QAT (Q4_0) added — a quantization-aware-trained 4-bit build of the dense 31B, run locally on consumer hardware (LM Studio). It splits on the thinking toggle in English: Thinking On reasons explicitly to the constraint and passes; Thinking Off recommends Walk and fails. The quantized 31B holds with thinking on where the local 12B failed in both states — within local quantized Gemma, the toggle is the variable and size helps once reasoning is enabled."
     },
     {

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Microsoft (Copilot) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Microsoft Copilot results on the Carwash Test, under the retrieval-isolation prompt.">
+  <title id="page-title">The Carwash Test — Sakana AI (Namazu) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Sakana AI's Namazu, tested across registers, interface languages, and five languages.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -17,20 +17,20 @@
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Microsoft (Copilot)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Microsoft Copilot results on the Carwash Test, under the retrieval-isolation prompt.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — Sakana AI (Namazu)">
+  <meta property="og:description" content="Sakana AI's Namazu on the Carwash Test — holds the object only in Japanese, and only in some registers; fails every non-Japanese language.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/sakana.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Microsoft (Copilot)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Microsoft Copilot results on the Carwash Test, under the retrieval-isolation prompt.">
+  <meta name="twitter:title" content="The Carwash Test — Sakana AI (Namazu)">
+  <meta name="twitter:description" content="Sakana AI's Namazu on the Carwash Test — holds the object only in Japanese, and only in some registers; fails every non-Japanese language.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Microsoft Copilot, Copilot, Copilot Quick Response, Copilot Think Deeper, GPT via Copilot, Opus via Copilot, M365 Copilot, isolation prompt, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, Sakana AI, Namazu, Japanese LLM, Sakana Chat, Kansai-ben, keigo, register, cross-language AI evaluation, cultural adaptation, statistical pressure, logical object, AI failure modes, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -42,6 +42,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -56,18 +57,17 @@
   <!-- carwash-vendor-rail -->
   <div id="vendor-rail"></div>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
+          <h1 class="site-title" id="family-title">Sakana AI (Namazu)</h1>
           <p class="site-subtitle">Carwash Test transcripts</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
       <hr class="site-rule">
-      <p class="prompt-line">Canonical prompt (runs 15–17, 20): "My car is dirty. The carwash is 100 feet away. Should I walk or drive?"</p>
+      <p class="prompt-line">My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
       <nav class="site-nav">
         <a href="../index.html">Overview</a>
         <a href="../results.html">Results</a>
@@ -78,7 +78,15 @@
     </header>
 
     <section>
-      <h2>Results</h2>
+      <div class="callout callout-note">
+        <span class="callout-tag">Namazu (alpha)</span>
+        <p><strong>Namazu is Sakana AI's Japanese-adapted model, post-trained on open-weight frontier bases and served through Sakana Chat.</strong> Reasoning is always on (no toggle), and an integrated web search is always available — though in every run here the model's own trace decides <em>not</em> to search and to answer from knowledge. The interesting controls are a <strong>register selector</strong> (Standard 標準 / Polite 丁寧 / Osaka-Kansai 大阪) and a <strong>Japanese ⇄ English interface toggle</strong>, both surfaced on each run below.</p>
+      </div>
+      <p class="chart-note"><strong>Namazu only ever reaches "drive" on Japanese prompts</strong> — and even then only in certain registers — while <strong>failing every non-Japanese language</strong> (English, Chinese, French, Ukrainian all recommend walking). Register and interface move the verdict: Standard drives in both interfaces, <strong>Polite walks in Japanese but drives in English</strong>, and <strong>Kansai-ben walks in both</strong>. Of the three "drive" answers, only the two English-interface ones name the constraint (the car must be at the wash); the Standard-Japanese one reaches drive by convenience (carrying tools) without holding the object, so it is scored verbose, not pass. The English run is below; Japanese, Chinese, French, and Ukrainian are in their language sections.</p>
+    </section>
+
+    <section>
+      <h2>Results (English)</h2>
       <div id="tally"></div>
       <div id="charts"></div>
       <div id="results-table"></div>
@@ -86,7 +94,7 @@
     </section>
 
     <section>
-      <h2>Transcripts</h2>
+      <h2>Transcripts (English)</h2>
       <div id="transcripts"></div>
     </section>
 
@@ -113,7 +121,7 @@
   <script src="../scripts.js?v=20260623a"></script>
   <script>
     (async function () {
-      const SLUG = "microsoft";
+      const SLUG = "sakana";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];

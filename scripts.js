@@ -57,7 +57,8 @@
     "lumo": "lumo.svg",
     "gemma": "gemma.svg",
     "qwen_ow": "qwen.svg",
-    "zai": "zai.svg"
+    "zai": "zai.svg",
+    "sakana": "sakana.svg"
   };
 
   async function loadData(basePath) {
@@ -511,6 +512,12 @@
     const verbositySpan = run.verbosity
       ? '<span>Verbosity: ' + escapeHTML(run.verbosity) + '</span>'
       : '';
+    const registerSpan = run.register
+      ? '<span title="Register / politeness level selected in the chat UI">Register: ' + escapeHTML(run.register) + '</span>'
+      : '';
+    const interfaceSpan = run.interface_language
+      ? '<span title="UI interface language at test time, distinct from the prompt language">Interface: ' + escapeHTML(run.interface_language) + '</span>'
+      : '';
     const traceLangSpan = run.reasoning_trace_language
       ? '<span title="Internal reasoning-trace language, distinct from the response language">Reasoned in: ' + escapeHTML(run.reasoning_trace_language) + '</span>'
       : '';
@@ -531,6 +538,8 @@
           '<span>Thinking: ' + escapeHTML(formatThinking(run.thinking)) + '</span>' +
           effortSpan +
           verbositySpan +
+          registerSpan +
+          interfaceSpan +
           traceLangSpan +
           '<span>' + escapeHTML(formatDate(run.date)) + '</span>' +
           tokensSpan +
@@ -554,6 +563,11 @@
     const fam = allRuns.filter(function (r) { return r.model_family === slug && runLang(r) !== "en"; });
     if (!fam.length) return "";
     const LANGS = [
+      { code: "ja", title: "Japanese-Language Runs (日本語)",
+        prompt: "車が汚れています。洗車場は35メートル先にあります。歩いて行くべきですか、それとも車で行くべきですか？",
+        aria: "Japanese Carwash Test prompt",
+        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+        note: "Namazu exposes a register selector (Standard / Polite / Osaka-Kansai) and a Japanese/English interface toggle; both move the verdict. The prompt shown is the Standard-register wording — the Polite and Kansai-ben runs reword it. Token estimates use an approximate Japanese rate (~0.5 tokens/character) and are not directly comparable to the English counts." },
       { code: "zh-CN", title: "Chinese-Language Runs (简体中文)",
         prompt: "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
         aria: "Simplified Chinese Carwash Test prompt",

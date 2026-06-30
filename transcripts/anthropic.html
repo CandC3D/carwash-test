@@ -79,6 +79,10 @@
 
     <section>
       <div class="callout callout-note">
+        <span class="callout-tag">Sonnet 5</span>
+        <p><strong>Claude Sonnet 5 (June 30, 2026) drops the Adaptive On/Off toggle</strong> — reasoning is now governed solely by a five-tier effort selector (Low / Medium / High / Extra / Max), so its runs carry a Thinking value of n/a. It passes the Carwash Test in all five modes, naming the constraint directly in each. Notably, the answer stays terse as effort rises: the extra budget goes into the reasoning trace (visible from High up), not the output — the inverse of the "more reasoning, more words" pattern. The Max trace reasons to the logical object and then explicitly chooses brevity, citing the user's stored preference for directness.</p>
+      </div>
+      <div class="callout callout-note">
         <span class="callout-tag">Fable 5</span>
         <p><strong>Claude Fable 5 (June 9, 2026) is the public-facing version of Anthropic's Mythos model line</strong> — a different line from Opus/Sonnet/Haiku; Mythos 5 itself is restricted to approved organizations. Its control surface is a reasoning-effort selector only (default High), with no Adaptive or Extended-thinking toggle. Caveat: in high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8 (Anthropic reports ≥95% of sessions run entirely on Fable), and no interface indicator shows which model answered. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to every Fable entry as a class.</p>
       </div>

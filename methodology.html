@@ -143,16 +143,17 @@
         <li><strong>Balanced / Think / Research.</strong> Mistral's mode picker (in the app now branded <strong>Vibe</strong>, formerly Le Chat): Balanced (everyday default), Think (extended reasoning), and Research (multi-source deep analysis). Balanced was labeled "Fast" in March.</li>
         <li><strong>n/a.</strong> No user-facing reasoning controls.</li>
       </ul>
-      <p><strong>Reasoning-effort and verbosity selectors (May 28, 2026).</strong> Two vendors now expose the <em>amount</em> of reasoning as a graded control distinct from the on/off toggle. Anthropic added a model-specific effort selector — Opus 4.8: Low / Medium / High / Extra / Max; Sonnet 4.6: Low / Medium / High / Max (High is the default) — which coexists with the Adaptive toggle as an orthogonal control, so an Anthropic run now carries both an Adaptive state and an effort level. OpenAI's API console exposes effort (e.g. low / medium / extra-high) and verbosity (low / medium) as separate orthogonal settings, so a model can be told to think hard and still answer briefly. Where these settings were recorded they appear in the run's transcript metadata; the effort level is treated as an experimental variable on the <a href="metrics.html#cross-corpus">Metrics page</a>. Claude Fable 5 (June 9, 2026) takes this to its endpoint: it exposes <em>only</em> the effort selector (default High) with no Adaptive or Extended-thinking toggle at all, so Fable runs carry an effort level and a Thinking value of n/a.</p>
+      <p><strong>Reasoning-effort and verbosity selectors (May 28, 2026).</strong> Two vendors now expose the <em>amount</em> of reasoning as a graded control distinct from the on/off toggle. Anthropic added a model-specific effort selector — Opus 4.8: Low / Medium / High / Extra / Max; Sonnet 4.6: Low / Medium / High / Max (High is the default) — which coexists with the Adaptive toggle as an orthogonal control, so an Anthropic run now carries both an Adaptive state and an effort level. OpenAI's API console exposes effort (e.g. low / medium / extra-high) and verbosity (low / medium) as separate orthogonal settings, so a model can be told to think hard and still answer briefly. Where these settings were recorded they appear in the run's transcript metadata; the effort level is treated as an experimental variable on the <a href="metrics.html#cross-corpus">Metrics page</a>. Claude Fable 5 (June 9, 2026) takes this to its endpoint: it exposes <em>only</em> the effort selector (default High) with no Adaptive or Extended-thinking toggle at all, so Fable runs carry an effort level and a Thinking value of n/a. Claude Sonnet 5 (June 30, 2026) brings that change to the mainline Sonnet generation: the Adaptive toggle is gone, leaving a five-tier effort selector — Low / Medium / High / Extra / Max — as the sole reasoning control, so Sonnet 5 runs likewise carry a Thinking value of n/a.</p>
     </section>
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and June 23, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and June 30, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
         <li>Claude Opus 4.6 and Sonnet 4.6 (Anthropic; originally Extended Thinking On/Off, briefly Adaptive, reverted to Extended Thinking On/Off in May; Sonnet 4.6 now carries an effort selector — Low/Medium/High/Max)</li>
+        <li>Claude Sonnet 5 (Anthropic; new Sonnet generation, June 30 — the Adaptive toggle is removed, leaving a five-tier effort selector as the only reasoning control: Low/Medium/High/Extra/Max)</li>
         <li>Claude Haiku 4.5 (Anthropic, Extended Thinking On and Off)</li>
         <li>Claude Opus 4.7 (Anthropic, Adaptive thinking)</li>
         <li>ChatGPT 5.2, 5.3, 5.4, and 5.5 (OpenAI Plus, with and without extended thinking where available)</li>
@@ -187,7 +188,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – June 23, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – June 30, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -213,6 +214,7 @@
           <tr><td>Perplexity (search-grounded)</td><td>June 19, 2026</td><td>1</td><td>102</td></tr>
           <tr><td>Z.ai GLM-5.2 (Deep Think ×3)</td><td>June 22, 2026</td><td>3</td><td>105</td></tr>
           <tr><td>Sakana AI Namazu (English)</td><td>June 23, 2026</td><td>1</td><td>106</td></tr>
+          <tr><td>Claude Sonnet 5 (5 effort modes)</td><td>June 30, 2026</td><td>5</td><td>111</td></tr>
         </tbody>
       </table>
       <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (31), French (22), Ukrainian (33), and Japanese (6) language corpora, and the open-weight runs (Gemma 22, Qwen 8), are kept separate and are not included in this cumulative total.</p>
@@ -233,7 +235,7 @@
       <h2>Language corpora</h2>
       <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27 – June 23, 2026 (separate from the 106-run English corpus)</caption>
+        <caption>Language corpora added May 27 – June 23, 2026 (separate from the 111-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -285,6 +287,7 @@
         <tbody>
           <tr><td>Anthropic</td><td>Claude Fable</td><td>5</td><td>First public Mythos-class model (June 9, 2026); Mythos 5 itself is restricted to approved organizations. Reasoning-effort selector only (default High) — no thinking toggle. Silently falls back to Opus 4.8 in high-risk topic areas with no per-response indicator.</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.8</td><td>New flagship (May 28, 2026). Adaptive On/Off toggle plus a model-specific reasoning-effort selector: Low / Medium / High / Extra / Max (High default). The two controls are orthogonal.</td></tr>
+          <tr><td>Anthropic</td><td>Claude Sonnet</td><td>5</td><td>New Sonnet generation (June 30, 2026). The Adaptive On/Off toggle is removed; reasoning is governed solely by a five-tier effort selector: Low / Medium / High / Extra / Max. Runs carry Thinking = n/a.</td></tr>
           <tr><td>Anthropic</td><td>Claude Sonnet</td><td>4.6</td><td>Default model. Adaptive On/Off toggle plus reasoning-effort selector: Low / Medium / High / Max (High default).</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.6</td><td>Extended Thinking On/Off toggle (reverted from Adaptive as of May 3)</td></tr>
           <tr><td>Anthropic</td><td>Claude Haiku</td><td>4.5</td><td>Extended Thinking On/Off toggle</td></tr>

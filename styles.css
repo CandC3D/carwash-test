@@ -983,6 +983,8 @@ footer .related-links a:hover {
   .tally-row { grid-template-columns: repeat(2, 1fr); }
   .results-table th.col-thinking,
   .results-table td.col-thinking,
+  .results-table th.col-effort,
+  .results-table td.col-effort,
   .results-table th.col-date,
   .results-table td.col-date { display: none; }
   .transcript-meta { margin-left: 0; }

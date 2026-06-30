@@ -112,6 +112,14 @@
 
   const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3 };
   const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "think": 7, "expert": 8, "adaptive_on": 9, "on": 10, "research": 11 };
+  // Reasoning-effort tier ordering (low → max). "xhigh" is OpenAI's extra-high;
+  // a run with no effort selector sorts as 0. Used for the Effort column.
+  const EFFORT_SORT_RANK = { "low": 1, "medium": 2, "high": 3, "extra": 4, "xhigh": 4, "max": 5 };
+  const EFFORT_LABELS = { "low": "Low", "medium": "Medium", "high": "High", "extra": "Extra", "xhigh": "X-high", "max": "Max" };
+  function formatEffort(value) {
+    if (!value) return "";
+    return EFFORT_LABELS[value] || (String(value).charAt(0).toUpperCase() + String(value).slice(1));
+  }
 
   function tokenEstimate(response) {
     if (!response) return 0;
@@ -153,6 +161,7 @@
       '<td data-sort="' + escapeHTML(r.vendor.toLowerCase()) + '">' + escapeHTML(r.vendor) + '</td>' +
       '<td data-sort="' + escapeHTML(r.model.toLowerCase()) + '">' + modelCell + '</td>' +
       '<td class="col-thinking" data-sort="' + (THINKING_SORT_RANK[r.thinking] !== undefined ? THINKING_SORT_RANK[r.thinking] : 99) + '">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
+      '<td class="col-effort" data-sort="' + (EFFORT_SORT_RANK[r.effort] || 0) + '">' + escapeHTML(formatEffort(r.effort) || "—") + '</td>' +
       '<td class="col-date" data-sort="' + escapeHTML(r.date) + '">' + escapeHTML(formatDate(r.date)) + '</td>' +
       '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
       '<td class="col-tokens" data-sort="' + tokens + '">' + tokenDisplay(r) + '</td>' +
@@ -165,6 +174,7 @@
       '<th scope="col" class="sortable" data-sort-type="string" data-default-dir="asc">Company</th>' +
       '<th scope="col" class="sortable" data-sort-type="string" data-default-dir="asc">Model</th>' +
       '<th scope="col" class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
+      '<th scope="col" class="col-effort sortable" data-sort-type="number" data-default-dir="asc" title="Reasoning-effort tier, where the model exposes one">Effort</th>' +
       '<th scope="col" class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
       '<th scope="col" class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
       '<th scope="col" class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens (est)</th>' +
@@ -861,7 +871,7 @@
     const lines = [];
     lines.push(cell("The Carwash Test") + "," + cell(SITE));
     lines.push("");
-    lines.push(["#", "Company", "Model", "Thinking", "Date", "Result", "Tokens (est)"]
+    lines.push(["#", "Company", "Model", "Thinking", "Effort", "Date", "Result", "Tokens (est)"]
       .map(cell).join(","));
     runs.slice().sort(function (a, b) { return a.id - b.id; }).forEach(function (r) {
       lines.push([
@@ -869,6 +879,7 @@
         r.vendor,
         r.model,
         formatThinking(r.thinking),
+        formatEffort(r.effort),
         r.date,
         RESULT_LABELS[r.result] || r.result,
         runTokens(r)

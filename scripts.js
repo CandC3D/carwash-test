@@ -49,7 +49,7 @@
     "google": "googlegemini.svg",
     "meta": "meta.svg",
     "microsoft": "microsoft.svg",
-    "xai": "x.svg",
+    "xai": "grok.svg",
     "mistral": "mistralai.svg",
     "perplexity": "perplexity.svg",
     "qwen": "qwen.svg",

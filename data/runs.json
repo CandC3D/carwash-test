@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-06-30",
+    "last_updated": "2026-07-07",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -64,8 +64,8 @@
       "category": "general"
     },
     "xai": {
-      "name": "xAI",
-      "display_name": "xAI (Grok)",
+      "name": "SpaceXAI",
+      "display_name": "SpaceXAI (Grok)",
       "slug": "xai",
       "category": "general"
     },
@@ -3482,6 +3482,10 @@
     }
   ],
   "change_log": [
+    {
+      "date": "2026-07-07",
+      "summary": "xAI rebranded to SpaceXAI (July 7, 2026), folding the AI operation under the SpaceX brand. The Grok model line and product are unchanged. The family is now listed as SpaceXAI (Grok); historical runs retain the xAI vendor label they were tested under, and future Grok runs will be logged under SpaceXAI. The site's mark for the family switches from the X logo to the Grok mark."
+    },
     {
       "date": "2026-06-30",
       "summary": "Claude Sonnet 5 (Anthropic) added — tested in all five reasoning-effort modes (Low/Medium/High/Extra/Max) on launch day, June 30, 2026. The Adaptive On/Off toggle is gone; effort is now the sole reasoning control (so Thinking = n/a, as with Fable 5). All five modes pass cleanly and stay terse — the extra reasoning budget goes into the trace, not the output length, the inverse of the 'more reasoning = more verbose' pattern seen elsewhere. The High/Extra/Max traces name the logical object directly; the Max trace also references stored user preferences for directness."

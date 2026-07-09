@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260630a">
+  <link rel="stylesheet" href="styles.css?v=20260708a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -162,7 +162,7 @@
         <li>Meta Muse Spark (Instant, Thinking, and Contemplating modes; Contemplating added in May for multi-chain parallel reasoning)</li>
         <li>Gemini (Google; Gemini 3 Fast, Gemini 3.1 Pro, and Gemini 3 Thinking tiers, plus Gemini 3.1 Flash-Lite and Gemini 3.5 Flash added May 25)</li>
         <li>Grok 4.20 (xAI, Expert and Fast modes; March/April only)</li>
-        <li>Grok 4.3 (xAI; Auto, Fast, and Expert modes; new in May)</li>
+        <li>Grok 4.3 (xAI, now SpaceXAI as of July 7, 2026; Auto, Fast, and Expert modes; new in May)</li>
         <li>DeepSeek-V3.2 with and without extended reasoning (March 28 only; consumer interface routed to V3.2 before the April 24, 2026 V4 transition)</li>
         <li>DeepSeek-V4-Flash (Instant) and DeepSeek-V4-Pro (Expert), with and without thinking (April 27 and May 3; V4 Preview replaced V3.2/R1 on April 24, 2026 — models self-report as V3)</li>
         <li>Mistral 3 (Le Chat; Fast/Balanced, Think, and Research modes; March only)</li>
@@ -302,8 +302,8 @@
           <tr><td>Google (open-weight)</td><td>Gemma 4 26B A4B IT</td><td><code>gemma-4-26b-a4b-it</code></td><td>Open-weight Mixture-of-Experts: 26B total parameters, only 4B active per inference — high-performance reasoning at a fraction of the memory cost. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 31B IT</td><td><code>gemma-4-31b-it</code></td><td>Open-weight dense flagship (Google DeepMind), all 31B parameters active — built for maximum quality in data-center environments; 256K context window. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 12B</td><td><code>gemma-4-12b</code></td><td>Open-weight, encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone). Released June 3, 2026; runs locally in ~16&nbsp;GB VRAM. Tested on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio, not AI Studio — in two local builds: a Q6_K GGUF and a quantization-aware-trained Q4_0 (QAT). Run records carry the quantization in the model name (e.g. "Gemma 4 12B (Q6_K)").</td></tr>
-          <tr><td>xAI</td><td>Grok</td><td>4.3</td><td>Auto/Fast/Expert picker; replaced Grok 4.20 on April 30, 2026</td></tr>
-          <tr><td>xAI</td><td>Grok</td><td>4.20</td><td>Historical entries only; deprecated April 30, 2026</td></tr>
+          <tr><td>SpaceXAI (formerly xAI)</td><td>Grok</td><td>4.3</td><td>Auto/Fast/Expert picker; replaced Grok 4.20 on April 30, 2026. xAI rebranded to SpaceXAI on July 7, 2026 — model line unchanged; historical runs keep the xAI vendor label.</td></tr>
+          <tr><td>SpaceXAI (formerly xAI)</td><td>Grok</td><td>4.20</td><td>Historical entries only; deprecated April 30, 2026</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V3.2</td><td>V3.2</td><td>Historical entries only (pre-April 24, 2026). Instant Mode on consumer interface.</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V3.2 (thinking)</td><td>V3.2-thinking</td><td>Historical entries only. DeepThink toggle on consumer interface; marketed as R1.</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V4-Flash</td><td>V4 Preview</td><td>Current as of April 24, 2026. Instant Mode on consumer interface. 284B / 13B active params.</td></tr>
@@ -349,6 +349,8 @@
         <li><strong>May 29, 2026:</strong> Mistral rebranded Le Chat to <strong>Vibe</strong>, a unified agent split into three product modes — Vibe Work (the productivity chat interface), Vibe Code (a developer CLI / VS Code extension / web tool), and Vibe Chat (the original turn-based conversation). Same URL (chat.mistral.ai), same login and history; product docs moved to docs.mistral.ai. The Balanced / Think / Research reasoning picker and the underlying Mistral Medium 3.5 model are unchanged. Carwash runs use the turn-based conversation (Vibe Chat / Work).</li>
         <li><strong>June 9, 2026:</strong> Anthropic launched <strong>Claude Fable 5</strong>, the first public Mythos-class model. Control surface: reasoning-effort selector only (default High) — no Adaptive/Extended thinking toggle, a third Anthropic control configuration in three months. Pricing: $10/M input, $50/M output — double Opus 4.8. Fallback architecture: in high-risk topic areas Fable blocks and silently falls back to Opus 4.8 (vendor reports ≥95% of sessions run fully on Fable); no interface indicator shows which model answered. Mandatory 30-day traffic retention applies to all Fable/Mythos traffic, superseding prior zero-retention agreements.</li>
         <li><strong>June 9, 2026:</strong> Fable 5 staged rollout: included on Pro/Max/Team/seat-based Enterprise at no extra cost June 9–22; removed from those plans June 23 and gated behind usage credits thereafter, with stated intent to restore. The access population for Fable testing changes on June 23 — community replications will cluster in the free window. Subscription quantity tiers (5x/10x/25x Max) do not purchase access to the capability tier after June 23.</li>
+        <li><strong>June 30, 2026:</strong> Anthropic released <strong>Claude Sonnet 5</strong>. The Adaptive On/Off toggle is removed from the Sonnet line; reasoning is governed solely by a five-tier effort selector (Low / Medium / High / Extra / Max), so Sonnet 5 runs carry a Thinking value of n/a.</li>
+        <li><strong>July 7, 2026:</strong> xAI rebranded to <strong>SpaceXAI</strong>, folding the AI operation under the SpaceX brand. The Grok model line and product are unchanged. The family is listed as SpaceXAI (Grok); historical runs retain the xAI vendor label they were tested under, and runs from July 2026 onward are logged as SpaceXAI.</li>
       </ul>
       <div class="callout callout-note">
         <span class="callout-tag">Note</span>
@@ -420,7 +422,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260630a"></script>
+  <script src="scripts.js?v=20260708a"></script>
   <script>
     (async function () {
       try {

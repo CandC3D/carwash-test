@@ -148,7 +148,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and June 30, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and July 11, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
@@ -171,10 +171,13 @@
         <li>Qwen 3.6 (Alibaba; Plus, Max-Preview, and 27B model tiers, with Auto/Thinking/Fast toggles where available; new in May)</li>
         <li>Qwen 3.7 (Alibaba; Max with Fast and Thinking, plus Max-Preview and Plus-Preview in Thinking mode; tested May 25)</li>
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
-        <li>Z.ai GLM-5.2 (first-party cloud; Deep Think reasoning toggle with a High/Max effort selector, plus Deep Think Off; tested June 22)</li>
+        <li>Z.ai GLM-5.2 (first-party cloud; Deep Think reasoning toggle with a High/Max effort selector, plus Deep Think Off; tested June 22 and July 11, when GLM-5.1 and GLM-5-Turbo were also selectable with a plain thinking toggle)</li>
+        <li>ChatGPT 5.6 Sol (OpenAI Plus; flagship of the GPT-5.6 series launched July 9; effort tiers Medium/High — no true Instant, which reverts to 5.5; tested July 11)</li>
+        <li>Grok 4.5 (SpaceXAI; launched July 9 on the V9 foundation; Fast, Expert, and Auto modes, with web search integrated in Expert; tested July 11)</li>
+        <li>Lumo 2.0 Lite and Max (Proton; released June 30 — the first Lumo with a reasoning control, Fast/Thinking; tested July 11)</li>
         <li>Sakana AI Namazu (alpha) (Sakana Chat; Japanese-adapted, reasoning always on, integrated web search always on; register selector — Standard / Polite / Osaka-Kansai — and a Japanese/English interface toggle; tested June 23)</li>
         <li>Lumo (Proton; default configuration, no reasoning toggle exposed; new in May)</li>
-        <li>Microsoft Copilot running Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 in Quick Response and Think Deeper modes (May runs use the isolation prompt to suppress M365 retrieval)</li>
+        <li>Microsoft Copilot running Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 in Quick Response and Think Deeper modes (May runs use the isolation prompt to suppress M365 retrieval); July 11 runs use GPT 5.6 (Think and Quick Response) and Claude Opus (no version exposed), under the restraint prompt</li>
         <li>Amazon Rufus (purpose-optimized shopping assistant; no reasoning toggle exposed; tested May 12; retired in favor of Alexa later in May)</li>
         <li>Alexa (Amazon's shopping assistant at amazon.com; replaced Rufus; no reasoning toggle exposed; tested May 25)</li>
         <li>TIME AI (purpose-optimized media assistant; no reasoning toggle exposed; tested May 25)</li>
@@ -188,7 +191,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – June 30, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – July 11, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -215,6 +218,20 @@
           <tr><td>Z.ai GLM-5.2 (Deep Think ×3)</td><td>June 22, 2026</td><td>3</td><td>105</td></tr>
           <tr><td>Sakana AI Namazu (English)</td><td>June 23, 2026</td><td>1</td><td>106</td></tr>
           <tr><td>Claude Sonnet 5 (5 effort modes)</td><td>June 30, 2026</td><td>5</td><td>111</td></tr>
+          <tr><td>Carwash III: Qwen 3.6/3.7 sweep</td><td>July 11, 2026</td><td>8</td><td>119</td></tr>
+          <tr><td>Carwash III: Anthropic lineup re-baseline (toggle + effort UI)</td><td>July 11, 2026</td><td>35</td><td>154</td></tr>
+          <tr><td>Carwash III: DeepSeek V4 Expert/Instant</td><td>July 11, 2026</td><td>4</td><td>158</td></tr>
+          <tr><td>Carwash III: Gemini 3.5 Flash / 3.1 Flash-Lite / 3.1 Pro</td><td>July 11, 2026</td><td>6</td><td>164</td></tr>
+          <tr><td>Carwash III: Muse Spark</td><td>July 11, 2026</td><td>2</td><td>166</td></tr>
+          <tr><td>Carwash III: Copilot (GPT 5.6, Claude Opus)</td><td>July 11, 2026</td><td>3</td><td>169</td></tr>
+          <tr><td>Carwash III: Vibe Chat (Fast/Thinking)</td><td>July 11, 2026</td><td>2</td><td>171</td></tr>
+          <tr><td>Carwash III: Kimi K2.6</td><td>July 11, 2026</td><td>2</td><td>173</td></tr>
+          <tr><td>Carwash III: ChatGPT 5.6 Sol / 5.5 / 5.3 / o3</td><td>July 11, 2026</td><td>7</td><td>180</td></tr>
+          <tr><td>Carwash III: Perplexity</td><td>July 11, 2026</td><td>1</td><td>181</td></tr>
+          <tr><td>Carwash III: Lumo 2.0 Lite/Max</td><td>July 11, 2026</td><td>4</td><td>185</td></tr>
+          <tr><td>Carwash III: Namazu (EN interface)</td><td>July 11, 2026</td><td>1</td><td>186</td></tr>
+          <tr><td>Carwash III: Grok 4.5 (SpaceXAI)</td><td>July 11, 2026</td><td>3</td><td>189</td></tr>
+          <tr><td>Carwash III: GLM-5.2 / 5.1 / 5-Turbo</td><td>July 11, 2026</td><td>7</td><td>196</td></tr>
         </tbody>
       </table>
       <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (31), French (22), Ukrainian (33), and Japanese (6) language corpora, and the open-weight runs (Gemma 22, Qwen 8), are kept separate and are not included in this cumulative total.</p>
@@ -235,7 +252,7 @@
       <h2>Language corpora</h2>
       <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27 – June 23, 2026 (separate from the 111-run English corpus)</caption>
+        <caption>Language corpora added May 27 – June 23, 2026 (separate from the 196-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -287,12 +304,13 @@
         <tbody>
           <tr><td>Anthropic</td><td>Claude Fable</td><td>5</td><td>First public Mythos-class model (June 9, 2026); Mythos 5 itself is restricted to approved organizations. Reasoning-effort selector only (default High) — no thinking toggle. Silently falls back to Opus 4.8 in high-risk topic areas with no per-response indicator. Suspended June 12–30, 2026 under US export controls; restored globally July 1 (see change log).</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.8</td><td>New flagship (May 28, 2026). Adaptive On/Off toggle plus a model-specific reasoning-effort selector: Low / Medium / High / Extra / Max (High default). The two controls are orthogonal.</td></tr>
-          <tr><td>Anthropic</td><td>Claude Sonnet</td><td>5</td><td>New Sonnet generation (June 30, 2026). The Adaptive On/Off toggle is removed; reasoning is governed solely by a five-tier effort selector: Low / Medium / High / Extra / Max. Runs carry Thinking = n/a.</td></tr>
+          <tr><td>Anthropic</td><td>Claude Sonnet</td><td>5</td><td>New Sonnet generation (June 30, 2026). Launched with a five-tier effort selector as the sole reasoning control (launch-day runs carry Thinking = n/a); in the week-of-July-6 UI overhaul it gained an Extended-thinking On/Off toggle alongside the selector, so July 11 runs carry both values.</td></tr>
           <tr><td>Anthropic</td><td>Claude Sonnet</td><td>4.6</td><td>Default model. Adaptive On/Off toggle plus reasoning-effort selector: Low / Medium / High / Max (High default).</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.6</td><td>Extended Thinking On/Off toggle (reverted from Adaptive as of May 3)</td></tr>
           <tr><td>Anthropic</td><td>Claude Haiku</td><td>4.5</td><td>Extended Thinking On/Off toggle</td></tr>
           <tr><td>Anthropic</td><td>Claude Opus</td><td>4.7</td><td>Adaptive On/Off toggle; released April 16, 2026</td></tr>
-          <tr><td>OpenAI</td><td>ChatGPT</td><td>5.2, 5.3, 5.4, 5.5</td><td>Extended Thinking On/Off toggle (5.3 has no toggle on Plus)</td></tr>
+          <tr><td>OpenAI</td><td>ChatGPT</td><td>5.2, 5.3, 5.4, 5.5</td><td>Extended Thinking On/Off toggle (5.3 has no toggle on Plus). As of July 2026 the Plus picker exposes effort tiers instead: 5.5 offers Instant/Medium/High; 5.3 is locked to Instant; o3 locked to Medium.</td></tr>
+          <tr><td>OpenAI</td><td>ChatGPT</td><td>5.6 Sol</td><td>Flagship of the GPT-5.6 series (Sol / Terra / Luna), consumer rollout July 9, 2026. Effort tiers Medium/High; no true Instant — selecting it reverts to 5.5. Tested July 11.</td></tr>
           <tr><td>OpenAI</td><td>GPT</td><td>o3</td><td>Reasoning architecturally always on; no user toggle</td></tr>
           <tr><td>Meta</td><td>Muse Spark</td><td>—</td><td>Instant / Thinking / Contemplating modes; version not exposed</td></tr>
           <tr><td>Google</td><td>Gemini 3</td><td>Fast, Thinking tiers</td><td>Version not exposed beyond tier label</td></tr>
@@ -302,6 +320,7 @@
           <tr><td>Google (open-weight)</td><td>Gemma 4 26B A4B IT</td><td><code>gemma-4-26b-a4b-it</code></td><td>Open-weight Mixture-of-Experts: 26B total parameters, only 4B active per inference — high-performance reasoning at a fraction of the memory cost. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 31B IT</td><td><code>gemma-4-31b-it</code></td><td>Open-weight dense flagship (Google DeepMind), all 31B parameters active — built for maximum quality in data-center environments; 256K context window. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 12B</td><td><code>gemma-4-12b</code></td><td>Open-weight, encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone). Released June 3, 2026; runs locally in ~16&nbsp;GB VRAM. Tested on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio, not AI Studio — in two local builds: a Q6_K GGUF and a quantization-aware-trained Q4_0 (QAT). Run records carry the quantization in the model name (e.g. "Gemma 4 12B (Q6_K)").</td></tr>
+          <tr><td>SpaceXAI</td><td>Grok</td><td>4.5</td><td>First post-rebrand release (July 9, 2026), on the 1.5T-parameter V9 foundation. Fast / Expert / Auto modes; Expert integrates web search — which on July 11 retrieved this site itself (see the Metrics contamination finding). Tested July 11.</td></tr>
           <tr><td>SpaceXAI (formerly xAI)</td><td>Grok</td><td>4.3</td><td>Auto/Fast/Expert picker; replaced Grok 4.20 on April 30, 2026. xAI rebranded to SpaceXAI on July 6, 2026 — model line unchanged; historical runs keep the xAI vendor label.</td></tr>
           <tr><td>SpaceXAI (formerly xAI)</td><td>Grok</td><td>4.20</td><td>Historical entries only; deprecated April 30, 2026</td></tr>
           <tr><td>DeepSeek</td><td>DeepSeek-V3.2</td><td>V3.2</td><td>Historical entries only (pre-April 24, 2026). Instant Mode on consumer interface.</td></tr>
@@ -312,7 +331,9 @@
           <tr><td>Mistral</td><td>Mistral 3</td><td>—</td><td>Historical entries only; replaced by Medium 3.5 in Le Chat, late April 2026</td></tr>
           <tr><td>Mistral</td><td>Mistral Medium</td><td>3.5</td><td>Balanced / Think / Research modes; replaced Mistral 3 in Le Chat. App rebranded Le Chat → Vibe (May 29, 2026), now split into Vibe Work / Code / Chat; model unchanged.</td></tr>
           <tr><td>Perplexity</td><td>Perplexity</td><td>—</td><td>Default configuration; underlying model not exposed</td></tr>
-          <tr><td>Z.ai</td><td>GLM</td><td>5.2</td><td>First-party cloud model. Control surface: a Deep Think reasoning toggle with a High/Max effort selector, plus Deep Think Off. Tested June 22, 2026 across four languages in all three states.</td></tr>
+          <tr><td>Proton</td><td>Lumo</td><td>2.0 Lite / 2.0 Max</td><td>Released June 30, 2026 — two model variants and the first Lumo reasoning control (Fast / Thinking). Tested July 11.</td></tr>
+          <tr><td>Z.ai</td><td>GLM</td><td>5.2</td><td>First-party cloud model. Control surface: a Deep Think reasoning toggle with a High/Max effort selector, plus Deep Think Off. Tested June 22, 2026 across four languages in all three states; retested in English July 11.</td></tr>
+          <tr><td>Z.ai</td><td>GLM</td><td>5.1, 5-Turbo</td><td>Legacy and fast tiers selectable at chat.z.ai alongside 5.2, each with a plain thinking On/Off toggle. Tested July 11, 2026.</td></tr>
           <tr><td>Sakana AI</td><td>Namazu</td><td>Alpha (α版)</td><td>Japanese-adapted model on Sakana Chat (released March 24, 2026), post-trained on open-weight frontier bases (Namazu-DeepSeek-V3.1-Terminus, Llama-3.1-Namazu-405B, Namazu-gpt-oss-120B). Reasoning always on (no selector); integrated web search always on. Register selector — Standard / Polite / Osaka-Kansai — and a Japanese/English interface toggle. Tested June 23, 2026.</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
@@ -357,6 +378,8 @@
         <li><strong>July 6, 2026:</strong> xAI rebranded to <strong>SpaceXAI</strong>, folding the AI operation under the SpaceX brand. The Grok model line and product are unchanged. The family is listed as SpaceXAI (Grok); historical runs retain the xAI vendor label they were tested under, and runs from July 2026 onward are logged as SpaceXAI.</li>
         <li><strong>July 7, 2026:</strong> Anthropic <strong>extended Fable 5's free window through July 12, 2026</strong> (11:59:59 PM PT) after user pressure over the earlier cutoff. From July 13, Fable requires prepaid usage credits ($10/$50 per M input/output tokens) — this supersedes the June 23 gating originally announced at launch, which the June 12 suspension had overtaken. Community replications will now cluster in the June 9–12 and July 1–12 windows.</li>
         <li><strong>July 8, 2026:</strong> Anthropic's revised privacy policy takes effect: consumer-plan users buying usage credits for Fable 5 must <strong>verify identity via Persona</strong>, a third-party ID service. API customers are exempt. The access population for post-window Fable testing narrows accordingly.</li>
+        <li><strong>July 9, 2026:</strong> Double launch day: OpenAI's <strong>GPT-5.6 series</strong> (Sol flagship, Terra, Luna) reached the consumer surface, and SpaceXAI released <strong>Grok 4.5</strong> on its V9 foundation. Both were tested two days later in Carwash III.</li>
+        <li><strong>July 11, 2026 (Carwash III observations, verified in-app):</strong> Anthropic's consumer UI replaced Adaptive with an <strong>Extended-thinking On/Off toggle plus the effort selector</strong> across Opus 4.8/4.7/4.6 and Sonnet 5/4.6 — Sonnet 5 regains a toggle two weeks after launching effort-only, the fourth Anthropic control configuration since March; Fable 5 remains selector-only and Haiku 4.5 keeps a plain toggle. Gemini's thinking control is an On/Off checkmark across 3.5 Flash, 3.1 Flash-Lite, and 3.1 Pro. DeepSeek's consumer modes are labeled <strong>Expert</strong> (V4-Pro) and <strong>Instant</strong> (V4-Flash), each with a thinking toggle. Vibe Chat's reasoning picker is now <strong>Fast/Thinking</strong> (was Balanced/Think/Research). Lumo 2.0 (Lite/Max) carries Lumo's first reasoning control, Fast/Thinking. OpenAI's Plus picker exposes effort tiers (5.5: Instant/Medium/High; 5.6 Sol: Medium/High with no true Instant; 5.3 and o3 locked to a single checked tier). GLM-5.2's chat toggle offers High/Max efforts only, with GLM-5.1 and GLM-5-Turbo selectable on plain toggles. Sakana Chat's English interface locks the register selector to Standard.</li>
       </ul>
       <div class="callout callout-note">
         <span class="callout-tag">Note</span>

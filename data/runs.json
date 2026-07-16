@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-07-11",
+    "last_updated": "2026-07-16",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -145,6 +145,12 @@
       "display_name": "Sakana AI (Namazu)",
       "slug": "sakana",
       "category": "general"
+    },
+    "inkling": {
+      "name": "Thinking Machines",
+      "display_name": "Thinking Machines (Inkling)",
+      "slug": "inkling",
+      "category": "open-weight"
     }
   },
   "runs": [
@@ -6187,9 +6193,117 @@
       "token_estimate": 96,
       "notes": "PASS-ADJACENT: correct, three tight reasons. GLM-5.2 finishes the retest 9-for-9 across FR/UK/ZH — its clean record now spans two snapshots.",
       "token_method": "Chinese chars × 0.6 (DeepSeek documented rate, applied uniformly)"
+    },
+    {
+      "date": "2026-07-16",
+      "id": 407,
+      "vendor": "Thinking Machines",
+      "model_family": "inkling",
+      "model": "Inkling",
+      "model_notes": "Inkling — Thinking Machines' first open-weights model (July 15, 2026): a Mixture-of-Experts transformer, 975B total / 41B active parameters, 1M-token context, natively multimodal (text/image/audio), trained from scratch. No consumer interface; tested in the Inkling Playground in the Tinker console. Controls: a Reasoning Level selector (None / Minimum / Low / Medium / High (default) / Extra High) and a web-search toggle (OFF for all runs here).",
+      "thinking": "n/a",
+      "effort": "none",
+      "surface": "tinker_playground",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "If the car wash is literally 100 feet away—just about 30 meters—walk. It takes less time to walk 100 feet (perhaps 30 seconds) than to start your car, drive, and park for such a short distance. Driving is unnecessary for that distance and won't save time.\n\nOne practical caveat: since your car is dirty and going to get washed, if you're going to drive it through an automated wash, you'll need to drive it there regardless. Even then, for 100 feet it's still essentially a parking-lot maneuver rather than a real \"trip.\" But if it's a self-service wash where you walk in and pay, then definitely leave the car parked and walk over.",
+      "token_estimate": 158,
+      "notes": "FAIL: 'walk. It takes less time…' — and the caveat SEES the constraint ('if you're going to drive it through an automated wash, you'll need to drive it there regardless') then sets it aside for the self-service case. Constraint visible, verdict lost. No trace at Reasoning Level None."
+    },
+    {
+      "date": "2026-07-16",
+      "id": 408,
+      "vendor": "Thinking Machines",
+      "model_family": "inkling",
+      "model": "Inkling",
+      "model_notes": "Inkling — Thinking Machines' first open-weights model (July 15, 2026): a Mixture-of-Experts transformer, 975B total / 41B active parameters, 1M-token context, natively multimodal (text/image/audio), trained from scratch. No consumer interface; tested in the Inkling Playground in the Tinker console. Controls: a Reasoning Level selector (None / Minimum / Low / Medium / High (default) / Extra High) and a web-search toggle (OFF for all runs here).",
+      "thinking": "n/a",
+      "effort": "minimum",
+      "surface": "tinker_playground",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "If the carwash is only 100 feet away, you should walk—it's about a 30-second stroll. Driving that distance isn't practical (you'd spend more time getting in and out of the car), and you'd still need to walk through or around the wash anyway. Just walk over.",
+      "token_estimate": 64,
+      "notes": "FAIL: 'Just walk over' — with the physically confused padding that 'you'd still need to walk through or around the wash anyway.' No trace at Minimum."
+    },
+    {
+      "date": "2026-07-16",
+      "id": 409,
+      "vendor": "Thinking Machines",
+      "model_family": "inkling",
+      "model": "Inkling",
+      "model_notes": "Inkling — Thinking Machines' first open-weights model (July 15, 2026): a Mixture-of-Experts transformer, 975B total / 41B active parameters, 1M-token context, natively multimodal (text/image/audio), trained from scratch. No consumer interface; tested in the Inkling Playground in the Tinker console. Controls: a Reasoning Level selector (None / Minimum / Low / Medium / High (default) / Extra High) and a web-search toggle (OFF for all runs here).",
+      "thinking": "n/a",
+      "effort": "low",
+      "surface": "tinker_playground",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "If the carwash is only 100 feet away, you should walk—it's about a 30-second stroll. Driving that distance isn't practical (you'd spend more time getting in and out of the car), and you'd still need to walk through or around the wash anyway. Just walk over.",
+      "token_estimate": 64,
+      "notes": "FAIL — TRACE-ANSWER CONTRADICTION: the visible trace reasons to the object ('they need to drive the car to the carwash regardless') yet the answer recommends walking — and is VERBATIM IDENTICAL to the Minimum-level response. The reasoning holds the constraint; the generation discards it. The sharpest trace/answer split in the dataset.",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "The user asks whether they should walk or drive 100 feet to the car wash because their car is dirty. This is a somewhat humorous/absurd question since they need to take the car to be washed, so driving is necessary (unless they plan to push it?). But literally, 100 feet is very close—walking distance—but since the goal is washing the car, they need the car there. So the answer should point out that they need to drive the car to the carwash regardless, though 100 feet is a very short drive/walk if they were going alone. I should answer concisely and maybe with light humor."
+    },
+    {
+      "date": "2026-07-16",
+      "id": 410,
+      "vendor": "Thinking Machines",
+      "model_family": "inkling",
+      "model": "Inkling",
+      "model_notes": "Inkling — Thinking Machines' first open-weights model (July 15, 2026): a Mixture-of-Experts transformer, 975B total / 41B active parameters, 1M-token context, natively multimodal (text/image/audio), trained from scratch. No consumer interface; tested in the Inkling Playground in the Tinker console. Controls: a Reasoning Level selector (None / Minimum / Low / Medium / High (default) / Extra High) and a web-search toggle (OFF for all runs here).",
+      "thinking": "n/a",
+      "effort": "medium",
+      "surface": "tinker_playground",
+      "deployment_class": "open_weight",
+      "result": "pass-adjacent",
+      "response": "At 100 feet (about 30 meters), that's roughly a 20-second walk for you—but since your car is what needs washing, you'll need to get it there. Drive (or push) the car the 100 feet to the wash. It's too close to bother walking there without the vehicle if the goal is to wash it.\n\nThat said, a 100-foot drive is essentially a cold-start short trip, which isn't ideal for your engine if you do it often. In this specific case it's harmless, but if you're just checking whether the carwash is open or paying first, walk. If you're running it through the wash, take the car—just don't make a habit of 100-foot drives for errands.\n\nIf it's a self-service bay and you're planning to wash by hand, you still need the car present, so drive/push it over.",
+      "token_estimate": 186,
+      "notes": "PASS-ADJACENT: 'Drive (or push) the car the 100 feet' — correct with cold-start caveats and a scouting exception. The trace wobbles hard ('Walking is clearly the better option… Wait, actually, they need to take the car TO the carwash') before recovering — Medium is where the object first wins.",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "The user is asking whether they should walk or drive to a carwash that is 100 feet away, given that their car is dirty. This is a straightforward practical question. 100 feet is extremely close—about the length of a basketball court or roughly 30 meters. Walking is clearly the better option for such a short distance, especially since:\nIt's only 100 feet away\nDriving such a short distance is unnecessary\nThe car is dirty but that's the point—taking it to the carwash\nWalking is healthier and saves fuel/avoids unnecessary engine wear for a 30-second drive\nWait, actually, they need to take the car TO the carwash to wash it. So they need the car there regardless. The question is whether THEY should walk or drive (presumably to go get the car washed, or perhaps they mean should they drive the car there vs walk there and... wait).\nActually, let me read carefully: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" If the car needs to be washed, they need to bring the car to the carwash. So they need to drive the car there. But 100 feet is so close that they could also just push the car? Or walk there and use a self-service wash?\nBut most likely interpretation: They need to take their car to be washed. Since the carwash is only 100 feet away, should they drive the car those 100 feet or walk (perhaps leaving the car and walking to check if it's open, or walking to a different facility? No, that doesn't make sense).\nWait, the most logical interpretation: They want to know if they should drive their car the 100 feet to the carwash, or walk (perhaps pushing the car, or walking there themselves for some reason). But actually, since the car is dirty and needs washing, and the carwash is 100 feet away, they probably need to drive the car there. However, driving 100 feet is technically possible but silly—though they have to get the car there somehow.\nActually, maybe they're asking: \"Should I walk to the carwash (to use a self-service bay and wash it by hand) or drive my car there (to an automatic wash)?\" But the simplest answer is: It's only 100 feet (about 30 meters). You should drive the car there since it needs to be washed, but realistically it's so close you could easily push it or just drive it—though driving such a short distance isn't great for the engine (cold start, short trip). However, since the car needs to end up at the carwash, you'll need to move it there.\nActually, I think the best answer addresses the practical reality: 100 feet is walking distance for a person, but since your car needs washing, you need to get the car there. So drive (or push) the car the 100 feet. But for you personally, it's a 20-second walk.\nWait, maybe it's a trick question or just asking for practical advice. Let me answer clearly and helpfully. Given:\nCar is dirty\nCarwash is 100 ft away\nNeed to decide: walk or drive\nAnswer: Since the car needs to be washed, you'll need the car at the carwash. 100 feet is very close—about a 30-second walk for you, but to wash the car, drive it (or push it) there. Driving such a short distance is fine but avoid making it a habit due to engine wear from cold short trips. If it's an automatic drive-through, you have to drive. If you just need to check something, walk. I'll keep it concise and practical."
+    },
+    {
+      "date": "2026-07-16",
+      "id": 411,
+      "vendor": "Thinking Machines",
+      "model_family": "inkling",
+      "model": "Inkling",
+      "model_notes": "Inkling — Thinking Machines' first open-weights model (July 15, 2026): a Mixture-of-Experts transformer, 975B total / 41B active parameters, 1M-token context, natively multimodal (text/image/audio), trained from scratch. No consumer interface; tested in the Inkling Playground in the Tinker console. Controls: a Reasoning Level selector (None / Minimum / Low / Medium / High (default) / Extra High) and a web-search toggle (OFF for all runs here).",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "tinker_playground",
+      "deployment_class": "open_weight",
+      "result": "pass-adjacent",
+      "response": "You should drive — you need the car at the carwash to wash it. Walking 100 feet (~30 meters) without the car won't get it cleaned.\n\nThat said, 100 feet is extremely close (about a 20–30 second walk). If the concern is whether it's worth starting the engine for such a short trip: for a cold engine, a 100-foot drive is hard on the car and wasteful. But practically, you still need to get the vehicle there, so drive it over, or if it's a self-serve bay, just drive/push it into position.\n\nIf you meant whether you should walk or drive yourself there: it's a 30-second walk, but again — bring the car with you.",
+      "token_estimate": 152,
+      "notes": "PASS-ADJACENT: leads with the constraint ('you need the car at the carwash to wash it') then pads with engine-wear and alternate-interpretation caveats. High is the selector default; trace briefly entertains 'or maybe push? No, drive.'",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "The user is asking whether to walk or drive 100 feet to a carwash because their car is dirty. This is a somewhat humorous/absurd question because:\n1. If the car is dirty and needs a carwash, driving it 100 feet makes more sense than walking (since you'd need the car at the carwash to wash it).\n2. 100 feet is a very short distance (about 30 meters).\n3. Walking 100 feet to a carwash without the car wouldn't help wash the car.\nHowever, I should answer practically and helpfully, pointing out the logical consideration: they need to bring the car to the carwash if they want it washed. So they should drive (or maybe push? No, drive). Wait, could there be another interpretation? Maybe they're asking whether they should walk or drive themselves there? But they said \"my car is dirty\" implying they want to take the car to be washed. Let me answer clearly:\n100 feet is extremely close (about 30 meters / less than a minute walk).\nBut since the purpose is to wash the car, they need the car there.\nTherefore: drive the car (it's only 100 feet, but you need the vehicle present).\nMention that walking without the car won't clean it.\nMaybe add a light touch since it's an obvious logical point but not necessary to be condescending. Keep it concise and practical."
+    },
+    {
+      "date": "2026-07-16",
+      "id": 412,
+      "vendor": "Thinking Machines",
+      "model_family": "inkling",
+      "model": "Inkling",
+      "model_notes": "Inkling — Thinking Machines' first open-weights model (July 15, 2026): a Mixture-of-Experts transformer, 975B total / 41B active parameters, 1M-token context, natively multimodal (text/image/audio), trained from scratch. No consumer interface; tested in the Inkling Playground in the Tinker console. Controls: a Reasoning Level selector (None / Minimum / Low / Medium / High (default) / Extra High) and a web-search toggle (OFF for all runs here).",
+      "thinking": "n/a",
+      "effort": "xhigh",
+      "surface": "tinker_playground",
+      "deployment_class": "open_weight",
+      "result": "pass-adjacent",
+      "response": "You should drive — because you need to bring the car to the car wash. 100 feet is only about 30 meters (a very short distance), but if you walk there without the car, you'll just be standing at a clean facility with a dirty car still back at home.\n\nEven for such a close trip, drive it over so it can actually get washed. Just watch for pedestrians and other cars in the lot — it's close enough that you might not even need to buckle up for long, but do it anyway out of habit. Once you're there, the car gets clean and you can walk back if you want.",
+      "token_estimate": 138,
+      "notes": "PASS-ADJACENT: names the constraint vividly ('you'll just be standing at a clean facility with a dirty car still back at home'), padded with seatbelt patter. Reasoning Level: Extra High. Across the six levels Inkling shows a clean effort threshold — None/Minimum/Low walk, Medium/High/Extra High drive — the first monotonic reasoning-level dose-response in the dataset; notably it never produces a terse pass at any level.",
+      "reasoning_trace_language": "English",
+      "reasoning_trace": "The user is asking whether they should walk or drive to a car wash that is 100 feet away, given that their car is dirty. This seems like a humorous or trick question because:\n1. If the car is dirty and needs to be washed, they need to take the car to the car wash.\n2. The car wash is only 100 feet away - very close.\n3. If they walk, they can't bring the car to be washed (unless it's a self-service wash where they need the car there, or unless they plan to wash it themselves at home, but they said \"the carwash\" which implies a facility).\n4. If they drive, they take the dirty car 100 feet to get washed.\nSo the logical answer is: drive, because you need to bring the car to the car wash to get it washed. Walking there without the car wouldn't accomplish the goal of washing the car. Even though 100 feet is a very short distance (about 30 meters), you still need the vehicle present at the car wash. I should answer clearly and perhaps with a bit of light humor, but primarily be helpful and point out the obvious logical point."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-07-16",
+      "summary": "Inkling (Thinking Machines) added as a new open-weight family — the lab's first from-scratch model (July 15, 2026): a 975B/41B-active multimodal MoE with a 1M context, tested July 16 in the Tinker console's Inkling Playground across its six-level Reasoning Level selector (web search off). Result: a clean effort threshold — None, Minimum, and Low all recommend walking; Medium, High (the default), and Extra High all drive — the first monotonic reasoning-level dose-response in the dataset. The Low run is the sharpest trace/answer split yet recorded: its visible trace concludes the car must be driven, while its answer (verbatim identical to the Minimum response) says walk. Even Inkling's correct answers are padded with cold-start caveats — it never lands a terse pass."
+    },
     {
       "date": "2026-07-11",
       "summary": "Carwash III non-English sweep: 88 runs — 29 each in French, Ukrainian, and Simplified Chinese plus one Japanese — across nine vendors, the first non-English data for Sonnet 5, ChatGPT-5.6 Sol, Lumo 2.0, Kimi K2.6, DeepSeek V4, and consumer Qwen 3.7. The four-language club grows: ChatGPT-5.6 Sol goes 8-for-8 in one-liners and Qwen3.7-Max holds every state, joining Fable 5 and GLM-5.2 (both re-verified). New failure phenomena: Namazu answered the Chinese prompt entirely in Japanese (the dataset's first response-language mismatch) and its June Japanese pass flipped to Walk; DeepSeek V4-Pro reasons in Russian on the Ukrainian prompt; V4-Pro (thinking off) fails English with inverted logic while holding all three other languages; Kimi's only hold anywhere is French-with-thinking — it fails home-language Chinese in both states; Sonnet 5's thinking-off state fails Chinese and Ukrainian while thinking-on sweeps, a toggle-dependence invisible in English."

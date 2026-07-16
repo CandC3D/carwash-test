@@ -58,7 +58,8 @@
     "gemma": "gemma.svg",
     "qwen_ow": "qwen.svg",
     "zai": "zai.svg",
-    "sakana": "sakana.svg"
+    "sakana": "sakana.svg",
+    "inkling": "thinkingmachines.svg"
   };
 
   async function loadData(basePath) {
@@ -114,8 +115,8 @@
   const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "think": 7, "expert": 8, "adaptive_on": 9, "on": 10, "research": 11 };
   // Reasoning-effort tier ordering (low → max). "xhigh" is OpenAI's extra-high;
   // a run with no effort selector sorts as 0. Used for the Effort column.
-  const EFFORT_SORT_RANK = { "low": 1, "medium": 2, "high": 3, "extra": 4, "xhigh": 4, "max": 5 };
-  const EFFORT_LABELS = { "low": "Low", "medium": "Medium", "high": "High", "extra": "Extra", "xhigh": "X-high", "max": "Max" };
+  const EFFORT_SORT_RANK = { "none": 0.3, "minimum": 0.6, "instant": 0.6, "low": 1, "medium": 2, "high": 3, "extra": 4, "xhigh": 4, "max": 5 };
+  const EFFORT_LABELS = { "none": "None", "minimum": "Minimum", "instant": "Instant", "low": "Low", "medium": "Medium", "high": "High", "extra": "Extra", "xhigh": "X-high", "max": "Max" };
   function formatEffort(value) {
     if (!value) return "";
     return EFFORT_LABELS[value] || (String(value).charAt(0).toUpperCase() + String(value).slice(1));
@@ -512,7 +513,7 @@
     const tokensSpan = tokens > 0
       ? '<span title="' + tokenTitle + '">' + tokenDisplay(run) + ' tokens</span>'
       : '';
-    const SURFACE_LABELS = { api_console: "API console", consumer: "Consumer app", ai_studio_playground: "AI Studio", local: "Local (LM Studio)" };
+    const SURFACE_LABELS = { api_console: "API console", consumer: "Consumer app", ai_studio_playground: "AI Studio", local: "Local (LM Studio)", tinker_playground: "Tinker Playground" };
     const surfaceSpan = run.surface
       ? '<span>' + escapeHTML(SURFACE_LABELS[run.surface] || run.surface) + '</span>'
       : '';

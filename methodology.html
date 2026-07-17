@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260716a">
+  <link rel="stylesheet" href="styles.css?v=20260717a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -149,7 +149,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and July 16, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and July 17, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
@@ -172,6 +172,7 @@
         <li>Qwen 3.6 (Alibaba; Plus, Max-Preview, and 27B model tiers, with Auto/Thinking/Fast toggles where available; new in May)</li>
         <li>Qwen 3.7 (Alibaba; Max with Fast and Thinking, plus Max-Preview and Plus-Preview in Thinking mode; tested May 25)</li>
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
+        <li>Kimi K3 and K3 Swarm (Moonshot AI; new generation, launched the week of July 13; Standard/High/Max reasoning tiers, Max default; Swarm is the parallel-subagent variant; tested July 17)</li>
         <li>Z.ai GLM-5.2 (first-party cloud; Deep Think reasoning toggle with a High/Max effort selector, plus Deep Think Off; tested June 22 and July 11, when GLM-5.1 and GLM-5-Turbo were also selectable with a plain thinking toggle)</li>
         <li>ChatGPT 5.6 Sol (OpenAI Plus; flagship of the GPT-5.6 series launched July 9; effort tiers Medium/High — no true Instant, which reverts to 5.5; tested July 11)</li>
         <li>Grok 4.5 (SpaceXAI; launched July 9 on the V9 foundation; Fast, Expert, and Auto modes, with web search integrated in Expert; tested July 11)</li>
@@ -192,7 +193,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – July 11, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – July 17, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -233,9 +234,10 @@
           <tr><td>Carwash III: Namazu (EN interface)</td><td>July 11, 2026</td><td>1</td><td>186</td></tr>
           <tr><td>Carwash III: Grok 4.5 (SpaceXAI)</td><td>July 11, 2026</td><td>3</td><td>189</td></tr>
           <tr><td>Carwash III: GLM-5.2 / 5.1 / 5-Turbo</td><td>July 11, 2026</td><td>7</td><td>196</td></tr>
+          <tr><td>Kimi K3 + K3 Swarm (3 tiers each)</td><td>July 17, 2026</td><td>6</td><td>202</td></tr>
         </tbody>
       </table>
-      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (60), French (51), Ukrainian (62), and Japanese (7) language corpora, and the open-weight runs (Gemma 22, Qwen 8, Inkling 6), are kept separate and are not included in this cumulative total.</p>
+      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (62), French (53), Ukrainian (64), and Japanese (7) language corpora, and the open-weight runs (Gemma 22, Qwen 8, Inkling 6), are kept separate and are not included in this cumulative total.</p>
     </section>
 
     <section id="deployment-classes">
@@ -253,7 +255,7 @@
       <h2>Language corpora</h2>
       <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
       <table class="results-table methodology-table">
-        <caption>Language corpora added May 27 – July 11, 2026 (separate from the 196-run English corpus)</caption>
+        <caption>Language corpora added May 27 – July 17, 2026 (separate from the 202-run English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Corpus</th>
@@ -264,9 +266,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Simplified Chinese</td><td>May 27 – July 11, 2026</td><td>60</td><td>37%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe), Fable 5 on launch day (June 9), a search-grounded Perplexity pass (June 19, cites prior web coverage of the puzzle), GLM-5.2 (Z.ai) holding in all three Deep Think states (June 22), and Namazu (Sakana) failing (June 23). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds; Fable 5 and GLM-5.2 pass; Namazu fails. Carwash III (July 11) added 29 runs: Sol, Opus 4.8, Sonnet 5 (thinking on), Fable 5, GLM-5.2, and Qwen 3.7 Thinking hold; Kimi fails its home language in both states; Namazu answers in Japanese. Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>French</td><td>May 27 – July 11, 2026</td><td>51</td><td>27%</td><td>Mistral, Lumo, OpenAI, Anthropic, Perplexity, Z.ai, Sakana. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19, citing French press coverage of the puzzle); GLM-5.2 (Z.ai) holds across all three Deep Think states (June 22), its Deep Think Off run the corpus's one verbose outlier; Namazu (Sakana) fails with a confused, inverted answer (June 23). Carwash III (July 11) added 29 runs across nine vendors — French is Kimi’s only hold anywhere and the one language Qwen3.7-Plus Fast holds. Distance 35 m ≈ 115 ft.</td></tr>
-          <tr><td>Ukrainian</td><td>May 28 – July 11, 2026</td><td>62</td><td>26%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), Mistral (Vibe), Perplexity, Z.ai, and Sakana, split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19); GLM-5.2 (Z.ai) holds across all three Deep Think states (June 22); Namazu (Sakana) fails (June 23). Carwash III (July 11) added 29 runs — still the forgiving corpus (ChatGPT-5.5 Instant and Vibe Fast hold only here), with DeepSeek V4-Pro reasoning in Russian. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Simplified Chinese</td><td>May 27 – July 17, 2026</td><td>62</td><td>35%</td><td>Nine Chinese-hosted vendor runs (DeepSeek, Kimi, Qwen) at 22%, five US-trained controls at 100%, a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6, Lumo, Vibe), Fable 5 on launch day (June 9), a search-grounded Perplexity pass (June 19, cites prior web coverage of the puzzle), GLM-5.2 (Z.ai) holding in all three Deep Think states (June 22), and Namazu (Sakana) failing (June 23). Both Opus generations fail Chinese in every state; Sonnet 4.6 holds; Fable 5 and GLM-5.2 pass; Namazu fails. Carwash III (July 11) added 29 runs: Sol, Opus 4.8, Sonnet 5 (thinking on), Fable 5, GLM-5.2, and Qwen 3.7 Thinking hold; Kimi fails its home language in both states; Namazu answers in Japanese. Kimi K3 holds at both tiers (July 17), traces in English. Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>French</td><td>May 27 – July 17, 2026</td><td>53</td><td>26%</td><td>Mistral, Lumo, OpenAI, Anthropic, Perplexity, Z.ai, Sakana. Surfaced a language-triggered inverted-logic failure mode (May 27); a May 29 Anthropic sweep (Opus 4.7/4.8, Sonnet 4.6) all held the constraint; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19, citing French press coverage of the puzzle); GLM-5.2 (Z.ai) holds across all three Deep Think states (June 22), its Deep Think Off run the corpus's one verbose outlier; Namazu (Sakana) fails with a confused, inverted answer (June 23). Carwash III (July 11) added 29 runs across nine vendors — French is Kimi’s only hold anywhere and the one language Qwen3.7-Plus Fast holds. Kimi K3 holds at both tiers (July 17). Distance 35 m ≈ 115 ft.</td></tr>
+          <tr><td>Ukrainian</td><td>May 28 – July 17, 2026</td><td>64</td><td>25%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), Mistral (Vibe), Perplexity, Z.ai, and Sakana, split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19); GLM-5.2 (Z.ai) holds across all three Deep Think states (June 22); Namazu (Sakana) fails (June 23); Kimi K3 holds at both tiers (July 17). Carwash III (July 11) added 29 runs — still the forgiving corpus (ChatGPT-5.5 Instant and Vibe Fast hold only here), with DeepSeek V4-Pro reasoning in Russian. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
           <tr><td>Japanese</td><td>June 23 – July 11, 2026</td><td>7</td><td>57%</td><td>One model so far — Sakana AI's Namazu, run across its register selector (Standard / Polite / Osaka-Kansai) and Japanese/English interface toggle. It reaches Drive only in Standard (both interfaces) and English-interface Polite; Kansai-ben walks in both interfaces and Japanese-interface Polite walks. Kept lighter for now (no dedicated Metrics section until a second vendor is tested in Japanese). A July 11 retest of the Standard register flipped the June result: the previously drive-reaching configuration now recommends walking. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
       </table>
@@ -345,6 +347,7 @@
           <tr><td>Alibaba (open-weight)</td><td>Qwen3.6 27B</td><td><code>Q4_K_M GGUF</code></td><td>Open-weight Qwen, run locally on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio — distinct from the Alibaba cloud Qwen product. Thinking on/off toggle.</td></tr>
           <tr><td>Thinking Machines</td><td>Inkling</td><td>—</td><td>Open-weights Mixture-of-Experts (975B total / 41B active), 1M context, natively multimodal; released July 15, 2026 with full weights. No consumer interface — tested July 16 in the Tinker console’s Inkling Playground. Six-level Reasoning Level selector (None/Minimum/Low/Medium/High/Extra High, default High) — per the model card, a discretization of a continuous 0–1 effort parameter; web-search toggle off for all runs. Apache 2.0.</td></tr>
           <tr><td>Moonshot AI</td><td>Kimi K2.6</td><td>—</td><td>Instant / Thinking modes (Agent and Agent Swarm excluded)</td></tr>
+          <tr><td>Moonshot AI</td><td>Kimi</td><td>K3, K3 Swarm</td><td>New generation, launched the week of July 13, 2026; consumer tiers Standard / High / Max (Max default). K3 Swarm is the parallel-subagent variant. Tested July 17 across four languages — all non-English traces in English.</td></tr>
           <tr><td>Proton</td><td>Lumo</td><td>—</td><td>No reasoning toggle exposed</td></tr>
           <tr><td>Amazon</td><td>Rufus</td><td>—</td><td>Shopping assistant; no reasoning toggle; version not exposed. Historical — retired May 2026, replaced by Alexa.</td></tr>
           <tr><td>Amazon</td><td>Alexa (Shopping Assistant)</td><td>—</td><td>Shopping assistant at amazon.com; replaced Rufus; no reasoning toggle; version not exposed.</td></tr>
@@ -455,7 +458,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260716a"></script>
+  <script src="scripts.js?v=20260717a"></script>
   <script>
     (async function () {
       try {

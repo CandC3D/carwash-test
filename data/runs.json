@@ -4247,20 +4247,21 @@
       "id": 287,
       "vendor": "Meta",
       "model_family": "meta",
-      "model": "Muse Spark",
+      "model": "Muse Spark 1.1",
       "thinking": "off",
       "surface": "consumer",
       "result": "fail",
       "response": "Depends how dirty your car is 😂\n\nIf the carwash is literally 100 feet away, walking is the move:\n\nWalk if:\n\nYou want to save time: By the time you get in, buckle up, start the car, drive 100 ft, park, and get out, you could've already walked there.\nYou want the exercise: It's ∼30 seconds of walking.\nThe car is filthy inside too: You can grab trash, floor mats, etc. while you walk over and prep for a deep clean.\nDrive if:\n\nIt's a touchless/automatic wash: You need to actually drive through it.\nYou have mobility issues, it's pouring rain, or 105°F outside: 100 ft feels longer when weather sucks.\nYou have stuff to unload: Buckets, detailing supplies, kids, etc.\n100 feet is about 6 car lengths. So unless you need to drive through the wash, walking wins for speed and simplicity.\n\nWhat kind of carwash is it — self-serve bay, automatic drive-through, or hand wash?",
       "token_estimate": 217,
-      "notes": "FAIL (conservative): comparative walk-vs-drive breakdown concluding 'walking wins for speed and simplicity,' then a follow-up question. Instant mode."
+      "notes": "FAIL (conservative): comparative walk-vs-drive breakdown concluding 'walking wins for speed and simplicity,' then a follow-up question. Instant mode.",
+      "model_notes": "Muse Spark 1.1 — Meta's multimodal reasoning model, released July 9, 2026 (Meta Model API public preview, plus 'Thinking' mode in the Meta AI app and meta.ai). Tested here in the consumer app."
     },
     {
       "date": "2026-07-11",
       "id": 288,
       "vendor": "Meta",
       "model_family": "meta",
-      "model": "Muse Spark",
+      "model": "Muse Spark 1.1",
       "thinking": "on",
       "surface": "consumer",
       "result": "pass",
@@ -4268,7 +4269,8 @@
       "token_estimate": 40,
       "notes": "PASS: 'a clean person standing at the carwash while your dirty car is still parked 100 feet away wondering where you went.'",
       "reasoning_trace_language": "English",
-      "reasoning_trace": "Weighing walk versus drive\nI'm weighing whether to walk or drive the 100 feet to the carwash, since walking won't clean the car, so I'm leaning toward driving while noting the short distance makes either option almost effortless.\n\nDeciding to drive\nI'm choosing to tell the user to drive the 100 feet to the carwash, since walking won't clean the car, and adding a light joke about clean shoes and a dirty car to keep it playful and concise.\n\nChoosing to drive\nI'm recommending the user drive the 100 feet to the carwash, since walking would mean arriving without the car and having to explain that to the staff, which defeats the whole point of the trip.\n\nConfirming the drive\nI'm confirming that driving makes sense here, since the car stays dirty and the walk offers no real benefit. I’m keeping it simple and skipping any personalization for this straightforward choice.\n\nDone"
+      "reasoning_trace": "Weighing walk versus drive\nI'm weighing whether to walk or drive the 100 feet to the carwash, since walking won't clean the car, so I'm leaning toward driving while noting the short distance makes either option almost effortless.\n\nDeciding to drive\nI'm choosing to tell the user to drive the 100 feet to the carwash, since walking won't clean the car, and adding a light joke about clean shoes and a dirty car to keep it playful and concise.\n\nChoosing to drive\nI'm recommending the user drive the 100 feet to the carwash, since walking would mean arriving without the car and having to explain that to the staff, which defeats the whole point of the trip.\n\nConfirming the drive\nI'm confirming that driving makes sense here, since the car stays dirty and the walk offers no real benefit. I’m keeping it simple and skipping any personalization for this straightforward choice.\n\nDone",
+      "model_notes": "Muse Spark 1.1 — Meta's multimodal reasoning model, released July 9, 2026 (Meta Model API public preview, plus 'Thinking' mode in the Meta AI app and meta.ai). Tested here in the consumer app."
     },
     {
       "date": "2026-07-11",
@@ -6520,6 +6522,10 @@
     }
   ],
   "change_log": [
+    {
+      "date": "2026-07-17",
+      "summary": "Corrected the July 11 Meta runs' model label to Muse Spark 1.1 — Meta's July 9 release passed unremarked in the usual sources; the Carwash III runs were on 1.1 all along. Name and release note only; results unchanged."
+    },
     {
       "date": "2026-07-17",
       "summary": "Kimi K3 (Moonshot AI) tested in the consumer interface two days after launch — K3 and the K3 Swarm subagent variant across the Standard/High/Max reasoning tiers in English, plus Chinese, French, and Ukrainian at Max (the default) and Standard. Twelve runs, twelve Drives, zero fails: six days after Kimi K2.6 went one-for-eight in Carwash III, its successor sweeps four languages — the largest single-generation reversal in the dataset — and joins the four-language club. Two textures: the Swarm orchestrator's traces explicitly decline to spawn subagents for the question, and ALL SIX non-English runs reason in English — noted under the operator-readability standard (a trace the operator cannot read fails at making the reasoning inspectable), though scoring remains response-based."

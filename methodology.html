@@ -149,7 +149,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and July 17, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and July 22, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
@@ -161,7 +161,7 @@
         <li>GPT o3 (OpenAI Plus, reasoning architecturally on)</li>
         <li>Meta AI / Llama 4 (Fast and Thinking modes; product no longer accessible)</li>
         <li>Meta Muse Spark (Instant, Thinking, and Contemplating modes; Contemplating added in May for multi-chain parallel reasoning)</li>
-        <li>Gemini (Google; Gemini 3 Fast, Gemini 3.1 Pro, and Gemini 3 Thinking tiers, plus Gemini 3.1 Flash-Lite and Gemini 3.5 Flash added May 25)</li>
+        <li>Gemini (Google; Gemini 3 Fast, Gemini 3.1 Pro, and Gemini 3 Thinking tiers, plus Gemini 3.1 Flash-Lite and Gemini 3.5 Flash added May 25, and Gemini 3.6 Flash-Lite and Gemini 3.6 Flash added July 22)</li>
         <li>Grok 4.20 (xAI, Expert and Fast modes; March/April only)</li>
         <li>Grok 4.3 (xAI, now SpaceXAI as of July 6, 2026; Auto, Fast, and Expert modes; new in May)</li>
         <li>DeepSeek-V3.2 with and without extended reasoning (March 28 only; consumer interface routed to V3.2 before the April 24, 2026 V4 transition)</li>
@@ -193,7 +193,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – July 17, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – July 22, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -235,6 +235,7 @@
           <tr><td>Carwash III: Grok 4.5 (SpaceXAI)</td><td>July 11, 2026</td><td>3</td><td>189</td></tr>
           <tr><td>Carwash III: GLM-5.2 / 5.1 / 5-Turbo</td><td>July 11, 2026</td><td>7</td><td>196</td></tr>
           <tr><td>Kimi K3 + K3 Swarm (3 tiers each)</td><td>July 17, 2026</td><td>6</td><td>202</td></tr>
+          <tr><td>Gemini 3.6 Flash-Lite / 3.6 Flash (Extended Thinking ×2)</td><td>July 22, 2026</td><td>4</td><td>206</td></tr>
         </tbody>
       </table>
       <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (62), French (53), Ukrainian (64), and Japanese (7) language corpora, and the open-weight runs (Gemma 22, Qwen 8, Inkling 6), are kept separate and are not included in this cumulative total.</p>
@@ -320,6 +321,8 @@
           <tr><td>Google</td><td>Gemini</td><td>3.1 Pro</td><td>Released February 2026</td></tr>
           <tr><td>Google</td><td>Gemini</td><td>3.1 Flash-Lite</td><td>Released May 25, 2026. Tier: "Fastest answers"</td></tr>
           <tr><td>Google</td><td>Gemini</td><td>3.5 Flash</td><td>Released May 25, 2026. Tier: "All-around help"</td></tr>
+          <tr><td>Google</td><td>Gemini</td><td>3.6 Flash-Lite</td><td>Released July 22, 2026. Extended Thinking On/Off toggle. Supersedes 3.1 Flash-Lite.</td></tr>
+          <tr><td>Google</td><td>Gemini</td><td>3.6 Flash</td><td>Released July 22, 2026. Extended Thinking On/Off toggle. Supersedes 3.5 Flash.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 26B A4B IT</td><td><code>gemma-4-26b-a4b-it</code></td><td>Open-weight Mixture-of-Experts: 26B total parameters, only 4B active per inference — high-performance reasoning at a fraction of the memory cost. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 31B IT</td><td><code>gemma-4-31b-it</code></td><td>Open-weight dense flagship (Google DeepMind), all 31B parameters active — built for maximum quality in data-center environments; 256K context window. Tested in AI Studio, not the Gemini consumer product.</td></tr>
           <tr><td>Google (open-weight)</td><td>Gemma 4 12B</td><td><code>gemma-4-12b</code></td><td>Open-weight, encoder-free unified multimodal model (vision + native audio flow directly into the LLM backbone). Released June 3, 2026; runs locally in ~16&nbsp;GB VRAM. Tested on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio, not AI Studio — in two local builds: a Q6_K GGUF and a quantization-aware-trained Q4_0 (QAT). Run records carry the quantization in the model name (e.g. "Gemma 4 12B (Q6_K)").</td></tr>
@@ -386,6 +389,7 @@
         <li><strong>July 9, 2026:</strong> Double launch day: OpenAI's <strong>GPT-5.6 series</strong> (Sol flagship, Terra, Luna) reached the consumer surface, and SpaceXAI released <strong>Grok 4.5</strong> on its V9 foundation. Both were tested two days later in Carwash III.</li>
         <li><strong>July 11, 2026 (Carwash III observations, verified in-app):</strong> Anthropic's consumer UI replaced Adaptive with an <strong>Extended-thinking On/Off toggle plus the effort selector</strong> across Opus 4.8/4.7/4.6 and Sonnet 5/4.6 — Sonnet 5 regains a toggle two weeks after launching effort-only, the fourth Anthropic control configuration since March; Fable 5 remains selector-only and Haiku 4.5 keeps a plain toggle. Gemini's thinking control is an On/Off checkmark across 3.5 Flash, 3.1 Flash-Lite, and 3.1 Pro. DeepSeek's consumer modes are labeled <strong>Expert</strong> (V4-Pro) and <strong>Instant</strong> (V4-Flash), each with a thinking toggle. Vibe Chat's reasoning picker is now <strong>Fast/Thinking</strong> (was Balanced/Think/Research). Lumo 2.0 (Lite/Max) carries Lumo's first reasoning control, Fast/Thinking. OpenAI's Plus picker exposes effort tiers (5.5: Instant/Medium/High; 5.6 Sol: Medium/High with no true Instant; 5.3 and o3 locked to a single checked tier). GLM-5.2's chat toggle offers High/Max efforts only, with GLM-5.1 and GLM-5-Turbo selectable on plain toggles. Sakana Chat's English interface locks the register selector to Standard.</li>
         <li><strong>July 15, 2026:</strong> Thinking Machines released <strong>Inkling</strong>, its first from-scratch model, as open weights — a 975B/41B-active multimodal MoE with a 1M-token context. No consumer interface; the developer-facing Inkling Playground in the Tinker console offers a six-level <strong>Reasoning Level</strong> selector (None / Minimum / Low / Medium / High, the default / Extra High) and a web-search toggle. Tested July 16 with search off — see the <a href="transcripts/inkling.html">Inkling transcript page</a>.</li>
+        <li><strong>July 22, 2026:</strong> Google added <strong>Gemini 3.6 Flash-Lite</strong> and <strong>Gemini 3.6 Flash</strong> to the consumer interface, superseding 3.1 Flash-Lite and 3.5 Flash. Both are governed by an <strong>Extended Thinking</strong> On/Off toggle — a relabeling of the On/Off checkmark observed on the older tiers in July. Tested the same day; see the <a href="transcripts/google.html">Gemini transcript page</a>.</li>
       </ul>
       <div class="callout callout-note">
         <span class="callout-tag">Note</span>

@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-07-17",
+    "last_updated": "2026-07-22",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -6519,9 +6519,69 @@
       "token_method": "Cyrillic chars × 0.5 (measured rate)",
       "reasoning_trace": "Car wash 35 meters away — drive the car, since the car needs washing. Joke question.",
       "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-07-22",
+      "id": 425,
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3.6 Flash-Lite",
+      "model_notes": "Gemini 3.6 Flash-Lite — Google, released July 22, 2026 in the consumer interface (gemini.google.com / Gemini app), governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.1 Flash-Lite.",
+      "thinking": "off",
+      "surface": "consumer",
+      "result": "pass",
+      "response": "Drive. Walking to a carwash without a car won't get your car clean.",
+      "token_estimate": 17,
+      "notes": "PASS: a ~16-token winner's-circle answer that names the constraint and stops. Its predecessor, Gemini 3.1 Flash-Lite, failed both toggles in Carwash III — the thinking-off run a 238-token comparative breakdown that recommended walking (#283). The cheapest Gemini tier reverses outright in eleven days."
+    },
+    {
+      "date": "2026-07-22",
+      "id": 426,
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3.6 Flash-Lite",
+      "model_notes": "Gemini 3.6 Flash-Lite — Google, released July 22, 2026 in the consumer interface (gemini.google.com / Gemini app), governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.1 Flash-Lite.",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "response": "You should drive.\n\nUnless you plan on pushing your car down the street or washing it by hand in your driveway, the carwash needs the car to actually be there to get clean!",
+      "token_estimate": 43,
+      "notes": "PASS-ADJACENT (conservative): correct — 'the carwash needs the car to actually be there' — with a two-exception preamble (pushing it down the street, hand-washing) as light padding. Arguably a full pass."
+    },
+    {
+      "date": "2026-07-22",
+      "id": 427,
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3.6 Flash",
+      "model_notes": "Gemini 3.6 Flash — Google, released July 22, 2026 in the consumer interface, governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.5 Flash.",
+      "thinking": "off",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "response": "Drive it! Walking your car 100 feet to the carwash sounds like an absolute workout, and pushing a two-ton vehicle down the road would definitely get you some very concerned looks from the neighbors.\n\nUnless, of course, you were planning to walk over without the car—in which case you'd end up with a very clean walk, but a still-dirty car waiting in the driveway!",
+      "token_estimate": 91,
+      "notes": "PASS-ADJACENT (conservative): correct, but the most elaborated of the four — two paragraphs of comedy (the '100-foot workout,' pushing a two-ton vehicle) before the constraint lands. Directly parallels the 3.5 Flash thinking-off run (#281), also pass-adjacent; borderline verbose."
+    },
+    {
+      "date": "2026-07-22",
+      "id": 428,
+      "vendor": "Google",
+      "model_family": "google",
+      "model": "Gemini 3.6 Flash",
+      "model_notes": "Gemini 3.6 Flash — Google, released July 22, 2026 in the consumer interface, governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.5 Flash.",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "response": "Definitely drive — unless you're planning on washing yourself!\n\nIf you walk, you'll end up standing at the carwash looking clean, while your dirty car is still sitting in the driveway 100 feet away.",
+      "token_estimate": 50,
+      "notes": "PASS-ADJACENT (conservative): correct and vivid — 'standing at the carwash looking clean, while your dirty car is still sitting in the driveway' — with an opening quip as padding. Compare the 3.5 Flash thinking-on run (#282), scored pass; arguably a full pass."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-07-22",
+      "summary": "Gemini 3.6 Flash-Lite and 3.6 Flash tested on launch day in the consumer interface, each across the new Extended Thinking On/Off toggle (four runs). All four hold the constraint. The story is the cheap tier: Gemini 3.1 Flash-Lite was the dataset's worst Gemini performer — it failed both toggles in Carwash III, its thinking-off run a 238-token breakdown recommending walking — and eleven days later 3.6 Flash-Lite passes both states, its Extended-Thinking-off run a ~16-token winner's-circle pass. Flash 3.6 holds both states as 3.5 did, staying correct but joke-forward."
+    },
     {
       "date": "2026-07-17",
       "summary": "Corrected the July 11 Meta runs' model label to Muse Spark 1.1 — Meta's July 9 release passed unremarked in the usual sources; the Carwash III runs were on 1.1 all along. Name and release note only; results unchanged."

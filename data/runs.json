@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-07-22",
+    "last_updated": "2026-07-24",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -6575,9 +6575,65 @@
       "response": "Definitely drive — unless you're planning on washing yourself!\n\nIf you walk, you'll end up standing at the carwash looking clean, while your dirty car is still sitting in the driveway 100 feet away.",
       "token_estimate": 50,
       "notes": "PASS-ADJACENT (conservative): correct and vivid — 'standing at the carwash looking clean, while your dirty car is still sitting in the driveway' — with an opening quip as padding. Compare the 3.5 Flash thinking-on run (#282), scored pass; arguably a full pass."
+    },
+    {
+      "date": "2026-07-24",
+      "id": 429,
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 5",
+      "model_notes": "Claude Opus 5 — Anthropic's new Opus generation, released July 24, 2026. Tested in the consumer interface across the reasoning-effort selector (Low, High — the default, and Max). No thinking-toggle state was recorded for these runs, following the Fable 5 / Sonnet 5 selector-only pattern.",
+      "thinking": "n/a",
+      "effort": "low",
+      "surface": "consumer",
+      "result": "pass",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Drive. Walking to a carwash and standing there without the car defeats the purpose.",
+      "token_estimate": 21,
+      "notes": "PASS: names the constraint and stops — 'standing there without the car defeats the purpose.' Winner's circle (Latin, ≤30 tokens). The longest of the three Opus 5 answers, and the only one with no visible reasoning trace."
+    },
+    {
+      "date": "2026-07-24",
+      "id": 430,
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 5",
+      "model_notes": "Claude Opus 5 — Anthropic's new Opus generation, released July 24, 2026. Tested in the consumer interface across the reasoning-effort selector (Low, High — the default, and Max). No thinking-toggle state was recorded for these runs, following the Fable 5 / Sonnet 5 selector-only pattern.",
+      "thinking": "n/a",
+      "effort": "high",
+      "surface": "consumer",
+      "result": "pass",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Drive. The car has to be there for this to work.",
+      "token_estimate": 12,
+      "notes": "PASS: the constraint stated as a bare precondition — 'the car has to be there for this to work.' Winner's circle (Latin, ≤30 tokens). Default effort tier.",
+      "reasoning_trace": "Thinking about weighing transportation options for a short distance.",
+      "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-07-24",
+      "id": 431,
+      "vendor": "Anthropic",
+      "model_family": "anthropic",
+      "model": "Claude Opus 5",
+      "model_notes": "Claude Opus 5 — Anthropic's new Opus generation, released July 24, 2026. Tested in the consumer interface across the reasoning-effort selector (Low, High — the default, and Max). No thinking-toggle state was recorded for these runs, following the Fable 5 / Sonnet 5 selector-only pattern.",
+      "thinking": "n/a",
+      "effort": "max",
+      "surface": "consumer",
+      "result": "pass",
+      "prompt": "My car is dirty. The carwash is 100 feet away. Should I walk or drive?",
+      "response": "Drive. Walking gets you clean shoes.",
+      "token_estimate": 9,
+      "notes": "PASS: the object named by implication in six words. Winner's circle (Latin, ≤30 tokens) and the tersest English pass since Opus 4.6's six-token 'Drive. It's a carwash.' Maximum reasoning budget produces the shortest answer of the three — the extra effort goes into the reasoning, not the output.",
+      "reasoning_trace": "Thinking about weighing transportation options for a short distance.",
+      "reasoning_trace_language": "English"
     }
   ],
   "change_log": [
+    {
+      "date": "2026-07-24",
+      "summary": "Claude Opus 5 (Anthropic) tested on launch day across three effort tiers — Low, High (the default), and Max. All three pass, all three land inside the winner's circle, and answer length falls monotonically as effort rises: ~21 tokens at Low, ~12 at High, ~9 at Max, the tersest English pass since Opus 4.6's six-token entry. This confirms on the Opus line the inverse effort/verbosity pattern first seen in Sonnet 5 — extra reasoning budget goes into the reasoning, not the output. The High and Max runs display an identical summarized trace, 'Thinking about weighing transportation options for a short distance,' which describes the problem in the distance-weighing framing the test is built to catch even though both answers name the car; Anthropic's visible trace is a summary, so this is an observation about the summary layer rather than evidence about the underlying reasoning."
+    },
     {
       "date": "2026-07-22",
       "summary": "Gemini 3.6 Flash-Lite and 3.6 Flash tested on launch day in the consumer interface, each across the new Extended Thinking On/Off toggle (four runs). All four hold the constraint. The story is the cheap tier: Gemini 3.1 Flash-Lite was the dataset's worst Gemini performer — it failed both toggles in Carwash III, its thinking-off run a 238-token breakdown recommending walking — and eleven days later 3.6 Flash-Lite passes both states, its Extended-Thinking-off run a ~16-token winner's-circle pass. Flash 3.6 holds both states as 3.5 did, staying correct but joke-forward."

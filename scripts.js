@@ -967,7 +967,7 @@
     const x = function (i) { return padL + (n <= 1 ? plotW / 2 : i * plotW / (n - 1)); };
     const y = function (v) { return baseY - (v / opts.yMax) * plotH; };
     let body = '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" class="chart-axis"/>';
-    [0, opts.yMax].forEach(function (v) {
+    (opts.ticks || [0, opts.yMax]).forEach(function (v) {
       body += '<text x="' + (padL - 6) + '" y="' + (y(v) + 3).toFixed(1) + '" text-anchor="end" class="chart-tick">' + opts.fmt(v) + '</text>';
     });
     opts.series.forEach(function (s) {
@@ -975,7 +975,7 @@
       s.vals.forEach(function (v, i) { if (v != null) pts.push(x(i).toFixed(1) + "," + y(v).toFixed(1)); });
       body += '<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + s.color + '" stroke-width="2.5" stroke-linejoin="round"/>';
       s.vals.forEach(function (v, i) {
-        if (v != null) body += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="2.5" style="fill:' + s.color + '"/>';
+        if (v != null) body += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="' + (s.radii ? s.radii[i].toFixed(1) : "2.5") + '" style="fill:' + s.color + '"/>';
       });
       // end label
       let li = s.vals.length - 1; while (li >= 0 && s.vals[li] == null) li--;
@@ -1002,7 +1002,7 @@
         { vals: stats.map(function (s) { return s.pass; }), color: RESULT_COLORS.pass.text, label: "Pass" }
       ],
       caption: "Median tokens over time — Pass vs Fail (cumulative)",
-      note: "Cumulative median response length as the dataset grows. Pass length is creeping up while Fail holds flat. Token counts are estimates; the Mistral outlier is excluded.",
+      note: "Cumulative median response length as the dataset grows — every run to date, not the runs taken that day. Pass length rose through the spring, then fell sharply when Carwash III added a large block of terse passes; Fail stepped up at the same point. Because each median is taken over the whole corpus, a small recent batch moves these lines very little. Token counts are estimates; the Mistral outlier is excluded.",
       aria: "Line chart of cumulative median token cost over time for Pass and Fail responses."
     });
   }
@@ -1018,8 +1018,37 @@
       fmt: function (v) { return v.toFixed(0) + "×"; },
       series: [{ vals: ratios.map(function (r) { return r == null ? null : r; }), color: "var(--ink)", label: ratios[ratios.length - 1] != null ? ratios[ratios.length - 1].toFixed(1) + "×" : "" }],
       caption: "Cost of a wrong answer (Fail ÷ Pass median tokens)",
-      note: "How many times more tokens the median wrong answer costs versus the median right answer. The gap is compressing as correct answers grow wordier.",
+      note: "How many times more tokens the median wrong answer costs versus the median right answer, across the whole corpus to date. The gap narrowed through the spring, then widened again in July as correct answers got terser and wrong answers longer.",
       aria: "Line chart of the Fail-to-Pass median token cost ratio over time."
+    });
+  }
+
+  // #5 — per-date (NOT cumulative) share of runs that held the constraint.
+  // The cumulative charts above damp recent batches by construction: a median
+  // over 200+ runs barely moves when a handful are added. This one plots each
+  // test date on its own, so a batch that sweeps shows up as a step to 100%.
+  function renderHoldRateByDate(runs) {
+    const dates = _sortedDates(runs);
+    const stats = dates.map(function (d) {
+      const day = runs.filter(function (r) { return r.date === d; });
+      const held = day.filter(function (r) { return r.result !== "fail"; }).length;
+      return { n: day.length, pct: day.length ? (100 * held / day.length) : null };
+    });
+    const last = stats[stats.length - 1];
+    return _lineChart({
+      dates: dates,
+      yMax: 100,
+      ticks: [0, 50, 100],
+      fmt: function (v) { return Math.round(v) + "%"; },
+      series: [{
+        vals: stats.map(function (s) { return s.pct; }),
+        color: RESULT_COLORS.pass.text,
+        label: last && last.pct != null ? Math.round(last.pct) + "%" : "",
+        radii: stats.map(function (s) { return Math.min(7, 2.5 + Math.sqrt(s.n)); })
+      }],
+      caption: "Held the constraint, by test date (not cumulative)",
+      note: "Each point covers only the runs taken that date, so this responds to every new batch where the cumulative charts cannot. Dot size reflects how many runs the date carries — a single-run date can only read 0% or 100%, so read the small dots with caution.",
+      aria: "Line chart of the share of runs on each test date that held the constraint, from 0 to 100 percent."
     });
   }
 
@@ -1134,6 +1163,7 @@
     renderCumulativeArea: renderCumulativeArea,
     renderVerbosityTrend: renderVerbosityTrend,
     renderCostRatioTrend: renderCostRatioTrend,
+    renderHoldRateByDate: renderHoldRateByDate,
     renderResultByThinking: renderResultByThinking,
     renderVendorComparison: renderVendorComparison,
     renderResultsTable: renderResultsTable,

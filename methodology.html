@@ -149,7 +149,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and July 24, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and July 30, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
@@ -171,6 +171,7 @@
         <li>Mistral Medium 3.5 (Le Chat; Balanced, Think, and Research modes; replaced Mistral 3 in late April)</li>
         <li>Perplexity (default configuration)</li>
         <li>Qwen 3.6 (Alibaba; Plus, Max-Preview, and 27B model tiers, with Auto/Thinking/Fast toggles where available; new in May)</li>
+        <li>Qwen3.8-Max-Preview (Alibaba; consumer interface, July 30; thinking toggle present but permanently enabled — no Fast or thinking-off state available)</li>
         <li>Qwen 3.7 (Alibaba; Max with Fast and Thinking, plus Max-Preview and Plus-Preview in Thinking mode; tested May 25)</li>
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
         <li>Kimi K3 and K3 Swarm (Moonshot AI; new generation, launched the week of July 13; Standard/High/Max reasoning tiers, Max default; Swarm is the parallel-subagent variant; tested July 17)</li>
@@ -194,7 +195,7 @@
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
       <table class="results-table methodology-table">
-        <caption>Carwash Test snapshots, March 22 – July 24, 2026 (English corpus)</caption>
+        <caption>Carwash Test snapshots, March 22 – July 30, 2026 (English corpus)</caption>
         <thead>
           <tr>
             <th scope="col">Snapshot</th>
@@ -238,6 +239,7 @@
           <tr><td>Kimi K3 + K3 Swarm (3 tiers each)</td><td>July 17, 2026</td><td>6</td><td>202</td></tr>
           <tr><td>Gemini 3.6 Flash-Lite / 3.6 Flash (Extended Thinking ×2)</td><td>July 22, 2026</td><td>4</td><td>206</td></tr>
           <tr><td>Claude Opus 5 (3 effort tiers)</td><td>July 24, 2026</td><td>3</td><td>209</td></tr>
+          <tr><td>Qwen3.8-Max-Preview</td><td>July 30, 2026</td><td>1</td><td>210</td></tr>
         </tbody>
       </table>
       <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (62), French (53), Ukrainian (64), and Japanese (7) language corpora, and the open-weight runs (Gemma 22, Qwen 8, Inkling 6), are kept separate and are not included in this cumulative total.</p>
@@ -350,6 +352,7 @@
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Max</td><td>—</td><td>Fast / Thinking modes; tested May 25, 2026</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Max-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
           <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Plus-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
+          <tr><td>Qwen (Alibaba)</td><td>Qwen</td><td>3.8-Max-Preview</td><td>In the consumer interface as of July 30, 2026. A thinking toggle is shown but is permanently on and cannot be switched off, so the model has no testable Fast state.</td></tr>
           <tr><td>Alibaba (open-weight)</td><td>Qwen3.6 27B</td><td><code>Q4_K_M GGUF</code></td><td>Open-weight Qwen, run locally on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio — distinct from the Alibaba cloud Qwen product. Thinking on/off toggle.</td></tr>
           <tr><td>Thinking Machines</td><td>Inkling</td><td>—</td><td>Open-weights Mixture-of-Experts (975B total / 41B active), 1M context, natively multimodal; released July 15, 2026 with full weights. No consumer interface — tested July 16 in the Tinker console’s Inkling Playground. Six-level Reasoning Level selector (None/Minimum/Low/Medium/High/Extra High, default High) — per the model card, a discretization of a continuous 0–1 effort parameter; web-search toggle off for all runs. Apache 2.0.</td></tr>
           <tr><td>Moonshot AI</td><td>Kimi K2.6</td><td>—</td><td>Instant / Thinking modes (Agent and Agent Swarm excluded)</td></tr>
@@ -393,6 +396,7 @@
         <li><strong>July 11, 2026 (Carwash III observations, verified in-app):</strong> Anthropic's consumer UI replaced Adaptive with an <strong>Extended-thinking On/Off toggle plus the effort selector</strong> across Opus 4.8/4.7/4.6 and Sonnet 5/4.6 — Sonnet 5 regains a toggle two weeks after launching effort-only, the fourth Anthropic control configuration since March; Fable 5 remains selector-only and Haiku 4.5 keeps a plain toggle. Gemini's thinking control is an On/Off checkmark across 3.5 Flash, 3.1 Flash-Lite, and 3.1 Pro. DeepSeek's consumer modes are labeled <strong>Expert</strong> (V4-Pro) and <strong>Instant</strong> (V4-Flash), each with a thinking toggle. Vibe Chat's reasoning picker is now <strong>Fast/Thinking</strong> (was Balanced/Think/Research). Lumo 2.0 (Lite/Max) carries Lumo's first reasoning control, Fast/Thinking. OpenAI's Plus picker exposes effort tiers (5.5: Instant/Medium/High; 5.6 Sol: Medium/High with no true Instant; 5.3 and o3 locked to a single checked tier). GLM-5.2's chat toggle offers High/Max efforts only, with GLM-5.1 and GLM-5-Turbo selectable on plain toggles. Sakana Chat's English interface locks the register selector to Standard.</li>
         <li><strong>July 15, 2026:</strong> Thinking Machines released <strong>Inkling</strong>, its first from-scratch model, as open weights — a 975B/41B-active multimodal MoE with a 1M-token context. No consumer interface; the developer-facing Inkling Playground in the Tinker console offers a six-level <strong>Reasoning Level</strong> selector (None / Minimum / Low / Medium / High, the default / Extra High) and a web-search toggle. Tested July 16 with search off — see the <a href="transcripts/inkling.html">Inkling transcript page</a>.</li>
         <li><strong>July 22, 2026:</strong> Google added <strong>Gemini 3.6 Flash-Lite</strong> and <strong>Gemini 3.6 Flash</strong> to the consumer interface, superseding 3.1 Flash-Lite and 3.5 Flash. Both are governed by an <strong>Extended Thinking</strong> On/Off toggle — a relabeling of the On/Off checkmark observed on the older tiers in July. Tested the same day; see the <a href="transcripts/google.html">Gemini transcript page</a>.</li>
+        <li><strong>July 30, 2026:</strong> <strong>Qwen3.8-Max-Preview</strong> appeared in Alibaba’s consumer interface. Its thinking toggle is present but <strong>permanently enabled</strong> — the control is shown and cannot be turned off. Earlier Qwen models offered Thinking, Fast, and in some cases Auto; this one has no testable Fast state, so it is recorded thinking-on only.</li>
         <li><strong>July 24, 2026:</strong> Anthropic released <strong>Claude Opus 5</strong>, a new Opus generation whose control surface is a <strong>reasoning-effort selector only</strong> — no thinking, Adaptive, or extended-reasoning toggle, so its runs carry Thinking = n/a. Tested the same day at Low, High (the default), and Max — all three passes, all three inside the winner’s circle, with answer length falling as effort rises. See the <a href="transcripts/anthropic.html">Claude transcript page</a>.</li>
       </ul>
       <div class="callout callout-note">

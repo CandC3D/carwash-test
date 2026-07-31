@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-07-24",
+    "last_updated": "2026-07-30",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -6627,9 +6627,29 @@
       "notes": "PASS: the object named by implication in six words. Winner's circle (Latin, ≤30 tokens) and the tersest English pass since Opus 4.6's six-token 'Drive. It's a carwash.' Maximum reasoning budget produces the shortest answer of the three — the extra effort goes into the reasoning, not the output.",
       "reasoning_trace": "Thinking about weighing transportation options for a short distance.",
       "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-07-30",
+      "id": 432,
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen",
+      "model": "Qwen3.8-Max-Preview",
+      "model_notes": "Qwen3.8-Max-Preview — Alibaba's next Max-tier preview, available in the consumer interface as of July 30, 2026. A thinking toggle is present but permanently enabled: it cannot be switched off, so unlike every earlier Qwen model there is no Fast or thinking-off state to test.",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "response": "Drive. You're going to a carwash — the whole point is to bring the car with you so it can get washed. If you walk over there, you'll just be standing at the carwash with a dirty car still sitting 100 feet away at home.\nThe 100-foot distance is basically irrelevant here. You need the car at the carwash, so the car has to make the trip. 🙂",
+      "token_estimate": 84,
+      "reasoning_trace": "Considering the practical implications of the user's decision\nI recognize that the destination is a carwash, which inherently requires a vehicle to access.\nWalking would be impractical since the purpose is to clean a car, not to travel on foot.\nTherefore, driving is the logical and necessary choice for this scenario.\nConsider the purpose behind the action\nI recognize that walking to the carwash contradicts the fundamental goal of washing the car, which requires the car to be present at the location\nThe short distance is misleading, designed to trigger intuitive thinking, but practical necessity supersedes proximity\nI prioritize functional logic over superficial convenience to arrive at the correct conclusion\nThinking completed",
+      "reasoning_trace_language": "English",
+      "notes": "PASS-ADJACENT (conservative): correct and explicit — 'You need the car at the carwash, so the car has to make the trip' — but a second paragraph restates the first, and the distance is dismissed twice. The trace is the notable part: it names the test's own design, calling the short distance 'misleading, designed to trigger intuitive thinking,' then rules that 'practical necessity supersedes proximity.' The first run in the dataset whose visible reasoning identifies the statistical pressure as a deliberate feature of the prompt rather than simply reasoning past it."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-07-30",
+      "summary": "Qwen3.8-Max-Preview tested in the consumer interface. Correct and explicit, scored pass-adjacent for a restating second paragraph. Two observations: its thinking toggle is present but permanently on — the first model in the dataset that offers the control and refuses to let it be turned off, leaving no Fast state to test — and its reasoning trace names the test's own construction, calling the short distance 'misleading, designed to trigger intuitive thinking' before ruling that 'practical necessity supersedes proximity.' That is the first visible trace to treat the statistical pressure as a deliberate feature of the prompt rather than reasoning past it unremarked."
+    },
     {
       "date": "2026-07-24",
       "summary": "Claude Opus 5 (Anthropic) tested on launch day across three effort tiers — Low, High (the default), and Max. All three pass, all three land inside the winner's circle, and answer length falls monotonically as effort rises: ~21 tokens at Low, ~12 at High, ~9 at Max, the tersest English pass since Opus 4.6's six-token entry. This confirms on the Opus line the inverse effort/verbosity pattern first seen in Sonnet 5 — extra reasoning budget goes into the reasoning, not the output. The High and Max runs display an identical summarized trace, 'Thinking about weighing transportation options for a short distance,' which describes the problem in the distance-weighing framing the test is built to catch even though both answers name the car; Anthropic's visible trace is a summary, so this is an observation about the summary layer rather than evidence about the underlying reasoning."

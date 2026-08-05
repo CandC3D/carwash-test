@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-08-03",
+    "last_updated": "2026-08-04",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -151,6 +151,14 @@
       "display_name": "Thinking Machines (Inkling)",
       "slug": "inkling",
       "category": "open-weight"
+    },
+    "bonsai": {
+      "name": "PrismML",
+      "display_name": "PrismML (Bonsai)",
+      "slug": "bonsai",
+      "category": "open-weight",
+      "deployment_class": "open_weight",
+      "notes": "PrismML's compression of Qwen3.6 27B, published as open weights under Apache 2.0. Not a from-scratch model: the same base the dataset already tested locally at Q4_K_M under Alibaba (Qwen, open-weight). Tested here on the 1-bit build."
     }
   },
   "runs": [
@@ -6851,9 +6859,45 @@
       "prompt": "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
       "reasoning_trace": "Considering the practicality of the situation\nI recognize that walking to the car wash would not allow me to clean my car since the car itself is the object needing cleaning.\nThe very act of going on foot defeats the purpose, as the vehicle remains untouched and unusable for transport.\nTherefore, driving is the only logical choice to achieve the intended goal.\nConduire la voiture jusqu'à l'auto-laveuse.\nLe véhicule doit être déplacé pour pouvoir être lavé, indépendamment de la courte distance.\nMarcher ne permettrait pas de déplacer la voiture, donc le seul moyen logique est de la conduire.\nC'est une évidence pratique malgré la proximité du lieu.\nAllez-y en voiture\nJe considère la situation avec humour et logique, en mettant en évidence l'absurdité de vouloir laver une voiture à pied.\nJe m'assure que ma réponse soit claire, polie et légèrement amusante, tout en respectant le ton du questionnement original.\nJe réfléchis à la portée du raisonnement commun pour offrir une réponse naturelle et engageante.\nThinking completed",
       "reasoning_trace_language": "English and French (mixed)"
+    },
+    {
+      "date": "2026-08-04",
+      "id": 445,
+      "vendor": "PrismML",
+      "model_family": "bonsai",
+      "model": "Bonsai 27B (Q1_0)",
+      "model_notes": "Bonsai 27B — PrismML, released July 14, 2026 under Apache 2.0. A compression of Qwen3.6 27B (dense, non-MoE) retaining the 262K-token context and multimodality via a 4-bit vision tower, positioned as the first 27B-class model deployable on a phone. Distributed through Hugging Face, GitHub, and Together AI in two builds: ternary (~5.9 GB) and 1-bit (~3.9 GB). These runs use the 1-bit build — Bonsai-27B-Q1_0.gguf, 4.73 GB on disk — served locally in LM Studio. As downloaded it exposes a single Think on/off toggle. Token counts are LM Studio's reported totals; the Think-On figure therefore includes the reasoning trace.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "Actually, the answer depends on how dirty your car is — but since you said it’s dirty, let’s assume you’ll need to do some washing or at least scrubbing.\nHere’s the breakdown:\n🚶‍♂️ Walk to the carwash:\n\n* ✅ You avoid potential damage from parking, moving around, or bumping into things while your hands are dirty.\n* ✅ You won’t risk splashing soap/water on yourself or into your car’s vents if you’re already inside.\n* ❌ It takes time and effort — 100 feet is about a 2–3 minute walk each way.\n\n🚗 Drive to the carwash:\n\n* ✅ Faster if you’re in a hurry.\n* ❌ But if your car is dirty, you might want to wash it before driving it to the carwash — otherwise, you’ll just be transporting dirt and splashing water onto yourself or other cars.\n\n💡 Best approach:\nWalk.\n Since your car is already dirty, it’s more efficient (and less messy) to walk to the carwash so you can wash it properly before returning with a clean vehicle. Plus, 100 feet isn’t far — just a quick stroll!\nLet me know if you want tips on how to wash your car efficiently! 🚿",
+      "output_tokens": 291,
+      "notes": "FAIL: a walk-versus-drive comparison table ending in an explicit 'Best approach: Walk.' The reasoning inverts the prompt — it treats the dirt as a reason to keep the car away from the carwash, warning that driving means 'transporting dirt,' and lands on the batch's circular sentence: 'if your car is dirty, you might want to wash it before driving it to the carwash.' Wash the car before taking it to be washed. The closing promise to return 'with a clean vehicle' never explains how the vehicle got clean."
+    },
+    {
+      "date": "2026-08-04",
+      "id": 446,
+      "vendor": "PrismML",
+      "model_family": "bonsai",
+      "model": "Bonsai 27B (Q1_0)",
+      "model_notes": "Bonsai 27B — PrismML, released July 14, 2026 under Apache 2.0. A compression of Qwen3.6 27B (dense, non-MoE) retaining the 262K-token context and multimodality via a 4-bit vision tower, positioned as the first 27B-class model deployable on a phone. Distributed through Hugging Face, GitHub, and Together AI in two builds: ternary (~5.9 GB) and 1-bit (~3.9 GB). These runs use the 1-bit build — Bonsai-27B-Q1_0.gguf, 4.73 GB on disk — served locally in LM Studio. As downloaded it exposes a single Think on/off toggle. Token counts are LM Studio's reported totals; the Think-On figure therefore includes the reasoning trace.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "Walk.\n\nAt a normal walking pace (~3 mph), 100 feet takes about 20 seconds. Driving would actually take longer overall because you'd need to accelerate, stop, park, exit the car, walk back in, and repeat. Walking is faster, requires less effort, avoids parking hassle, and gets you to the wash immediately.\n\nUnless you're injured, carrying heavy items, or dealing with extreme weather, walking is the clear choice.",
+      "reasoning_trace": "Thought for 1 minutes 28 seconds\nHere's a thinking process:\n\n1. Analyze User Input:\n\n* Problem: Car is dirty, needs washing\n* Distance to car wash: 100 feet\n* Question: Should I walk or drive?\n\n2. Identify Key Factors:\n\n* Distance: 100 feet (very short)\n* Speed/Time comparison: Walking vs driving over such a distance\n* Practical considerations: Safety, time efficiency, convenience, parking, pollution/emissions (minor), mental effort\n\n3. Evaluate Options:\n\n* Walking:\n   * Time: ~15-20 seconds at normal walking pace (~3 mph)\n   * Effort: Minimal\n   * Safety: Safe for such a short distance\n   * Practicality: Easy, no parking hassle, immediate access to car wash\n* Driving:\n   * Time: >1 minute (including acceleration, braking, stopping, parking, getting out, walking back)\n   * Effort: Higher for negligible gain\n   * Safety/Practicality: Unnecessary complexity, potential parking issues, longer time overall\n\n4. Compare & Conclude:\n\n* Walking is objectively better for a 100-foot distance\n* Driving would take significantly longer and add unnecessary hassle\n* The only reason to drive might be if walking isn't possible (e.g., injury, extreme weather), but the prompt doesn't indicate that\n\n5. Formulate Response:\n\n* Acknowledge the question directly\n* Explain why walking is better with reasoning (time, effort, convenience)\n* Give a clear recommendation\n* Keep it concise and practical\n* Optionally add a light note about when driving might make sense (if needed)\n\nDraft: Walk—it’s only 100 feet away, which takes about 20 seconds at a normal pace. Driving would actually take longer overall (including acceleration, braking, parking, and getting out), plus it adds unnecessary hassle. Unless you have a medical reason or extreme weather, walking is the clear choice.\n\n6. Self-Correction/Refinement:\n\n* Check accuracy: 100 feet / 3 mph = ~20 seconds. Correct.\n* Driving time: Even at low speed, starting/stopping/parking adds significant time. Correct.\n* Tone: Helpful, direct, logical.\n* No overcomplication. Matches user's simple question.\n\nFinal version matches draft closely. Ready.✅",
+      "reasoning_trace_language": "English",
+      "output_tokens": 637,
+      "notes": "FAIL: turning Think on made the answer longer, more confident, and no less wrong — 637 tokens against 291, arriving at the same Walk. The trace is the reason to read this run. It runs a six-step procedure, computes that 100 feet takes about 20 seconds at 3 mph, tallies driving's overheads, and concludes that 'walking is objectively better.' Step 6 is headed Self-Correction/Refinement, and it checks the arithmetic — '100 feet / 3 mph = ~20 seconds. Correct.' — the tone, and the length, then signs off 'Ready.' The verification step audits everything except the question the model is answering: whether the car has to be there. A self-check that operates inside the adopted frame cannot see the frame."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-08-04",
+      "summary": "Bonsai 27B (PrismML) added as a new open-weight family, tested locally in LM Studio on the 1-bit build across its Think toggle. Both runs fail, and the pairing is the point: Bonsai is a compression of Qwen3.6 27B, the same base this dataset already ran locally at Q4_K_M, where Thinking On passed in English and Thinking Off failed. At 1-bit the passing state is gone — both toggle positions recommend walking. That complicates a claim this site has carried since June, that local hosting settings change speed but not outcome; the earlier evidence covered GPU-offload split and moderate quantization, and 1-bit compression is a different order of intervention. One model and one pair of runs, so it is a flag rather than a finding. The Think-On trace is independently notable: a six-step procedure whose final step, headed Self-Correction/Refinement, verifies its arithmetic and tone, signs off 'Ready,' and never asks whether the car needs to be at the carwash."
+    },
     {
       "date": "2026-08-03",
       "summary": "Qwen3.8-Max (general release) tested across all three reasoning modes — Fast, Thinking, and Auto — in four languages. Twelve runs, twelve Drives, no failures: Qwen3.8-Max joins the four-language club, and its Fast mode holds everywhere its predecessors broke (Qwen3.7-Plus Fast failed English, Chinese, and Ukrainian; Qwen3.6-Plus failed in Fast and Auto alike). The release also restores the mode selector that Qwen3.8-Max-Preview had locked on four days earlier. Two trace findings: the English Thinking and Chinese Auto traces each argue their way to Walk in full — under their own headings, on fuel-saving and absurdity grounds — before reversing to Drive, the mirror image of Inkling's Low run; and the French and Ukrainian traces switch between the prompt language and English mid-stream, the first mixed-language traces on record. Fast mode is also the most verbose in English and Ukrainian, inverting the expectation that the quick tier is the terse one."

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">The Carwash Test — PrismML (Bonsai) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Bonsai 27B, PrismML's 1-bit compression of Qwen3.6 27B, run locally in LM Studio across its Think toggle.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=20260724a">
+<!-- carwash-meta-block -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#f5f0e8">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Carwash Test">
+  <meta property="og:title" content="The Carwash Test — PrismML (Bonsai)">
+  <meta property="og:description" content="Bonsai 27B, PrismML's 1-bit compression of Qwen3.6 27B, on the Carwash Test — both toggle states recommend walking.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/bonsai.html">
+  <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Carwash Test — PrismML (Bonsai)">
+  <meta name="twitter:description" content="Bonsai 27B, PrismML's 1-bit compression of Qwen3.6 27B, on the Carwash Test — both toggle states recommend walking.">
+  <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
+  <meta name="author" content="Christopher Horrocks">
+<!-- carwash-keywords -->
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, PrismML, Bonsai, Bonsai 27B, model compression, quantization, 1-bit quantization, ternary quantization, GGUF, LM Studio, local LLM, self-hosted LLM, on-device AI, edge AI, Qwen3.6 27B, statistical pressure, logical object, AI failure modes, inverted logic, reasoning trace, self-correction, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-D9WLS0VX62');
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <!-- carwash-page-header -->
+  <header class="page-header">
+    <nav class="page-header-nav">
+      <a class="page-header-link" href="https://candc3d.github.io/vi-framework/" target="_blank" rel="noopener noreferrer">VI Framework</a>
+      <a class="page-header-link" href="https://candc3d.github.io/sampo-framework/" target="_blank" rel="noopener noreferrer">Sampo Framework</a>
+      <a class="page-header-link" href="https://candc3d.github.io/sampo-diagnostic/" target="_blank" rel="noopener noreferrer">Sampo Diagnostic Kit</a>
+      <a class="page-header-link" href="https://candc3d.github.io/containment-thesis/" target="_blank" rel="noopener noreferrer">Containment Thesis</a>
+      <a class="page-header-link" href="https://candc3d.github.io/brassllm/" target="_blank" rel="noopener noreferrer">BrassLLM</a>
+      <a class="page-header-link" href="https://chorrocks.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+    </nav>
+  </header>
+
+  <!-- carwash-vendor-rail -->
+  <div id="vendor-rail"></div>
+
+  <main id="main">
+    <header class="site-header">
+      <div class="site-header-top">
+        <div class="site-header-titles">
+          <h1 class="site-title" id="family-title">PrismML (Bonsai)</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
+        </div>
+        <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
+      </div>
+      <hr class="site-rule">
+      <p class="prompt-line">My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
+      <nav class="site-nav">
+        <a href="../index.html">Overview</a>
+        <a href="../results.html">Results</a>
+        <a href="../metrics.html">Metrics</a>
+        <a href="../methodology.html">Methodology</a>
+        <a href="../transcripts.html" class="active">Transcripts</a>
+      </nav>
+    </header>
+
+    <section>
+      <div class="callout callout-note">
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>Bonsai 27B is a compression, not a new model.</strong> PrismML released it on <a href="https://prismml.com/news/bonsai-27b" target="_blank" rel="noopener">July 14, 2026</a> under Apache 2.0: <strong>Qwen3.6 27B</strong> squeezed into a build small enough to run on a phone, keeping the 262K-token context and multimodality through a 4-bit vision tower. It ships in two sizes, ternary (~5.9&nbsp;GB) and 1-bit (~3.9&nbsp;GB). <strong>These runs use the 1-bit build</strong> — <code>Bonsai-27B-Q1_0.gguf</code>, 4.73&nbsp;GB on disk — served locally in LM Studio on consumer hardware, with a single Think on/off toggle. This is the model as a raw artifact: no consumer system prompt, no product layer. Open-weight results are kept as a separate deployment class and excluded from the commercial corpora. Token counts here are LM Studio's own reported totals rather than character estimates, so the Think-On figure includes the reasoning trace.</p>
+      </div>
+      <p class="chart-note"><strong>Both states recommend walking.</strong> That is worth more than a two-run tally, because the dataset has already tested Bonsai's parent. <strong>Qwen3.6 27B at Q4_K_M</strong>, run locally on the same hardware in June, <a href="qwen_ow.html">passed the English prompt with thinking on</a> and failed with it off. At 1-bit the passing state is gone: Think On and Think Off both land on Walk. The base model, the host, the machine, and the prompt are the same; the compression is not. One model and one pair of runs is a flag rather than a finding — but it is the first evidence in this dataset that how aggressively a model is compressed can change the answer, and not merely the speed.</p>
+      <p class="chart-note">The two failures fail differently. <strong>Think Off</strong> builds a walk-versus-drive comparison and inverts the prompt outright, treating the dirt as a reason to keep the car <em>away</em> from the carwash — driving would mean "transporting dirt" — before producing the sentence the whole test exists to catch: <em>"if your car is dirty, you might want to wash it before driving it to the carwash."</em> Wash the car before taking it to be washed. Its closing promise to return "with a clean vehicle" never explains how the vehicle got clean.</p>
+      <p class="chart-note"><strong>Think On is the one to read.</strong> Switching reasoning on made the answer longer, more confident, and no less wrong — 637 tokens against 291, arriving at the same Walk. The visible trace runs a tidy six-step procedure: it analyzes the input, computes that 100 feet takes about 20 seconds at 3 mph, tallies the overheads of driving, and concludes that "walking is objectively better." Step 6 is headed <strong>Self-Correction/Refinement</strong>. It re-checks the arithmetic — <em>"100 feet / 3 mph = ~20 seconds. Correct."</em> — approves the tone, confirms there is no overcomplication, and signs off <em>"Ready."</em> The audit passes every claim the model made and never reaches the one it did not: whether the car has to be there. A self-check that runs inside the adopted frame cannot see the frame.</p>
+    </section>
+
+    <section>
+      <h2>Results</h2>
+      <div id="tally"></div>
+      <div id="charts"></div>
+      <div id="results-table"></div>
+      <div id="legend"></div>
+    </section>
+
+    <section>
+      <h2>Transcripts</h2>
+      <div id="transcripts"></div>
+    </section>
+
+    <div id="lang-runs"></div>
+  <!-- carwash-vendor-pagination -->
+    <div id="vendor-pagination"></div>
+  </main>
+
+  <footer>
+    <p class="related-links">
+      <a href="https://candc3d.github.io/vi-framework/" target="_blank" rel="noopener">Virtual Intelligence Framework</a>
+      <a href="https://candc3d.github.io/sampo-framework/" target="_blank" rel="noopener">Sampo Framework</a>
+      <a href="https://candc3d.github.io/sampo-diagnostic/" target="_blank" rel="noopener">Sampo Diagnostic</a>
+      <a href="https://candc3d.github.io/containment-thesis/" target="_blank" rel="noopener">Containment Thesis</a>
+      <a href="https://candc3d.github.io/brassllm/" target="_blank" rel="noopener">BrassLLM</a>
+    </p>
+    <p><strong>Virtual Intelligence</strong> · Christopher Horrocks ·
+       <a href="https://chorrocks.substack.com/" target="_blank" rel="noopener">chorrocks.substack.com</a></p>
+    <p class="copyright">© 2026 Christopher Horrocks. All rights reserved. v1.6</p>
+    <p class="disclaimer">The opinions expressed are my own and do not reflect any official or
+       unofficial institutional position of the University of Pennsylvania. The author holds no
+       financial interest in, and receives no compensation from, any AI or technology firm.</p>
+  </footer>
+
+  <script src="../scripts.js?v=20260724a"></script>
+  <script>
+    (async function () {
+      const SLUG = "bonsai";
+      try {
+        const data = await CarwashTest.loadData("../");
+        const family = data.model_families[SLUG];
+        const familyRuns = data.runs.filter(function (r) { return r.model_family === SLUG && (!r.language || r.language === "en"); });
+
+        document.getElementById("family-title").innerHTML =
+          CarwashTest.renderTitleLogo(SLUG, "../") +
+          CarwashTest.familyTitleHTML(family.display_name);
+        document.title = family.display_name + " — The Carwash Test";
+
+        document.getElementById("tally").innerHTML =
+          CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
+        document.getElementById("charts").innerHTML =
+          CarwashTest.renderCharts(familyRuns);
+        document.getElementById("results-table").innerHTML =
+          CarwashTest.renderResultsTableForFamily(familyRuns);
+        CarwashTest.makeSortable(document.querySelector("#results-table table"));
+        document.getElementById("legend").innerHTML =
+          CarwashTest.renderLegend();
+        document.getElementById("transcripts").innerHTML =
+          familyRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+        document.getElementById("lang-runs").innerHTML =
+          CarwashTest.renderVendorLanguageRuns(data.runs, SLUG, "../");
+        document.getElementById("vendor-rail").innerHTML =
+          CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../");
+        document.getElementById("vendor-pagination").innerHTML =
+          CarwashTest.renderVendorPagination(SLUG, data.model_families);
+      } catch (err) {
+        console.error(err);
+        CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);
+      }
+    })();
+  </script>
+</body>
+</html>

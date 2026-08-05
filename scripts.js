@@ -59,7 +59,8 @@
     "qwen_ow": "qwen.svg",
     "zai": "zai.svg",
     "sakana": "sakana.svg",
-    "inkling": "thinkingmachines.svg"
+    "inkling": "thinkingmachines.svg",
+    "bonsai": "bonsai.svg"
   };
 
   async function loadData(basePath) {

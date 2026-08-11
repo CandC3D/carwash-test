@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Anthropic (Claude) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude (Opus, Sonnet, Haiku) results on the Carwash Test.">
+  <title id="page-title">The Carwash Test — Meta (Muse Glimmer) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Muse Glimmer 30B, Meta's open-weight local agent model, run locally with reasoning always on.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&family=Instrument+Serif&family=DM+Mono&display=swap" rel="stylesheet">
@@ -17,20 +17,20 @@
   <meta name="theme-color" content="#f5f0e8">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Anthropic (Claude)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude (Opus, Sonnet, Haiku) results on the Carwash Test.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — Meta (Muse Glimmer)">
+  <meta property="og:description" content="Muse Glimmer 30B on the Carwash Test — the sharpest correct opening in the dataset, wrapped around a trace that will not stop.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/glimmer.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Anthropic (Claude)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Claude (Opus, Sonnet, Haiku) results on the Carwash Test.">
+  <meta name="twitter:title" content="The Carwash Test — Meta (Muse Glimmer)">
+  <meta name="twitter:description" content="Muse Glimmer 30B on the Carwash Test — the sharpest correct opening in the dataset, wrapped around a trace that will not stop.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Anthropic, Claude, Claude Opus 4.6, Claude Opus 4.7, Claude Sonnet 4.6, Claude Haiku 4.5, Extended Thinking, Adaptive thinking, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, Meta, Muse Glimmer, Muse Glimmer 30B, Meta open weights, local agent, agentic model, on-device AI, edge AI, LM Studio, local LLM, self-hosted LLM, GPU offload, speculative decoding, DFlash, reasoning budget, unrestricted reasoning, reasoning trace, statistical pressure, logical object, AI failure modes, premature closure, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -42,6 +42,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -57,13 +58,12 @@
   <!-- carwash-vendor-rail -->
   <div id="vendor-rail"></div>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title" id="family-title">Meta (Muse Glimmer)</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -80,19 +80,14 @@
 
     <section>
       <div class="callout callout-note">
-        <span class="callout-tag">Opus 5</span>
-        <p><strong>Claude Opus 5 (July 24, 2026) passes in every tier tested — and gets shorter as it thinks harder.</strong> Its control surface is the effort selector alone — no thinking, Adaptive, or extended-reasoning toggle — so its runs carry a Thinking value of n/a, bringing the Fable 5 / Sonnet 5 pattern to the flagship line. Run at Low, High (the default), and Max, it names the constraint each time, and answer length falls as the budget rises: ~21 tokens at Low, ~12 at High, ~9 at Max ("Drive. Walking gets you clean shoes.") — the tersest English pass since Opus 4.6’s six-token record, and all three inside the winner’s circle. This confirms on the Opus line the inverse effort/verbosity pattern first seen in Sonnet 5: the extra budget goes into the reasoning, not the output.</p>
-        <p>One texture worth recording. The High and Max runs display an <em>identical</em> summarized trace — "Thinking about weighing transportation options for a short distance" — which describes the problem in precisely the distance-weighing framing the test is built to catch, while both answers name the car. Anthropic’s visible trace is a summary rather than the raw reasoning, so this is an observation about the summary layer, not evidence about what the model actually did. It belongs with the Inkling trace/answer split as a reminder that the trace is a product surface, and its job is making the reasoning inspectable.</p>
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>Muse Glimmer is Meta's open-weight line, not the Meta AI consumer product.</strong> Released <a href="https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model" target="_blank" rel="noopener">August 10, 2026</a> under Apache 2.0, it is a 30-billion-parameter dense model built for "always-on local agent workflows" and sized to run on a Mac or PC with a single consumer GPU, taking text and image input through a dedicated perception encoder and offering speculative decoding via DFlash. Weights are on Hugging Face; these runs are local, in LM Studio, on consumer hardware. Meta's commercial models — Llama and Muse Spark — are tested separately under <a href="meta.html">Meta</a>, and findings about one are not evidence for the other. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
       </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Sonnet 5</span>
-        <p><strong>Claude Sonnet 5 (June 30, 2026) drops the Adaptive On/Off toggle</strong> — reasoning is now governed solely by a five-tier effort selector (Low / Medium / High / Extra / Max), so its runs carry a Thinking value of n/a. It passes the Carwash Test in all five modes, naming the constraint directly in each. Notably, the answer stays terse as effort rises: the extra budget goes into the reasoning trace (visible from High up), not the output — the inverse of the "more reasoning, more words" pattern. The Max trace reasons to the logical object and then explicitly chooses brevity, citing the user's stored preference for directness.</p>
-        <p><strong>Two weeks later the control surface changed again (week of July 6, 2026):</strong> the consumer UI now pairs an Extended-thinking On/Off toggle <em>with</em> the effort selector across Opus 4.8/4.7/4.6 and Sonnet 5/4.6 — Sonnet 5 regained a toggle days after launching without one, the fourth Anthropic control configuration since March. Fable 5 stays selector-only; Haiku 4.5 keeps a plain toggle. The July 11 Carwash III re-baseline (35 runs below) tests the full lineup under this UI: 34 of 35 hold the constraint, most within winner's-circle brevity — the one exception is Haiku 4.5 with thinking <em>On</em>, which reasons its way to Walk while its thinking-Off state passes. The same day's non-English sweep (French, Ukrainian, Chinese) shows Opus 4.8 holding all six states and Fable re-verifying its record — while <strong>Sonnet 5's toggle-dependence appears only outside English</strong>: thinking On holds all four languages, thinking Off fails Ukrainian (with the scrambled "Їдь пішки" — "drive by foot") and Chinese.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Fable 5</span>
-        <p><strong>Claude Fable 5 (June 9, 2026) is the public-facing version of Anthropic's Mythos model line</strong> — a different line from Opus/Sonnet/Haiku; Mythos 5 itself is restricted to approved organizations. Its control surface is a reasoning-effort selector only (default High), with no Adaptive or Extended-thinking toggle. Caveat: in high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8 (Anthropic reports ≥95% of sessions run entirely on Fable), and no interface indicator shows which model answered. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to every Fable entry as a class.</p>
-      </div>
+      <p class="chart-note"><strong>Reasoning is always on, and there is nothing to turn it off with.</strong> Meta's announcement advertises "controllable effort" for developers balancing quality against speed; in the downloaded build as run here, reasoning runs by default with an <strong>unrestricted budget</strong> and no exposed control. That places Muse Glimmer at the far end of a spectrum this record has tracked all summer — from Inkling's six named Reasoning Levels, through Anthropic's effort selectors and Qwen3.8-Max-Preview's toggle welded on, to a model that simply thinks as long as it likes.</p>
+      <p class="chart-note"><strong>The answer is the sharpest correct opening in the dataset.</strong> "You have to drive it. Walking won't move the car." Two sentences, the constraint named as a physical fact, and on their own they would sit comfortably inside the winner's circle. The run scores pass-adjacent because of what follows: a metric conversion, a calculation that the dirt picked up over 100 feet is negligible against the dirt already there, and a closing shrug about walking for exercise instead.</p>
+      <p class="chart-note"><strong>The trace is the reason to open this run.</strong> Roughly 986 tokens against a 120-token answer, and it solves the problem almost at once — <em>"You need to bring car to carwash. Walking won't bring car. So drive."</em> — then spends hundreds of tokens declining to stop. It reopens the settled question ("Walking is probably better?", "Or walk to save fuel?"), floats pushing the car by hand twice, considers asking a clarifying question, guesses at what joke the reader wants, and restates its own verdict at least eight times in different phrasings before returning to the wording it started with. Nothing in the trace explains why the final phrasing beat the first. The right answer arrives by exhaustion rather than by reasoning — which is the same failure of stopping that produces wrong answers elsewhere in this dataset, running here in a model that happened to start from the correct premise.</p>
+      <p class="chart-note">Two artifacts worth noting. The prompt is echoed <strong>twice</strong> at the top of the trace. And the trace ends on what reads as internal compliance scaffolding — <em>"We can comply. No policy issues. Output final."</em> — a policy-check stage surfaced to the operator alongside the reasoning, which is not reasoning about the question at all.</p>
+      <p class="chart-note"><strong>Timing caveat.</strong> The model was only partially offloaded to the GPU, so the reported <strong>3 minutes 38 seconds</strong> reflects CPU-bound inference on a partly resident model rather than the length of the deliberation. Per the <a href="../methodology.html#deployment-classes">deployment-class note</a>, offload split affects speed and not the outcome; the token count, not the clock, is the honest measure of how much thinking happened here.</p>
     </section>
 
     <section>
@@ -132,7 +127,7 @@
   <script src="../scripts.js?v=20260811a"></script>
   <script>
     (async function () {
-      const SLUG = "anthropic";
+      const SLUG = "glimmer";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];

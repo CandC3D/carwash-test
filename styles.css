@@ -1,22 +1,89 @@
+/* ============================================================
+   Direction B "The Instrument" — design tokens (August 2026).
+   Light + dark palettes from the design handoff, followed by a
+   legacy-alias block mapping the pre-redesign token names (used
+   throughout this file and in scripts.js' generated markup) onto
+   the new set, so every existing rule resolves in both themes.
+   ============================================================ */
 :root {
-  --bg: #f5f0e8;
-  --bg-alt: #f0eae0;
-  --ink: #2c2c2a;
-  --muted: #8c8a5c;
-  --light: #b4b2ac;
-  --pumpkin: #ff7a05;
-  --olive: #65a30d;
-  --olive-dark: #3f6212;
-  --steel: #7b8fa1;
+  /* ground + ink */
+  --bg: #fafaf7;
+  --bg2: #f0f0ea;          /* secondary ground: cards, quote plates */
+  --ink: #141412;
+  --muted: #5b5b53;        /* secondary text */
+  --faint: #8d8d83;        /* tertiary: captions, footers */
+  --hair: #dcdcd3;         /* hairline rules, card borders */
+  --rule: #141412;         /* strong structural rules (2px section tops) */
 
-  --pass-bg: #d4eac8;     --pass-text: #3c643c;
-  --passadj-bg: #c8e0dc;  --passadj-text: #3c5a64;
-  --verbose-bg: #f5e29c;  --verbose-text: #82641e;
-  --fail-bg: #f5c8c6;     --fail-text: #8c3c3c;
+  /* accents — reserved for wayfinding, active nav, endpoints */
+  --acc: #e86f00;          /* pumpkin, brand carry-over */
+  --link: #b35400;         /* link resting color (AA on --bg) */
 
-  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --mono: "DM Mono", "SF Mono", Menlo, Consolas, monospace;
+  /* semantic grades: pill bg / pill ink / chart fill
+     Order is fixed: Pass → Pass-adjacent → Verbose → Fail.
+     Never encode grade by color alone — pills keep text labels. */
+  --pass-bg: #dcead0;     --pass-ink: #2e5527;     --pass-fill: #7fb45f;
+  --padj-bg: #d6e6e1;     --padj-ink: #24544a;     --padj-fill: #5fa896;
+  --verbose-bg: #f1e3b2;  --verbose-ink: #6e5510;  --verbose-fill: #d9b13c;
+  --fail-bg: #f3d3cd;     --fail-ink: #8f2f26;     --fail-fill: #d97b6f;
+
+  /* type */
+  --font-display: 'Archivo', sans-serif;                    /* 700–900, caps for H1/nav */
+  --font-body: 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC',
+               'Hiragino Sans GB', sans-serif;              /* body, all five languages */
+  --font-mono: 'IBM Plex Mono', monospace;                  /* data, labels, prompt lines */
+
+  /* type scale (px): 11 / 12 / 13.5 / 16 / 20 / 26 / 34 / 44 / 64
+     spacing scale: 4-base — 4 / 8 / 12 / 16 / 24 / 32 / 48 / 56 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151513;
+    --bg2: #1d1d1a;
+    --ink: #e9e7df;
+    --muted: #a3a196;
+    --faint: #6e6d64;
+    --hair: #2e2e29;
+    --rule: #e9e7df;
+    --acc: #ff8b2b;
+    --link: #ff9d4d;
+    --pass-bg: #24361f;     --pass-ink: #a8d694;     --pass-fill: #6f9e53;
+    --padj-bg: #1c332e;     --padj-ink: #8fcfbf;     --padj-fill: #549586;
+    --verbose-bg: #3a2f10;  --verbose-ink: #e3c05e;  --verbose-fill: #bd9a34;
+    --fail-bg: #3c1b17;     --fail-ink: #f09a8f;     --fail-fill: #bd6a60;
+  }
+}
+
+/* Legacy aliases — pre-redesign names still referenced below and in
+   scripts.js generated markup. Aliases resolve through the new tokens,
+   so dark mode propagates without touching a single downstream rule. */
+:root {
+  --bg-alt: var(--bg2);
+  --light: var(--hair);
+  --pumpkin: var(--acc);
+  --olive: var(--muted);        /* old secondary accent roles collapse to muted… */
+  --olive-dark: var(--ink);     /* …and their hover/active states to ink */
+  --steel: var(--muted);
+
+  --pass-text: var(--pass-ink);
+  --passadj-bg: var(--padj-bg);   --passadj-text: var(--padj-ink);
+  --verbose-text: var(--verbose-ink);
+  --fail-text: var(--fail-ink);
+
+  --serif: var(--font-display);
+  --sans: var(--font-body);
+  --mono: var(--font-mono);
+}
+
+/* ---- companion rules (handoff tokens.css) ---- */
+
+/* tabular figures everywhere numbers columnize */
+table, .tally-row, .transcript-meta, .transcript-id, .chart-tick { font-variant-numeric: tabular-nums; }
+
+/* reduced-motion guard — in place before any motion is introduced */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
 
 * { box-sizing: border-box; }
@@ -33,23 +100,24 @@ html, body {
 }
 
 main {
-  max-width: 920px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 48px 24px 96px;
+  padding: 48px 32px 96px;
 }
+/* Vendor transcript pages are deliberately narrower — a different silhouette. */
+body:has(#vendor-rail) main { max-width: 880px; }
 
 a {
-  color: var(--ink);
+  color: var(--link);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
 }
-a:hover { color: var(--pumpkin); }
+a:hover, a:focus { color: var(--acc); }
 
 :focus-visible {
-  outline: 3px solid var(--pumpkin);
+  outline: 3px solid var(--acc);
   outline-offset: 2px;
-  border-radius: 2px;
 }
 
 .skip-link {
@@ -60,7 +128,6 @@ a:hover { color: var(--pumpkin); }
   background: var(--ink);
   color: var(--bg);
   padding: 10px 16px;
-  border-radius: 4px;
   text-decoration: none;
   font-family: var(--sans);
   transition: top 0.15s ease;
@@ -68,8 +135,8 @@ a:hover { color: var(--pumpkin); }
 .skip-link:focus { top: 8px; color: var(--bg); }
 
 h1, h2, h3, h4 {
-  font-family: var(--serif);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--ink);
 }
@@ -85,6 +152,9 @@ h1, h2, h3, h4 {
   width: 36%;
   max-width: 380px;
   min-width: 230px;
+  border: 1px solid var(--hair);
+  padding: 10px;
+  background: #f5f0e8; /* the original cream, retained deliberately in both themes */
 }
 .header-graphic-img { width: 100%; height: auto; display: block; }
 .site-title .title-paren { white-space: nowrap; }
@@ -99,10 +169,14 @@ h1, h2, h3, h4 {
 }
 
 h1.site-title {
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
   margin: 0 0 8px;
 }
+body:has(#vendor-rail) h1.site-title { font-size: 44px; }
 h1.site-title .title-logo {
   display: inline-block;
   width: 44px;
@@ -129,15 +203,15 @@ h1.site-title .title-logo {
 }
 
 .site-subtitle {
-  font-family: var(--sans);
-  font-size: 15px;
-  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--acc);
   margin: 0 0 24px;
 }
 
-footer strong { color: var(--olive); font-weight: 700; }
+footer strong { color: var(--ink); font-weight: 700; }
 
 .site-rule {
   border: 0;
@@ -146,8 +220,9 @@ footer strong { color: var(--olive); font-weight: 700; }
 }
 
 .prompt-line {
-  font-family: var(--mono);
-  font-size: 15px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
   color: var(--ink);
   background: var(--bg-alt);
   border-left: 2px solid var(--ink);
@@ -158,32 +233,31 @@ footer strong { color: var(--olive); font-weight: 700; }
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  font-family: var(--sans);
+  gap: 28px;
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.04em;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--hair);
+  padding: 12px 0;
   margin-bottom: 8px;
 }
 .site-nav a {
   text-decoration: none;
-  color: var(--olive);
+  color: var(--muted);
   padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
 }
-.site-nav a:hover {
-  color: var(--olive-dark);
-  border-bottom-color: var(--olive-dark);
-}
+.site-nav a:hover { color: var(--ink); }
 .site-nav a.active {
-  color: var(--olive-dark);
-  border-bottom-color: var(--olive-dark);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--acc);
 }
 
 section { margin: 48px 0; }
 
-h2 { font-size: 32px; margin: 0 0 16px; }
+h2 { font-size: 26px; margin: 0 0 16px; }
 h3 {
   font-family: var(--sans);
   font-weight: 700;
@@ -221,8 +295,9 @@ li { margin-bottom: 6px; }
   text-align: center;
 }
 .tally-card .count {
-  font-family: var(--serif);
-  font-size: 40px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 34px;
   line-height: 1;
   display: block;
   margin-bottom: 6px;
@@ -260,9 +335,10 @@ li { margin-bottom: 6px; }
 
 /* Download CSV button */
 .csv-btn {
-  font-family: var(--sans);
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ink);
   background: var(--bg-alt);
   border: 1px solid var(--light);
@@ -276,7 +352,7 @@ li { margin-bottom: 6px; }
   background: var(--ink);
 }
 .csv-btn:focus-visible {
-  outline: 3px solid var(--pumpkin);
+  outline: 3px solid var(--acc);
   outline-offset: 2px;
 }
 
@@ -367,8 +443,8 @@ li { margin-bottom: 6px; }
   margin: 0;
 }
 .chart-card figcaption {
-  font-family: var(--sans);
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
@@ -423,8 +499,8 @@ li { margin-bottom: 6px; }
   font-style: italic;
   fill: var(--ink);
 }
-.chart-tick { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
-.chart-rowlabel { font-family: var(--sans); font-size: 12px; fill: var(--ink); }
+.chart-tick { font-family: var(--font-mono); font-size: 10px; fill: var(--muted); }
+.chart-rowlabel { font-family: var(--font-mono); font-size: 11px; fill: var(--ink); }
 .chart-endlabel { font-family: var(--sans); font-weight: 700; font-size: 12px; }
 .chart-more {
   font-family: var(--sans);
@@ -447,7 +523,7 @@ li { margin-bottom: 6px; }
   border-top: 2px solid var(--light);
   padding-top: 8px;
 }
-.reasoning-trace summary { color: var(--steel); }
+.reasoning-trace summary { color: var(--faint); }
 
 /* ── Multilingual corpora (metrics page) ─────────────────────────────── */
 .corpus-divider { border: 0; border-top: 2px solid var(--light); margin: 48px 0 0; }
@@ -471,9 +547,9 @@ li { margin-bottom: 6px; }
   border: 0;
   margin: 0;
   padding: 0;
-  font-family: var(--serif);
-  font-size: 20px;
-  line-height: 1.4;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
   color: var(--ink);
 }
 .translation, .methodology-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
@@ -495,8 +571,8 @@ li { margin-bottom: 6px; }
 
 /* ── Methodology page polish ─────────────────────────────────────────── */
 .methodology-lede {
-  font-family: var(--serif);
-  font-size: 23px;
+  font-family: var(--font-body);
+  font-size: 20px;
   line-height: 1.4;
   color: var(--ink);
   max-width: 46em;
@@ -513,8 +589,7 @@ li { margin-bottom: 6px; }
   bottom: 0;
   width: 44px;
   height: 3px;
-  background: var(--pumpkin);
-  border-radius: 2px;
+  background: var(--acc);
 }
 
 /* Rubric cards */
@@ -610,7 +685,6 @@ li { margin-bottom: 6px; }
   color: var(--bg);
   background: var(--pumpkin);
   padding: 2px 8px;
-  border-radius: 3px;
   margin-bottom: 10px;
 }
 .callout-specimen { border-left-color: var(--olive); }
@@ -620,21 +694,19 @@ li { margin-bottom: 6px; }
   .charts-row { gap: 20px; }
 }
 
-/* Badges */
+/* Grade pills — square corners; grade is never encoded by color alone,
+   every pill keeps its text label and the four-step order is fixed. */
 .badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 10px;
-  width: 132px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.02em;
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid currentColor;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-family: var(--sans);
+  font-family: var(--font-mono);
   text-align: center;
+  white-space: nowrap;
 }
 .badge.pass         { background: var(--pass-bg);    color: var(--pass-text); }
 .badge.pass-adjacent{ background: var(--passadj-bg); color: var(--passadj-text); }
@@ -673,8 +745,9 @@ td:has(> .badge) { text-align: center; }
   transition: background-color 0.15s ease;
 }
 .family-card .family-name {
-  font-family: var(--serif);
-  font-size: 22px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
   display: block;
   margin-bottom: 6px;
   line-height: 1.15;
@@ -712,9 +785,9 @@ td:has(> .badge) { text-align: center; }
   display: block;
 }
 .family-group-heading h3 {
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
   letter-spacing: -0.01em;
   text-transform: none;
   margin: 0;
@@ -829,8 +902,9 @@ h1.site-title .title-icon svg { width: 40px; height: 40px; display: block; }
   color: var(--muted);
 }
 .transcript-model {
-  font-family: var(--serif);
-  font-size: 22px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
 }
 .transcript-meta {
   display: flex;
@@ -843,15 +917,16 @@ h1.site-title .title-icon svg { width: 40px; height: 40px; display: block; }
 .transcript-meta > span { display: inline-flex; align-items: center; }
 
 details {
-  border: 1px solid var(--light);
-  background: var(--bg-alt);
+  border: 1px dashed var(--hair);
+  background: var(--bg2);
   padding: 0;
   margin-top: 8px;
 }
 details summary {
   cursor: pointer;
   padding: 10px 14px;
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
@@ -936,9 +1011,9 @@ details > div {
 
 /* Footer */
 footer {
-  max-width: 920px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 32px 24px 64px;
+  padding: 32px 32px 64px;
   font-size: 13px;
   color: var(--muted);
 }
@@ -996,9 +1071,9 @@ footer .related-links a:hover {
    Visual style matches the footer's related-links strip: uppercase,
    letter-spaced, muted, framed with top + bottom rules. */
 .page-header {
-  max-width: 920px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 32px 24px 0;
+  padding: 32px 32px 0;
   font-family: var(--sans);
   color: var(--muted);
 }
@@ -1073,7 +1148,6 @@ footer .related-links a:hover {
   align-items: center;
   gap: 6px;
   padding: 5px 10px 5px 8px;
-  border-radius: 14px;
   border: 1px solid var(--light);
   color: var(--muted);
   text-decoration: none;
@@ -1142,3 +1216,10 @@ footer .related-links a:hover {
   .vendor-pill .pill-logo { width: 12px; height: 12px; }
   .vendor-pagination { font-size: 11px; gap: 12px; margin-top: 32px; }
 }
+
+/* Vendor pages: rails match the narrower main column */
+body:has(#vendor-rail) footer,
+body:has(#vendor-rail) .page-header { max-width: 880px; }
+
+/* Figure cards and quote plates: hairline borders, square, no shadows */
+.chart-card-wide { border: 1px solid var(--hair); padding: 20px 22px; }

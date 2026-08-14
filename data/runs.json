@@ -43,7 +43,7 @@
       "display_name": "DeepSeek",
       "slug": "deepseek",
       "category": "general",
-      "notes": "Consumer interface at chat.deepseek.com. Pre-April 24, 2026: V3.2 (Instant/Fast) and V3.2-thinking (Expert/DeepThink, marketed as R1). Post-April 24, 2026: V4-Flash (Instant) and V4-Pro (Expert). DeepThink toggle rewired from R1 to V4 thinking mode. Models self-report as V3 regardless of actual version."
+      "notes": "Consumer interface at chat.deepseek.com. Pre-April 24, 2026: V3.2 (Instant/Fast) and V3.2-thinking (Expert/DeepThink, marketed as R1). Post-April 24, 2026: V4-Flash (Instant) and V4-Pro (Expert). DeepThink toggle rewired from R1 to V4 thinking mode. V4-Pro reached general availability August 13, 2026, adding a low/high/maximum reasoning-effort selector alongside the DeepThink toggle. Models self-report as V3 regardless of actual version."
     },
     "google": {
       "name": "Google",
@@ -6541,8 +6541,8 @@
       "id": 425,
       "vendor": "Google",
       "model_family": "google",
-      "model": "Gemini 3.6 Flash-Lite",
-      "model_notes": "Gemini 3.6 Flash-Lite — Google, released July 22, 2026 in the consumer interface (gemini.google.com / Gemini app), governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.1 Flash-Lite.",
+      "model": "Gemini 3.5 Flash-Lite",
+      "model_notes": "Gemini 3.5 Flash-Lite — Google, released July 22, 2026 in the consumer interface (gemini.google.com / Gemini app), governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.1 Flash-Lite.",
       "thinking": "off",
       "surface": "consumer",
       "result": "pass",
@@ -6555,8 +6555,8 @@
       "id": 426,
       "vendor": "Google",
       "model_family": "google",
-      "model": "Gemini 3.6 Flash-Lite",
-      "model_notes": "Gemini 3.6 Flash-Lite — Google, released July 22, 2026 in the consumer interface (gemini.google.com / Gemini app), governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.1 Flash-Lite.",
+      "model": "Gemini 3.5 Flash-Lite",
+      "model_notes": "Gemini 3.5 Flash-Lite — Google, released July 22, 2026 in the consumer interface (gemini.google.com / Gemini app), governed by an Extended Thinking On/Off toggle. Supersedes Gemini 3.1 Flash-Lite.",
       "thinking": "on",
       "surface": "consumer",
       "result": "pass-adjacent",
@@ -6916,9 +6916,43 @@
       "reasoning_trace_language": "English",
       "output_tokens": 986,
       "notes": "PASS-ADJACENT (conservative): the answer opens with the crispest statement of the constraint in the dataset — \"You have to drive it. Walking won't move the car.\" Those two sentences alone would be a winner's-circle pass. What follows is padding: a metric conversion, an argument that the dirt picked up en route is negligible, and a closing quip about walking for exercise. The trace is why this run matters. Roughly 986 tokens against a 120-token answer, and it finds the answer almost immediately — \"You need to bring car to carwash. Walking won't bring car. So drive.\" — then spends the remaining several hundred tokens refusing to stop. It re-opens the question repeatedly (\"Walking is probably better?\", \"Or walk to save fuel?\"), floats pushing the car by hand twice, considers asking a clarifying question, guesses at what joke the user wants, and restates its own conclusion at least eight times in different words before landing on the wording it already had. The correct answer is reached by exhaustion rather than by reasoning, and no step in the trace explains why the eventual phrasing beat the first one. One artifact worth noting: the trace closes on what looks like internal compliance scaffolding — \"We can comply. No policy issues. Output final.\" — a policy-check stage surfaced to the operator alongside the reasoning, and not reasoning about the question at all. TIMING CAVEAT: the model was only partially offloaded to the GPU, so the 3m38s reflects CPU-bound inference on a partly resident model, not the length of the deliberation; per the deployment-class note, offload split affects speed and not the outcome, and the token count is the honest measure of how much thinking happened."
+    },
+    {
+      "date": "2026-08-13",
+      "id": 448,
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V4-Pro",
+      "model_notes": "DeepSeek-V4-Pro at general availability, announced August 13, 2026 (api-docs.deepseek.com/news/news260813) and tested the same day in the consumer interface under Expert Mode. The GA release adds a flexible reasoning-effort selector (low / high / maximum) alongside agent upgrades and native OpenAI Responses API support; API model names are unchanged, and off-peak API pricing follows on August 16. These runs exercise the DeepThink toggle only — the new effort tiers are untested and remain open.",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass",
+      "response": "Drive — the car needs to get to the carwash, not just you.",
+      "token_estimate": 15,
+      "reasoning_trace": "We need answer user. Need parse. They ask: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" It's a trick? Carwash 100 feet away, car dirty. Should walk or drive? If you drive, you can wash car. If walk, car remains dirty. Need maybe humorous. Need answer concise. Could say drive, because you need the car at the carwash to wash it. Unless \"walk or drive\" to carwash? Obviously drive the car to carwash, even though short distance. Need maybe mention if you walk, you can't wash car unless carwash is for people? Let's craft.",
+      "reasoning_trace_language": "English",
+      "notes": "PASS: ~15 tokens — the constraint named and nothing else. Two firsts for this vendor: DeepSeek's first clean Pass anywhere in the English corpus, after four sessions since March that produced only verbose breakdowns, padded correct answers, and two outright fails; and its first entry in the winner's circle in any language (its Chinese pass runs 72 tokens, its French 57, both outside their script thresholds). The trace is worth reading against this vendor's history. It asks \"It's a trick?\", reaches the answer in two lines (\"If you drive, you can wash car. If walk, car remains dirty\"), and then, unlike the April V4-Pro run (#35), does not go looking for the riddle template: it checks the alternative reading, notes the humor option, and stops. Template capture was the failure mode that sank this exact model and toggle state in April; in August the trace passes within a sentence of it and keeps going."
+    },
+    {
+      "date": "2026-08-13",
+      "id": 449,
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V4-Pro",
+      "model_notes": "DeepSeek-V4-Pro at general availability, announced August 13, 2026 (api-docs.deepseek.com/news/news260813) and tested the same day in the consumer interface under Expert Mode. The GA release adds a flexible reasoning-effort selector (low / high / maximum) alongside agent upgrades and native OpenAI Responses API support; API model names are unchanged, and off-peak API pricing follows on August 16. These runs exercise the DeepThink toggle only — the new effort tiers are untested and remain open.",
+      "thinking": "off",
+      "surface": "consumer",
+      "result": "verbose",
+      "response": "This is a fun one — and the answer is probably walk, but let's break it down. If you drive:\n\n* You'll get the car washed, but you'll be driving a dirty car to the carwash (no real downside there).\n* You avoid carrying any cleaning supplies by hand.\n* You don't have to walk back or wait around if the carwash takes time.\n* But it's only 100 feet, so starting the car, pulling out, driving over, and parking might actually take longer than walking.\n\nIf you walk:\n\n* You can't take the car with you, so unless you're just going to check prices or grab something, walking alone doesn't clean the car.\n* If the plan is to drive it there anyway for washing, walking first only makes sense if you're scouting the line or getting change/tokens.\n\nSo the real answer: Drive the car to the carwash — it's the car that needs washing, not you. Walking there without the car doesn't solve the problem unless you're just checking if it's open.",
+      "token_estimate": 300,
+      "notes": "VERBOSE: the right destination by way of a two-column comparison, and the most self-contradicting correct answer in the dataset. It announces the wrong verdict in its first sentence — \"the answer is probably walk\" — builds the usual drive-versus-walk table underneath it, and then reverses itself outright at the end: \"So the real answer: Drive.\" The reversal happens in the visible answer rather than in a trace, which is the reason to log it. Where Qwen3.8-Max and Inkling argued their way to Walk inside the reasoning and emerged with Drive, this run publishes both verdicts to the user, in order, with the wrong one first and no acknowledgment that it changed its mind. A reader who stops after the opening line — the position a voice assistant or a snippet would take — gets Walk. The constraint is present and correctly stated in both halves (\"walking alone doesn't clean the car\"; \"it's the car that needs washing, not you\"), so the object was never actually lost; what failed is the ordering. Same toggle state that produced verbose-correct answers in April (#36) and May (#69): DeepThink Off has now been correct on the English prompt in three separate sessions and terse in none of them."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-08-13",
+      "summary": "DeepSeek-V4-Pro tested on its general-availability day (August 13, 2026) in the consumer interface across the DeepThink toggle. Both states hold the constraint, and the toggle splits on form rather than correctness. DeepThink On produces DeepSeek's first winner's-circle pass in the dataset's history — 15 tokens, \"Drive — the car needs to get to the carwash, not just you\" — from a fragmentary trace that asks \"It's a trick?\", solves it in two lines, and declines to reach for the riddle template that captured this same model and toggle state in April. DeepThink Off is the batch's finding: it opens by announcing \"the answer is probably walk,\" lays out a two-column comparison, then reverses to \"So the real answer: Drive\" without acknowledging the switch. Both verdicts are published to the reader, wrong one first — a self-reversal in the answer rather than in a trace, and a failure of ordering rather than of the logical object. The GA release also adds a low/high/maximum reasoning-effort selector; these runs exercise the DeepThink toggle only, so the effort tiers remain untested."
+    },
     {
       "date": "2026-08-11",
       "summary": "Meta Muse Glimmer 30B added as a new open-weight family, tested locally the day after release. Reasoning is always on with an unrestricted budget and no exposed control — the far end of a spectrum this record has been tracking all summer, from Inkling's six named levels through Anthropic's effort selectors to Qwen3.8-Max-Preview's toggle welded on. The answer is correct and opens with the sharpest statement of the constraint in the dataset, 'You have to drive it. Walking won't move the car,' then pads. The trace is the finding: 986 tokens against a 120-token answer, reaching the correct conclusion in its opening lines and then re-litigating it for hundreds more, floating pushing the car by hand, considering a clarifying question, and restating the same verdict eight times before settling on wording it already had. It also closes on visible compliance scaffolding — 'We can comply. No policy issues. Output final.' The model was only partially offloaded to the GPU, so the 3m38s deliberation time reflects CPU-bound inference rather than reasoning length."
@@ -6941,7 +6975,7 @@
     },
     {
       "date": "2026-07-22",
-      "summary": "Gemini 3.6 Flash-Lite and 3.6 Flash tested on launch day in the consumer interface, each across the new Extended Thinking On/Off toggle (four runs). All four hold the constraint. The story is the cheap tier: Gemini 3.1 Flash-Lite was the dataset's worst Gemini performer — it failed both toggles in Carwash III, its thinking-off run a 238-token breakdown recommending walking — and eleven days later 3.6 Flash-Lite passes both states, its Extended-Thinking-off run a ~16-token winner's-circle pass. Flash 3.6 holds both states as 3.5 did, staying correct but joke-forward."
+      "summary": "Gemini 3.5 Flash-Lite and 3.6 Flash tested on launch day in the consumer interface, each across the new Extended Thinking On/Off toggle (four runs). All four hold the constraint. The story is the cheap tier: Gemini 3.1 Flash-Lite was the dataset's worst Gemini performer — it failed both toggles in Carwash III, its thinking-off run a 238-token breakdown recommending walking — and eleven days later 3.5 Flash-Lite passes both states, its Extended-Thinking-off run a ~16-token winner's-circle pass. Flash 3.6 holds both states as 3.5 did, staying correct but joke-forward."
     },
     {
       "date": "2026-07-17",

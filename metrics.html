@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260814a">
+  <link rel="stylesheet" href="styles.css?v=20260814b">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -83,11 +83,14 @@
     </section>
 
     <section>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">01</span><span class="sec-name">Dataset</span></div>
       <h2>Dataset overview</h2>
+      <div id="stat-strip"></div>
       <div id="charts"></div>
     </section>
 
     <section>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">02</span><span class="sec-name">Over time</span></div>
       <h2>Over time</h2>
       <p class="chart-note">A note on how to read these. The first three charts are <strong>cumulative</strong> — each point covers every run recorded up to that date. That makes them stable measures of what the whole corpus says, but it also means a small recent batch barely moves them: by July the dataset held roughly two hundred runs, so adding a dozen cannot shift a median, and a cumulative count can only rise or flatten, never fall. The last chart is <strong>per-date</strong>, showing only the runs taken that day, and is where a recent sweep or collapse actually shows up.</p>
       <div id="chart-cumulative"></div>
@@ -97,11 +100,13 @@
     </section>
 
     <section>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">03</span><span class="sec-name">Configuration</span></div>
       <h2>By configuration</h2>
       <div id="chart-thinking"></div>
     </section>
 
     <section>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">04</span><span class="sec-name">Families</span></div>
       <h2>By model family</h2>
       <div id="chart-vendor"></div>
     </section>
@@ -109,6 +114,7 @@
     <hr class="corpus-divider">
 
     <section>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
       <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=215). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
       <table class="results-table cross-lang-table">
@@ -186,6 +192,7 @@
     </section>
 
     <section id="corpus-zh" lang="en">
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">06</span><span class="sec-name">Chinese</span></div>
       <h2>Simplified Chinese corpus</h2>
       <div class="corpus-prompt">
         <p class="corpus-prompt-label">Simplified Chinese prompt (35 m ≈ 115 ft)</p>
@@ -205,6 +212,7 @@
     </section>
 
     <section id="corpus-fr" lang="en">
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">07</span><span class="sec-name">French</span></div>
       <h2>French-language corpus</h2>
       <div class="corpus-prompt">
         <p class="corpus-prompt-label">French-language prompt (35 m ≈ 115 ft)</p>
@@ -221,6 +229,7 @@
     </section>
 
     <section id="corpus-uk" lang="en">
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">08</span><span class="sec-name">Ukrainian</span></div>
       <h2>Ukrainian-language corpus</h2>
       <div class="corpus-prompt">
         <p class="corpus-prompt-label">Ukrainian-language prompt (35 m ≈ 115 ft)</p>
@@ -238,6 +247,7 @@
     </section>
 
     <section id="cross-corpus">
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">09</span><span class="sec-name">Findings</span></div>
       <h2>Cross-corpus findings</h2>
       <p>Three findings emerge only when the corpora are read together — each isolates a variable that a single language could not.</p>
 
@@ -435,13 +445,14 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260814a"></script>
+  <script src="scripts.js?v=20260814b"></script>
   <script>
     (async function () {
       try {
         const data = await CarwashTest.loadData("");
         const eng = CarwashTest.englishRuns(data.runs);
         document.getElementById("legend").innerHTML = CarwashTest.renderLegend();
+        document.getElementById("stat-strip").innerHTML = CarwashTest.renderStatStrip(data.runs.filter(function(r){return r.deployment_class!=="open_weight";}), data.model_families);
         document.getElementById("charts").innerHTML = CarwashTest.renderCharts(eng);
         document.getElementById("chart-cumulative").innerHTML = CarwashTest.renderCumulativeArea(eng);
         document.getElementById("chart-verbosity").innerHTML = CarwashTest.renderVerbosityTrend(eng);

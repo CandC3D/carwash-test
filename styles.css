@@ -1223,3 +1223,169 @@ body:has(#vendor-rail) .page-header { max-width: 880px; }
 
 /* Figure cards and quote plates: hairline borders, square, no shadows */
 .chart-card-wide { border: 1px solid var(--hair); padding: 20px 22px; }
+
+/* ── Phase 2: instrument chart furniture ─────────────────────────────── */
+.chart-axis { stroke: var(--ink); stroke-width: 1.5; }
+.chart-gridline {
+  stroke: var(--hair);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.chart-catlabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  fill: var(--muted);
+}
+.chart-donut-n {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--muted);
+}
+.chart-donut-total {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  fill: var(--ink);
+}
+
+/* ── Phase 2: results-table treatment ────────────────────────────────────
+   Desktop: sticky column headers (the wrapper must NOT scroll, or it would
+   become the sticky confining box). Phones: the wrapper takes over as a
+   full-width horizontal scroller and stickiness yields to reachability. */
+.results-table thead th,
+.results-table thead th.sortable {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 2;
+}
+@media (max-width: 720px) {
+  .table-scroll { overflow-x: auto; }
+  .table-scroll .results-table { min-width: 640px; }
+  .results-table thead th,
+  .results-table thead th.sortable { position: relative; top: auto; }
+}
+
+/* ── Phase 2: transcript ledger ──────────────────────────────────────── */
+.transcript-entry {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 28px;
+  padding: 26px 0;
+}
+.run-rail {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.run-rail-id { color: var(--ink); font-weight: 600; font-size: 14px; }
+.run-rail-date { font-variant-numeric: tabular-nums; }
+.run-rail-cfg { line-height: 1.5; }
+.run-rail-lang {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+}
+.run-main { min-width: 0; }
+.run-main .transcript-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.run-main .transcript-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--faint);
+  margin: 0 0 12px;
+}
+.run-quote {
+  margin: 12px 0 0;
+  padding: 14px 18px;
+  background: var(--bg2);
+  border-left: 2px solid var(--ink);
+  font-size: 16px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+@media (max-width: 720px) {
+  .transcript-entry { grid-template-columns: 1fr; gap: 10px; }
+  .run-rail { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; }
+}
+
+/* ── Phase 2: numbered section rails (Metrics spine) ─────────────────── */
+section:has(> .sec-rail) {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  column-gap: 32px;
+  padding-top: 48px;
+  border-top: 1px solid var(--hair);
+  margin: 48px 0 0;
+}
+section:has(> .sec-rail) > * { grid-column: 2; min-width: 0; }
+section:has(> .sec-rail) > .sec-rail {
+  grid-column: 1;
+  grid-row: 1 / span 200;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sec-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+}
+.sec-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+@media (max-width: 720px) {
+  section:has(> .sec-rail) { display: block; }
+  section:has(> .sec-rail) > .sec-rail { flex-direction: row; gap: 10px; margin-bottom: 6px; }
+}
+
+/* ── Phase 2: stat strip ─────────────────────────────────────────────── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 2px solid var(--rule);
+  margin: 8px 0 24px;
+}
+.stat-cell {
+  padding: 14px 16px 14px 0;
+  border-left: 1px solid var(--hair);
+  padding-left: 16px;
+}
+.stat-cell:first-child { border-left: 0; padding-left: 0; }
+.stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 34px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.stat-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2px;
+}
+@media (max-width: 720px) {
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell { border-left: 0; padding-left: 0; }
+}

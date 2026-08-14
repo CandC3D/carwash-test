@@ -7,13 +7,21 @@
     "verbose": "Verbose",
     "fail": "Fail"
   };
+  // Compressed labels for the grade pills (CSS uppercases them). The full
+  // labels above remain the vocabulary for ARIA text and the CSV export.
+  const PILL_LABELS = {
+    "pass": "Pass",
+    "pass-adjacent": "Pass-adj",
+    "verbose": "Verbose",
+    "fail": "Fail"
+  };
 
   // Fill + label colors per result, matching the tally cards / badges.
   const RESULT_COLORS = {
-    "pass":          { fill: "var(--pass-bg)",    text: "var(--pass-text)" },
-    "pass-adjacent": { fill: "var(--passadj-bg)", text: "var(--passadj-text)" },
-    "verbose":       { fill: "var(--verbose-bg)", text: "var(--verbose-text)" },
-    "fail":          { fill: "var(--fail-bg)",    text: "var(--fail-text)" }
+    "pass":          { fill: "var(--pass-fill)",    text: "var(--pass-ink)" },
+    "pass-adjacent": { fill: "var(--padj-fill)",    text: "var(--padj-ink)" },
+    "verbose":       { fill: "var(--verbose-fill)", text: "var(--verbose-ink)" },
+    "fail":          { fill: "var(--fail-fill)",    text: "var(--fail-ink)" }
   };
   const RESULT_ORDER = ["pass", "pass-adjacent", "verbose", "fail"];
 
@@ -166,7 +174,7 @@
       '<td class="col-thinking" data-sort="' + (THINKING_SORT_RANK[r.thinking] !== undefined ? THINKING_SORT_RANK[r.thinking] : 99) + '">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
       '<td class="col-effort" data-sort="' + (EFFORT_SORT_RANK[r.effort] || 0) + '">' + escapeHTML(formatEffort(r.effort) || "—") + '</td>' +
       '<td class="col-date" data-sort="' + escapeHTML(r.date) + '">' + escapeHTML(formatDate(r.date)) + '</td>' +
-      '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + RESULT_LABELS[r.result] + '</span></td>' +
+      '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + PILL_LABELS[r.result] + '</span></td>' +
       '<td class="col-tokens" data-sort="' + tokens + '">' + tokenDisplay(r) + '</td>' +
       '</tr>';
   }
@@ -213,14 +221,14 @@
         : null;
       return buildRow(r, link);
     }).join("");
-    return '<table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table>';
+    return '<div class="table-scroll"><table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table></div>';
   }
 
   function renderResultsTableForFamily(runs) {
     const rows = runs.map(function (r) {
       return buildRow(r, "#run-" + r.id);
     }).join("");
-    return '<table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table>';
+    return '<div class="table-scroll"><table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table></div>';
   }
 
   function makeSortable(table) {
@@ -537,35 +545,43 @@
     const langAttr = run.language ? ' lang="' + escapeHTML(run.language) + '"' : '';
     const traceBlock = (run.reasoning_trace && run.reasoning_trace.trim())
       ? '<details class="reasoning-trace">' +
-          '<summary>Reasoning trace</summary>' +
+          '<summary>&#9656; Reasoning trace &middot; collapsed by default</summary>' +
           '<div' + langAttr + '>' + escapeHTML(run.reasoning_trace) + '</div>' +
         '</details>'
       : '';
+    // Ledger layout: a fixed left rail (run number, date, configuration,
+    // language) beside the entry body. The verbatim response is shown in
+    // full as a quote plate — no click to read the record — while the
+    // reasoning trace stays collapsed by default.
+    const cfgBits = [];
+    cfgBits.push('Thinking: ' + escapeHTML(formatThinking(run.thinking)));
+    if (run.effort) cfgBits.push('Effort: ' + escapeHTML(run.effort));
+    const railLang = runLang(run);
+    const BCP47 = { "zh-CN": "zh-Hans" };
+    const quoteLang = ' lang="' + (BCP47[railLang] || railLang) + '"';
+    const metaBits = [
+      '<span>' + escapeHTML(run.vendor) + '</span>',
+      surfaceSpan, verbositySpan, registerSpan, interfaceSpan, traceLangSpan
+    ].filter(Boolean).join('');
     return '<div class="transcript-entry" id="run-' + run.id + '">' +
-      '<div class="transcript-header">' +
-        '<span class="transcript-id">#' + run.id + '</span>' +
-        '<span class="transcript-model">' + escapeHTML(run.model) + '</span>' +
-        '<span class="transcript-meta">' +
-          '<span>' + escapeHTML(run.vendor) + '</span>' +
-          surfaceSpan +
-          '<span>Thinking: ' + escapeHTML(formatThinking(run.thinking)) + '</span>' +
-          effortSpan +
-          verbositySpan +
-          registerSpan +
-          interfaceSpan +
-          traceLangSpan +
-          '<span>' + escapeHTML(formatDate(run.date)) + '</span>' +
-          tokensSpan +
-          '<span><span class="badge ' + run.result + '">' + RESULT_LABELS[run.result] + '</span></span>' +
-        '</span>' +
+      '<div class="run-rail">' +
+        '<span class="run-rail-id transcript-id">#' + run.id + '</span>' +
+        '<span class="run-rail-date">' + escapeHTML(formatDate(run.date)) + '</span>' +
+        '<span class="run-rail-cfg">' + cfgBits.join('<br>') + '</span>' +
+        '<span class="run-rail-lang">' + escapeHTML(railLang) + '</span>' +
       '</div>' +
-      traceBlock +
-      '<details>' +
-        '<summary>Verbatim response</summary>' +
-        '<div' + langAttr + '>' + escapeHTML(run.response) + '</div>' +
-      '</details>' +
-      notesBlock +
-      attachmentBlock +
+      '<div class="run-main">' +
+        '<div class="transcript-header">' +
+          '<span class="transcript-model">' + escapeHTML(run.model) + '</span>' +
+          '<span class="badge ' + run.result + '">' + PILL_LABELS[run.result] + '</span>' +
+          tokensSpan +
+        '</div>' +
+        '<div class="transcript-meta">' + metaBits + '</div>' +
+        traceBlock +
+        '<blockquote class="run-quote"' + quoteLang + '>' + escapeHTML(run.response) + '</blockquote>' +
+        notesBlock +
+        attachmentBlock +
+      '</div>' +
       '</div>';
   }
 
@@ -688,9 +704,11 @@
       const c = RESULT_COLORS[k];
       body += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' +
         barW.toFixed(1) + '" height="' + bh.toFixed(1) +
-        '" rx="3" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:1"/>';
+        '" style="fill:' + c.fill + '"><title>' + RESULT_LABELS[k] + ' — ' + val + ' runs</title></rect>';
       body += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 7).toFixed(1) +
         '" text-anchor="middle" class="chart-value" style="fill:' + c.text + '">' + val + '</text>';
+      body += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (baseY + 15) +
+        '" text-anchor="middle" class="chart-catlabel">' + PILL_LABELS[k].toUpperCase() + '</text>';
     });
     const aria = "Bar chart of run counts: " +
       RESULT_ORDER.map(function (k) { return RESULT_LABELS[k] + " " + (t[k] || 0); }).join(", ");
@@ -699,55 +717,56 @@
   }
 
   function renderPieChart(t) {
-    // Share the bar chart's frame (320×240, same padding/baseline) so the two
-    // charts render at identical size — captions top-align and the baselines
-    // line up. The pie is centered in the plot area and sits just above the
-    // baseline; each slice is outlined in its category color like the bars.
+    // Stroked-circle donut sharing the bar chart's 320x240 frame. Segments run
+    // in the fixed grade order from 12 o'clock; the centre carries the n=
+    // figure in mono; each segment carries a <title> with count and share.
     const W = 320, H = 240, padTop = 26, padBottom = 24, padX = 18;
     const plotH = H - padTop - padBottom;
     const baseY = padTop + plotH;
-    // Gap matched to the bar/token charts so all baselines line up.
     const gap = 13;
-    // Pie matches a 100%-extension bar exactly: top and bottom aligned with
-    // the max bar (top at padTop, bottom `gap` above the baseline).
-    const pieTopY = padTop, pieBottomY = baseY - gap;
-    const r = (pieBottomY - pieTopY) / 2;
-    const cx = W / 2, cy = pieTopY + r;
+    const ringTopY = padTop, ringBottomY = baseY - gap;
+    const stroke = 30;
+    const r = (ringBottomY - ringTopY) / 2 - stroke / 2;
+    const cx = W / 2, cy = ringTopY + (ringBottomY - ringTopY) / 2;
     const total = RESULT_ORDER.reduce(function (s, k) { return s + (t[k] || 0); }, 0) || 1;
-    let angle = -Math.PI / 2; // start at 12 o'clock
+    let angle = -Math.PI / 2; // 12 o'clock
     let body = "";
     RESULT_ORDER.forEach(function (k) {
       const val = t[k] || 0;
       if (val <= 0) return;
       const frac = val / total;
       const c = RESULT_COLORS[k];
-      let d, lx = cx, ly = cy;
-      if (frac >= 0.9999) {
-        // Single category at 100%: draw a full circle as two arcs.
-        d = "M " + cx + " " + (cy - r) + " A " + r + " " + r + " 0 1 1 " +
-          (cx - 0.01).toFixed(2) + " " + (cy - r) + " Z";
-      } else {
-        const a2 = angle + frac * 2 * Math.PI;
-        const x1 = cx + r * Math.cos(angle), y1 = cy + r * Math.sin(angle);
-        const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
-        const large = frac > 0.5 ? 1 : 0;
-        d = "M " + cx + " " + cy + " L " + x1.toFixed(2) + " " + y1.toFixed(2) +
-          " A " + r + " " + r + " 0 " + large + " 1 " + x2.toFixed(2) + " " + y2.toFixed(2) + " Z";
-        const mid = (angle + a2) / 2;
-        const lr = r * 0.62;
-        lx = cx + lr * Math.cos(mid); ly = cy + lr * Math.sin(mid);
-        angle = a2;
-      }
-      body += '<path d="' + d + '" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:1"/>';
       const pct = Math.round(frac * 100);
-      body += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) +
-        '" text-anchor="middle" dominant-baseline="central" class="chart-value" style="fill:' +
-        c.text + '">' + pct + '%</text>';
+      const title = '<title>' + RESULT_LABELS[k] + ' — ' + val + ' runs (' + pct + '%)</title>';
+      if (frac >= 0.9999) {
+        body += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r +
+          '" fill="none" style="stroke:' + c.fill + ';stroke-width:' + stroke + '">' + title + '</circle>';
+        return;
+      }
+      // Shave a hair off each end so segments read as discrete units.
+      const seam = 0.012;
+      const a1 = angle + seam, a2 = angle + frac * 2 * Math.PI - seam;
+      const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+      const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
+      const large = (a2 - a1) > Math.PI ? 1 : 0;
+      body += '<path d="M ' + x1.toFixed(2) + ' ' + y1.toFixed(2) +
+        ' A ' + r + ' ' + r + ' 0 ' + large + ' 1 ' + x2.toFixed(2) + ' ' + y2.toFixed(2) +
+        '" fill="none" style="stroke:' + c.fill + ';stroke-width:' + stroke + '">' + title + '</path>';
+      // Percent label at the segment midpoint, on the ring, for readable shares.
+      if (frac >= 0.07) {
+        const mid = angle + frac * Math.PI;
+        const lx = cx + r * Math.cos(mid), ly = cy + r * Math.sin(mid);
+        body += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) +
+          '" text-anchor="middle" dominant-baseline="central" class="chart-value" style="fill:' +
+          c.text + '">' + pct + '%</text>';
+      }
+      angle += frac * 2 * Math.PI;
     });
-    // Baseline matching the bar chart's axis.
+    body += '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" class="chart-donut-n">n=</text>' +
+      '<text x="' + cx + '" y="' + (cy + 16) + '" text-anchor="middle" class="chart-donut-total">' + total + '</text>';
     body += '<line x1="' + padX + '" y1="' + baseY + '" x2="' + (W - padX) +
       '" y2="' + baseY + '" class="chart-axis"/>';
-    const aria = "Pie chart of result share: " +
+    const aria = "Donut chart of result share: " +
       RESULT_ORDER.map(function (k) {
         return RESULT_LABELS[k] + " " + Math.round((t[k] || 0) / total * 100) + "%";
       }).join(", ");
@@ -847,6 +866,28 @@
       '<figcaption>Median tokens by result</figcaption>' + svg +
       ratioNote + callout + qualifier +
     '</figure>';
+  }
+
+  // Stat strip (Metrics masthead): headline figures over a 2px ink rule.
+  function renderStatStrip(runs, families) {
+    const langs = new Set(runs.map(function (r) { return r.language || "en"; }));
+    const fams = new Set(runs.map(function (r) { return r.model_family; }));
+    const dates = new Set(runs.map(function (r) { return r.date; }));
+    const eng = runs.filter(function (r) { return !r.language || r.language === "en"; });
+    const engCommercial = eng.filter(function (r) { return r.deployment_class !== "open_weight"; });
+    const fails = engCommercial.filter(function (r) { return r.result === "fail"; }).length;
+    const failPct = engCommercial.length ? Math.round(100 * fails / engCommercial.length) : 0;
+    const cells = [
+      { v: engCommercial.length, l: "English runs" },
+      { v: fams.size, l: "Model families" },
+      { v: langs.size, l: "Languages" },
+      { v: failPct + "%", l: "English fail rate" },
+      { v: dates.size, l: "Test dates" }
+    ];
+    return '<div class="stat-strip">' + cells.map(function (c) {
+      return '<div class="stat-cell"><span class="stat-value">' + c.v +
+        '</span><span class="stat-label">' + c.l + '</span></div>';
+    }).join('') + '</div>';
   }
 
   function renderCharts(runs, opts) {
@@ -950,9 +991,19 @@
       let pts = [];
       for (let i = 0; i < n; i++) pts.push(x(i).toFixed(1) + "," + y(upper[i]).toFixed(1));
       for (let i = n - 1; i >= 0; i--) pts.push(x(i).toFixed(1) + "," + y(lower[i]).toFixed(1));
-      body += '<polygon points="' + pts.join(" ") + '" style="fill:' + c.fill + ';stroke:' + c.text + ';stroke-width:1"/>';
+      body += '<polygon points="' + pts.join(" ") + '" style="fill:' + c.fill + ';fill-opacity:0.35;stroke:' + c.text + ';stroke-width:1.5"/>';
       lower = upper;
     });
+    // Annotation at the Carwash III discontinuity + accent endpoint dot.
+    const anIdx = dates.indexOf("2026-07-11");
+    if (anIdx >= 0) {
+      const cum7 = runs.filter(function (r) { return r.date <= "2026-07-11"; }).length;
+      body += '<line x1="' + x(anIdx).toFixed(1) + '" y1="' + y(cum7).toFixed(1) + '" x2="' + x(anIdx).toFixed(1) +
+        '" y2="' + (y(cum7) - 22).toFixed(1) + '" class="chart-gridline"/>';
+      body += '<text x="' + x(anIdx).toFixed(1) + '" y="' + (y(cum7) - 28).toFixed(1) +
+        '" text-anchor="middle" class="chart-tick">Carwash III — Jul 11</text>';
+    }
+    body += '<circle cx="' + x(n - 1).toFixed(1) + '" cy="' + y(total).toFixed(1) + '" r="4" style="fill:var(--acc)"/>';
     dates.forEach(function (d, i) {
       body += '<text x="' + x(i).toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" class="chart-tick">' + escapeHTML(_shortDate(d)) + '</text>';
     });
@@ -970,6 +1021,10 @@
     const y = function (v) { return baseY - (v / opts.yMax) * plotH; };
     let body = '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" class="chart-axis"/>';
     (opts.ticks || [0, opts.yMax]).forEach(function (v) {
+      if (v > 0) {
+        body += '<line x1="' + padL + '" y1="' + y(v).toFixed(1) + '" x2="' + (W - padR) +
+          '" y2="' + y(v).toFixed(1) + '" class="chart-gridline"/>';
+      }
       body += '<text x="' + (padL - 6) + '" y="' + (y(v) + 3).toFixed(1) + '" text-anchor="end" class="chart-tick">' + opts.fmt(v) + '</text>';
     });
     opts.series.forEach(function (s) {
@@ -979,9 +1034,12 @@
       s.vals.forEach(function (v, i) {
         if (v != null) body += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(v).toFixed(1) + '" r="' + (s.radii ? s.radii[i].toFixed(1) : "2.5") + '" style="fill:' + s.color + '"/>';
       });
-      // end label
+      // accent endpoint dot + end label
       let li = s.vals.length - 1; while (li >= 0 && s.vals[li] == null) li--;
-      if (li >= 0) body += '<text x="' + (x(li) + 6).toFixed(1) + '" y="' + (y(s.vals[li]) + 3).toFixed(1) + '" class="chart-endlabel" style="fill:' + s.color + '">' + escapeHTML(s.label) + '</text>';
+      if (li >= 0) {
+        body += '<circle cx="' + x(li).toFixed(1) + '" cy="' + y(s.vals[li]).toFixed(1) + '" r="4" style="fill:var(--acc)"/>';
+        body += '<text x="' + (x(li) + 8).toFixed(1) + '" y="' + (y(s.vals[li]) + 3).toFixed(1) + '" class="chart-endlabel" style="fill:' + s.color + '">' + escapeHTML(s.label) + '</text>';
+      }
     });
     opts.dates.forEach(function (d, i) {
       body += '<text x="' + x(i).toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" class="chart-tick">' + escapeHTML(_shortDate(d)) + '</text>';
@@ -1166,6 +1224,7 @@
     renderVerbosityTrend: renderVerbosityTrend,
     renderCostRatioTrend: renderCostRatioTrend,
     renderHoldRateByDate: renderHoldRateByDate,
+    renderStatStrip: renderStatStrip,
     renderResultByThinking: renderResultByThinking,
     renderVendorComparison: renderVendorComparison,
     renderResultsTable: renderResultsTable,

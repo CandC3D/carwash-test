@@ -37,8 +37,13 @@
      spacing scale: 4-base — 4 / 8 / 12 / 16 / 24 / 32 / 48 / 56 */
 }
 
+/* Dark palette. Three states: an explicit choice stamps data-theme on the
+   root element and wins in both directions; with no attribute set, the
+   system preference decides. The dark block appears twice by necessity —
+   once guarded for system-dark, once for the explicit override. Keep the
+   two lists identical when editing. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #151513;
     --bg2: #1d1d1a;
     --ink: #e9e7df;
@@ -53,6 +58,21 @@
     --verbose-bg: #3a2f10;  --verbose-ink: #e3c05e;  --verbose-fill: #bd9a34;
     --fail-bg: #3c1b17;     --fail-ink: #f09a8f;     --fail-fill: #bd6a60;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #151513;
+  --bg2: #1d1d1a;
+  --ink: #e9e7df;
+  --muted: #a3a196;
+  --faint: #6e6d64;
+  --hair: #2e2e29;
+  --rule: #e9e7df;
+  --acc: #ff8b2b;
+  --link: #ff9d4d;
+  --pass-bg: #24361f;     --pass-ink: #a8d694;     --pass-fill: #6f9e53;
+  --padj-bg: #1c332e;     --padj-ink: #8fcfbf;     --padj-fill: #549586;
+  --verbose-bg: #3a2f10;  --verbose-ink: #e3c05e;  --verbose-fill: #bd9a34;
+  --fail-bg: #3c1b17;     --fail-ink: #f09a8f;     --fail-fill: #bd6a60;
 }
 
 /* Legacy aliases — pre-redesign names still referenced below and in
@@ -1397,3 +1417,18 @@ section:has(> .sec-rail) > .sec-rail {
   font-size: 10px;
   letter-spacing: 0.02em;
 }
+
+/* ── Theme toggle (top rail, right-aligned) ──────────────────────────── */
+.theme-toggle {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--hair);
+  padding: 3px 9px;
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink); }

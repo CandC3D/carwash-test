@@ -1004,12 +1004,27 @@
         '" text-anchor="middle" class="chart-tick">Carwash III — Jul 11</text>';
     }
     body += '<circle cx="' + x(n - 1).toFixed(1) + '" cy="' + y(total).toFixed(1) + '" r="4" style="fill:var(--acc)"/>';
+    const showTick = _dateTicks(n, plotW);
     dates.forEach(function (d, i) {
+      if (!showTick[i]) return;
       body += '<text x="' + x(i).toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" class="chart-tick">' + escapeHTML(_shortDate(d)) + '</text>';
     });
     return '<figure class="chart-card chart-card-wide"><figcaption>Cumulative runs by result</figcaption>' +
       '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Cumulative runs by result across ' + n + ' snapshots, ending at ' + total + ' runs." class="chart-svg">' + body + '</svg>' +
       '<p class="chart-note">Each run is a different model on the lineup available that date — this tracks the growing corpus, not any single model over time.</p></figure>';
+  }
+
+  // X-axis date labels: with 20+ test dates a label per point collides.
+  // Pick a step so labels keep ~52px clearance; always keep the first and
+  // last, and drop the runner-up tick if it would crowd the final label.
+  function _dateTicks(n, plotW) {
+    const step = Math.max(1, Math.ceil((n * 68) / Math.max(plotW, 1)));
+    const show = [];
+    for (let i = 0; i < n; i++) {
+      if (i === n - 1) { show.push(true); continue; }
+      show.push(i % step === 0 && (n - 1 - i) >= step / 2);
+    }
+    return show;
   }
 
   function _lineChart(opts) {
@@ -1041,7 +1056,9 @@
         body += '<text x="' + (x(li) + 8).toFixed(1) + '" y="' + (y(s.vals[li]) + 3).toFixed(1) + '" class="chart-endlabel" style="fill:' + s.color + '">' + escapeHTML(s.label) + '</text>';
       }
     });
+    const showTick = _dateTicks(n, plotW);
     opts.dates.forEach(function (d, i) {
+      if (!showTick[i]) return;
       body += '<text x="' + x(i).toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" class="chart-tick">' + escapeHTML(_shortDate(d)) + '</text>';
     });
     return '<figure class="chart-card chart-card-wide"><figcaption>' + escapeHTML(opts.caption) + '</figcaption>' +
@@ -1241,4 +1258,53 @@
     renderChangeLog: renderChangeLog,
     showError: showError
   };
+
+  // ── Theme toggle ─────────────────────────────────────────────────────
+  // Three states cycling System → Light → Dark. An explicit choice stamps
+  // data-theme on <html> (the CSS override blocks pick it up) and persists
+  // in localStorage; System clears both. The early restore in each page's
+  // head applies the stored theme before first paint, so there is no flash.
+  // The button installs itself into the cross-site top rail on every page.
+  (function () {
+    const KEY = "carwash-theme";
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(theme) {
+      if (theme === "light" || theme === "dark") {
+        document.documentElement.setAttribute("data-theme", theme);
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+    }
+    function label(theme) {
+      return "Theme: " + (theme === "light" ? "Light" : theme === "dark" ? "Dark" : "System");
+    }
+    function install() {
+      const rail = document.querySelector(".page-header-nav");
+      if (!rail) return;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "theme-toggle";
+      btn.setAttribute("aria-label", "Switch color theme");
+      let current = stored();
+      btn.textContent = label(current);
+      btn.addEventListener("click", function () {
+        current = current === null ? "light" : current === "light" ? "dark" : null;
+        try {
+          if (current) localStorage.setItem(KEY, current);
+          else localStorage.removeItem(KEY);
+        } catch (e) { /* private mode: theme still applies for this page view */ }
+        apply(current);
+        btn.textContent = label(current);
+      });
+      rail.appendChild(btn);
+    }
+    apply(stored());
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", install);
+    } else {
+      install();
+    }
+  })();
 })(window);

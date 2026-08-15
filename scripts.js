@@ -579,7 +579,7 @@
         '<span class="run-rail-id transcript-id">#' + run.id + '</span>' +
         '<span class="run-rail-date">' + escapeHTML(formatDate(run.date)) + '</span>' +
         '<span class="run-rail-cfg">' + cfgBits.join('<br>') + '</span>' +
-        '<span class="run-rail-lang">' + escapeHTML(railLang) + '</span>' +
+        '<span class="run-rail-lang" title="Prompt language of the run">' + escapeHTML(langShort(run)) + '</span>' +
       '</div>' +
       '<div class="run-main">' +
         '<div class="transcript-header">' +

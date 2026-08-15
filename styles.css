@@ -1410,12 +1410,15 @@ section:has(> .sec-rail) > .sec-rail {
   .stat-cell { border-left: 0; padding-left: 0; }
 }
 
-/* Donut percent labels: sized to sit comfortably inside the 30px band */
+/* Donut percent labels: sized to sit inside the 30px band, and lettered in
+   a fixed near-black — the fill bands are mid-tones in BOTH themes, so dark
+   lettering carries the contrast where the theme-flipped grade inks cannot. */
 .chart-donut-pct {
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 10px;
   letter-spacing: 0.02em;
+  fill: #1a1a17;
 }
 
 /* ── Theme toggle (top rail, right-aligned) ──────────────────────────── */

@@ -757,8 +757,7 @@
         const mid = angle + frac * Math.PI;
         const lx = cx + r * Math.cos(mid), ly = cy + r * Math.sin(mid);
         body += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) +
-          '" text-anchor="middle" dominant-baseline="central" class="chart-donut-pct" style="fill:' +
-          c.text + '">' + pct + '%</text>';
+          '" text-anchor="middle" dominant-baseline="central" class="chart-donut-pct">' + pct + '%</text>';
       }
       angle += frac * 2 * Math.PI;
     });

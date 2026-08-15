@@ -982,7 +982,7 @@
     {
       "id": 74,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Plus",
       "thinking": "auto",
@@ -993,7 +993,7 @@
     {
       "id": 75,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Plus",
       "thinking": "on",
@@ -1004,7 +1004,7 @@
     {
       "id": 76,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Plus",
       "thinking": "fast",
@@ -1015,7 +1015,7 @@
     {
       "id": 77,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Max-Preview",
       "thinking": "on",
@@ -1026,7 +1026,7 @@
     {
       "id": 78,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Max-Preview",
       "thinking": "fast",
@@ -1037,7 +1037,7 @@
     {
       "id": 79,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-27B",
       "thinking": "on",
@@ -1048,7 +1048,7 @@
     {
       "id": 80,
       "date": "2026-05-03",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-27B",
       "thinking": "fast",
@@ -1208,7 +1208,7 @@
     {
       "id": 94,
       "date": "2026-05-25",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "fast",
@@ -1219,7 +1219,7 @@
     {
       "id": 95,
       "date": "2026-05-25",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "on",
@@ -1230,7 +1230,7 @@
     {
       "id": 96,
       "date": "2026-05-25",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max-Preview",
       "thinking": "on",
@@ -1241,7 +1241,7 @@
     {
       "id": 97,
       "date": "2026-05-25",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus-Preview",
       "thinking": "on",
@@ -1356,7 +1356,7 @@
     {
       "id": 105,
       "date": "2026-05-27",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "n/a",
@@ -1371,7 +1371,7 @@
     {
       "id": 106,
       "date": "2026-05-27",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max-Preview",
       "thinking": "n/a",
@@ -1386,7 +1386,7 @@
     {
       "id": 107,
       "date": "2026-05-27",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus-Preview",
       "thinking": "n/a",
@@ -1866,7 +1866,7 @@
     },
     {
       "date": "2026-05-28",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "n/a",
@@ -1882,7 +1882,7 @@
     },
     {
       "date": "2026-05-28",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max-Preview",
       "thinking": "n/a",
@@ -1898,7 +1898,7 @@
     },
     {
       "date": "2026-05-28",
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus-Preview",
       "thinking": "n/a",
@@ -3505,7 +3505,7 @@
     {
       "date": "2026-07-11",
       "id": 234,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "on",
@@ -3520,7 +3520,7 @@
     {
       "date": "2026-07-11",
       "id": 235,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "fast",
@@ -3533,7 +3533,7 @@
     {
       "date": "2026-07-11",
       "id": 236,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "auto",
@@ -3548,7 +3548,7 @@
     {
       "date": "2026-07-11",
       "id": 237,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "on",
@@ -3563,7 +3563,7 @@
     {
       "date": "2026-07-11",
       "id": 238,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "fast",
@@ -3576,7 +3576,7 @@
     {
       "date": "2026-07-11",
       "id": 239,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Plus",
       "thinking": "on",
@@ -3591,7 +3591,7 @@
     {
       "date": "2026-07-11",
       "id": 240,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Plus",
       "thinking": "fast",
@@ -3604,7 +3604,7 @@
     {
       "date": "2026-07-11",
       "id": 241,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.6-Plus",
       "thinking": "auto",
@@ -4717,7 +4717,7 @@
     {
       "date": "2026-07-11",
       "id": 319,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "on",
@@ -4734,7 +4734,7 @@
     {
       "date": "2026-07-11",
       "id": 320,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "on",
@@ -4752,7 +4752,7 @@
     {
       "date": "2026-07-11",
       "id": 321,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "on",
@@ -4770,7 +4770,7 @@
     {
       "date": "2026-07-11",
       "id": 322,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "fast",
@@ -4785,7 +4785,7 @@
     {
       "date": "2026-07-11",
       "id": 323,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "fast",
@@ -4801,7 +4801,7 @@
     {
       "date": "2026-07-11",
       "id": 324,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Max",
       "thinking": "fast",
@@ -4817,7 +4817,7 @@
     {
       "date": "2026-07-11",
       "id": 325,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "on",
@@ -4834,7 +4834,7 @@
     {
       "date": "2026-07-11",
       "id": 326,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "on",
@@ -4852,7 +4852,7 @@
     {
       "date": "2026-07-11",
       "id": 327,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "on",
@@ -4870,7 +4870,7 @@
     {
       "date": "2026-07-11",
       "id": 328,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "fast",
@@ -4885,7 +4885,7 @@
     {
       "date": "2026-07-11",
       "id": 329,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "fast",
@@ -4901,7 +4901,7 @@
     {
       "date": "2026-07-11",
       "id": 330,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.7-Plus",
       "thinking": "fast",
@@ -6647,7 +6647,7 @@
     {
       "date": "2026-07-30",
       "id": 432,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max-Preview",
       "model_notes": "Qwen3.8-Max-Preview — Alibaba's next Max-tier preview, available in the consumer interface as of July 30, 2026. A thinking toggle is present but permanently enabled: it cannot be switched off, so unlike every earlier Qwen model there is no Fast or thinking-off state to test.",
@@ -6663,7 +6663,7 @@
     {
       "date": "2026-08-03",
       "id": 433,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6677,7 +6677,7 @@
     {
       "date": "2026-08-03",
       "id": 434,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6693,7 +6693,7 @@
     {
       "date": "2026-08-03",
       "id": 435,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6709,7 +6709,7 @@
     {
       "date": "2026-08-03",
       "id": 436,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6726,7 +6726,7 @@
     {
       "date": "2026-08-03",
       "id": 437,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6745,7 +6745,7 @@
     {
       "date": "2026-08-03",
       "id": 438,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6764,7 +6764,7 @@
     {
       "date": "2026-08-03",
       "id": 439,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6781,7 +6781,7 @@
     {
       "date": "2026-08-03",
       "id": 440,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6800,7 +6800,7 @@
     {
       "date": "2026-08-03",
       "id": 441,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6819,7 +6819,7 @@
     {
       "date": "2026-08-03",
       "id": 442,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6835,7 +6835,7 @@
     {
       "date": "2026-08-03",
       "id": 443,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6853,7 +6853,7 @@
     {
       "date": "2026-08-03",
       "id": 444,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (Qwen)",
       "model_family": "qwen",
       "model": "Qwen3.8-Max",
       "model_notes": "Qwen3.8-Max — Alibaba's Max-tier general release, tested in the consumer interface. Three reasoning modes: Fast, Thinking, and Auto. The Qwen3.8-Max-Preview tested on July 30 shipped with its thinking toggle locked on; the general release restores the full mode selector.",
@@ -6950,7 +6950,7 @@
     {
       "date": "2026-08-15",
       "id": 450,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
       "model": "Qwen3.8 27B (Q4_K_M)",
       "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
@@ -6968,7 +6968,7 @@
     {
       "date": "2026-08-15",
       "id": 451,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
       "model": "Qwen3.8 27B (Q4_K_M)",
       "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
@@ -6986,7 +6986,7 @@
     {
       "date": "2026-08-15",
       "id": 452,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
       "model": "Qwen3.8 27B (Q4_K_M)",
       "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
@@ -7004,7 +7004,7 @@
     {
       "date": "2026-08-15",
       "id": 453,
-      "vendor": "Qwen (Alibaba)",
+      "vendor": "Alibaba (open-weight)",
       "model_family": "qwen_ow",
       "model": "Qwen3.8 27B (Q4_K_M)",
       "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",

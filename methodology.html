@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815f">
+  <link rel="stylesheet" href="styles.css?v=20260815g">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -354,17 +354,17 @@
           <tr><td>Z.ai</td><td>GLM</td><td>5.2</td><td>First-party cloud model. Control surface: a Deep Think reasoning toggle with a High/Max effort selector, plus Deep Think Off. Tested June 22, 2026 across four languages in all three states; retested in English July 11.</td></tr>
           <tr><td>Z.ai</td><td>GLM</td><td>5.1, 5-Turbo</td><td>Legacy and fast tiers selectable at chat.z.ai alongside 5.2, each with a plain thinking On/Off toggle. Tested July 11, 2026.</td></tr>
           <tr><td>Sakana AI</td><td>Namazu</td><td>Alpha (α版)</td><td>Japanese-adapted model on Sakana Chat (released March 24, 2026), post-trained on open-weight frontier bases (Namazu-DeepSeek-V3.1-Terminus, Llama-3.1-Namazu-405B, Namazu-gpt-oss-120B). Reasoning always on (no selector); integrated web search always on. Register selector — Standard / Polite / Osaka-Kansai — and a Japanese/English interface toggle. Tested June 23, 2026.</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen3.6-27B</td><td>—</td><td>Thinking / Fast modes</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Max</td><td>—</td><td>Fast / Thinking modes; tested May 25, 2026</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Max-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen3.7-Plus-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen</td><td>3.8-Max-Preview</td><td>In the consumer interface as of July 30, 2026. A thinking toggle is shown but is permanently on and cannot be switched off, so the model has no testable Fast state.</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.6-Plus</td><td>—</td><td>Auto / Thinking / Fast modes</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.6-Max-Preview</td><td>—</td><td>Thinking / Fast modes</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.6-27B</td><td>—</td><td>Thinking / Fast modes</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.7-Max</td><td>—</td><td>Fast / Thinking modes; tested May 25, 2026</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.7-Max-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.7-Plus-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.8-Max-Preview</td><td>—</td><td>In the consumer interface as of July 30, 2026. A thinking toggle is shown but is permanently on and cannot be switched off, so the model has no testable Fast state.</td></tr>
           <tr><td>Qwen (Alibaba, open-weight)</td><td>Qwen3.8 27B</td><td><code>Qwen3.8-27B-Q4_K_M.gguf</code></td><td>Released August 14, 2026. Compact dense vision-language model on the Qwen3.5 architecture; 262,144-token native context. Run in LM Studio at Q4_K_M (17.74 GB), partially GPU-offloaded. Thinking on/off toggle plus effort levels Extra High / Medium / Low — no plain High.</td></tr>
           <tr><td>Meta (open-weight)</td><td>Muse Glimmer 30B</td><td><code>Muse-Glimmer-30B</code></td><td>Released August 10, 2026 under Apache 2.0. A 30B dense model for always-on local agent workflows, sized for a single consumer GPU, with text and image input and speculative decoding via DFlash. Meta advertises controllable effort; the downloaded build as tested runs reasoning on by default with an unrestricted budget and no exposed control. Run in LM Studio, partially GPU-offloaded.</td></tr>
           <tr><td>PrismML (open-weight)</td><td>Bonsai 27B</td><td><code>Bonsai-27B-Q1_0.gguf</code></td><td>Released July 14, 2026 under Apache 2.0. A compression of Qwen3.6 27B (dense) keeping a 262K-token context and multimodality via a 4-bit vision tower; shipped in ternary (~5.9 GB) and 1-bit (~3.9 GB) builds. Tested on the 1-bit build, 4.73 GB on disk, in LM Studio. Single Think on/off toggle.</td></tr>
-          <tr><td>Qwen (Alibaba)</td><td>Qwen</td><td>3.8-Max</td><td>General release, tested August 3, 2026. Three reasoning modes — Fast, Thinking, and Auto — restoring the selector the Preview had locked on four days earlier.</td></tr>
+          <tr><td>Alibaba (Qwen)</td><td>Qwen3.8-Max</td><td>—</td><td>General release, tested August 3, 2026. Three reasoning modes — Fast, Thinking, and Auto — restoring the selector the Preview had locked on four days earlier.</td></tr>
           <tr><td>Alibaba (open-weight)</td><td>Qwen3.6 27B</td><td><code>Q4_K_M GGUF</code></td><td>Open-weight Qwen, run locally on consumer desktop hardware (RTX 5060 Ti 16GB) via LM Studio — distinct from the Alibaba cloud Qwen product. Thinking on/off toggle.</td></tr>
           <tr><td>Thinking Machines</td><td>Inkling</td><td>—</td><td>Open-weights Mixture-of-Experts (975B total / 41B active), 1M context, natively multimodal; released July 15, 2026 with full weights. No consumer interface — tested July 16 in the Tinker console’s Inkling Playground. Six-level Reasoning Level selector (None/Minimum/Low/Medium/High/Extra High, default High) — per the model card, a discretization of a continuous 0–1 effort parameter; web-search toggle off for all runs. Apache 2.0.</td></tr>
           <tr><td>Moonshot AI</td><td>Kimi K2.6</td><td>—</td><td>Instant / Thinking modes (Agent and Agent Swarm excluded)</td></tr>
@@ -487,7 +487,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260815f"></script>
+  <script src="scripts.js?v=20260815g"></script>
   <script>
     (async function () {
       try {

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815c">
+  <link rel="stylesheet" href="styles.css?v=20260815f">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -118,7 +118,7 @@
       <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
       <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=215). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
-      <table class="results-table cross-lang-table">
+      <div class="table-scroll"><table class="results-table cross-lang-table">
         <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian</caption>
         <thead>
           <tr><th scope="col">Model</th><th scope="col">Toggle</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th><th scope="col">Ukrainian</th></tr>
@@ -176,7 +176,7 @@
           <tr><td>Qwen3.8-Max</td><td>Thinking</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass">Pass</span></td></tr>
           <tr><td>Qwen3.8-Max</td><td>Auto</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge verbose">Verbose</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
       <ul class="findings-list">
         <li><strong>Fable 5 is the first model with a clean four-language pass record.</strong> Before June 9, every model tested in more than one language failed in at least one: Chinese defeated both Opus generations and every GPT; Ukrainian broke Sonnet 4.6's thinking-off states. Whether the clean sweep reflects Mythos-class capability, training-data composition, or the trace-language match documented below is undetermined: one model, one snapshot. On June 22, GLM-5.2 (Z.ai) became the second model to clear all four languages — a clean hold in every Deep Think state — so the four-language sweep is no longer a sample of one, though it remains rare. Carwash III (July 11) doubled the club: <strong>ChatGPT-5.6 Sol went eight-for-eight</strong> across the four languages in both effort tiers — every answer a winner's-circle one-liner — and <strong>Qwen3.7-Max held every state</strong> in both modes; Fable 5 and GLM-5.2 re-verified their sweeps, and Opus 4.8 swept all six non-English states under the new toggle+effort UI. Kimi K3 (July 17) makes five: twelve Drives in twelve runs across four languages and both variants — six days after Kimi K2.6 went one-for-eight, the largest single-generation reversal in the dataset. <strong>Qwen3.8-Max (August 3) makes six</strong>, and it is the first to sweep on a mode selector rather than a toggle: twelve Drives across four languages in Fast, Thinking, and Auto alike. Its Fast mode holds everywhere its predecessors broke — Qwen3.7-Plus Fast failed English, Chinese, and Ukrainian; Qwen3.6-Plus failed in Fast and Auto both.</li>
         <li><strong>Chinese defeats models that pass in English and French.</strong> Opus 4.7, GPT 5.5 On, and GPT 5.2 On all hold the constraint in English, hold (mostly) in French, and fail in Chinese. The language is an independent variable.</li>
@@ -254,7 +254,7 @@
 
       <h3>Models reason in a dominant internal language, then translate</h3>
       <p>Several Ukrainian runs exposed a reasoning trace in a language other than the prompt or the answer. The model handled the logical constraint in its dominant internal language and translated only the final output into Ukrainian.</p>
-      <table class="results-table">
+      <div class="table-scroll"><table class="results-table">
         <caption>Reasoning-trace language vs. response language, where the trace was observable</caption>
         <thead><tr><th scope="col">Model</th><th scope="col">Surface / toggle</th><th scope="col">Reasoned in</th><th scope="col">Answered in</th></tr></thead>
         <tbody>
@@ -274,13 +274,13 @@
           <tr><td><strong>Qwen3.8-Max</strong></td><td>Consumer, Thinking &amp; Auto (August 3)</td><td><strong>Mixed — switches mid-trace</strong></td><td>French / Ukrainian</td></tr>
           <tr><td>Qwen3.8-Max</td><td>Consumer, Thinking &amp; Auto (August 3)</td><td>Chinese</td><td>Chinese</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="chart-note">DeepSeek reasoning in Russian on a Ukrainian prompt is notable given the political context; the trace language is a property of the training distribution, not the prompt.</p>
       <p>Fable 5 is the first model in the dataset observed reasoning in the prompt's language in every language tested — and the first model with a clean four-language pass record. Every previously tested model that exposed a trace reasoned in a dominant internal language (English, Russian, or Chinese) and translated outward, and every previously tested model failed in at least one language. The correlation supports the trace-language-match hypothesis: language-dependent failures may enter at the translation boundary between the model's internal working language and its output language. One model; correlation only; stated at that weight. Carwash III (July 11) collected trace language across every model that exposes one — and complicated the hypothesis: Qwen3.7-Max swept all four languages <em>while</em> reasoning in mixed English, and ChatGPT-5.6 Sol swept with no observable trace at all, so a trace-language match is evidently not <em>necessary</em> for a clean record. DeepSeek's Russian-on-Ukrainian pairing, first seen in V4-Flash, reappeared in V4-Pro. And Namazu extended the mismatch from reasoning to output, answering the Chinese prompt in Japanese. Kimi K3 (July 17) reasons in English on every non-English prompt at both tiers even while sweeping all four languages — which sharpens a standard this record now tracks: from the operator’s side, the trace is part of the product, and a reasoning trace the operator cannot read fails at its one job of making the reasoning inspectable, whatever the verdict. Trace language does not change a score; it is recorded and weighed here. Qwen3.8-Max (August 3) breaks the pattern in a new way: its French and Ukrainian traces do not pick a language and stay there — they switch between the prompt language and English mid-stream, sometimes several times in one trace, while its Chinese traces stay wholly in Chinese. A trace that changes language partway is readable to no one in particular.</p>
 
       <h3>Reasoning effort is a continuous variable, not a toggle</h3>
       <p>Anthropic's new effort selector (and OpenAI's console effort control) make the amount of reasoning a dial rather than an on/off switch. The same model can pass or fail depending on where the dial sits.</p>
-      <table class="results-table">
+      <div class="table-scroll"><table class="results-table">
         <caption>Claude Sonnet 4.6 on the Ukrainian prompt, by effort level</caption>
         <thead><tr><th scope="col">Surface / toggle</th><th scope="col">Effort</th><th scope="col">Result</th></tr></thead>
         <tbody>
@@ -290,10 +290,10 @@
           <tr><td>Consumer, Adaptive On</td><td>Low</td><td><span class="badge fail">Fail</span></td></tr>
           <tr><td>Consumer, Adaptive Off</td><td>Low</td><td><span class="badge fail">Fail</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <p><strong>Inkling puts the whole dial in one model.</strong> Thinking Machines' open-weights model (July 16) exposes six named Reasoning Levels, and across them the verdict flips exactly once: None, Minimum, and Low recommend walking; Medium, High, and Extra High drive. Below the threshold the distance wins; above it the object does. Per the model card, those six names discretize a continuous effort parameter running from zero to one — the vendor's own benchmarks report effort=0.99 — so the real threshold sits at some value between Low and Medium, and the selector only samples it. This is an open-weight result, excluded from the commercial corpora, and it is the cleanest effort threshold on record.</p>
-      <table class="results-table">
+      <div class="table-scroll"><table class="results-table">
         <caption>Inkling (Thinking Machines, open-weight) on the English prompt, by Reasoning Level</caption>
         <thead><tr><th scope="col">Reasoning Level</th><th scope="col">Verdict</th><th scope="col">Result</th></tr></thead>
         <tbody>
@@ -304,12 +304,12 @@
           <tr><td>High (default)</td><td>Drive</td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
           <tr><td>Extra High</td><td>Drive</td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="chart-note">The Low run is the sharpest split in the dataset between what a model reasons and what it answers. Its visible trace concludes that the car has to be driven regardless; the answer beneath it recommends walking, in text verbatim identical to the Minimum response. On this evidence the trace is not a window onto the deliberation that produced the answer. It is a second output. Qwen3.8-Max (August 3) supplies the mirror case: two of its traces argue their way to Walk in full, under their own headings, before reversing to Drive and answering correctly. The trace and the answer can diverge in either direction. DeepSeek-V4-Pro (August 13, DeepThink Off) collapses the distinction: it performs the same reversal inside the visible answer, opening with "the answer is probably walk" and closing on "So the real answer: Drive." Where Inkling and Qwen kept one verdict hidden, this run hands the reader both, wrong one first, with nothing marking the change of mind — the divergence surfaced into the output a user actually receives.</p>
 
       <h3>Effort is pure cost once the answer is correct</h3>
       <p>On the OpenAI console, effort and verbosity are orthogonal controls — you can think hard and speak briefly. GPT 5.5 produced the same correct Ukrainian answer at three effort settings; the extra effort bought nothing but hidden reasoning tokens.</p>
-      <table class="results-table">
+      <div class="table-scroll"><table class="results-table">
         <caption>GPT 5.5 on the Ukrainian prompt (API console), by effort</caption>
         <thead><tr><th scope="col">Effort</th><th scope="col">Verbosity</th><th scope="col">Output tokens</th><th scope="col">Result</th></tr></thead>
         <tbody>
@@ -317,7 +317,7 @@
           <tr><td>Medium</td><td>Medium</td><td>250</td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
           <tr><td>Extra-high</td><td>Low</td><td>565</td><td><span class="badge pass">Pass</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="chart-note">Low and extra-high effort return the same correct answer at 121 vs. 565 output tokens (real console counts, not estimates) — a 4.7× cost difference for identical quality.</p>
       <p>Two July results cut the other way, at least on the visible answer. <strong>Claude Opus 5 gets shorter as the dial goes up:</strong> ~21 tokens at Low, ~12 at High, ~9 at Max, all three correct and all three inside the winner's circle. Inkling compresses the same way once it is above its threshold — ~186 tokens at Medium, ~152 at High, ~138 at Extra High. Where a model is already holding the constraint, added effort can buy concision rather than padding.</p>
       <p class="chart-note">The caveat matters. These are estimates of the visible answer, and consumer surfaces do not report reasoning tokens, so a shorter answer at higher effort is not a cheaper answer. The GPT 5.5 console runs above are the only place in this dataset where the full cost is measured — and there the extra effort bought nothing.</p>
@@ -331,7 +331,7 @@
 
       <h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:7px;color:var(--pumpkin)"><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5H4.5a2.5 2.5 0 0 0 2.8 3.8"/><path d="M17 5h2.5a2.5 2.5 0 0 1-2.8 3.8"/><path d="M12 13v3"/><path d="M9.5 19h5l-1-3h-3z"/></svg>The winner's circle: concise correct answers</h3>
       <p>A “winner's-circle” pass names the constraint and stops. Because tokenization differs by script, the brevity threshold is script-specific: ≤30 tokens in Latin, ≤60 in Hanzi, ≤60 in Cyrillic. Every Pass that clears its threshold is listed below — runs #1/#39 and #2/#40 are the same verbatim answer produced in two separate test batches. Claude Fable 5 enters in three of its four languages (English, French, Chinese); its Ukrainian run passes but, at ~100 tokens by the measured Cyrillic rate, exceeds the 60-token threshold. Claude Sonnet 5 enters in four of its five effort modes (Medium, High, Extra, Max); the Low-effort run passes but, at ~46 tokens, exceeds the Latin threshold. One open-weight run also clears the bar and is included for completeness, flagged as such — Gemma 4 31B (Google AI Studio, Chinese, ~24 tokens) — the table's only non-commercial entrant. Carwash III (July 11) adds 31 qualifiers in one day — 28 of them from the Anthropic lineup re-baseline, plus both ChatGPT-5.6 Sol runs and a Copilot GPT 5.6 Think run — including the shortest pass on record: Claude Opus 4.6's six-token "Drive. It's a carwash." The same day's non-English sweep adds 20 more across all three scripts — six of them ChatGPT-5.6 Sol's, whose entire four-language record sits inside the thresholds, and the tersest of all Opus 4.8's ten-token Chinese "开车去。车不在洗车店里就洗不了。" Gemini 3.5 Flash-Lite (July 22) enters at ~17 tokens on its Extended-Thinking-off run — the same tier whose 3.1 predecessor produced the dataset’s longest Gemini failures eleven days earlier. <strong>Claude Opus 5 (July 24) enters in all three tiers tested</strong> — and its entries run backwards to the usual expectation: ~21 tokens at Low, ~12 at High, ~9 at Max, the tersest English pass since Opus 4.6’s six-token record. Qwen3.8-Max (August 3) enters once, in Chinese at ~59 tokens; its English Thinking answer passes at ~31 and misses the Latin threshold by a single token. <strong>DeepSeek-V4-Pro (August 13) is the first entrant from its vendor</strong> — ~15 tokens on the DeepThink-On run of its general-availability day, from a model line that had produced template capture, numbered breakdowns, and an inverted-logic English failure, and no terse answer of any kind, across four earlier sessions.</p>
-      <table class="results-table">
+      <div class="table-scroll"><table class="results-table">
         <caption>Winner&rsquo;s-circle passes: every Pass within the per-script token threshold</caption>
         <thead><tr><th scope="col">Run</th><th scope="col">Script</th><th scope="col">Model</th><th scope="col">Language / config</th><th scope="col">Tokens</th><th scope="col">Response</th></tr></thead>
         <tbody>
@@ -426,7 +426,7 @@
           <tr><td>#448</td><td>Latin</td><td>DeepSeek-V4-Pro</td><td>English / DeepThink On</td><td>~15</td><td>Drive — the car needs to get to the carwash, not just you.</td></tr>
           <tr><td>#422</td><td>Hanzi</td><td>Kimi K3</td><td>Chinese / Effort Standard</td><td>~56</td><td><span lang="zh-CN">开车去。你是去洗车的，车不去，洗车店洗什么呢？😄 35米虽然近，走过去再回来很合理，但前提是车得在店里——所以正确姿势是：把车开过去（或者如果店里有上门取车服务，打电话让他们来取也行）。</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>
     </section>
   </main>
@@ -447,7 +447,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260815c"></script>
+  <script src="scripts.js?v=20260815f"></script>
   <script>
     (async function () {
       try {

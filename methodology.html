@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815c">
+  <link rel="stylesheet" href="styles.css?v=20260815f">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -200,7 +200,7 @@
     <section>
       <h2>Testing timeline</h2>
       <p>Each testing snapshot and the number of runs it added to the dataset:</p>
-      <table class="results-table methodology-table">
+      <div class="table-scroll"><table class="results-table methodology-table">
         <caption>Carwash Test snapshots, March 22 – August 3, 2026 (English corpus)</caption>
         <thead>
           <tr>
@@ -249,7 +249,7 @@
           <tr><td>Qwen3.8-Max (Fast / Thinking / Auto)</td><td>August 3, 2026</td><td>3</td><td>213</td></tr>
           <tr><td>DeepSeek-V4-Pro GA (DeepThink ×2)</td><td>August 13, 2026</td><td>2</td><td>215</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (65), French (56), Ukrainian (67), and Japanese (7) language corpora, and the open-weight runs (Gemma 22, Qwen 12, Inkling 6, Bonsai 2, Muse Glimmer 1), are kept separate and are not included in this cumulative total.</p>
     </section>
 
@@ -267,7 +267,7 @@
     <section id="language-corpora">
       <h2>Language corpora</h2>
       <p>On May 27–29, 2026 the test was extended beyond English. Each language is kept as a <strong>separate corpus</strong> — its runs are excluded from the English tallies, charts, and results table, because tokenization, culture, and language all affect both the response and the cost calculation. Full distributions, prompts, and the cross-language comparison live on the <a href="metrics.html">Metrics page</a>; verbatim transcripts appear in language subsections on each vendor's transcript page.</p>
-      <table class="results-table methodology-table">
+      <div class="table-scroll"><table class="results-table methodology-table">
         <caption>Language corpora added May 27 – August 3, 2026 (separate from the 215-run English corpus)</caption>
         <thead>
           <tr>
@@ -284,12 +284,12 @@
           <tr><td>Ukrainian</td><td>May 28 – August 3, 2026</td><td>67</td><td>24%</td><td>Anthropic, OpenAI, DeepSeek, Qwen, Proton (Lumo), Mistral (Vibe), Perplexity, Z.ai, and Sakana, split across the API console and consumer interface. First measured tokenization rate and first reasoning-trace-language observations; May 29 added 10 consumer runs to complete the cross-language comparison; Fable 5 passes (June 9); a search-grounded Perplexity run passes (June 19); GLM-5.2 (Z.ai) holds across all three Deep Think states (June 22); Namazu (Sakana) fails (June 23); Kimi K3 holds at both tiers (July 17); Qwen3.8-Max holds in all three modes (August 3). Carwash III (July 11) added 29 runs — still the forgiving corpus (ChatGPT-5.5 Instant and Vibe Fast hold only here), with DeepSeek V4-Pro reasoning in Russian. Native-speaker-translated. Distance 35 m ≈ 115 ft.</td></tr>
           <tr><td>Japanese</td><td>June 23 – July 11, 2026</td><td>7</td><td>57%</td><td>One model so far — Sakana AI's Namazu, run across its register selector (Standard / Polite / Osaka-Kansai) and Japanese/English interface toggle. It reaches Drive only in Standard (both interfaces) and English-interface Polite; Kansai-ben walks in both interfaces and Japanese-interface Polite walks. Kept lighter for now (no dedicated Metrics section until a second vendor is tested in Japanese). A July 11 retest of the Standard register flipped the June result: the previously drive-reaching configuration now recommends walking. Distance 35 m ≈ 115 ft.</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p>The Chinese and French prompts were translated via Google Translate and back-translated to verify conformance with the English original; the Ukrainian prompt was translated by a native speaker. Distance was converted to a metric equivalent in every case. Token rates are script-specific and are not directly comparable to the English counts: Chinese estimates use ~0.6 tokens per character, and Cyrillic runs measured ~0.5 tokens per character (about double the English rate of ~0.25) — the first directly measured rate, taken from API output-token counts. Latin-script corpora (French) use the standard ~4-characters-per-token estimate.</p>
       <div class="callout callout-note">
         <span class="callout-tag">Note</span>
         <p><strong>Tokenizer cost is vendor-specific, and dramatically so for CJK.</strong> The same Chinese sentence costs a wildly different number of tokens depending on whose tokenizer encodes it. Measured rates for the carwash responses:</p>
-        <table class="results-table">
+        <div class="table-scroll"><table class="results-table">
           <caption>Output tokens per character of Chinese text, by tokenizer</caption>
           <thead><tr><th scope="col">Tokenizer</th><th scope="col">Tokens / character</th><th scope="col">Tokens / Han ideograph</th><th scope="col">Basis</th></tr></thead>
           <tbody>
@@ -298,7 +298,7 @@
             <tr><td>OpenAI <code>o200k</code> (GPT&nbsp;5.5)</td><td>~0.79</td><td>~1.01</td><td>two samples, tiktoken-exact</td></tr>
             <tr><td>Anthropic (Opus&nbsp;4.8 / Sonnet&nbsp;4.6)</td><td>~1.7</td><td>~2.3</td><td>two samples, billed output tokens</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <p>On Chinese, Anthropic costs roughly <strong>2× OpenAI and 3× DeepSeek per character</strong>. The mechanism is in the per-Han column: OpenAI's <code>o200k</code> vocabulary carries most common Han characters as single tokens (~1.0 each), while Anthropic's English-centric byte-pair vocabulary falls back to near-byte-level encoding (~2.3 each — roughly two tokens per 3-byte character). It is a tokenizer-vocabulary difference, not a verbosity difference, so cross-vendor token counts in a non-Latin script measure the tokenizer as much as the answer. (Separately, on reasoning models the billed output also carries hidden reasoning tokens — e.g. a GPT&nbsp;5.5 medium-effort Chinese reply was ~47 visible tokens but ~148 billed — which the per-character tokenizer rate does not capture.)</p>
       </div>
       <p>Before each non-English run, the user's language setting was changed to match the prompt language. This ensures the system receives the prompt in a locale-consistent context rather than as a foreign-language input through an English-language interface.</p>
@@ -307,7 +307,7 @@
     <section>
       <h2>Model versions</h2>
       <p>Where version numbers are exposed by the product surface, they are recorded here. This table is kept current as models are updated or substituted.</p>
-      <table class="results-table methodology-table">
+      <div class="table-scroll"><table class="results-table methodology-table">
         <caption>Model versions and build details by vendor</caption>
         <thead>
           <tr>
@@ -375,7 +375,7 @@
           <tr><td>TIME</td><td>TIME AI</td><td>—</td><td>Media assistant; no reasoning toggle; version not exposed</td></tr>
           <tr><td>Microsoft</td><td>Copilot</td><td>—</td><td>Wrapper surface; exposes Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 via Quick Response / Think Deeper</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </section>
 
     <section>
@@ -487,7 +487,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260815c"></script>
+  <script src="scripts.js?v=20260815f"></script>
   <script>
     (async function () {
       try {

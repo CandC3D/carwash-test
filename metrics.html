@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260814e">
+  <link rel="stylesheet" href="styles.css?v=20260815a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -321,6 +321,7 @@
       <p class="chart-note">Low and extra-high effort return the same correct answer at 121 vs. 565 output tokens (real console counts, not estimates) — a 4.7× cost difference for identical quality.</p>
       <p>Two July results cut the other way, at least on the visible answer. <strong>Claude Opus 5 gets shorter as the dial goes up:</strong> ~21 tokens at Low, ~12 at High, ~9 at Max, all three correct and all three inside the winner's circle. Inkling compresses the same way once it is above its threshold — ~186 tokens at Medium, ~152 at High, ~138 at Extra High. Where a model is already holding the constraint, added effort can buy concision rather than padding.</p>
       <p class="chart-note">The caveat matters. These are estimates of the visible answer, and consumer surfaces do not report reasoning tokens, so a shorter answer at higher effort is not a cheaper answer. The GPT 5.5 console runs above are the only place in this dataset where the full cost is measured — and there the extra effort bought nothing.</p>
+      <p><strong>Qwen3.8 27B (August 15) goes further: its effort ladder runs backwards.</strong> Given three levels — Extra High, Medium, Low — the open-weight model produces its cleanest, shortest, most direct answer at <em>Low</em>, pads it at Medium, and at <em>Extra High</em> returns the most hedged answer of the four after two and a half minutes of visible circling that invents an errand to justify walking. All four runs are correct, so nothing here shows effort breaking a model. What it shows is subtler and harder to design around: past some point, more deliberation buys more <em>equivocation</em>. The model reaches the constraint early at every setting and then, given budget, spends it manufacturing the conditions under which the constraint would not apply. Set against Inkling — where raising the level was what let the object win at all — the two results say the effort dial has no fixed direction. It is a budget, and what a model buys with it is a property of that model.
 
 
       <h3>The budget tier is where the test bites, and where it moves fastest</h3>
@@ -446,7 +447,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260814e"></script>
+  <script src="scripts.js?v=20260815a"></script>
   <script>
     (async function () {
       try {

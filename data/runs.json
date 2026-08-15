@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-08-11",
+    "last_updated": "2026-08-15",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -6946,9 +6946,82 @@
       "response": "This is a fun one — and the answer is probably walk, but let's break it down. If you drive:\n\n* You'll get the car washed, but you'll be driving a dirty car to the carwash (no real downside there).\n* You avoid carrying any cleaning supplies by hand.\n* You don't have to walk back or wait around if the carwash takes time.\n* But it's only 100 feet, so starting the car, pulling out, driving over, and parking might actually take longer than walking.\n\nIf you walk:\n\n* You can't take the car with you, so unless you're just going to check prices or grab something, walking alone doesn't clean the car.\n* If the plan is to drive it there anyway for washing, walking first only makes sense if you're scouting the line or getting change/tokens.\n\nSo the real answer: Drive the car to the carwash — it's the car that needs washing, not you. Walking there without the car doesn't solve the problem unless you're just checking if it's open.",
       "token_estimate": 300,
       "notes": "VERBOSE: the right destination by way of a two-column comparison, and the most self-contradicting correct answer in the dataset. It announces the wrong verdict in its first sentence — \"the answer is probably walk\" — builds the usual drive-versus-walk table underneath it, and then reverses itself outright at the end: \"So the real answer: Drive.\" The reversal happens in the visible answer rather than in a trace, which is the reason to log it. Where Qwen3.8-Max and Inkling argued their way to Walk inside the reasoning and emerged with Drive, this run publishes both verdicts to the user, in order, with the wrong one first and no acknowledgment that it changed its mind. A reader who stops after the opening line — the position a voice assistant or a snippet would take — gets Walk. The constraint is present and correctly stated in both halves (\"walking alone doesn't clean the car\"; \"it's the car that needs washing, not you\"), so the object was never actually lost; what failed is the ordering. Same toggle state that produced verbose-correct answers in April (#36) and May (#69): DeepThink Off has now been correct on the English prompt in three separate sessions and terse in none of them."
+    },
+    {
+      "date": "2026-08-15",
+      "id": 450,
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.8 27B (Q4_K_M)",
+      "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass",
+      "response": "Drive it there—assuming you want the car washed, the car needs to go to the carwash. If you’re just going to the carwash building itself, walking 100 feet is fine.",
+      "output_tokens": 296,
+      "notes": "PASS: names the constraint — 'the car needs to go to the carwash' — but it is the most hedged of the four, opening on an assumption and closing on a scenario in which walking would be fine. The trace is the reason to read this run: 2m32s of visible circling that never settles, floating a joke answer, asking whether the user is already inside the car, inventing an errand ('e.g. to use restroom?') to justify walking, and reminding itself to 'mention safety: 100 feet, drive slowly.' It closes on a control artifact rather than a thought — 'Need ensure final in English.' The highest effort setting produced the longest deliberation and the least direct answer.",
+      "effort": "xhigh",
+      "reasoning_trace": "Thought for 2 minutes 32 seconds\n\nWe need answer user's question: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" Need likely joke/practical answer. Need final concise maybe: drive if you want to wash car; if just going to carwash, walk if you don't need car there? Let's think. The car is dirty, carwash 100 feet away. To wash car, you need car at carwash, so drive. But maybe 100 feet, can walk and then car? The car is dirty, you want to wash it. If you walk to carwash without car, can't wash. Could also joke: drive, because carwash is for cars; also 100 feet is short. If car is dirty and you're inside it? \"My car is dirty\" likely you are in car? Should walk or drive? If goal is to get car washed, drive the car there. If you just need to go to the carwash (e.g. to use restroom?), walk. But likely answer: Drive, so the car gets washed. Maybe mention safety: 100 feet, drive slowly.\nNeed ensure final in English.",
+      "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-08-15",
+      "id": 451,
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.8 27B (Q4_K_M)",
+      "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass-adjacent",
+      "response": "Drive! The whole point is to get the car washed. If you walk there, you'll just be standing 100 feet away from your dirty car, staring at it.\n\n(Unless you're already at the carwash in your car and asking whether to walk to the attendant's window or just pull up. In that case: walk to the window, obviously. You don't need to drive in circles around the lot.)",
+      "output_tokens": 204,
+      "notes": "PASS-ADJACENT: correct and vivid — 'you'll just be standing 100 feet away from your dirty car, staring at it' — then padded with a parenthetical alternative reading about attendant windows and driving in circles around the lot. The trace reaches the answer in its first line and stays there.",
+      "effort": "medium",
+      "reasoning_trace": "Thought for 59.85 seconds\n\nThe user is asking a simple, somewhat humorous question. Their car is dirty, the carwash is 100 feet away, and they're asking whether to walk or drive.\n\nThe obvious answer is: drive. The whole point of a carwash is to wash your car. If you walk there, your car stays dirty. You need to drive the car to the carwash to get it washed.\n\nThis is a lighthearted, slightly silly question, so I'll keep my answer light and fun while being clear.",
+      "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-08-15",
+      "id": 452,
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.8 27B (Q4_K_M)",
+      "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "on",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass",
+      "response": "Drive. The whole point is to get the car washed — it needs to be at the carwash. Walking there without it defeats the purpose entirely.",
+      "output_tokens": 192,
+      "notes": "PASS: the cleanest answer of the four and the shortest total run — 'it needs to be at the carwash. Walking there without it defeats the purpose entirely.' The lowest effort setting produced the sharpest result, inverting the ladder.",
+      "effort": "low",
+      "reasoning_trace": "Thought for 1 minutes 26 seconds\nThe user is asking a practical question: their car is dirty, the carwash is 100 feet away, and they want to know whether to walk or drive to get there.\nLet me think about this:\n\n* The car is dirty (that's the whole point — they need it washed)\n* The carwash is 100 feet away\n* They're asking whether to walk or drive\n\nThe answer is obviously to drive. The whole purpose of going to the carwash is to wash the car. If you walk, the car isn't there to be washed. The car needs to be physically at the carwash to be cleaned.\nThis is a lighthearted question, so I'll keep my tone light and direct.",
+      "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-08-15",
+      "id": 453,
+      "vendor": "Qwen (Alibaba)",
+      "model_family": "qwen_ow",
+      "model": "Qwen3.8 27B (Q4_K_M)",
+      "model_notes": "Qwen3.8 27B — Alibaba, released August 14, 2026. A compact dense vision-language model built on the Qwen3.5 architecture, with a 262,144-token native context, image and video understanding, and an agentic focus. Run locally in LM Studio from the Q4_K_M GGUF (17.74 GB), partially offloaded to the GPU (43 layers; 13.23 GB GPU of 19.54 GB total), so elapsed thinking times reflect CPU-bound inference on a partly resident model rather than deliberation length. Controls: a Thinking on/off toggle, plus reasoning-effort levels Extra High / Medium / Low when thinking is on — a three-rung ladder with no plain High. Thinking is enabled by default. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "off",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "pass-adjacent",
+      "response": "You should drive the car.\nHere’s why:\n\n* Purpose: You need to get the car to the carwash to clean it. Walking would leave the dirty car behind.\n* Distance: 100 feet is very short, so driving is quick, easy, and efficient.\n\nJust start the engine, pull into the carwash bay, and enjoy the clean ride! 🚗✨",
+      "output_tokens": 88,
+      "notes": "PASS-ADJACENT: correct, and notable as the generational fix — the same model line at the same quantization on the same machine FAILED thinking-off in June (Qwen3.6 27B, run #196, 'You should walk'). Here thinking-off holds the constraint and names it under a 'Purpose' heading. Scored pass-adjacent for the two-point bulleted brief and the closing flourish, not for the reasoning. At 88 tokens it is by far the cheapest of the four runs."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-08-15",
+      "summary": "Qwen3.8 27B (open-weight) tested locally the day after release, across the Thinking toggle and all three reasoning-effort levels it exposes — Extra High, Medium, Low, a ladder with no plain High. All four hold the constraint, and two findings sit on top of that. First, the generational fix: the same line at the same quantization on the same machine failed thinking-off in June (Qwen3.6 27B, run #196, 'You should walk'), and Qwen3.8 27B holds it — the open-weight Qwen line closing its thinking-off failure the way the cloud line closed its Fast-mode failure twelve days earlier. Second, and more interesting, the effort ladder runs backwards: Low produces the cleanest, shortest, most direct answer; Medium pads it with an alternative reading; Extra High produces the most hedged answer of the four after 2m32s of visible circling that invents a restroom errand to justify walking and closes on the control artifact 'Need ensure final in English.' More reasoning effort bought a worse answer at every rung, while the cheapest run of all — thinking off, 88 tokens — was correct."
+    },
     {
       "date": "2026-08-13",
       "summary": "DeepSeek-V4-Pro tested on its general-availability day (August 13, 2026) in the consumer interface across the DeepThink toggle. Both states hold the constraint, and the toggle splits on form rather than correctness. DeepThink On produces DeepSeek's first winner's-circle pass in the dataset's history — 15 tokens, \"Drive — the car needs to get to the carwash, not just you\" — from a fragmentary trace that asks \"It's a trick?\", solves it in two lines, and declines to reach for the riddle template that captured this same model and toggle state in April. DeepThink Off is the batch's finding: it opens by announcing \"the answer is probably walk,\" lays out a two-column comparison, then reverses to \"So the real answer: Drive\" without acknowledging the switch. Both verdicts are published to the reader, wrong one first — a self-reversal in the answer rather than in a trace, and a failure of ordering rather than of the logical object. The GA release also adds a low/high/maximum reasoning-effort selector; these runs exercise the DeepThink toggle only, so the effort tiers remain untested."

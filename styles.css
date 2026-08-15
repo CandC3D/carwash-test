@@ -1435,3 +1435,11 @@ section:has(> .sec-rail) > .sec-rail {
   cursor: pointer;
 }
 .theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Language marker column (tables that mix corpora) */
+.results-table .col-lang {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}

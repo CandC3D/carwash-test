@@ -163,7 +163,15 @@
     return (tokensMeasured(run) ? "" : "~") + t.toLocaleString();
   }
 
-  function buildRow(r, link) {
+  // Compact language marker for tables that mix corpora (the open-weight
+  // table on the overview). English tables omit the column entirely.
+  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA" };
+  function langShort(r) {
+    const c = r.language || "en";
+    return LANG_SHORT[c] || c.toUpperCase();
+  }
+
+  function buildRow(r, link, showLang) {
     const idCell = link ? '<a href="' + link + '">#' + r.id + '</a>' : '#' + r.id;
     const modelCell = link ? '<a href="' + link + '">' + escapeHTML(r.model) + '</a>' : escapeHTML(r.model);
     const tokens = runTokens(r);
@@ -173,19 +181,21 @@
       '<td data-sort="' + escapeHTML(r.model.toLowerCase()) + '">' + modelCell + '</td>' +
       '<td class="col-thinking" data-sort="' + (THINKING_SORT_RANK[r.thinking] !== undefined ? THINKING_SORT_RANK[r.thinking] : 99) + '">' + escapeHTML(formatThinking(r.thinking)) + '</td>' +
       '<td class="col-effort" data-sort="' + (EFFORT_SORT_RANK[r.effort] || 0) + '">' + escapeHTML(formatEffort(r.effort) || "—") + '</td>' +
+      (showLang ? '<td class="col-lang" data-sort="' + escapeHTML(r.language || "en") + '">' + escapeHTML(langShort(r)) + '</td>' : '') +
       '<td class="col-date" data-sort="' + escapeHTML(r.date) + '">' + escapeHTML(formatDate(r.date)) + '</td>' +
       '<td data-sort="' + RESULT_SORT_RANK[r.result] + '"><span class="badge ' + r.result + '">' + PILL_LABELS[r.result] + '</span></td>' +
       '<td class="col-tokens" data-sort="' + tokens + '">' + tokenDisplay(r) + '</td>' +
       '</tr>';
   }
 
-  function buildHeader() {
+  function buildHeader(showLang) {
     return '<thead><tr>' +
       '<th scope="col" class="col-id sortable" data-sort-type="number" data-default-dir="asc">#</th>' +
       '<th scope="col" class="sortable" data-sort-type="string" data-default-dir="asc">Company</th>' +
       '<th scope="col" class="sortable" data-sort-type="string" data-default-dir="asc">Model</th>' +
       '<th scope="col" class="col-thinking sortable" data-sort-type="number" data-default-dir="asc">Thinking</th>' +
       '<th scope="col" class="col-effort sortable" data-sort-type="number" data-default-dir="asc" title="Reasoning-effort tier, where the model exposes one">Effort</th>' +
+      (showLang ? '<th scope="col" class="col-lang sortable" data-sort-type="string" data-default-dir="asc" title="Prompt language of the run">Lang</th>' : '') +
       '<th scope="col" class="col-date sortable" data-sort-type="string" data-default-dir="desc">Date</th>' +
       '<th scope="col" class="sortable" data-sort-type="number" data-default-dir="asc">Result</th>' +
       '<th scope="col" class="col-tokens sortable" data-sort-type="number" data-default-dir="desc" title="Approximate token count, computed as round(characters / 4)">Tokens (est)</th>' +
@@ -214,14 +224,15 @@
     return basePath + "transcripts/" + slug + ".html#run-";
   }
 
-  function renderResultsTable(runs, families) {
+  function renderResultsTable(runs, families, opts) {
+    const showLang = !!(opts && opts.showLanguage);
     const rows = runs.map(function (r) {
       const link = (families && families[r.model_family])
         ? familyPageHref(r.model_family, families, "") + r.id
         : null;
-      return buildRow(r, link);
+      return buildRow(r, link, showLang);
     }).join("");
-    return '<div class="table-scroll"><table class="results-table">' + buildCaption(runs) + buildHeader() + '<tbody>' + rows + '</tbody></table></div>';
+    return '<div class="table-scroll"><table class="results-table">' + buildCaption(runs) + buildHeader(showLang) + '<tbody>' + rows + '</tbody></table></div>';
   }
 
   function renderResultsTableForFamily(runs) {

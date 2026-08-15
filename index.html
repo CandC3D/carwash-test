@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260815a">
+  <link rel="stylesheet" href="styles.css?v=20260815b">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -55,9 +55,9 @@
     "url": "https://chorrocks.substack.com"
   },
   "dateCreated": "2026-03-22",
-  "dateModified": "2026-08-11",
+  "dateModified": "2026-08-15",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "temporalCoverage": "2026-03-22/2026-08-11"
+  "temporalCoverage": "2026-03-22/2026-08-15"
 }
 </script>
 </head>
@@ -112,8 +112,14 @@
 
     <section id="recent-section">
       <h2>Recent runs</h2>
-      <p>The ten most recent runs. <a href="results.html">See all results →</a></p>
+      <p>The ten most recent runs from the commercial corpus. <a href="results.html">See all results →</a></p>
       <div id="recent-runs"></div>
+    </section>
+
+    <section id="recent-open-weight-section">
+      <h2>Recent open-weight runs</h2>
+      <p>The test also covers <strong>open-weight models</strong> — published as downloadable weights and run either in a developer playground or locally on consumer hardware, with no consumer system prompt and no product layer around them. These are kept as a separate deployment class and are <em>excluded</em> from every figure above, because a finding about a raw model is not evidence for a vendor's shipping product, or the reverse. The ten most recent are below; the full open-weight record spans five families and includes Chinese, French, and Ukrainian runs. <a href="transcripts.html">Browse open-weight transcripts →</a></p>
+      <div id="recent-open-weight"></div>
     </section>
   </main>
 
@@ -133,7 +139,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260815a"></script>
+  <script src="scripts.js?v=20260815b"></script>
   <script>
     (async function () {
       try {
@@ -157,6 +163,18 @@
         document.getElementById("recent-runs").innerHTML =
           CarwashTest.renderResultsTable(recent, families);
         CarwashTest.makeSortable(document.querySelector("#recent-runs table"));
+
+        // Open-weight runs are excluded from every figure above; surface the
+        // ten most recent here so the deployment class is visible from the
+        // front page. All languages, hence the Lang column.
+        const recentOpen = CarwashTest.openWeightRuns(data.runs).slice().sort(function (a, b) {
+          if (a.date === b.date) return b.id - a.id;
+          return a.date < b.date ? 1 : -1;
+        }).slice(0, 10);
+
+        document.getElementById("recent-open-weight").innerHTML =
+          CarwashTest.renderResultsTable(recentOpen, families, { showLanguage: true });
+        CarwashTest.makeSortable(document.querySelector("#recent-open-weight table"));
       } catch (err) {
         console.error(err);
         CarwashTest.showError("recent-runs", "Could not load runs.json. " + err.message);

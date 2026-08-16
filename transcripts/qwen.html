@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260815h">
+  <link rel="stylesheet" href="../styles.css?v=20260815i">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -101,6 +101,7 @@
     <div id="lang-runs"></div>
   <!-- carwash-vendor-pagination -->
     <div id="vendor-pagination"></div>
+    <div id="vendor-rail-bottom"></div>
   </main>
 
   <footer>
@@ -119,7 +120,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260815h"></script>
+  <script src="../scripts.js?v=20260815i"></script>
   <script>
     (async function () {
       const SLUG = "qwen";
@@ -148,6 +149,8 @@
           CarwashTest.renderVendorLanguageRuns(data.runs, SLUG, "../");
         document.getElementById("vendor-rail").innerHTML =
           CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../");
+        document.getElementById("vendor-rail-bottom").innerHTML =
+          CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../", { position: "bottom" });
         document.getElementById("vendor-pagination").innerHTML =
           CarwashTest.renderVendorPagination(SLUG, data.model_families);
       } catch (err) {

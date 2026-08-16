@@ -1464,3 +1464,14 @@ p, li, blockquote, dd, figcaption, caption,
   overflow-wrap: break-word;
 }
 code { overflow-wrap: anywhere; }
+
+/* Bottom rail: the same index repeated after the last transcript, so a
+   reader who has scrolled through the runs can move to another vendor
+   without climbing back to the top. Opens with a rule instead of closing
+   with one, and drops the back-link's top gap. */
+.vendor-rail-bottom {
+  border-bottom: 0;
+  border-top: 2px solid var(--rule);
+  margin: 40px 0 0;
+  padding: 18px 0 0;
+}

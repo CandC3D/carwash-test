@@ -418,8 +418,9 @@
     });
   }
 
-  function renderVendorRail(currentSlug, families, runs, basePath) {
+  function renderVendorRail(currentSlug, families, runs, basePath, opts) {
     basePath = basePath || "";
+    const pos = (opts && opts.position === "bottom") ? " vendor-rail-bottom" : "";
     // `runs` is the full dataset; commercial pills count the English corpus,
     // open-weight pills count the full open-weight set.
     const counts = {};
@@ -487,7 +488,7 @@
         }).join("");
     }
 
-    return '<div class="vendor-rail">' +
+    return '<div class="vendor-rail' + pos + '">' +
       '<div class="vendor-rail-inner">' +
         '<a class="vendor-rail-back" href="' + basePath + 'transcripts.html">← All Transcripts</a>' +
         '<div class="vendor-pills">' + pills + poPill + owPills + '</div>' +

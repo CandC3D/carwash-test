@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260815g">
+  <link rel="stylesheet" href="../styles.css?v=20260815h">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -56,9 +56,6 @@
     </nav>
   </header>
 
-  <!-- carwash-vendor-rail -->
-  <div id="vendor-rail"></div>
-
   
   <main>
     <header class="site-header">
@@ -79,6 +76,9 @@
         <a href="../transcripts.html" class="active">Transcripts</a>
       </nav>
     </header>
+
+    <!-- carwash-vendor-rail -->
+    <div id="vendor-rail"></div>
 
     <section>
       <p class="chart-note"><strong>Qwen3.8-Max-Preview (July 30) arrives with its thinking toggle welded on.</strong> The control is displayed in the interface and cannot be switched off, so unlike every earlier Qwen model — which offered Thinking, Fast, and sometimes Auto — there is no second state to test. That matters for this dataset, because Qwen’s Fast mode has been one of its weak points: Qwen3.7-Plus Fast failed English, Chinese, and Ukrainian in Carwash III, and Qwen3.6-Plus failed in Fast and Auto alike. Removing the option removes the failure mode along with the choice. The run itself is correct and explicit, scored pass-adjacent for a restating second paragraph — but its trace is the notable part: it names the test’s own construction, calling the short distance <em>"misleading, designed to trigger intuitive thinking,"</em> before ruling that <em>"practical necessity supersedes proximity."</em> No earlier trace in the dataset treats the statistical pressure as a deliberate feature of the prompt.</p>
@@ -119,7 +119,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260815g"></script>
+  <script src="../scripts.js?v=20260815h"></script>
   <script>
     (async function () {
       const SLUG = "qwen";

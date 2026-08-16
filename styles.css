@@ -1136,14 +1136,17 @@ footer .related-links a:hover {
    On every transcripts/<slug>.html page: a non-sticky pill rail at the
    top (back-link + all-vendors-as-pills) and a wrap-around prev/next
    pair at the bottom. Pills wrap to multiple rows on narrow screens. */
+/* The rail sits inside the main column, directly beneath the site nav, so
+   it shares the page margins and reads as part of the page rather than as
+   chrome floating above the masthead. */
 .vendor-rail {
-  background: var(--bg);
-  border-bottom: 1px solid var(--light);
-  padding: 14px 24px 12px;
+  padding: 16px 0 18px;
+  border-bottom: 1px solid var(--hair);
+  margin: 0 0 8px;
 }
 .vendor-rail-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 .vendor-rail-back {
   display: inline-block;
@@ -1237,7 +1240,7 @@ footer .related-links a:hover {
 .vendor-pagination .pag-next { text-align: right; }
 
 @media (max-width: 720px) {
-  .vendor-rail { padding: 10px 14px 8px; }
+  .vendor-rail { padding: 12px 0 14px; }
   .vendor-pill { padding: 4px 8px 4px 6px; font-size: 11px; }
   .vendor-pill .pill-logo { width: 12px; height: 12px; }
   .vendor-pagination { font-size: 11px; gap: 12px; margin-top: 32px; }

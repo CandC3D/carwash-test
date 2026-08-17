@@ -69,7 +69,8 @@
     "sakana": "sakana.svg",
     "inkling": "thinkingmachines.svg",
     "bonsai": "bonsai.svg",
-    "glimmer": "meta.svg"
+    "glimmer": "meta.svg",
+    "gptoss": "openai.svg"
   };
 
   async function loadData(basePath) {

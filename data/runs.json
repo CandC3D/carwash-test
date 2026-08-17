@@ -7,7 +7,7 @@
     "site": "https://chorrocks.substack.com/",
     "essay_url": "https://chorrocks.substack.com/p/the-carwash-test-virtual-intelligence",
     "framework_url": "https://candc3d.github.io/vi-framework/",
-    "last_updated": "2026-08-16",
+    "last_updated": "2026-08-17",
     "rubric": {
       "pass": "Correct and concise",
       "pass-adjacent": "Correct but padded",
@@ -167,6 +167,14 @@
       "category": "open-weight",
       "deployment_class": "open_weight",
       "notes": "Meta's open-weight agentic model line, distinct from the commercial Meta AI product (Llama and Muse Spark) tested under Meta. Published as downloadable weights and run locally, so results here are not evidence for the consumer app, or vice versa."
+    },
+    "gptoss": {
+      "name": "OpenAI",
+      "display_name": "OpenAI (GPT-OSS)",
+      "slug": "gptoss",
+      "category": "open-weight",
+      "deployment_class": "open_weight",
+      "notes": "OpenAI's open-weight line, distinct from the commercial ChatGPT products tested under OpenAI (ChatGPT and GPT o3). Published as downloadable weights under Apache 2.0 and run locally, so results here are not evidence for the commercial product, or vice versa."
     }
   },
   "runs": [
@@ -7258,9 +7266,67 @@
       "output_tokens": 559,
       "token_method": "LM Studio reported total (includes reasoning trace when thinking is on)",
       "notes": "FAIL (ruled by CH): opens with a bolded Коротка відповідь: Краще йти пішки (short answer: better to walk), then argues with itself in the visible answer — Але чекайте... / Ага! — discovers mid-answer that the car cannot be washed if it is not there, and reverses to 🚗 Мусите поїхати на машині! with a final Висновок of drive. The first run in the dataset whose headline states the wrong verdict and whose conclusion states the right one: trace-reversal surfacing into user-facing text because thinking is off and there is no trace to hide it in. Scored FAIL because the reader is told the wrong thing first and the reversal is cost, not credit. Also the LONGEST Ukrainian run. Minor: митці (artists) for мийники (washers)."
+    },
+    {
+      "date": "2026-08-17",
+      "id": 466,
+      "vendor": "OpenAI (open-weight)",
+      "model_family": "gptoss",
+      "model": "GPT-OSS 20B (MXFP4)",
+      "model_notes": "GPT-OSS 20B — OpenAI, released August 5, 2025 under Apache 2.0, its first open-weight release since GPT-2. A Mixture-of-Experts model, 21B total parameters with 3.6B active per token, 131,072-token context, distributed on Hugging Face and built for local deployment on consumer hardware. Reasoning is always on; the only control is a three-level effort setting (High / Medium / Low). Run in LM Studio from the native MXFP4 GGUF, fully GPU-resident (12.01 GB), 23 layers offloaded, 4 experts, context window set to 8,192. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "on",
+      "effort": "high",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "A 100‑foot trip is essentially “next door” – roughly 30 meters. In most cases you’ll save time, energy, and a splash of fuel by just walking it.\n\nFactor\tWalking\tDriving\nTime\t≈20–25 seconds at normal pace (plus the time to get on/off)\t<5 seconds plus door‑open/close and parking/unparking, so overall similar or slightly longer if you have to back out of a tight spot\nFuel & Emissions\tZero\tSmall amount (a few liters per 100 km; negligible for 0.1 km but still extra CO₂)\nConvenience\tNo need to get in/out, no parking hassle\tYou’re already in the car if you plan to drive elsewhere afterward\nHealth/Exercise\tLight walk – a quick burst of activity\tNone\nSpecial Conditions\tIf you’re carrying groceries, kids, or something heavy, driving might be easier\tIf you need to bring your car to another location immediately after washing, driving is sensible\nBottom line\nWalk if the carwash is just 100 ft away and you don’t have a compelling reason (e.g., hauling a load, needing the car right after). It’s quick, free, and environmentally friendly.\nDrive only if you’re already heading somewhere else with the car or carrying something that would make walking cumbersome.\nIf you’re looking to add a tiny exercise boost to your day or just want to enjoy the fresh air, walking is the win. 🚶‍♂️🚗",
+      "reasoning_trace": "Thought for 6.21 seconds\n\nThe user asks a question: \"My car is dirty. The carwash is 100 feet away. Should I walk or drive?\" This is a simple decision-making scenario about walking vs driving to the car wash, presumably for a very short distance (100 ft). We need to consider factors like time, effort, fuel consumption, environmental impact, personal preference. Provide a recommendation: probably walk because it's such a short distance; but if they have a reason to drive, maybe due to convenience or heavy load. The user is presumably looking for advice.\n\nWe should ask clarifying questions? But likely we can answer directly. Provide pros and cons of walking vs driving. Then give a suggestion: walk unless you have special circumstances like carrying items. Also mention that 100 feet is about 30 meters, so it might be easier to walk; driving adds unnecessary fuel usage and emissions.\n\nAlso maybe mention that if they need the car for other purposes or are in a hurry, driving might be okay. But otherwise walking is fine. Provide some additional info: time cost, environmental benefit, etc.\n\nThe user didn't specify context like they have kids or heavy loads. So we can respond with general advice and ask follow-up if needed.\n\nWe should keep the tone friendly and helpful.\n\nAlso mention that it's a very short distance; you could also consider walking to the carwash as part of a quick exercise routine. There's no real benefit to driving, unless you want to use the time for something else or have a reason to get into the car (like picking up someone).\n\nWe can incorporate some fun facts: 100 ft is about 30.48 m; at a walking speed of ~5 km/h (~1.39 m/s), it takes ~22 seconds. Driving might take less than a second, but you need to get in and out, etc.\n\nThe question is not about any deep concept. So answer straightforwardly. Provide an opinion: walk.\n\nWe can also mention that the carwash might have a \"drive-through\" if it's close enough, but 100 ft is basically next door.\n\nWe could ask them if they have any constraints like time, health, etc.\n\nLet's produce a concise answer.",
+      "reasoning_trace_language": "English",
+      "output_tokens": 798,
+      "notes": "FAIL: a walk-versus-drive comparison table concluding \"Walk if the carwash is just 100 ft away and you don't have a compelling reason.\" The object never enters. Every factor it weighs — time, fuel, emissions, health, parking hassle — belongs to the trip, not to the car, and the two \"special conditions\" it can imagine for driving are hauling a load and needing the car somewhere else afterwards. The trace shows the frame being built: \"a simple decision-making scenario about walking vs driving to the car wash\", factors enumerated as \"time, effort, fuel consumption, environmental impact, personal preference\", and the conclusion \"There's no real benefit to driving.\" It computes the walk at 22 seconds and treats the carwash as an errand destination like any other. The highest effort setting produced the most thoroughly constructed wrong answer."
+    },
+    {
+      "date": "2026-08-17",
+      "id": 467,
+      "vendor": "OpenAI (open-weight)",
+      "model_family": "gptoss",
+      "model": "GPT-OSS 20B (MXFP4)",
+      "model_notes": "GPT-OSS 20B — OpenAI, released August 5, 2025 under Apache 2.0, its first open-weight release since GPT-2. A Mixture-of-Experts model, 21B total parameters with 3.6B active per token, 131,072-token context, distributed on Hugging Face and built for local deployment on consumer hardware. Reasoning is always on; the only control is a three-level effort setting (High / Medium / Low). Run in LM Studio from the native MXFP4 GGUF, fully GPU-resident (12.01 GB), 23 layers offloaded, 4 experts, context window set to 8,192. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "on",
+      "effort": "medium",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "fail",
+      "response": "A 100‑foot trip is really nothing more than a quick stroll.\n\nHere’s a quick “walk vs. drive” rundown:\n\nFactor\tWalk\tDrive\nTime\t~2 min at a relaxed pace (3–4 mph)\t<1 min (plus any traffic or parking time)\nFuel/Cost\tZero\tSmall amount of gas, plus potential tolls or parking fees\nPhysical Effort\tMinimal; good for a quick walk\tNone (but you still have to get in/out and maybe deal with congestion)\nConvenience\tYou’re already at the wash – just step out, go, return.\tYou might need to find a spot, start the car, drive 100 ft, then park again.\nWeather/Comfort\tGood if it’s sunny or mild; not great in rain, snow, or extreme heat.\tProtected from weather (though you still have to get in/out).\nEnvironmental Impact\tZero emissions.\tSmall emissions and vehicle wear.\nBottom line\nWalk if the weather is pleasant, you don’t need a hurry, and you’re looking to save a few cents on fuel (and give yourself a quick 2‑minute walk).\nDrive only if you’re in a rush, dealing with bad weather, or have a reason to keep your car running.\nFor most people, walking 100 feet to the wash is the simplest and most efficient choice. Happy washing!",
+      "reasoning_trace": "We need to answer the question. It's a simple decision: walking vs driving. Need to consider distance (100 feet), time, effort, weather, convenience. Car wash 100 feet away - it's not far; walking takes maybe 2 minutes at 3 mph. Driving would be faster but might involve traffic, parking, etc. So answer: walk if you have time and want to save fuel, else drive if hurry or weather bad.\n\nWe can give pros and cons. Probably mention that walking is fine for such a short distance; driving could use fuel unnecessarily. Provide recommendation: walk. Also note that 100 feet is very close - maybe you could even just do it from your car? But likely you'd need to get out. So answer accordingly.",
+      "reasoning_trace_language": "English",
+      "output_tokens": 489,
+      "notes": "FAIL: the same table, the same verdict — \"For most people, walking 100 feet to the wash is the simplest and most efficient choice.\" One line reveals the confusion whole: under Convenience it credits walking with \"You're already at the wash – just step out, go, return\", which would require the car to be at the carwash already. It also inflates a 100-foot walk to \"~2 min at a relaxed pace\" (it is about 20 seconds). The trace is four sentences and never mentions washing the car."
+    },
+    {
+      "date": "2026-08-17",
+      "id": 468,
+      "vendor": "OpenAI (open-weight)",
+      "model_family": "gptoss",
+      "model": "GPT-OSS 20B (MXFP4)",
+      "model_notes": "GPT-OSS 20B — OpenAI, released August 5, 2025 under Apache 2.0, its first open-weight release since GPT-2. A Mixture-of-Experts model, 21B total parameters with 3.6B active per token, 131,072-token context, distributed on Hugging Face and built for local deployment on consumer hardware. Reasoning is always on; the only control is a three-level effort setting (High / Medium / Low). Run in LM Studio from the native MXFP4 GGUF, fully GPU-resident (12.01 GB), 23 layers offloaded, 4 experts, context window set to 8,192. Token counts are LM Studio's reported totals and include the reasoning trace.",
+      "thinking": "on",
+      "effort": "low",
+      "surface": "local",
+      "deployment_class": "open_weight",
+      "result": "verbose",
+      "response": "Short answer: Drive.\n\nWhy driving is the better choice\nFactor\tWalk (≈ 100 ft ≈ 30 m)\tDrive\nTime\t5–10 min on foot, plus time for parking and walking back.\t1–2 min in car.\nConvenience\tYou’ll have to carry your keys, wallet, phone, any laundry bags, etc., while carrying a full‑size vehicle is not possible.\tAll your gear stays in the car; you can keep your hands free for navigation or music.\nSafety\tWalking past traffic, potential puddles, uneven sidewalks, and inclement weather (rain, wind).\tYou’re protected inside the car from weather and traffic hazards.\nPhysical effort\t100 ft is a short walk but still adds to your daily calorie burn—could be a quick cardio boost if you’re in good shape.\tNo physical exertion; you can relax or multitask (e.g., listen to a podcast).\nCost\tFree, aside from the time and any potential tolls on the way back.\tFuel cost is negligible for 100 ft, but it’s still a tiny amount of gas used.\nWhen walking might make sense\nYou’re in excellent shape and enjoy a quick stroll.\nThe weather is pleasant, no rain or extreme heat.\nYour car has limited trunk space (you can’t fit everything you need to bring with you).\nYou want to save a few minutes of fuel for a larger trip later.\nWhen driving is almost always the better option\nYou have a full‑size vehicle that’s heavy and difficult to move on foot.\nYour keys, wallet, phone, or any other items are in the car.\nThe drive‑way or parking area is a short distance away; you can park close enough to minimize walking time.\nYou’re in a hurry or need to get back quickly for another appointment.\nBottom line: For a 100‑foot trip to a nearby carwash, driving saves you time, effort, and the hassle of carrying your gear. It’s the practical choice unless you have a compelling reason (like a brisk workout or an extremely short walk) to prefer walking.",
+      "reasoning_trace": "Need to answer with reasoning. Probably drive. Provide pros and cons.",
+      "reasoning_trace_language": "English",
+      "output_tokens": 515,
+      "notes": "VERBOSE: the only run of the three to answer \"Short answer: Drive\" — and the shortest trace in the batch produced it: \"Need to answer with reasoning. Probably drive. Provide pros and cons.\" But the verdict is right for reasons that are not. Across 515 tokens of tables and lists it argues from convenience, gear, safety, puddles, and podcasts; it never says the carwash needs the car in order to wash it. The closest it comes is a garbled near-miss — \"carrying a full-size vehicle is not possible\" and \"a full-size vehicle that's heavy and difficult to move on foot\" — which reframes the constraint as a portability problem rather than the purpose of the trip. It also claims 100 feet takes \"5–10 min on foot\", contradicting the High run's own 20-second estimate, and offers \"Your car has limited trunk space\" as a reason to walk. Scored Verbose rather than Pass-adjacent because the padding is not decoration around a correct argument; there is no correct argument underneath it."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-08-17",
+      "summary": "OpenAI GPT-OSS 20B added as a new open-weight family, tested locally a year and twelve days after its August 5, 2025 release. Reasoning is always on; the control is a three-level effort setting. Two of three runs FAIL: High and Medium both build a walk-versus-drive comparison table and recommend walking, weighing time, fuel, emissions, health, and parking while the car itself never enters the analysis. Only Low answers Drive — and its trace is three sentences, against 798 tokens of deliberation for the High failure. This is the sharpest inversion of the effort ladder in the dataset: more reasoning bought a more thoroughly constructed wrong answer. The Low run is scored Verbose rather than Pass-adjacent because its verdict is correct while its stated reasons are not — it argues from convenience, gear, and puddles, and its nearest approach to the constraint reframes it as a portability problem ('carrying a full-size vehicle is not possible'). Also a deployment-class contrast worth noting: OpenAI's commercial flagship went eight-for-eight across four languages in July, while its 20B open-weight model fails two of three settings on the English prompt."
+    },
     {
       "date": "2026-08-16",
       "summary": "Qwen3.8 27B (open-weight, local) tested in Chinese, French, and Ukrainian across its Thinking toggle and all three effort levels — twelve runs. Nine hold; thinking-off fails in Chinese and Ukrainian but holds in French, so the toggle's effect is language-dependent for this build as it was for Qwen3.6 27B in June. The Ukrainian thinking-off run is a first: a bolded 'short answer: walk' that argues itself around to 'you must drive' inside the visible answer — trace-reversal with no trace to hide in — scored Fail on the ground that the reader is told the wrong thing first. The trace-language finding is the sharpest yet: all Chinese traces are in Chinese, all French traces are in English, and Ukrainian splits by effort rung (Extra High in Ukrainian, Medium and Low in English). The model answers in French but does not think in it, and says so — each French trace ends by scheduling the switch. Whether that raises a legal question under Québec's Charter of the French Language or France's Loi Toubon is open; neither contemplates AI. That a francophone running this model on their own machine cannot read its reasoning is not."

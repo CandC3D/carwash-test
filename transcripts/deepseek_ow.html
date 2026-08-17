@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Perplexity | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Perplexity results on the Carwash Test.">
+  <title id="page-title">The Carwash Test — DeepSeek (R1 distill, open-weight) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. DeepSeek-R1-0528-Qwen3-8B, a distillation of DeepSeek's chain-of-thought onto a Qwen3 8B base, run locally.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,20 +18,20 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#151513">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Perplexity">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Perplexity results on the Carwash Test.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — DeepSeek (R1 distill, open-weight)">
+  <meta property="og:description" content="DeepSeek-R1-0528-Qwen3-8B on the Carwash Test — the longest run in the dataset, and it never parses the question.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/deepseek_ow.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Perplexity">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Perplexity results on the Carwash Test.">
+  <meta name="twitter:title" content="The Carwash Test — DeepSeek (R1 distill, open-weight)">
+  <meta name="twitter:description" content="DeepSeek-R1-0528-Qwen3-8B on the Carwash Test — the longest run in the dataset, and it never parses the question.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Perplexity, Perplexity AI, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, DeepSeek, DeepSeek R1, DeepSeek-R1-0528, DeepSeek-R1-0528-Qwen3-8B, distillation, distilled model, knowledge distillation, chain of thought, Qwen3 8B Base, AIME 2024, benchmark performance, LM Studio, local LLM, self-hosted LLM, statistical pressure, logical object, AI failure modes, parsing failure, ambiguity, reasoning trace, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -44,6 +44,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -56,13 +57,12 @@
     </nav>
   </header>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title" id="family-title">DeepSeek (R1 distill, open-weight)</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -79,6 +79,18 @@
 
     <!-- carwash-vendor-rail -->
     <div id="vendor-rail"></div>
+
+    <section>
+      <div class="callout callout-note">
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>This is a distillation, not a model DeepSeek trained from scratch.</strong> DeepSeek-R1-0528-Qwen3-8B was released <a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-0528-Qwen3-8B" target="_blank" rel="noopener">May 29, 2025</a> under the MIT licence, produced by continuing post-training on the <strong>Qwen3 8B Base</strong> using chain-of-thought generated by DeepSeek-R1-0528. It is DeepSeek&rsquo;s reasoning poured into someone else&rsquo;s 8-billion-parameter model. Run locally in LM Studio from the Q4_K_M GGUF, fully GPU-resident at 5.49&nbsp;GB. Reasoning is always on and no control is exposed. DeepSeek&rsquo;s consumer product is tested separately under <a href="deepseek.html">DeepSeek</a>; findings about one are not evidence for the other. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
+      </div>
+      <p class="chart-note"><strong>This is the longest run in the dataset &mdash; 3,218 tokens</strong> &mdash; and the verdict at the end of it is correct: <em>&ldquo;I would go with driving it over there first.&rdquo;</em> It is scored <strong>Verbose</strong> rather than Pass-adjacent because nothing beneath that verdict is an argument for it.</p>
+      <p class="chart-note"><strong>The model never engages the question. It redefines it.</strong> &ldquo;Walk&rdquo; is taken to mean <em>&ldquo;manually wiping down or cleaning your vehicle at a closer point&rdquo;</em> &mdash; so the choice on offer becomes hand-wiping versus an automatic wash, and driving wins because machines clean more thoroughly than rags. That the car has to be at the carwash to be washed is never said, because under this reading it was never in question. Having answered something nobody asked, the response closes by offering to start over: <em>&ldquo;If this doesn&rsquo;t match what you meant&hellip; feel free to clarify.&rdquo;</em></p>
+      <p class="chart-note"><strong>The trace is the clearest picture in this record of a model failing to parse rather than failing to reason.</strong> Across roughly 2,900 tokens it proposes and abandons a dozen readings: that the user may lack their car keys; that &ldquo;drive&rdquo; might mean self-driving mode; that the carwash might be a person who washes cars; that this might be an idiom, or a trick question, or a metaphor. It twice states its own condition plainly &mdash; <em>&ldquo;I&rsquo;m stuck with this ambiguity&rdquo;</em> and <em>&ldquo;I&rsquo;m overcomplicating this&rdquo;</em> &mdash; and resolves neither. It does not conclude. It stops, mid-speculation, on <em>&ldquo;Perhaps it&rsquo;s a light-hearted question or test of understanding idioms.&rdquo;</em> The answer is then written as though a decision had been reached.</p>
+      <p class="chart-note"><strong>Set that against the vendor&rsquo;s own claim for this model.</strong> DeepSeek reports it as state of the art among open-source models on AIME 2024 &mdash; competition mathematics &mdash; beating Qwen3 8B by ten points and <em>matching Qwen3-235B-thinking</em>, a model roughly thirty times its size. The same weights spend two thousand nine hundred tokens unable to settle what a one-line question with two stated options is asking.</p>
+      <p class="chart-note">It is also the dataset&rsquo;s <strong>third transformation of a Qwen base</strong>, which makes a comparison available that nothing else here supports. Alibaba&rsquo;s own <a href="qwen_ow.html">Qwen3.8 27B</a> mostly holds the constraint. PrismML&rsquo;s <a href="bonsai.html">Bonsai</a>, a 1-bit compression of Qwen3.6 27B, fails in both toggle states. This distillation &mdash; DeepSeek&rsquo;s chain-of-thought grafted onto a Qwen3 8B base &mdash; arrives at the right verdict without ever finding the reason. Three ways of altering a base model, three different failure signatures.</p>
+    </section>
 
     <section>
       <h2>Results</h2>
@@ -118,7 +130,7 @@
   <script src="../scripts.js?v=20260817c"></script>
   <script>
     (async function () {
-      const SLUG = "perplexity";
+      const SLUG = "deepseek_ow";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];

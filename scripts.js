@@ -70,7 +70,8 @@
     "inkling": "thinkingmachines.svg",
     "bonsai": "bonsai.svg",
     "glimmer": "meta.svg",
-    "gptoss": "openai.svg"
+    "gptoss": "openai.svg",
+    "nemotron": "nvidia.svg"
   };
 
   async function loadData(basePath) {

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Alibaba (Qwen) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Alibaba (Qwen) results on the Carwash Test.">
+  <title id="page-title">The Carwash Test — NVIDIA (Nemotron) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Nemotron 3 Nano Omni, NVIDIA's open-weight omni-modal model, run locally across its Think toggle.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,20 +18,20 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#151513">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Alibaba (Qwen)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Alibaba (Qwen) results on the Carwash Test.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — NVIDIA (Nemotron)">
+  <meta property="og:description" content="Nemotron 3 Nano Omni on the Carwash Test — both toggle states fail, one after the longest deliberation in the dataset.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/nemotron.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Alibaba (Qwen)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Alibaba (Qwen) results on the Carwash Test.">
+  <meta name="twitter:title" content="The Carwash Test — NVIDIA (Nemotron)">
+  <meta name="twitter:description" content="Nemotron 3 Nano Omni on the Carwash Test — both toggle states fail, one after the longest deliberation in the dataset.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Alibaba Qwen, Qwen 3.6, Qwen3.6-Plus, Qwen3.6-Max-Preview, Qwen3.6-27B, Qwen 3.7, Qwen3.7-Max, Qwen3.7-Max-Preview, Qwen3.7-Plus-Preview, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, NVIDIA, Nemotron, Nemotron 3 Nano Omni, 30B-A3B, omni-modal, multimodal AI, vision audio language, Mixture of Experts, MoE, hybrid MoE, LM Studio, local LLM, self-hosted LLM, CPU inference, GPU offload, statistical pressure, logical object, AI failure modes, premature closure, non-answer, reasoning trace, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -44,6 +44,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -56,13 +57,12 @@
     </nav>
   </header>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title" id="family-title">NVIDIA (Nemotron)</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -81,8 +81,15 @@
     <div id="vendor-rail"></div>
 
     <section>
-      <p class="chart-note"><strong>Qwen3.8-Max-Preview (July 30) arrives with its thinking toggle welded on.</strong> The control is displayed in the interface and cannot be switched off, so unlike every earlier Qwen model — which offered Thinking, Fast, and sometimes Auto — there is no second state to test. That matters for this dataset, because Qwen’s Fast mode has been one of its weak points: Qwen3.7-Plus Fast failed English, Chinese, and Ukrainian in Carwash III, and Qwen3.6-Plus failed in Fast and Auto alike. Removing the option removes the failure mode along with the choice. The run itself is correct and explicit, scored pass-adjacent for a restating second paragraph — but its trace is the notable part: it names the test’s own construction, calling the short distance <em>"misleading, designed to trigger intuitive thinking,"</em> before ruling that <em>"practical necessity supersedes proximity."</em> No earlier trace in the dataset treats the statistical pressure as a deliberate feature of the prompt.</p>
-      <p class="chart-note"><strong>The general release arrived four days later and handed the choice back.</strong> Qwen3.8-Max (August 3) restores the full selector — Fast, Thinking, Auto — and was run in all three modes across four languages. All twelve hold the constraint, which puts Qwen in the four-language club and closes the family’s long-running Fast-mode problem: Qwen3.7-Plus Fast failed English, Chinese, and Ukrainian, and Qwen3.6-Plus failed in Fast and Auto alike, but 3.8-Max holds in every mode and every language. Fast is now the family’s <em>wordiest</em> setting rather than its weakest — the English Fast run answers in a three-point brief with a safety advisory, the longest of the twelve — though the French Fast run answers in plain prose, so the format varies by language. Two traces are worth opening: the English Thinking and Chinese Auto runs each reason their way to <em>walk</em> in full, under their own headings and on fuel-saving grounds, before reversing to drive.</p>
+      <div class="callout callout-note">
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>Nemotron is NVIDIA's open model line, and it has no consumer counterpart.</strong> Nemotron 3 Nano Omni was released <a href="https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/" target="_blank" rel="noopener">April 28, 2026</a> as an omni-modal model — text, images, audio, and video in, text out — on a 30B-A3B hybrid Mixture-of-Experts architecture, roughly 3B parameters active per token, distributed on Hugging Face, OpenRouter, and build.nvidia.com. These runs are local, in LM Studio, from the Q4_K_M GGUF with a single Think on/off toggle. NVIDIA ships no consumer chat product, so unlike every other family here there is no commercial sibling to compare against: this <em>is</em> NVIDIA's model as the public meets it. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
+      </div>
+      <p class="chart-note"><strong>Deployment note.</strong> Only five layers were offloaded to the GPU — 2.47&nbsp;GB of a 25.63&nbsp;GB footprint — making this the most CPU-resident run in the record. Elapsed time would reflect that rather than how long the model deliberated, so the token counts, not any clock, are the measure on this page.</p>
+      <p class="chart-note"><strong>Both states fail, and the thinking state fails at greater length than any other run in the dataset.</strong> With Think on, Nemotron spends 1,371 tokens arriving at a bolded <strong>"Walk."</strong> With Think off it spends 215 tokens arriving at nothing at all.</p>
+      <p class="chart-note"><strong>What makes the Think-on trace worth reading is that it does not miss the constraint — it passes directly through the sentence containing it.</strong> <em>"Wait, the user mentioned their car is dirty. So they probably want to get it cleaned quickly. If they drive, they have to deal with starting the car…"</em> The dirt is registered, and in the same breath converted into a reason to hurry <em>on foot</em>. From there the deliberation turns away from the problem and onto the reader: <em>"Underlying needs: They might want validation that walking is okay… Maybe they feel guilty about using gas for such a short trip."</em> Several hundred tokens go to modelling a person's imagined guilt about fuel, and none to how a car gets washed. It closes: <em>"Final thought: 100 feet is negligible."</em></p>
+      <p class="chart-note"><strong>The answer then sees the consequence and misprices it</strong>, in a parenthesis at the very end: <em>"And yes—your car will stay dirty for exactly 60 seconds longer than if you'd walked."</em> The car does stay dirty — permanently — and the model bills it as a minute. Two arithmetic failures ride along: 100 feet is described as <em>"3–4 average steps"</em>, and the walk is timed at <em>"~0.6 seconds"</em> in the answer, where the trace had correctly computed 0.4 minutes a few hundred tokens earlier.</p>
+      <p class="chart-note"><strong>Think off returns no verdict.</strong> Five weighted factors, then two conditional recommendations pointing opposite ways — drive "if you're already in your car", walk "if you're outside" — and a closing handback: <em>"the choice should align with what's most practical and comfortable for you."</em> It is scored Fail on the precedent set by Mistral's Research mode, which was recorded as a failure three times for giving no recommendation and never holding the object. Two details make it worse than a hedge. It recommends walking <em>"to avoid the hassle of maneuvering into the car wash lane"</em> — advising the reader away from the one action the task requires. And its fifth factor inverts the premise outright: <em>"A dirty car might attract more attention if driven rather than walked,"</em> which treats the dirt as a reputational hazard of driving rather than the problem to be solved.</p>
     </section>
 
     <section>
@@ -123,7 +130,7 @@
   <script src="../scripts.js?v=20260817b"></script>
   <script>
     (async function () {
-      const SLUG = "qwen";
+      const SLUG = "nemotron";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];

@@ -73,7 +73,8 @@
     "gptoss": "openai.svg",
     "nemotron": "nvidia.svg",
     "deepseek_ow": "deepseek.svg",
-    "mistral_ow": "mistralai.svg"
+    "mistral_ow": "mistralai.svg",
+    "zai_ow": "zai.svg"
   };
 
   async function loadData(basePath) {

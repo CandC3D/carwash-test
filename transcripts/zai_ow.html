@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — OpenAI (GPT-OSS) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. GPT-OSS 20B, OpenAI's open-weight model, run locally across its three reasoning-effort levels.">
+  <title id="page-title">The Carwash Test — Z.ai (GLM Flash, open-weight) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. GLM-4.7-Flash, Z.ai's open-weight 30B MoE, run locally across its Thinking toggle.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,20 +18,20 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#151513">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — OpenAI (GPT-OSS)">
-  <meta property="og:description" content="GPT-OSS 20B on the Carwash Test — the highest effort setting produced the most thoroughly constructed wrong answer.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/gptoss.html">
+  <meta property="og:title" content="The Carwash Test — Z.ai (GLM Flash, open-weight)">
+  <meta property="og:description" content="GLM-4.7-Flash on the Carwash Test — thinking on fails, thinking off passes, and the trace shows why.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/zai_ow.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — OpenAI (GPT-OSS)">
-  <meta name="twitter:description" content="GPT-OSS 20B on the Carwash Test — the highest effort setting produced the most thoroughly constructed wrong answer.">
+  <meta name="twitter:title" content="The Carwash Test — Z.ai (GLM Flash, open-weight)">
+  <meta name="twitter:description" content="GLM-4.7-Flash on the Carwash Test — thinking on fails, thinking off passes, and the trace shows why.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, OpenAI, GPT-OSS, gpt-oss-20b, GPT-OSS 20B, OpenAI open weights, MXFP4, Mixture of Experts, MoE, reasoning effort, low medium high effort, LM Studio, local LLM, self-hosted LLM, on-device AI, statistical pressure, logical object, AI failure modes, premature closure, template capture, reasoning trace, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, Z.ai, Zhipu AI, GLM, GLM-4.7-Flash, GLM 4.7 Flash, 30B-A3B, Mixture of Experts, MoE, deepseek2 architecture, SWE-bench, thinking toggle, inverted toggle, LM Studio, local LLM, self-hosted LLM, statistical pressure, logical object, AI failure modes, self-correction, reasoning trace, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -61,7 +61,7 @@
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">OpenAI (GPT-OSS)</h1>
+          <h1 class="site-title" id="family-title">Z.ai (GLM Flash, open-weight)</h1>
           <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
@@ -83,13 +83,13 @@
     <section>
       <div class="callout callout-note">
         <span class="callout-tag">Open-weight</span>
-        <p><strong>GPT-OSS is OpenAI's open-weight line, not the ChatGPT product.</strong> Released <a href="https://openai.com/index/introducing-gpt-oss/" target="_blank" rel="noopener">August 5, 2025</a> under Apache 2.0 — OpenAI's first open-weight models since GPT-2 — GPT-OSS 20B is a Mixture-of-Experts model with 21B total parameters and 3.6B active per token, a 131,072-token context, and a design brief of running on consumer hardware. These runs are local, in LM Studio, from the native MXFP4 build, fully resident on a single consumer GPU (12&nbsp;GB). Reasoning is always on; the only control is a three-level effort setting. OpenAI's commercial models are tested separately under <a href="openai.html">OpenAI (ChatGPT and GPT o3)</a>, and findings about one are not evidence for the other. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
+        <p><strong>GLM Flash is Z.ai&rsquo;s open-weight line, not the GLM cloud product.</strong> GLM-4.7-Flash was released <a href="https://huggingface.co/zai-org/GLM-4.7-Flash" target="_blank" rel="noopener">January 20, 2026</a> under the MIT licence &mdash; a 30B-A3B Mixture-of-Experts model built for local coding and agent work on a single 24&nbsp;GB GPU, which Z.ai reports at 59.2% on SWE-bench Verified, more than double Qwen3-30B-A3B&rsquo;s 22.0%. Run here in LM Studio from the Q4_K_M GGUF (18.1&nbsp;GB on disk), 30 layers offloaded, 4 experts; LM Studio reports the architecture as <code>deepseek2</code>, a DeepSeek-V2-style MoE. The only control is a binary Thinking on/off toggle. Z.ai&rsquo;s cloud product is tested separately under <a href="zai.html">Z.ai (GLM)</a>. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
       </div>
-      <p class="chart-note"><strong>Two of the three runs fail, and the two that fail are the two that thought hardest.</strong> At <em>High</em> and <em>Medium</em> effort the model builds a walk-versus-drive comparison table and recommends <strong>walking</strong>. Only <em>Low</em> answers Drive. That is the sharpest inversion of an effort ladder in this dataset — sharper than <a href="qwen_ow.html">Qwen3.8 27B</a>, where the rungs differed in tone rather than in verdict — and the mechanism is visible in the traces rather than inferred.</p>
-      <p class="chart-note"><strong>What High spends 798 tokens doing is constructing the wrong frame carefully.</strong> Its trace opens by naming the task as "a simple decision-making scenario about walking vs driving to the car wash" and enumerates the factors to weigh: "time, effort, fuel consumption, environmental impact, personal preference." Every one of those belongs to the <em>trip</em>. None belongs to the car. It calculates the walk at 22 seconds, notes that "there's no real benefit to driving," and — asked to imagine why someone might drive — produces hauling a load and needing the car elsewhere afterwards. The carwash has become an errand destination like a post box, and the dirty car has become the reason for the errand rather than its cargo. The answer that follows is fluent, tabulated, and wrong.</p>
-      <p class="chart-note"><strong>Medium reaches the same verdict and leaves a clearer fingerprint.</strong> Under <em>Convenience</em> it credits walking with "You're already at the wash – just step out, go, return" — a sentence that only parses if the car is already at the carwash, which is precisely what walking would prevent. It also stretches a 100-foot walk to "~2 min at a relaxed pace," where High had it at twenty seconds. The same model, two settings apart, disagrees with itself about the distance by a factor of six.</p>
-      <p class="chart-note"><strong>Low gets the verdict right on a three-sentence trace</strong> — "Need to answer with reasoning. Probably drive. Provide pros and cons." — and it is scored <strong>Verbose</strong> rather than Pass-adjacent, because the 515 tokens beneath the correct headline never contain the reason. It argues from convenience, gear, safety, puddles, and podcasts. Its nearest approach to the constraint is a garbled near-miss — "carrying a full-size vehicle is not possible" — which reframes the object as a portability problem rather than the purpose of the trip. It also asserts that 100 feet takes "5–10 min on foot," and offers "Your car has limited trunk space" as a reason to walk. The padding is not decoration around a correct argument; there is no correct argument underneath it.</p>
-      <p class="chart-note">Worth setting beside the commercial record: <strong>OpenAI's flagship went eight-for-eight across four languages in July</strong>, every answer a winner's-circle one-liner. Its 20-billion-parameter open-weight model fails two of three settings on the English prompt. Nothing about the first predicts the second — which is the reason this record keeps the deployment classes apart.</p>
+      <p class="chart-note"><strong>The toggle is perfectly inverted.</strong> With thinking <em>off</em>, GLM-4.7-Flash answers <strong>drive</strong> and names the constraint outright. With thinking <em>on</em>, it answers <strong>walk</strong>. Five times the tokens, the opposite verdict.</p>
+      <p class="chart-note"><strong>The thinking-on trace is the most self-indicting in the record, because the model finds the right answer and discards it.</strong> Having drafted and polished its walk recommendation, it pauses to interrogate the prompt: <em>&ldquo;Alternative thought: Is there a trick? Maybe the car is too dirty to drive? No, usually you drive to the wash. Maybe the user is asking a riddle? No, it sounds like a practical question. Let&rsquo;s stick to the practical advice.&rdquo;</em> The clause <em>&ldquo;usually you drive to the wash&rdquo;</em> is the constraint, stated plainly, in the model&rsquo;s own words &mdash; filed as a rejected hypothesis on the way to the opposite conclusion. It asked whether the question was a test, decided it was not, and failed it.</p>
+      <p class="chart-note"><strong>Its fourth step is headed &ldquo;Refine the response (Self-Correction/Polishing).&rdquo;</strong> What that step corrects is phrasing: <em>&ldquo;Make it punchy&rdquo;</em>, <em>&ldquo;Environmental angle&rdquo;</em>. The self-correction sharpens the wrong answer into a better-written wrong answer. It is the same shape as <a href="bonsai.html">Bonsai&rsquo;s</a> self-check, which verified its arithmetic and never questioned its frame &mdash; two models, two vendors, both auditing everything except the premise.</p>
+      <p class="chart-note"><strong>Thinking off is the one that holds.</strong> <em>&ldquo;Driving is the most efficient way to transport a dirty car to a place where it can be cleaned&rdquo;</em> &mdash; the object named exactly, after framing the errand as <em>&ldquo;a task that requires a vehicle.&rdquo;</em> It is scored pass-adjacent for the three-point brief around it, two thirds of which discuss distance and effort. At 116 tokens it is a fifth the length of the failure.</p>
+      <p class="chart-note"><strong>The deployment-class gap here is the widest of any vendor in the dataset.</strong> Z.ai&rsquo;s cloud line is among the strongest performers on record &mdash; <a href="zai.html">thirteen passes and a single failure in twenty-eight runs</a>, with GLM-5.2 sweeping all four languages in every Deep Think state. Its open-weight Flash model fails whenever thinking is switched on. Nothing about the cloud product predicts the local one, which is the reason these classes are kept apart.</p>
     </section>
 
     <section>
@@ -130,7 +130,7 @@
   <script src="../scripts.js?v=20260817e"></script>
   <script>
     (async function () {
-      const SLUG = "gptoss";
+      const SLUG = "zai_ow";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];

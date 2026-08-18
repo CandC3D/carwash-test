@@ -72,7 +72,8 @@
     "glimmer": "meta.svg",
     "gptoss": "openai.svg",
     "nemotron": "nvidia.svg",
-    "deepseek_ow": "deepseek.svg"
+    "deepseek_ow": "deepseek.svg",
+    "mistral_ow": "mistralai.svg"
   };
 
   async function loadData(basePath) {

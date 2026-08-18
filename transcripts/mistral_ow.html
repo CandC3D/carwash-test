@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Mistral (Le Chat) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Mistral results on the Carwash Test.">
+  <title id="page-title">The Carwash Test — Mistral (Ministral, open-weight) | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Ministral 3 14B Reasoning, Mistral's edge-optimised open-weight reasoning model, run locally.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,20 +18,20 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#151513">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Mistral (Le Chat)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Mistral results on the Carwash Test.">
-  <meta property="og:url" content="https://candc3d.github.io/carwash-test/">
+  <meta property="og:title" content="The Carwash Test — Mistral (Ministral, open-weight)">
+  <meta property="og:description" content="Ministral 3 14B Reasoning on the Carwash Test — a reasoning model that advises parking the car away from the wash.">
+  <meta property="og:url" content="https://candc3d.github.io/carwash-test/transcripts/mistral_ow.html">
   <meta property="og:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Mistral (Le Chat)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Mistral results on the Carwash Test.">
+  <meta name="twitter:title" content="The Carwash Test — Mistral (Ministral, open-weight)">
+  <meta name="twitter:description" content="Ministral 3 14B Reasoning on the Carwash Test — a reasoning model that advises parking the car away from the wash.">
   <meta name="twitter:image" content="https://candc3d.github.io/carwash-test/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Mistral AI, Mistral 3, Mistral Medium 3.5, Le Chat, Mistral Research, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, open-weight models, open weights LLM, Mistral, Mistral AI, Ministral, Ministral 3, Ministral 3 14B Reasoning, edge AI, on-device AI, reasoning model, vision language model, Apache 2.0, LM Studio, local LLM, self-hosted LLM, statistical pressure, logical object, AI failure modes, inverted logic, eco-framing, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -44,6 +44,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -56,13 +57,12 @@
     </nav>
   </header>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title" id="family-title">Mistral (Ministral, open-weight)</h1>
+          <p class="site-subtitle">Carwash Test transcripts · open-weight</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
@@ -79,6 +79,17 @@
 
     <!-- carwash-vendor-rail -->
     <div id="vendor-rail"></div>
+
+    <section>
+      <div class="callout callout-note">
+        <span class="callout-tag">Open-weight</span>
+        <p><strong>Ministral is Mistral&rsquo;s open-weight line, not the Le&nbsp;Chat / Vibe consumer product.</strong> Ministral 3 14B Reasoning (build <code>2512</code>) was released in <a href="https://huggingface.co/mistralai/Ministral-3-14B-Reasoning-2512" target="_blank" rel="noopener">December 2025</a> under Apache 2.0 &mdash; the reasoning post-trained variant in a 3B/8B/14B family that also ships base and instruct forms. Mistral positions it for <em>&ldquo;complex, multi-step reasoning and dynamic problem-solving&hellip; ideal for math, coding, and STEM&rdquo;</em>, with a 256K-token context, vision input, multilingual coverage, native function calling, and explicit edge optimisation for local devices. Run here in LM Studio from the Q4_K_M GGUF, fully GPU-resident at 9.72&nbsp;GB. Reasoning is always on and no control is exposed; no trace was surfaced for this run. Mistral&rsquo;s consumer product is tested separately under <a href="mistral.html">Mistral (Le Chat)</a>. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
+      </div>
+      <p class="chart-note"><strong>It fails.</strong> Eight weighted reasons, a &ldquo;Best Compromise?&rdquo; section, and a Final Verdict that lands on walking: <em>&ldquo;walking is the most eco-friendly and practical choice.&rdquo;</em> Throughout, the car is discussed as a thing with attributes &mdash; dirty, worn, expensive to park &mdash; and never as the thing that has to arrive somewhere.</p>
+      <p class="chart-note"><strong>Its fourth reason to drive states the correct answer without recognising it.</strong> <em>&ldquo;Some carwashes offer self-service options where you can park and go inside.&rdquo;</em> Parking the car at the carwash is filed under <em>convenience</em> &mdash; a pleasant side effect of having driven &mdash; rather than as the entire purpose of the trip. The model has the fact and no idea what it is for.</p>
+      <p class="chart-note"><strong>And the closing advice is the most counterproductive sentence in the record.</strong> <em>&ldquo;If you do drive, consider parking farther away (if possible) to encourage walking habits.&rdquo;</em> Having conceded that driving might be acceptable, it recommends moving the car away from the wash it was driven there to receive. A fourth reason for walking is incoherent on its own terms &mdash; <em>&ldquo;No Need to Wash Twice &ndash; If your car isn&rsquo;t extremely dirty, walking avoids unnecessary wear from driving back and forth&rdquo;</em> &mdash; imagining a round trip that walking would not shorten but abolish, since the car would never go. It signs off with an upsell: <em>&ldquo;Would you like tips on making your carwash visit more efficient?&rdquo;</em></p>
+      <p class="chart-note"><strong>Mistral has still never recorded a Pass.</strong> Across twenty-four runs now &mdash; four languages, two deployment classes, every reasoning mode the products have offered &mdash; the vendor has produced two pass-adjacent answers, two verbose ones, and twenty failures. Its consumer line failed in <a href="mistral.html">Le&nbsp;Chat and Vibe</a>, its Research mode answered with clarifying questions instead of an answer, and its edge-optimised reasoning model, sold for multi-step problem-solving, files the constraint under convenience. It is the only vendor in the dataset with no Pass in any language, on any surface, in any mode.</p>
+    </section>
 
     <section>
       <h2>Results</h2>
@@ -118,7 +129,7 @@
   <script src="../scripts.js?v=20260817d"></script>
   <script>
     (async function () {
-      const SLUG = "mistral";
+      const SLUG = "mistral_ow";
       try {
         const data = await CarwashTest.loadData("../");
         const family = data.model_families[SLUG];
@@ -132,7 +143,7 @@
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(familyRuns, { includeTokenOutliers: true });
+          CarwashTest.renderCharts(familyRuns);
         document.getElementById("results-table").innerHTML =
           CarwashTest.renderResultsTableForFamily(familyRuns);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));

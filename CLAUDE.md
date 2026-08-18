@@ -1,6 +1,6 @@
 # The Carwash Test — project notes for Claude
 
-Static site published at `https://candc3d.github.io/carwash-test/` via GitHub Pages
+Static site published at `https://carwashtest.org/` via GitHub Pages
 (repo `CandC3D/carwash-test`, `main` branch). Plain HTML + one shared `scripts.js`
 + `styles.css`. No build step. All pages render client-side from `data/runs.json`.
 

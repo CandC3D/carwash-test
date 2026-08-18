@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://candc3d.github.io/carwash-test/sitemap.xml
+Sitemap: https://carwashtest.org/sitemap.xml

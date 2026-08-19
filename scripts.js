@@ -531,10 +531,9 @@
           '<h3>Language Corpora</h3>' +
           '<p>The same prompt in another language, kept as its own corpus and never ' +
           'merged into the English totals. Each page compiles every run in that ' +
-          'language across all vendors. English is not listed here because the ' +
-          'main results are the English corpus; Japanese has only ever been run ' +
-          'against one vendor and stays on the ' +
-          '<a href="' + basePath + 'transcripts/sakana.html">Sakana AI page</a>.</p>' +
+          'language across all vendors. The main results are the English corpus. ' +
+          'Japanese has only been deployed to test Sakana AI, so all runs in that ' +
+          'language live on <a href="' + basePath + 'transcripts/sakana.html">that page</a>.</p>' +
         '</div>' +
         '<div class="family-grid family-grid-lang">' + langsWithRuns.map(function (L) {
           return _langCard(L, runs, basePath);

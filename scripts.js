@@ -297,6 +297,18 @@
   // SVG icon for the Purpose-Optimized category: a small network graph
   // (three connected nodes in a circle) signalling a system organized around
   // internal connections rather than general-purpose reasoning.
+  // Lined globe, for the language-corpora group heading — same stroke
+  // treatment as the open padlock on the open-weight group.
+  const LANG_CORPORA_ICON =
+    '<svg role="img" aria-label="Language corpora category icon" ' +
+    'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ' +
+    'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" ' +
+    'stroke-linejoin="round">' +
+    '<circle cx="12" cy="12" r="9"/>' +
+    '<path d="M3 12h18"/>' +
+    '<path d="M12 3c2.4 2.6 3.7 5.7 3.7 9s-1.3 6.4-3.7 9c-2.4-2.6-3.7-5.7-3.7-9s1.3-6.4 3.7-9z"/>' +
+    '</svg>';
+
   const PURPOSE_OPTIMIZED_ICON =
     '<svg role="img" aria-label="Purpose-optimized models category icon" ' +
     'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ' +
@@ -354,6 +366,113 @@
       '</a>';
   }
 
+  // ── Language corpora ─────────────────────────────────────────────────
+  // The non-English corpora each get their own transcript page, compiled by
+  // language rather than by vendor. English is omitted because the main
+  // results page already is the English corpus; Japanese is omitted because
+  // it has only ever been run against one vendor and lives on the Sakana
+  // page. The card mark is the two-letter code set as a dropcap rather than
+  // a vendor logo.
+  // Prompt, gloss and per-corpus note for every non-English corpus.
+  // Declared once here and consumed both by the per-vendor language
+  // sections and by the standalone language-corpus pages, so the two
+  // cannot drift apart.
+  const LANG_LIST = [
+    { code: "ja", title: "Japanese-Language Runs (日本語)",
+      prompt: "車が汚れています。洗車場は35メートル先にあります。歩いて行くべきですか、それとも車で行くべきですか？",
+      aria: "Japanese Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Namazu exposes a register selector (Standard / Polite / Osaka-Kansai) and a Japanese/English interface toggle; both move the verdict. The prompt shown is the Standard-register wording — the Polite and Kansai-ben runs reword it. Token estimates use an approximate Japanese rate (~0.5 tokens/character) and are not directly comparable to the English counts." },
+    { code: "zh-CN", title: "Chinese-Language Runs (简体中文)",
+      prompt: "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
+      aria: "Simplified Chinese Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Token estimates use the Chinese character rate (1 character ≈ 0.6 tokens), so they are not directly comparable to the English counts." },
+    { code: "fr", title: "French-Language Runs (Français)",
+      prompt: "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
+      aria: "French Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "" },
+    { code: "id", title: "Indonesian-Language Runs (Bahasa Indonesia)",
+      prompt: "Mobil saya kotor. Tempat cuci mobil berjarak 35 meter. Sebaiknya saya berjalan kaki atau mengendarai mobil?",
+      aria: "Indonesian Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Added August 19, 2026 — the corpus was built in a single day across 13 vendors. Token estimates use a Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English and French counts, though Indonesian affixation tends to push real tokenizer counts higher." },
+    { code: "uk", title: "Ukrainian-Language Runs (Українська)",
+      prompt: "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
+      aria: "Ukrainian Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Native-speaker-translated prompt. Token counts for API-console runs are real output-token totals (including hidden reasoning); consumer-app runs use the measured Cyrillic rate (~0.5 tokens/character). Both differ from the English character-based estimates." }
+  ];
+  const LANG_PROMPTS = {};
+  LANG_LIST.forEach(function (L) { LANG_PROMPTS[L.code] = L; });
+
+  const LANG_CORPORA = [
+    { code: "zh-CN", mark: "zh", page: "lang-zh.html",
+      name: "Simplified Chinese", native: "简体中文" },
+    { code: "fr", mark: "fr", page: "lang-fr.html",
+      name: "French", native: "Français" },
+    { code: "uk", mark: "uk", page: "lang-uk.html",
+      name: "Ukrainian", native: "Українська" },
+    { code: "id", mark: "id", page: "lang-id.html",
+      name: "Indonesian", native: "Bahasa Indonesia" }
+  ];
+
+  // Look up a corpus definition by its language code, merging in the prompt
+  // and per-corpus note already defined for the per-vendor language sections
+  // so the two places cannot drift apart.
+  function langCorpus(code) {
+    const L = LANG_CORPORA.filter(function (x) { return x.code === code; })[0];
+    if (!L) return null;
+    const meta = LANG_PROMPTS[code] || {};
+    return {
+      code: L.code, mark: L.mark, page: L.page, name: L.name, native: L.native,
+      prompt: meta.prompt || "", translation: meta.translation || "",
+      aria: meta.aria || "", note: meta.note || ""
+    };
+  }
+
+  // Header block for a language-corpus page: the dropcap mark, the corpus
+  // name, the prompt in that language, and its English gloss.
+  function renderLangHeader(L) {
+    const bcp = L.code === "zh-CN" ? "zh-Hans" : L.code;
+    return '<span class="lang-hero-mark" aria-hidden="true">' + escapeHTML(L.mark) + '</span>' +
+      '<span class="lang-hero-text">' +
+        '<span class="lang-hero-name">' + escapeHTML(L.name) + '</span>' +
+        '<span class="lang-hero-native" lang="' + escapeHTML(bcp) + '">' + escapeHTML(L.native) + '</span>' +
+      '</span>';
+  }
+
+  // Pill rail across the language corpora, mirroring the vendor rail.
+  function renderLangRail(currentCode, runs, basePath) {
+    basePath = basePath || "";
+    const pills = LANG_CORPORA.filter(function (L) {
+      return runs.some(function (r) { return r.language === L.code; });
+    }).map(function (L) {
+      const n = runs.filter(function (r) { return r.language === L.code; }).length;
+      const cur = L.code === currentCode;
+      return '<a class="vendor-pill' + (cur ? ' is-current' : '') + '" ' +
+        (cur ? 'aria-current="page" ' : '') +
+        'href="' + basePath + 'transcripts/' + L.page + '">' +
+        '<span class="vendor-pill-mark" aria-hidden="true">' + escapeHTML(L.mark) + '</span>' +
+        escapeHTML(L.name) + ' <span class="vendor-pill-count">' + n + '</span></a>';
+    }).join("");
+    return '<nav class="vendor-rail" aria-label="Language corpora">' +
+      '<a class="vendor-rail-back" href="' + basePath + 'transcripts.html">← All Transcripts</a>' +
+      '<div class="vendor-rail-pills">' + pills + '</div>' +
+      '</nav>';
+  }
+
+  function _langCard(L, runs, basePath) {
+    const c = runs.filter(function (r) { return r.language === L.code; }).length;
+    return '<a class="family-card" href="' + basePath + 'transcripts/' + L.page + '">' +
+      '<span class="family-mark" aria-hidden="true">' + escapeHTML(L.mark) + '</span>' +
+      '<span class="family-name">' + escapeHTML(L.name) + '</span>' +
+      '<span class="family-native" lang="' + escapeHTML(L.code) + '">' + escapeHTML(L.native) + '</span>' +
+      '<span class="family-count">' + c + ' run' + (c === 1 ? '' : 's') + '</span>' +
+      '</a>';
+  }
+
   function renderFamilyGrid(runs, families, basePath) {
     basePath = basePath || "";
     // `runs` is the full dataset; count the commercial English corpus for the
@@ -399,6 +518,26 @@
         '</div>' +
         '<div class="family-grid family-grid-purpose-optimized">' + poSlugs.map(function (slug) {
           return _familyCard(slug, families, counts, basePath);
+        }).join("") + '</div>';
+    }
+
+    const langsWithRuns = LANG_CORPORA.filter(function (L) {
+      return runs.some(function (r) { return r.language === L.code; });
+    });
+    if (langsWithRuns.length) {
+      html += '<div class="family-group-divider" role="separator"></div>' +
+        '<div class="family-group-heading">' +
+          '<span class="family-group-icon">' + LANG_CORPORA_ICON + '</span>' +
+          '<h3>Language Corpora</h3>' +
+          '<p>The same prompt in another language, kept as its own corpus and never ' +
+          'merged into the English totals. Each page compiles every run in that ' +
+          'language across all vendors. English is not listed here because the ' +
+          'main results are the English corpus; Japanese has only ever been run ' +
+          'against one vendor and stays on the ' +
+          '<a href="' + basePath + 'transcripts/sakana.html">Sakana AI page</a>.</p>' +
+        '</div>' +
+        '<div class="family-grid family-grid-lang">' + langsWithRuns.map(function (L) {
+          return _langCard(L, runs, basePath);
         }).join("") + '</div>';
     }
     return html;
@@ -608,33 +747,7 @@
     basePath = basePath || "";
     const fam = allRuns.filter(function (r) { return r.model_family === slug && runLang(r) !== "en"; });
     if (!fam.length) return "";
-    const LANGS = [
-      { code: "ja", title: "Japanese-Language Runs (日本語)",
-        prompt: "車が汚れています。洗車場は35メートル先にあります。歩いて行くべきですか、それとも車で行くべきですか？",
-        aria: "Japanese Carwash Test prompt",
-        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
-        note: "Namazu exposes a register selector (Standard / Polite / Osaka-Kansai) and a Japanese/English interface toggle; both move the verdict. The prompt shown is the Standard-register wording — the Polite and Kansai-ben runs reword it. Token estimates use an approximate Japanese rate (~0.5 tokens/character) and are not directly comparable to the English counts." },
-      { code: "zh-CN", title: "Chinese-Language Runs (简体中文)",
-        prompt: "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
-        aria: "Simplified Chinese Carwash Test prompt",
-        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
-        note: "Token estimates use the Chinese character rate (1 character ≈ 0.6 tokens), so they are not directly comparable to the English counts." },
-      { code: "fr", title: "French-Language Runs (Français)",
-        prompt: "Ma voiture est sale. Le lave-auto se trouve à 35 mètres. Devrais-je y aller à pied ou en voiture ?",
-        aria: "French Carwash Test prompt",
-        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
-        note: "" },
-      { code: "id", title: "Indonesian-Language Runs (Bahasa Indonesia)",
-        prompt: "Mobil saya kotor. Tempat cuci mobil berjarak 35 meter. Sebaiknya saya berjalan kaki atau mengendarai mobil?",
-        aria: "Indonesian Carwash Test prompt",
-        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
-        note: "Added August 19, 2026 — the corpus was built in a single day across 13 vendors. Token estimates use a Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English and French counts, though Indonesian affixation tends to push real tokenizer counts higher." },
-      { code: "uk", title: "Ukrainian-Language Runs (Українська)",
-        prompt: "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
-        aria: "Ukrainian Carwash Test prompt",
-        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
-        note: "Native-speaker-translated prompt. Token counts for API-console runs are real output-token totals (including hidden reasoning); consumer-app runs use the measured Cyrillic rate (~0.5 tokens/character). Both differ from the English character-based estimates." }
-    ];
+    const LANGS = LANG_LIST;
     let out = "";
     LANGS.forEach(function (L) {
       const rs = fam.filter(function (r) { return r.language === L.code; });
@@ -1270,6 +1383,9 @@
     makeSortable: makeSortable,
     renderLegend: renderLegend,
     renderFamilyGrid: renderFamilyGrid,
+    langCorpus: langCorpus,
+    renderLangHeader: renderLangHeader,
+    renderLangRail: renderLangRail,
     renderTitleLogo: renderTitleLogo,
     familyTitleHTML: familyTitleHTML,
     renderVendorRail: renderVendorRail,

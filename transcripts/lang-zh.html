@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">The Carwash Test — Proton (Lumo) | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Proton (Lumo) results on the Carwash Test.">
+  <title id="page-title">The Carwash Test — Simplified Chinese corpus | Virtual Intelligence</title>
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Every Simplified Chinese run, across all vendors, with verbatim outputs.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,23 +16,23 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafaf7">
   <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#151513">
-  <link rel="canonical" href="https://carwashtest.org/transcripts/lumo.html">
+  <link rel="canonical" href="https://carwashtest.org/transcripts/lang-zh.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
-  <meta property="og:title" content="The Carwash Test — Proton (Lumo)">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Proton (Lumo) results on the Carwash Test.">
-  <meta property="og:url" content="https://carwashtest.org/transcripts/lumo.html">
+  <meta property="og:title" content="The Carwash Test — Simplified Chinese corpus">
+  <meta property="og:description" content="Every Simplified Chinese run on the Carwash Test, compiled across all vendors.">
+  <meta property="og:url" content="https://carwashtest.org/transcripts/lang-zh.html">
   <meta property="og:image" content="https://carwashtest.org/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Carwash Test — Proton (Lumo)">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Proton (Lumo) results on the Carwash Test.">
+  <meta name="twitter:title" content="The Carwash Test — Simplified Chinese corpus">
+  <meta name="twitter:description" content="Every Simplified Chinese run on the Carwash Test, compiled across all vendors.">
   <meta name="twitter:image" content="https://carwashtest.org/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
-  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, AI reasoning evaluation, AI diagnostic, AI common sense test, single-prompt diagnostic, single-shot AI test, AI evaluation methodology, statistical pressure, logical object, pattern completion vs reasoning, AI failure modes, premature closure, template capture, AI hallucination, fluent wrong answer, large language models, LLM benchmark, AI capability test, model comparison, cross-vendor AI evaluation, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, Proton AI, Lumo, Proton Lumo, verbatim AI response, AI transcript, model output archive">
+  <meta name="keywords" content="carwash test, AI carwash test, the carwash test, AI reasoning test, LLM reasoning test, Simplified Chinese, Chinese LLM evaluation, cross-language AI evaluation, multilingual reasoning, language corpus, tokenization, statistical pressure, logical object, AI failure modes, Virtual Intelligence framework, Sampo framework, Christopher Horrocks, chorrocks substack, verbatim AI response, AI transcript">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9WLS0VX62"></script>
 <script>
@@ -45,6 +45,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <!-- carwash-page-header -->
   <header class="page-header">
     <nav class="page-header-nav">
@@ -57,18 +58,17 @@
     </nav>
   </header>
 
-  
-  <main>
+  <main id="main">
     <header class="site-header">
       <div class="site-header-top">
         <div class="site-header-titles">
-          <h1 class="site-title" id="family-title">Transcripts</h1>
-          <p class="site-subtitle">Carwash Test transcripts</p>
+          <h1 class="site-title lang-hero" id="corpus-title">Language corpus</h1>
+          <p class="site-subtitle">Carwash Test transcripts · by language</p>
         </div>
         <div class="site-header-graphic"><img class="header-graphic-img" src="../assets/carwash-banner.png" alt="Line drawing: a car 100 feet from a carwash, with a coral Walk arrow pointing away and a green Drive arrow pointing toward the carwash."></div>
       </div>
       <hr class="site-rule">
-      <p class="prompt-line">My car is dirty. The carwash is 100 feet away. Should I walk or drive?</p>
+      <p class="prompt-line" id="corpus-prompt-line">&nbsp;</p>
       <nav class="site-nav">
         <a href="../index.html">Overview</a>
         <a href="../results.html">Results</a>
@@ -78,8 +78,18 @@
       </nav>
     </header>
 
-    <!-- carwash-vendor-rail -->
-    <div id="vendor-rail"></div>
+    <!-- carwash-lang-rail -->
+    <div id="lang-rail"></div>
+
+    <section>
+      <div class="corpus-prompt">
+        <p class="corpus-prompt-label" id="corpus-prompt-label">Prompt</p>
+        <blockquote id="corpus-prompt-quote"></blockquote>
+        <p class="translation"><em>Translation: My car is dirty. The car wash is 35 meters away. Should I walk there or drive?</em></p>
+      </div>
+      <p class="category-intro">This page compiles every run recorded in this language, across all vendors, in one place. The corpus is kept separate from the English totals throughout the site: the headline pass rates, the running tally, and the results table all describe the English corpus alone. Runs from open-weight models tested locally appear here alongside consumer-product runs and are labelled in the table.</p>
+      <p class="chart-note" id="corpus-note"></p>
+    </section>
 
     <section>
       <h2>Results</h2>
@@ -94,10 +104,7 @@
       <div id="transcripts"></div>
     </section>
 
-    <div id="lang-runs"></div>
-  <!-- carwash-vendor-pagination -->
-    <div id="vendor-pagination"></div>
-    <div id="vendor-rail-bottom"></div>
+    <div id="lang-rail-bottom"></div>
   </main>
 
   <footer>
@@ -119,36 +126,40 @@
   <script src="../scripts.js?v=20260819b"></script>
   <script>
     (async function () {
-      const SLUG = "lumo";
+      const CODE = "zh-CN";
       try {
         const data = await CarwashTest.loadData("../");
-        const family = data.model_families[SLUG];
-        const familyRuns = data.runs.filter(function (r) { return r.model_family === SLUG && (!r.language || r.language === "en"); });
+        const L = CarwashTest.langCorpus(CODE);
+        const runs = data.runs.filter(function (r) { return r.language === CODE; });
 
-        document.getElementById("family-title").innerHTML =
-          CarwashTest.renderTitleLogo(SLUG, "../") +
-          CarwashTest.familyTitleHTML(family.display_name);
-        document.title = family.display_name + " — The Carwash Test";
+        document.getElementById("corpus-title").innerHTML = CarwashTest.renderLangHeader(L);
+        document.title = L.name + " corpus — The Carwash Test";
+        document.getElementById("corpus-prompt-line").textContent = L.prompt;
+        document.getElementById("corpus-prompt-line").setAttribute("lang", CODE === "zh-CN" ? "zh-Hans" : CODE);
+        document.getElementById("corpus-prompt-label").textContent =
+          L.name + " prompt (35 m ≈ 115 ft)";
+        const q = document.getElementById("corpus-prompt-quote");
+        q.textContent = L.prompt;
+        q.setAttribute("lang", CODE === "zh-CN" ? "zh-Hans" : CODE);
+        q.setAttribute("aria-label", L.aria);
+        const noteEl = document.getElementById("corpus-note");
+        if (L.note) { noteEl.textContent = L.note; } else { noteEl.remove(); }
 
         document.getElementById("tally").innerHTML =
-          CarwashTest.renderTallyRow(CarwashTest.tally(familyRuns));
+          CarwashTest.renderTallyRow(CarwashTest.tally(runs));
         document.getElementById("charts").innerHTML =
-          CarwashTest.renderCharts(familyRuns);
+          CarwashTest.renderCharts(runs);
         document.getElementById("results-table").innerHTML =
-          CarwashTest.renderResultsTableForFamily(familyRuns);
+          CarwashTest.renderResultsTable(runs, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#results-table table"));
         document.getElementById("legend").innerHTML =
           CarwashTest.renderLegend();
         document.getElementById("transcripts").innerHTML =
-          familyRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
-        document.getElementById("lang-runs").innerHTML =
-          CarwashTest.renderVendorLanguageRuns(data.runs, SLUG, "../");
-        document.getElementById("vendor-rail").innerHTML =
-          CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../");
-        document.getElementById("vendor-rail-bottom").innerHTML =
-          CarwashTest.renderVendorRail(SLUG, data.model_families, data.runs, "../", { position: "bottom" });
-        document.getElementById("vendor-pagination").innerHTML =
-          CarwashTest.renderVendorPagination(SLUG, data.model_families);
+          runs.map(function (r) { return CarwashTest.renderTranscriptEntry(r, "../"); }).join("");
+        document.getElementById("lang-rail").innerHTML =
+          CarwashTest.renderLangRail(CODE, data.runs, "../");
+        document.getElementById("lang-rail-bottom").innerHTML =
+          CarwashTest.renderLangRail(CODE, data.runs, "../");
       } catch (err) {
         console.error(err);
         CarwashTest.showError("transcripts", "Could not load runs.json. " + err.message);

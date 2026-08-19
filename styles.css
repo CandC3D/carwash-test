@@ -1475,3 +1475,76 @@ code { overflow-wrap: anywhere; }
   margin: 40px 0 0;
   padding: 18px 0 0;
 }
+
+/* ── Language corpora ─────────────────────────────────────────────────
+   Cards for the non-English corpora carry a two-letter dropcap in place
+   of a vendor logo: solid ink tile, code reversed out, sized to match
+   the 32px masked logos so the grids stay on one rhythm. */
+.family-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--bg-alt);
+  text-transform: lowercase;
+  background: var(--ink);
+  transition: background-color 0.15s ease;
+}
+.family-card:hover .family-mark { background: var(--pumpkin); }
+.family-card .family-native {
+  display: block;
+  margin: -2px 0 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Hero mark on a language-corpus page, matching renderTitleLogo's scale. */
+.lang-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.lang-hero-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--bg);
+  text-transform: lowercase;
+  background: var(--ink);
+}
+.lang-hero-text { display: flex; flex-direction: column; }
+.lang-hero-native {
+  font-family: var(--font-sans, inherit);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+.vendor-pill-mark {
+  display: inline-block;
+  margin-right: 6px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+  opacity: 0.75;
+}
+@media (max-width: 560px) {
+  .lang-hero-mark { width: 36px; height: 36px; font-size: 21px; }
+}

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260818a">
+  <link rel="stylesheet" href="../styles.css?v=20260819a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -86,7 +86,9 @@
         <span class="callout-tag">Namazu (alpha)</span>
         <p><strong>Namazu is Sakana AI's Japanese-adapted model, post-trained on open-weight frontier bases and served through Sakana Chat.</strong> Reasoning is always on (no toggle), and an integrated web search is always available — though in every run here the model's own trace decides <em>not</em> to search and to answer from knowledge. The interesting controls are a <strong>register selector</strong> (Standard 標準 / Polite 丁寧 / Osaka-Kansai 大阪) and a <strong>Japanese ⇄ English interface toggle</strong>, both surfaced on each run below.</p>
       </div>
-      <p class="chart-note"><strong>Namazu only ever reaches "drive" on Japanese prompts</strong> — and even then only in certain registers — while <strong>failing every non-Japanese language</strong> (English, Chinese, French, Ukrainian all recommend walking). Register and interface move the verdict: Standard drives in both interfaces, <strong>Polite walks in Japanese but drives in English</strong>, and <strong>Kansai-ben walks in both</strong>. Of the three "drive" answers, only the two English-interface ones name the constraint (the car must be at the wash); the Standard-Japanese one reaches drive by convenience (carrying tools) without holding the object, so it is scored verbose, not pass. The English run is below; Japanese, Chinese, French, and Ukrainian are in their language sections. <strong>The July 11 Carwash III retest went zero-for-five</strong> — and produced two firsts: Namazu answered the <em>Chinese</em> prompt entirely <em>in Japanese</em> (the dataset's first response-language mismatch), and the Standard-register Japanese run, which reached Drive on June 23, flipped to Walk. In that session the register selector was locked to Standard.</p>
+      <p class="chart-note"><strong>Through the alpha generation, Namazu only ever reached "drive" on Japanese prompts</strong> — and even then only in certain registers — while <strong>failing every non-Japanese language</strong> (English, Chinese, French, Ukrainian all recommend walking). Register and interface move the verdict: Standard drives in both interfaces, <strong>Polite walks in Japanese but drives in English</strong>, and <strong>Kansai-ben walks in both</strong>. Of the three "drive" answers, only the two English-interface ones name the constraint (the car must be at the wash); the Standard-Japanese one reaches drive by convenience (carrying tools) without holding the object, so it is scored verbose, not pass. The English run is below; Japanese, Chinese, French, and Ukrainian are in their language sections. <strong>The July 11 Carwash III retest went zero-for-five</strong> — and produced two firsts: Namazu answered the <em>Chinese</em> prompt entirely <em>in Japanese</em> (the dataset's first response-language mismatch), and the Standard-register Japanese run, which reached Drive on June 23, flipped to Walk. In that session the register selector was locked to Standard.</p>
+      <p class="chart-note"><strong>Sakana rebuilt the platform on August 13, 2026</strong> (<a href="https://sakana.ai/chat-update/" target="_blank" rel="noopener">chat-update</a>): Namazu moved to a second generation with better Japanese output and agentic execution, and <strong>Fugu</strong> arrived as an orchestrator model for complex, multi-step work. Both were tested on August 19 across all five languages, and in Japanese across all three registers — sixteen runs, the vendor's largest session here. Entries on this page are labelled by generation, so the alpha and second-generation Namazu rows can be read against each other.</p>
+      <p class="chart-note"><strong>The update splits the platform in two.</strong> <strong>Fugu holds the constraint in every language and every register</strong> — eight for eight, including the Kansai-ben run, where the joke lands on the missing car rather than on the questioner. Its English answer is the shortest in the August batch at roughly ten tokens: "Drive—the car needs to be at the car wash." <strong>The second-generation Namazu does not.</strong> It still fails Japanese-Standard, the register that failed in July; it opens the Chinese answer recommending a walk before carving out the actual case and closing on a split verdict; and in French it routes through walk-first-then-drive, reaching the wash only on a second trip. Ukrainian is its one clean pass. Register dependence — the finding this page has carried since June — survived a full model replacement on the Namazu line and is simply absent on Fugu. Same vendor, same interface, same day, same register selector.</p>
     </section>
 
     <section>
@@ -124,7 +126,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260818a"></script>
+  <script src="../scripts.js?v=20260819a"></script>
   <script>
     (async function () {
       const SLUG = "sakana";

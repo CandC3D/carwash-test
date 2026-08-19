@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Metrics | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 215 runs and 17 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 219 runs and 17 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260818a">
+  <link rel="stylesheet" href="styles.css?v=20260819a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -20,7 +20,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Metrics">
-  <meta property="og:description" content="Charts and trends across 215 runs and 17 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:description" content="Charts and trends across 219 runs and 17 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta property="og:url" content="https://carwashtest.org/metrics.html">
   <meta property="og:image" content="https://carwashtest.org/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Metrics">
-  <meta name="twitter:description" content="Charts and trends across 215 runs and 17 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="twitter:description" content="Charts and trends across 219 runs and 17 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://carwashtest.org/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -118,9 +118,9 @@
     <section>
       <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=215). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
+      <p>The Carwash Test has been run in four languages, each kept as a separate corpus (the charts above are the English corpus, n=219). This table places the models tested in more than one language side by side. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
       <div class="table-scroll"><table class="results-table cross-lang-table">
-        <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian</caption>
+        <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian. Indonesian arrived as a single-day sweep over a different model set and is reported in its own section rather than as a sixth column here.</caption>
         <thead>
           <tr><th scope="col">Model</th><th scope="col">Toggle</th><th scope="col">English</th><th scope="col">French</th><th scope="col">Chinese</th><th scope="col">Ukrainian</th></tr>
         </thead>
@@ -248,8 +248,32 @@
       </div>
     </section>
 
+    <section id="indonesian">
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">09</span><span class="sec-name">Indonesian</span></div>
+      <h2>Indonesian-language corpus</h2>
+      <div class="corpus-prompt">
+        <p class="corpus-prompt-label">Indonesian-language prompt (35 m ≈ 115 ft)</p>
+        <blockquote lang="id" aria-label="Indonesian Carwash Test prompt">Mobil saya kotor. Tempat cuci mobil berjarak 35 meter. Sebaiknya saya berjalan kaki atau mengendarai mobil?</blockquote>
+        <p class="translation"><em>Translation: My car is dirty. The car wash is 35 meters away. Should I walk there or drive?</em></p>
+        <p class="methodology-note"><em>Distance converted to the same metric equivalent used by the other non-English corpora.</em></p>
+      </div>
+      <p class="chart-note corpus-tokennote">Token calculation: Indonesian is Latin-script, so estimates use the same character approximation as English and French (1 character ≈ 0.25 tokens). Indonesian affixation — the prefixes and suffixes that turn <em>kendara</em> into <em>mengendarai</em> — tends to split into more subword tokens than the character count suggests, so these figures are conservative.</p>
+      <div id="id-tally"></div>
+      <div id="id-table"></div>
+      <div class="corpus-summary">
+        <p>Indonesian was added on August 19, 2026 in a single sitting: 65 runs across 13 vendors, the largest one-day, one-language batch in the dataset. It lands at a 25% failure rate, between Ukrainian and French rather than near the punishing Chinese figure, so on the headline number Indonesian is an ordinary corpus. The structure underneath it is not ordinary.</p>
+        <p><strong>The cleanest reasoning threshold yet recorded.</strong> Claude Sonnet 5 was run across both toggle states and all five effort levels, ten runs in all. With thinking off it recommends walking at every single effort level, Low through Max, arguing each time from cold-start fuel consumption and parking time. With thinking on it still fails at Low, then holds the constraint from High upward. Effort alone never rescues it; the toggle does, and only above a threshold. Inkling's six-level selector produced a monotonic dose-response in July, but this is the first time the dataset has isolated a threshold <em>inside</em> a toggle state, with the same model, prompt and day on both sides of it.</p>
+        <p><strong>The toggle inversion travels.</strong> Haiku 4.5 reproduces its English behaviour exactly — extended thinking off drives, extended thinking on walks. A failure mode first logged in English in July survives translation into a language with no shared vocabulary for any of it.</p>
+        <p><strong>Right answer, wrong reason.</strong> Two runs answer Drive without the car ever entering the argument. Haiku 4.5 with thinking off says the distance is too short for walking to be efficient — startup and parking supposedly outlast the drive — and GLM-4.7 with thinking off cites starter wear and not wanting to walk past a dirty car. Both hold the logical object by accident, on reasoning that would have produced Walk had the arithmetic gone the other way. The rubric scores the verb, so both are credited; the notes record that the constraint is absent.</p>
+        <p><strong>A third verb.</strong> Three models recommend pushing the car by hand: the second-generation Namazu, GLM-4.7 with thinking on, and GLM-5.2 as a closing aside. GLM-4.7's is the most deliberate — it explicitly rejects the walk reading first, on the grounds that leaving the car behind would not get it washed, then reframes the question as drive-versus-push and picks push on fuel and time grounds. The logical object is held perfectly. The answer is still not one of the two the prompt offered.</p>
+        <p><strong>The self-reversal repeats in a second language.</strong> DeepSeek V4-Pro with thinking off opens on <span lang="id">berjalan kaki jelas lebih masuk akal</span> — walking is clearly more sensible — lists its reasons, and then reverses in its final clause to driving, because the car has to be moved there anyway. This is the same shape as its English run six days earlier, which opened "the answer is probably walk" and closed on "So the real answer: Drive." Both verdicts published, wrong one first, in two languages a week apart.</p>
+        <p><strong>The product layer intrudes.</strong> Gemini 3.5 Flash-Lite with extended thinking off answers correctly and cleanly, and then has a live local-business listing appended to it — five named carwashes with star ratings and closing times, followed by an offer of directions. The reasoning answer and the commercial answer arrive stapled together, and only the first half was under test.</p>
+        <p lang="id"><em>Ringkasan berbahasa Indonesia sedang disiapkan; penutur asli akan memeriksanya sebelum diterbitkan.</em></p>
+      </div>
+    </section>
+
     <section id="cross-corpus">
-      <div class="sec-rail" aria-hidden="true"><span class="sec-num">09</span><span class="sec-name">Findings</span></div>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">10</span><span class="sec-name">Findings</span></div>
       <h2>Cross-corpus findings</h2>
       <p>Three findings emerge only when the corpora are read together — each isolates a variable that a single language could not.</p>
 
@@ -454,7 +478,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260818a"></script>
+  <script src="scripts.js?v=20260819a"></script>
   <script>
     (async function () {
       try {
@@ -483,6 +507,10 @@
         document.getElementById("uk-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(uk));
         document.getElementById("uk-table").innerHTML = CarwashTest.renderResultsTable(uk, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#uk-table table"));
+        const id = CarwashTest.runsByLanguage(data.runs, "id");
+        document.getElementById("id-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(id));
+        document.getElementById("id-table").innerHTML = CarwashTest.renderResultsTable(id, data.model_families);
+        CarwashTest.makeSortable(document.querySelector("#id-table table"));
       } catch (err) {
         console.error(err);
         CarwashTest.showError("charts", "Could not load runs.json. " + err.message);

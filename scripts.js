@@ -170,7 +170,7 @@
 
   // Compact language marker for tables that mix corpora (the open-weight
   // table on the overview). English tables omit the column entirely.
-  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA" };
+  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA", "id": "ID" };
   function langShort(r) {
     const c = r.language || "en";
     return LANG_SHORT[c] || c.toUpperCase();
@@ -624,6 +624,11 @@
         aria: "French Carwash Test prompt",
         translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
         note: "" },
+      { code: "id", title: "Indonesian-Language Runs (Bahasa Indonesia)",
+        prompt: "Mobil saya kotor. Tempat cuci mobil berjarak 35 meter. Sebaiknya saya berjalan kaki atau mengendarai mobil?",
+        aria: "Indonesian Carwash Test prompt",
+        translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+        note: "Added August 19, 2026 — the corpus was built in a single day across 13 vendors. Token estimates use a Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English and French counts, though Indonesian affixation tends to push real tokenizer counts higher." },
       { code: "uk", title: "Ukrainian-Language Runs (Українська)",
         prompt: "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
         aria: "Ukrainian Carwash Test prompt",

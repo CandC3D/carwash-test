@@ -170,7 +170,7 @@
 
   // Compact language marker for tables that mix corpora (the open-weight
   // table on the overview). English tables omit the column entirely.
-  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA", "id": "ID" };
+  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA", "id": "ID", "tr": "TR" };
   function langShort(r) {
     const c = r.language || "en";
     return LANG_SHORT[c] || c.toUpperCase();
@@ -398,6 +398,16 @@
       aria: "Indonesian Carwash Test prompt",
       translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
       note: "Added August 19, 2026 — the corpus was built in a single day across 13 vendors. Token estimates use a Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English and French counts, though Indonesian affixation tends to push real tokenizer counts higher." },
+    { code: "tr", title: "Turkish-Language Runs (Türkçe)",
+      prompt: "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
+      aria: "Turkish Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Added August 24, 2026 — 61 runs across 12 vendors in one sitting. Token estimates use the Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English, French and Indonesian counts; Turkish is agglutinative and uses six letters outside ASCII, both of which push real tokenizer counts above the character estimate, so these figures are conservative." },
+    { code: "tr", title: "Turkish-Language Runs (Türkçe)",
+      prompt: "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
+      aria: "Turkish Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Added August 24, 2026 — 61 runs across 12 vendors in one sitting. Token estimates use the Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English, French and Indonesian counts; Turkish is agglutinative and uses six letters outside ASCII, both of which push real tokenizer counts above the character estimate, so these figures are conservative." },
     { code: "uk", title: "Ukrainian-Language Runs (Українська)",
       prompt: "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
       aria: "Ukrainian Carwash Test prompt",
@@ -415,7 +425,9 @@
     { code: "uk", mark: "uk", page: "lang-uk.html",
       name: "Ukrainian", native: "Українська" },
     { code: "id", mark: "id", page: "lang-id.html",
-      name: "Indonesian", native: "Bahasa Indonesia" }
+      name: "Indonesian", native: "Bahasa Indonesia" },
+    { code: "tr", mark: "tr", page: "lang-tr.html",
+      name: "Turkish", native: "Türkçe" }
   ];
 
   // Look up a corpus definition by its language code, merging in the prompt

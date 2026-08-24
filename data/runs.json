@@ -10122,12 +10122,80 @@
       "token_estimate": 77,
       "token_method": "Turkish characters × 0.25 (Latin-script approximation, the same basis as the English, French and Indonesian counts; Turkish agglutination and its non-ASCII letters tend to push real tokenizer counts higher, so these figures are conservative)",
       "notes": "PASS-ADJACENT: the verdict is right and immediate, but the paragraph under it wanders — it discusses leaving the car there and walking home, then notes that if you wait you will drive the clean car back. The reasoning is about the return trip, not about why the car has to go."
+    },
+    {
+      "date": "2026-08-24",
+      "id": 632,
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V4-Flash",
+      "thinking": "off",
+      "surface": "consumer",
+      "result": "verbose",
+      "language": "tr",
+      "prompt": "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
+      "response": "Bu sorunun cevabı tamamen arabayı ne kadar kirli gördüğüne ve yıkama türüne bağlı. Ama gelin mantıklı bir şekilde kıyaslayalım:\n\n1. Arabayla gitmek (Çoğu durumda daha mantıklı)\n\nNeden? Araba zaten kirli, 35 metre yolda ekstra bir kirlenme olmaz (toz, egzoz vs.).\n\nAvantajı: Yıkama bittikten sonra arabanız tertemiz olacak. Eğer yürüyerek giderseniz, yıkadıktan sonra o 35 metreyi yürüyüp geri gelmek zorundasınız. Bu, yeni yıkanmış ayakkabılarınızın tozlanması veya yağmur varsa ıslanmanız anlamına gelir. Arabayla giderseniz, tertemiz arabanıza atlayıp keyifle uzaklaşırsınız.\n\nTek uyarı: Oto yıkama fırçalı tip ise ve arabanız çok kirliyse, kuru çamur üzerinde fırça dolaştırmak çizik yapabilir. Ama bu, yürüme kararını değil, yıkama tipini etkiler.\n\n2. Yürüyerek gitmek (Sadece 2 istisna durumda mantıklı)\n\nDurum 1: Araba aşırı çamurlu/çamur sıvı halde ve o 35 metrelik yolda arabayı sürerken çamur damlaları yoldaki diğer araçlara veya yayalara sıçrayacak kadar kötüyse (bu saygısızlık olur). O zaman yürüyüp, yıkama görevlisine \"araba şurada, siz gelip alır mısınız?\" dersiniz (çoğu yıkama buna izin verir).\n\nDurum 2: Oto yıkama sadece yürüyerek gelen müşterilere hizmet veriyor (yani arabayı sen sürüp rampadan çıkaramıyorsun, görevliler alıp sokuyor). O zaman zaten arabanızı oraya bırakıp anahtarı verirsiniz, yürümek zorundasınız.\n\nPratik çözüm önerisi:\n\nArabanıza binin, 35 metreyi sürerek gidin. Yıkamadan sonra arabanızı temiz alıp binin. Yürüyerek gitmenin hiçbir avantajı yok çünkü:\n\nYürürken 35 metre + dönerken 35 metre = 70 metre yürüyeceksiniz (soğuk/sıcak/yağmur fark etmez).\n\nAraba ile giderseniz 35 metre sürüş + 35 metre dönüş = 0 yürüyüş, 0 terleme.\n\nKarar: %90 ihtimalle arabayla gidin. Sadece araba o kadar batak ki yoldan geçerken rezil olacaksanız, o zaman yürüyün ama yıkamacıya \"araba şurada, siz alır mısınız?\" deyin.",
+      "token_estimate": 462,
+      "token_method": "Turkish characters × 0.25 (Latin-script approximation, the same basis as the English, French and Indonesian counts; Turkish agglutination and its non-ASCII letters tend to push real tokenizer counts higher, so these figures are conservative)",
+      "notes": "VERBOSE: the verdict is right and repeated — Karar: %90 ihtimalle arabayla gidin (decision: 90% likely, drive) — but it is reached without the constraint ever being stated. The argument is a comfort calculation: walk and you cover 35 metres each way, 70 in total, in whatever weather, and arrive back with dusty shoes; drive and you step out of a clean car. It also supplies the corpus's second have-someone-else-fetch-it escape — walk over and say araba şurada, siz gelip alır mısınız? (the car is over there, could you come and get it?) — offered for the case where the car is muddy enough to spray other road users. Right answer, and the reason is the owner's convenience rather than the car's presence."
+    },
+    {
+      "date": "2026-08-24",
+      "id": 633,
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V4-Flash",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "verbose",
+      "language": "tr",
+      "prompt": "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
+      "response": "Bu sorunun cevabı aslında çok net ama genellikle şaka yollu bir mantık sorusu gibi düşünülür. İşte iki açıdan cevap:\n\n1. Mantıklı (ve tek geçerli) cevap: Arabayla gitmelisiniz.\nArabanız kirli ve arabanın yıkanması gerekiyor. Oto yıkamaya yürüyerek giderseniz, araba hâlâ evinizin önünde kirli bir şekilde bekler. Oto yıkamacıya \"Ben geldim, arabayı yıkayın\" derseniz, size \"Araba nerede?\" diye sorarlar. O yüzden kesinlikle arabayla gidin, 35 metrelik mesafeyi viteste süzülerek bile gidersiniz, sorun değil.\n\n2. Pratik/mekanik açıdan uyarı:\n35 metre gerçekten çok kısa bir mesafe. Soğuk motorla 35 metre gidip durmak, akünün şarj olmamasına, egzozda yoğuşma birikmesine ve motorun ısınmadan kapanmasına neden olabilir (özellikle dizel araçlarda). Ama çaresizsiniz, çünkü arabayı oraya götürmek zorundasınız.\n\nÖneri: Arabayla gidin. Ancak motoru çalıştırdıktan sonra 30-40 saniye rölantide bekleyin (yağın dağılması için), sonra 35 metreyi ağır ağır, kırmadan süzülerek gidin. Yıkamadan sonra da aynı şekilde geri dönün.\n\nYürüyerek gitmek ancak şu durumda mantıklı olur: Eğer oto yıkamaya randevu almaya gidiyorsanız ve sonra arabayı almaya geri dönecekseniz. Ama yıkama işlemi için araba orada olmalı, o yüzden tercih değil, zorunluluk olarak arabayla gidin. 😄",
+      "token_estimate": 315,
+      "token_method": "Turkish characters × 0.25 (Latin-script approximation, the same basis as the English, French and Indonesian counts; Turkish agglutination and its non-ASCII letters tend to push real tokenizer counts higher, so these figures are conservative)",
+      "notes": "VERBOSE: correct, and the constraint is named the way GLM-5.2 named it — Oto yıkamacıya “Ben geldim, arabayı yıkayın” derseniz, size “Araba nerede?” diye sorarlar (tell the attendant “I'm here, wash the car” and they will ask you “where is the car?”). Then it over-elaborates into mechanical advice for a 35-metre trip: cold-start damage, battery charge, exhaust condensation in diesels, and an instruction to idle for 30-40 seconds before setting off. Trace in ENGLISH, and it works the geometry carefully, spelling out the self-service case where you drive in, wash, drive out and walk home.",
+      "reasoning_trace": "Analyze the User's Query:\n\nStatement: \"Arabam kirli.\" (My car is dirty.)\n\nSituation: \"Oto yıkama 35 metre uzakta.\" (The car wash is 35 meters away.)\n\nQuestion: \"Yürüyerek mi gitmeliyim, yoksa arabayla mı?\" (Should I go on foot, or by car?)\n\nEvaluate the Core Dilemma:\n\nDistance: 35 meters is extremely short (about 115 feet).\n\nGoing by car: Drive 35 meters, get it washed, drive back 35 meters. Engine doesn't warm up, battery drains slightly, steering gets stressed if turned at a standstill, potential hassle of parking/waiting in line with the car.\n\nGoing on foot: Walk 35 meters to the car wash, hand over the keys, let the staff move it, walk back 35 meters. Or if it's a self-serve, walk there, drive it in, get out, wash it, drive it out, park it, walk home (or drive home if done).\n\nWait, let's re-read: \"Arabam kirli. Oto yıkama 35 metre uzakta.\" The car is dirty now, and the car wash is 35m away from the current location (presumably home/office). If they walk, they have to go back and get the car anyway, or they leave the car there and walk back? Let's think logically.\n\nScenario A (Drive): Get in the dirty car, drive 35 meters, get it washed, drive 35 meters back. Total engine run time ~1 minute. Bad for battery and engine (cold start, no warm-up).\n\nScenario B (Walk): Walk 35 meters to the car wash. But wait, if they walk, how does the car get washed? They have to bring the car there. So they must drive the car to the car wash.\n\nCorrection: The question is usually asked as a joke or a logical puzzle. If the car wash is 35 meters away, you must drive it there because the car is dirty now and you need to transport the car to the car wash. You can't wash it if you walk there without the car.\n\nLet's think about the return trip. After washing, do you drive back or walk back? You drive back because the clean car is at the car wash.\n\nSo the definitive answer: You have to take the car. Walking there alone makes no sense because the car stays behind.\n\nLet's structure the response clearly: Point out the logical fallacy in walking (the car won't move itself), explain the practical reasons (cold start damage for such a short distance), and give a definitive recommendation (drive it there, but ideally let the engine warm up a bit or just push it if you can, but practically, you have to drive it).\n\nSelf-correction on nuance: Some might argue driving 35 meters is bad for the engine (battery drain, moisture in exhaust). But you have no choice because the car needs to be at the car wash. The best practical advice is: Drive it there. To mitigate the short trip, you can let it idle for 30 seconds before moving, or just accept it since it's only 35 meters. After the wash, drive it back. Walking is only an option if you are going there to book it or pay, but you still need the car there. So the clear answer is \"Arabayla gidip gelmelisiniz, çünkü arabanızı oraya götürmeniz şart.\" Let's also add a playful jab: \"Yürüyerek giderseniz, arabanızı kim yıkayacak?\"",
+      "reasoning_trace_language": "English"
+    },
+    {
+      "date": "2026-08-24",
+      "id": 634,
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V4-Pro",
+      "thinking": "off",
+      "surface": "consumer",
+      "result": "pass-adjacent",
+      "language": "tr",
+      "prompt": "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
+      "response": "Bu soru, pratik bir ikilem gibi görünse de aslında komik bir mantık sarmalı içeriyor. Arabayla gitmek istiyorsan araba zaten kirli ve yıkanacak; yürüyerek gitsen bu sefer de arabayı yıkama yerine getirmen gerekecek.\n\nMantıklı cevap: Arabayla git.\nÇünkü araba zaten kirlenmiş durumda, 35 metre için yürüyüp geri dönüp arabayı almak yerine doğrudan arabayla gidip yıkatmak en pratik yoldur. Ayrıca \"kirli\" olması, o kısa mesafede ekstra bir sorun yaratmaz.",
+      "token_estimate": 114,
+      "token_method": "Turkish characters × 0.25 (Latin-script approximation, the same basis as the English, French and Indonesian counts; Turkish agglutination and its non-ASCII letters tend to push real tokenizer counts higher, so these figures are conservative)",
+      "notes": "PASS-ADJACENT: correct, and notable for what it does NOT do. In English on August 13 and in Indonesian on August 19, V4-Pro with thinking off published both verdicts — opening on walking and reversing to driving in its closing clause. Here it holds from the first paragraph: yürüyerek gitsen bu sefer de arabayı yıkama yerine getirmen gerekecek (if you walked, you would then have to bring the car to the wash anyway). Mantıklı cevap: Arabayla git. Padded with a restatement about the dirt not mattering over 35 metres."
+    },
+    {
+      "date": "2026-08-24",
+      "id": 635,
+      "vendor": "DeepSeek",
+      "model_family": "deepseek",
+      "model": "DeepSeek-V4-Pro",
+      "thinking": "on",
+      "surface": "consumer",
+      "result": "pass",
+      "language": "tr",
+      "prompt": "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
+      "response": "Arabayla gitmelisin; çünkü yıkanması gereken araba. 35 metre de olsa arabayı oto yıkamaya götürmen lazım. 😄",
+      "token_estimate": 27,
+      "token_method": "Turkish characters × 0.25 (Latin-script approximation, the same basis as the English, French and Indonesian counts; Turkish agglutination and its non-ASCII letters tend to push real tokenizer counts higher, so these figures are conservative)",
+      "notes": "PASS: Arabayla gitmelisin; çünkü yıkanması gereken araba (drive, because the car is the thing that needs washing) — ~28 tokens, inside the winner's-circle threshold and DeepSeek's second entry to it after its English run of August 13. The trace is in ENGLISH and shows the answer being drafted in Turkish inside an English deliberation: it tries three candidate sentences, including “Yürüyerek gidersen sadece kendini yıkamış olursun” (if you walk you will only have washed yourself), and discards them for the shorter one. It also reminds itself twice to answer in Turkish.",
+      "reasoning_trace": "We need answer in Turkish. User says \"Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?\" This is a humorous/riddle-like question. Car is dirty, car wash 35 meters away. Should I walk or drive? If car is dirty, to wash it you need take car to car wash, so drive? But 35 meters is close. The joke: If you walk, car stays dirty. Need answer likely \"Arabayla gitmelisin, çünkü yıkanacak olan araba.\" But maybe if you drive a dirty car 35m to car wash. Could also say \"Yürüyerek gidersen araba yıkanmaz; arabayla götürmelisin.\" Need maybe mention 35 meters too short? Let's craft concise Turkish. Ensure not overcomplicate. Could include humor: \"Arabayla git, yoksa araba yıkanmaz; 35 metre de olsa arabanın oraya gitmesi lazım.\" But maybe if asking \"should I walk or drive?\" The answer is \"arabayla\" because car wash is for car. Could also say \"Yürüyerek gidersen sadece kendini yıkamış olursun.\" Need maybe no. Let's answer in Turkish.",
+      "reasoning_trace_language": "English"
     }
   ],
   "change_log": [
     {
       "date": "2026-08-24",
-      "summary": "Turkish added as a sixth language corpus: 61 runs across 12 vendors in one sitting, at a 23% failure rate — level with French and Ukrainian. Anthropic's effort-selector models sweep it, Opus 5 and Fable 5 taking all ten runs between them inside the winner's-circle threshold, and Google sweeps all six of its runs across three tiers. Claude Sonnet 5 breaks the clean Indonesian threshold pattern: thinking off holds at Low, fails at Medium, High and Extra, then holds again at Max, while thinking on fails only at Low. Two failure modes recur from other corpora — GLM-4.7 with thinking on again recommends pushing the car by hand, and Mistral's Fast mode again argues that driving the dirty car would re-soil what is about to be cleaned. Two firsts: Claude Haiku 4.5 answers in English on both toggle states, the first response-language mismatch outside Sakana; and Mistral Medium 3.5 with thinking on emits the prompt back verbatim as its entire answer, the first run in the dataset whose visible output is the question. Four DeepSeek runs in the intake sheet returned no output and are not loaded."
+      "summary": "Turkish added as a sixth language corpus: 65 runs across 13 vendors, tested August 24, at a 22% failure rate — the joint-lowest of any corpus alongside French and Ukrainian. Anthropic's effort-selector models sweep it, Opus 5 and Fable 5 taking all ten runs between them inside the winner's-circle threshold, and Google sweeps all six of its own. Claude Sonnet 5 breaks the clean Indonesian threshold pattern: thinking off holds at Low, fails at Medium, High and Extra, then holds again at Max, while thinking on fails only at Low. Two failure modes recur from other corpora — GLM-4.7 with thinking on again recommends pushing the car by hand, and Mistral's Fast mode again argues that driving the dirty car would re-soil what is about to be cleaned — while a third does not: DeepSeek V4-Pro, which published both verdicts in English and again in Indonesian, holds the constraint from its first paragraph here in both toggle states. Two firsts: Claude Haiku 4.5 answers in English on both toggle states, the first response-language mismatch outside Sakana; and Mistral Medium 3.5 with thinking on emits the prompt back verbatim as its entire answer, the first run in the dataset whose visible output is the question."
     },
     {
       "date": "2026-08-19",

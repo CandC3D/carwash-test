@@ -74,7 +74,8 @@
     "nemotron": "nvidia.svg",
     "deepseek_ow": "deepseek.svg",
     "mistral_ow": "mistralai.svg",
-    "zai_ow": "zai.svg"
+    "zai_ow": "zai.svg",
+    "granite": "ibm.svg"
   };
 
   async function loadData(basePath) {

@@ -73,6 +73,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://carwashtest.org/transcripts/granite.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://carwashtest.org/transcripts/gptoss.html</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>weekly</changefreq>

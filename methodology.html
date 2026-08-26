@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260824b">
+  <link rel="stylesheet" href="styles.css?v=20260826a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -152,7 +152,7 @@
 
     <section>
       <h2>Systems tested</h2>
-      <p>The test has been run on the following systems and configurations between March 22 and August 24, 2026:</p>
+      <p>The test has been run on the following systems and configurations between March 22 and August 26, 2026:</p>
       <ul>
         <li>Claude Fable 5 (Anthropic, Mythos-class; launched June 9; reasoning-effort selector only, default High — no thinking toggle; consumer surface with silent Opus 4.8 fallback in high-risk areas)</li>
         <li>Claude Opus 4.8 (Anthropic; new flagship, May 28; Adaptive On/Off plus the model-specific reasoning-effort selector — Low/Medium/High/Extra/Max)</li>
@@ -184,6 +184,7 @@
         <li>DeepSeek-R1-0528-Qwen3-8B (DeepSeek; open-weight distillation of DeepSeek chain-of-thought onto a Qwen3 8B Base, run locally in LM Studio, reasoning always on; tested August 17)</li>
         <li>Ministral 3 14B Reasoning (Mistral; open-weight edge-optimised reasoning model, run locally in LM Studio, reasoning always on; tested August 17)</li>
         <li>GLM-4.7-Flash (Z.ai; open-weight 30B-A3B MoE, run locally in LM Studio across a binary Thinking toggle; tested August 17 in English, Simplified Chinese, French, and Ukrainian)</li>
+        <li>Granite 4.2 30B (IBM; open-weight dense model released under Apache 2.0, run locally in LM Studio across a binary Thinking toggle; tested August 26)</li>
         <li>Qwen 3.7 (Alibaba; Max with Fast and Thinking, plus Max-Preview and Plus-Preview in Thinking mode; tested May 25)</li>
         <li>Kimi K2.6 (Moonshot AI; Thinking and Instant modes; new in May)</li>
         <li>Kimi K3 and K3 Swarm (Moonshot AI; new generation, launched the week of July 13; Standard/High/Max reasoning tiers, Max default; Swarm is the parallel-subagent variant; tested July 17)</li>
@@ -260,7 +261,7 @@
           <tr><td>Z.ai GLM-5.3 (3 reasoning levels)</td><td>August 19, 2026</td><td>3</td><td>222</td></tr>
         </tbody>
       </table></div>
-      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (69), French (60), Ukrainian (71), Japanese (13), Indonesian (65), and Turkish (65) language corpora, and the open-weight runs (Gemma 22, Qwen 24, Inkling 6, GPT-OSS 3, Bonsai 2, Nemotron 2, Muse Glimmer 1, DeepSeek distill 1, Ministral 1, GLM Flash 8), are kept separate and are not included in this cumulative total.</p>
+      <p class="chart-note">Counts are the commercial English corpus. The Simplified Chinese (69), French (60), Ukrainian (71), Japanese (13), Indonesian (65), and Turkish (65) language corpora, and the open-weight runs (Gemma 22, Qwen 24, Inkling 6, GPT-OSS 3, Bonsai 2, Nemotron 2, Muse Glimmer 1, DeepSeek distill 1, Ministral 1, GLM Flash 8, Granite 2), are kept separate and are not included in this cumulative total.</p>
     </section>
 
     <section id="deployment-classes">
@@ -376,6 +377,7 @@
           <tr><td>Alibaba (Qwen)</td><td>Qwen3.7-Max-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
           <tr><td>Alibaba (Qwen)</td><td>Qwen3.7-Plus-Preview</td><td>—</td><td>Thinking mode only; tested May 25, 2026</td></tr>
           <tr><td>Alibaba (Qwen)</td><td>Qwen3.8-Max-Preview</td><td>—</td><td>In the consumer interface as of July 30, 2026. A thinking toggle is shown but is permanently on and cannot be switched off, so the model has no testable Fast state.</td></tr>
+          <tr><td>IBM (open-weight)</td><td>Granite 4.2 30B</td><td><code>ibm-granite/granite-4.2-30b</code></td><td>Released August 25, 2026 under Apache 2.0, one of three sizes (3B / 8B / 30B). First Granite generation with native step-by-step reasoning; IBM cites multi-stage RL, an agentic RL phase for the 8B and 30B, a reasoning-oriented mid-training step, a trillion tokens of synthetic code, and a speculative-decoding layer. Binary Thinking on/off toggle, plus an unused Reasoning Budget Message field. Run in LM Studio, 43 layers GPU-offloaded (12.63&nbsp;GB of 18.37&nbsp;GB), 8,192 context of a supported 131,072.</td></tr>
           <tr><td>Z.ai (open-weight)</td><td>GLM-4.7-Flash</td><td><code>zai-org/glm-4.7-flash</code> (Q4_K_M GGUF)</td><td>Released January 20, 2026 under MIT. 30B-A3B Mixture-of-Experts for local coding and agent work; Z.ai reports 59.2% on SWE-bench Verified. LM Studio reports the architecture as <code>deepseek2</code> and context support to 202,752 tokens. Binary Thinking on/off toggle. Run in LM Studio, 30 layers GPU-offloaded (11.78&nbsp;GB of 17.86&nbsp;GB).</td></tr>
           <tr><td>Mistral (open-weight)</td><td>Ministral 3 14B Reasoning</td><td><code>Ministral-3-14B-Reasoning-2512</code> (Q4_K_M GGUF)</td><td>Released December 2025 under Apache 2.0. Reasoning post-trained variant of Ministral 3 14B; 256K context, vision input, native function calling, edge-optimised. Reasoning always on, no control exposed. Run in LM Studio, fully GPU-resident at 9.72&nbsp;GB.</td></tr>
           <tr><td>DeepSeek (open-weight)</td><td>DeepSeek-R1-0528-Qwen3-8B</td><td><code>deepseek-r1-0528-qwen3-8b</code> (Q4_K_M GGUF)</td><td>Released May 29, 2025 under MIT. A distillation, not a from-scratch model: Qwen3 8B Base post-trained on chain-of-thought from DeepSeek-R1-0528. Reported by DeepSeek as SOTA among open-source models on AIME 2024, matching Qwen3-235B-thinking. Reasoning always on, no control exposed. Run in LM Studio, fully GPU-resident at 5.49&nbsp;GB, 131,072-token context supported.</td></tr>
@@ -440,6 +442,7 @@
         <li><strong>August 17, 2026:</strong> <strong>Ministral 3 14B Reasoning</strong> (Mistral, open-weight) added as a new family. It fails, and its closing advice &mdash; &ldquo;if you do drive, consider parking farther away to encourage walking habits&rdquo; &mdash; counsels moving the car away from the wash. With this run Mistral has been tested in two deployment classes and <strong>still has no Pass anywhere in the dataset</strong>, in any language, on any surface, in any mode. See the <a href="transcripts/mistral_ow.html">Ministral transcript page</a>.</li>
         <li><strong>August 17, 2026:</strong> <strong>GLM-4.7-Flash</strong> (Z.ai, open-weight) added as a new family, with a <strong>perfectly inverted toggle</strong>: thinking off passes and names the constraint, thinking on fails at five times the length. Its trace asks &ldquo;Is there a trick?&rdquo;, answers itself &ldquo;usually you drive to the wash&rdquo;, files that as a rejected hypothesis, and recommends walking &mdash; the clearest instance in the record of a model reaching the constraint and discarding it. See the <a href="transcripts/zai_ow.html">GLM Flash transcript page</a>.</li>
         <li><strong>August 17, 2026:</strong> <strong>GLM-4.7-Flash</strong> run in Simplified Chinese, French, and Ukrainian &mdash; six runs, <strong>one of which arrives</strong>. The English inversion does not travel: thinking off, which held in English, fails in Chinese and Ukrainian and lands only in French, where the answer is correct and its arithmetic is not. The Chinese trace names the prompt a brainteaser, recalls that brainteasers have counterintuitive answers, and recommends walking on that ground &mdash; recognition of the genre producing the wrong answer faster. Trace language splits exactly as <strong>Qwen3.8 27B</strong>&rsquo;s did the day before &mdash; Chinese trace in Chinese, French and Ukrainian traces in English &mdash; the first cross-vendor replication of that asymmetry.</li>
+        <li><strong>August 26, 2026:</strong> <strong>IBM Granite 4.2 30B</strong> added as a new open-weight family &mdash; the first IBM model in the dataset, <a href="https://research.ibm.com/blog/introducing-granite-4-2" target="_blank" rel="noopener">released August 25</a> under Apache 2.0 and run locally the next day. <strong>The toggle is inverted</strong>, as GLM-4.7-Flash&rsquo;s was nine days earlier: thinking off holds the constraint, thinking on discards it at more than three times the length. The thinking-on run is <strong>the most explicit dismissal of the logical object on record</strong> &mdash; it numbers the dirty car as a consideration and rules it out of scope, &ldquo;irrelevant to the mode of transport&rdquo; &mdash; then recommends walking to the wash, cleaning the car, and driving off afterwards. See the <a href="transcripts/granite.html">Granite transcript page</a>.</li>
         <li><strong>August 24, 2026:</strong> <strong>Turkish added as a sixth language corpus</strong> — 65 runs across 13 vendors in one sitting, at a 22% failure rate, the joint-lowest of the six alongside French and Ukrainian. Anthropic’s effort-selector models take all ten of their runs inside the winner’s-circle threshold and Google sweeps all six of its own, while Claude Sonnet 5’s clean Indonesian threshold comes apart: thinking off holds at Low, fails at Medium, High and Extra, then holds again at Max. Two firsts: <strong>Claude Haiku 4.5 answers in English</strong> on a Turkish prompt in both toggle states — the first response-language mismatch outside Sakana — and <strong>Mistral Medium 3.5 returns the prompt verbatim as its entire answer</strong>, with a normal reasoning trace behind it. DeepSeek V4-Pro, which published both verdicts in English and in Indonesian, declines to repeat the self-reversal here and holds in both states. See the <a href="transcripts/lang-tr.html">Turkish corpus page</a>.</li>
                 <li><strong>August 19, 2026:</strong> <strong>Z.ai GLM-5.3</strong> reached the consumer chat selector and was tested at all three reasoning levels &mdash; <strong>three runs, three passes</strong>. Announced <a href="https://z.ai/blog/glm-5.3" target="_blank" rel="noopener">August 14</a> with access limited to the GLM Coding Plan and ZCode, it arrived in the consumer interface without a dated announcement. Its thinking toggle is <strong>present but greyed out</strong>: the second locked-on reasoning control in the dataset after Qwen3.8-Max-Preview (July 30), and the first paired with an effort selector. See the <a href="transcripts/zai.html">Z.ai transcript page</a>.</li>
         <li><strong>August 19, 2026:</strong> <strong>Indonesian added as a fifth language corpus</strong> — 65 runs across 13 vendors in one day, the largest single-language launch here. The prompt uses the same 35-metre wording as the other non-English corpora. Token estimates use the Latin-script character approximation, so they sit on the same basis as English and French, though Indonesian affixation tends to push real tokenizer counts higher.</li>
@@ -518,7 +521,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260824b"></script>
+  <script src="scripts.js?v=20260826a"></script>
   <script>
     (async function () {
       try {

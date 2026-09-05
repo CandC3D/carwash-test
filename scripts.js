@@ -171,7 +171,7 @@
 
   // Compact language marker for tables that mix corpora (the open-weight
   // table on the overview). English tables omit the column entirely.
-  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA", "id": "ID", "tr": "TR" };
+  const LANG_SHORT = { "en": "EN", "zh-CN": "ZH", "fr": "FR", "uk": "UK", "ja": "JA", "id": "ID", "tr": "TR", "th": "TH" };
   function langShort(r) {
     const c = r.language || "en";
     return LANG_SHORT[c] || c.toUpperCase();
@@ -404,7 +404,12 @@
       aria: "Turkish Carwash Test prompt",
       translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
       note: "Added August 24, 2026 — 65 runs across 13 vendors in one sitting. Token estimates use the Latin-script character approximation (1 character ≈ 0.25 tokens), the same basis as the English, French and Indonesian counts; Turkish is agglutinative and uses six letters outside ASCII, both of which push real tokenizer counts above the character estimate, so these figures are conservative." },
-        { code: "uk", title: "Ukrainian-Language Runs (Українська)",
+    { code: "th", title: "Thai-Language Runs (ภาษาไทย)",
+      prompt: "รถของฉันสกปรก ร้านล้างรถอยู่ห่างออกไป 35 เมตร ฉันควรเดินไปหรือขับรถไปดี?",
+      aria: "Thai Carwash Test prompt",
+      translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
+      note: "Added September 4–5, 2026. Native-speaker verified as formal but correct. Token estimates use 0.5 tokens per character, measured by encoding the corpus prompt with tiktoken: 34 tokens for 72 characters on o200k_base. Thai is written without spaces between words, and the rate is tokenizer-generation dependent — the same prompt costs 64 tokens on the older cl100k_base, and Claude's tokenizer is not public. These counts are not directly comparable to the English or Chinese figures." },
+    { code: "uk", title: "Ukrainian-Language Runs (Українська)",
       prompt: "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
       aria: "Ukrainian Carwash Test prompt",
       translation: "My car is dirty. The car wash is 35 meters away. Should I walk there or drive?",
@@ -423,7 +428,9 @@
     { code: "id", mark: "id", page: "lang-id.html",
       name: "Indonesian", native: "Bahasa Indonesia" },
     { code: "tr", mark: "tr", page: "lang-tr.html",
-      name: "Turkish", native: "Türkçe" }
+      name: "Turkish", native: "Türkçe" },
+    { code: "th", mark: "th", page: "lang-th.html",
+      name: "Thai", native: "ภาษาไทย" }
   ];
 
   // Look up a corpus definition by its language code, merging in the prompt

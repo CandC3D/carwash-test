@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260826a">
+  <link rel="stylesheet" href="styles.css?v=20260905a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -118,7 +118,7 @@
     <section>
       <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in seven languages, each kept as a separate corpus (the charts above are the English corpus, n=230). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
+      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=230). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
       <div class="table-scroll"><table class="results-table cross-lang-table">
         <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian. Indonesian arrived as a single-day sweep over a different model set and is reported in its own section rather than as a sixth column here.</caption>
         <thead>
@@ -297,8 +297,33 @@
       </div>
     </section>
 
+    <section id="thai">
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">11</span><span class="sec-name">Thai</span></div>
+      <h2>Thai-language corpus</h2>
+      <div class="corpus-prompt">
+        <p class="corpus-prompt-label">Thai-language prompt (35 m &asymp; 115 ft)</p>
+        <blockquote lang="th" aria-label="Thai Carwash Test prompt">รถของฉันสกปรก ร้านล้างรถอยู่ห่างออกไป 35 เมตร ฉันควรเดินไปหรือขับรถไปดี?</blockquote>
+        <p class="translation"><em>Translation: My car is dirty. The car wash is 35 meters away. Should I walk there or drive?</em></p>
+        <p class="methodology-note"><em>Distance converted to the same metric equivalent used by the other non-English corpora. The prompt was verified by a native speaker as formal but correct; register is recorded here because it is the one variable known to move a verdict in this dataset &mdash; Sakana&rsquo;s Namazu answers differently in Standard, Polite and Kansai-ben Japanese.</em></p>
+      </div>
+      <p class="chart-note corpus-tokennote">Token calculation: Thai estimates use <strong>0.5 tokens per character</strong>, the same rate as the Cyrillic and Japanese corpora but arrived at by measurement rather than approximation &mdash; the corpus prompt above encodes to 34 tokens across 72 characters on OpenAI&rsquo;s <code>o200k_base</code>. The rate is a property of the tokenizer generation, not of the language: the identical prompt costs 64 tokens on the older <code>cl100k_base</code>, so one vocabulary revision halved the Thai premium. Anthropic&rsquo;s and Google&rsquo;s tokenizers are not public, and independent work puts Thai at the top of Claude&rsquo;s input-cost premium across 43 languages, so these figures are conservative for some vendors. As with the other non-Latin corpora, they are not directly comparable to the English counts.</p>
+      <div id="th-tally"></div>
+      <div id="th-table"></div>
+      <div class="corpus-summary">
+        <p>Thai was added on September 4&ndash;5, 2026: 60 runs across 12 vendors, at a <strong>25% failure rate</strong> &mdash; the same figure as Indonesian, and a point above Turkish. Everything was run on the 4th except Claude Fable 5.1, which waited a day on its weekly usage reset; it is the same session, a day late, not a second one. Three further runs returned nothing &mdash; Gemini 3.5 Flash-Lite with extended thinking off, and both Mistral modes &mdash; and are recorded as not run rather than scored.</p>
+        <p><strong>The dataset&rsquo;s first refusals.</strong> Two models declined the question outright, and they are the cheapest tier of two different vendors. Claude Haiku 4.5 with extended thinking off answered, in English, <em>&ldquo;I don&rsquo;t speak Thai, so I can&rsquo;t respond to your question&rdquo;</em> &mdash; a claim falsified by the same model an answer earlier, which read the identical prompt with thinking on and replied to it, wrongly, in English. Gemini 3.5 Flash-Lite with thinking on declined in Thai: <span lang="th">ฉันไม่สามารถช่วยในเรื่องนี้ได้ เพราะเป็นแค่โมเดลภาษา</span> &mdash; I can&rsquo;t help with this, because I&rsquo;m just a language model. Until now the only run to withhold a verdict was Vibe&rsquo;s Research mode returning clarifying questions in Ukrainian. Both are scored Fail on the no-verdict rule, and they open a category: the prompt is refused rather than misread.</p>
+        <p><strong>Perplexity fails for the first time anywhere.</strong> It had passed in English, French, Chinese, Ukrainian, Indonesian and Turkish, most of them search-grounded &mdash; the French pass cited press coverage of the puzzle, the Ukrainian one restated the riddle from the web. In Thai it walks, in four headed reasons, with no citation and no search framing. The likeliest reading is the obvious one: there is no Thai-language coverage of this test to retrieve, and without it the model reasons cold, and reasons to the distance. A search-grounded pass and a cold-start pass are different things, and this is the run that separates them.</p>
+        <p><strong>Sonnet 5 produces a third pattern in three languages.</strong> Indonesian gave a clean ladder (thinking off fails everywhere, thinking on holds from High up). Turkish was jagged. Thai is mostly failure: seven of ten. Only <strong>Extra</strong> holds in both toggle states, and Max holds only with thinking on. Medium &mdash; the tier a default user gets &mdash; walks with thinking on and off alike, citing second gear and cold-start wear. Whatever the effort selector is doing for this model, it is not a monotone dial, and the level that holds is not the same level from one language to the next. The one constant is the argument the failures use: engine warm-up, fuel, parking, every time.</p>
+        <p><strong>The effort-selector models sweep again, and Lumo sweeps for the first time.</strong> Claude Opus 5 and Claude Fable 5.1 take all ten of their runs &mdash; Opus 5&rsquo;s High answer, <span lang="th">ขับไป รถต้องไปด้วยอยู่ดี</span> (drive; the car has to go anyway), is the shortest correct answer in the corpus. That is their fourth consecutive corpus without a miss. Proton&rsquo;s Lumo, which has never held a corpus clean in any language and whose Lite Fast tier has failed English, French, Ukrainian, Indonesian and Turkish, holds all four of its Thai runs; Lumo 2.0 Max with thinking on supplies the corpus&rsquo;s best line, that the purpose is to wash the car, <span lang="th">ไม่ใช่ไปเซ็นสัญญาล้างรถ</span> &mdash; not to go and sign a car-washing contract.</p>
+        <p><strong>DeepSeek V4-Pro with thinking off now has four behaviours in four languages.</strong> It published both verdicts in English and Indonesian, held from the first line in Turkish, and here walks outright &mdash; <span lang="th">การเดินไปน่าจะเป็นทางเลือกที่สมเหตุสมผลกว่า</span> &mdash; with no reversal at all. Its thinking-on sibling passes, and reasons in <em>Thai</em>: a model that reasoned in Russian on the Ukrainian prompt and in English on the Turkish one thinks in the prompt language here, and reads the question as a <span lang="th">มุกตลก</span>, a joke built on a pun.</p>
+        <p><strong>Trace language splits by vendor, not by tier.</strong> Traces in Thai: Qwen3.8-Max, Sonnet 5, Fable 5.1, DeepSeek V4-Pro, and Namazu. Traces in English: Qwen3.7-Plus, DeepSeek V4-Flash, Muse Spark, Lumo, Grok, GLM-5.2 and GLM-5.3-Flash. One trace does both &mdash; Qwen3.8-Max with thinking on opens in English, wrongly, calling the wash &ldquo;just a short walk away&rdquo;, then switches to Thai and corrects itself, the same mid-stream switch it showed in French and Ukrainian on August 3. Haiku 4.5 answers the Thai prompt in English in the one state where it answers at all, repeating its Turkish behaviour.</p>
+        <p><strong>Two carried-over rulings.</strong> Muse Spark 1.1&rsquo;s Instant tier opens with an imperative to walk &mdash; <span lang="th">35 เมตรเอง เดินไปเถอะครับ</span> &mdash; and reaches the constraint two paragraphs later; it is scored Fail under the answer-reversal rule applied to DeepSeek in Ukrainian, because the reader is told the wrong thing first. And the third verb is back as a joke rather than a recommendation: DeepSeek V4-Pro and GLM-5.2 both offer pushing the car as a fuel-saving aside, and GLM-5.3-Flash&rsquo;s High trace says &ldquo;or even push it&rdquo; and drops it before the answer. Four models converge on one sentence &mdash; <span lang="th">ร้านล้างรถล้างรถ ไม่ได้ล้างคน</span>, a carwash washes cars, not people &mdash; from Fable 5.1, Muse Spark, Qwen3.8-Max and GLM-5.3-Flash, in Thai and in Turkish before it.</p>
+        <p lang="th"><em>สรุปภาษาไทยอยู่ระหว่างจัดทำ และจะได้รับการตรวจสอบโดยเจ้าของภาษาก่อนเผยแพร่</em></p>
+      </div>
+    </section>
+
     <section id="cross-corpus">
-      <div class="sec-rail" aria-hidden="true"><span class="sec-num">11</span><span class="sec-name">Findings</span></div>
+      <div class="sec-rail" aria-hidden="true"><span class="sec-num">12</span><span class="sec-name">Findings</span></div>
       <h2>Cross-corpus findings</h2>
       <p>Three findings emerge only when the corpora are read together — each isolates a variable that a single language could not.</p>
 
@@ -552,7 +577,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260826a"></script>
+  <script src="scripts.js?v=20260905a"></script>
   <script>
     (async function () {
       try {
@@ -590,6 +615,12 @@
         document.getElementById("tr-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(tr));
         document.getElementById("tr-table").innerHTML = CarwashTest.renderResultsTable(tr, data.model_families);
         CarwashTest.makeSortable(document.querySelector("#tr-table table"));
+
+        const th = CarwashTest.runsByLanguage(data.runs, "th");
+        document.getElementById("th-tally").innerHTML = CarwashTest.renderTallyRow(CarwashTest.tally(th));
+        document.getElementById("th-table").innerHTML = CarwashTest.renderResultsTable(th, data.model_families);
+        CarwashTest.makeSortable(document.querySelector("#th-table table"));
+
 
       } catch (err) {
         console.error(err);

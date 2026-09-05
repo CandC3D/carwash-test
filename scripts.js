@@ -418,19 +418,21 @@
   const LANG_PROMPTS = {};
   LANG_LIST.forEach(function (L) { LANG_PROMPTS[L.code] = L; });
 
+  // Ordered alphabetically by two-letter mark (fr, id, th, tr, uk, zh); this order
+  // drives both the hub cards and the corpus rail. New corpora go in by mark, not at the end.
   const LANG_CORPORA = [
-    { code: "zh-CN", mark: "zh", page: "lang-zh.html",
-      name: "Simplified Chinese", native: "简体中文" },
     { code: "fr", mark: "fr", page: "lang-fr.html",
       name: "French", native: "Français" },
-    { code: "uk", mark: "uk", page: "lang-uk.html",
-      name: "Ukrainian", native: "Українська" },
     { code: "id", mark: "id", page: "lang-id.html",
       name: "Indonesian", native: "Bahasa Indonesia" },
+    { code: "th", mark: "th", page: "lang-th.html",
+      name: "Thai", native: "ภาษาไทย" },
     { code: "tr", mark: "tr", page: "lang-tr.html",
       name: "Turkish", native: "Türkçe" },
-    { code: "th", mark: "th", page: "lang-th.html",
-      name: "Thai", native: "ภาษาไทย" }
+    { code: "uk", mark: "uk", page: "lang-uk.html",
+      name: "Ukrainian", native: "Українська" },
+    { code: "zh-CN", mark: "zh", page: "lang-zh.html",
+      name: "Simplified Chinese", native: "简体中文" }
   ];
 
   // Look up a corpus definition by its language code, merging in the prompt

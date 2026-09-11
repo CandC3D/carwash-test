@@ -10239,7 +10239,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "low",
       "surface": "consumer",
@@ -10254,14 +10254,14 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "medium",
       "surface": "consumer",
       "result": "pass",
       "response": "Drive. The car is what needs washing, and it won't fit through the door on foot.",
       "token_estimate": 20,
-      "notes": "Winner's circle, and the specimen of the batch. This is the default effort setting, and the second clause is malformed: the car \"won't fit through the door on foot.\" The verb is right and the constraint is named, so it scores Pass. But the clause is a slot corruption rather than a claim â€” the template wants a car-cannot-do-a-pedestrian-thing idiom and two candidates have been spliced, \"won't fit through the door\" and \"on foot.\" It is not evidence that the model pictures someone carrying a car through the wash bay; reading an expectation into it would be attributing a world-model to a garbled quip. What it does show is that the concise-pass register itself is a template, and at the default setting the template fired with a bad slot. The constraint held; the prose did not."
+      "notes": "Winner's circle, and the specimen of the batch. This is the default effort setting, and the second clause is malformed: the car \"won't fit through the door on foot.\" The verb is right and the constraint is named, so it scores Pass. But the clause is a slot corruption rather than a claim — the template wants a car-cannot-do-a-pedestrian-thing idiom and two candidates have been spliced, \"won't fit through the door\" and \"on foot.\" It is not evidence that the model pictures someone carrying a car through the wash bay; reading an expectation into it would be attributing a world-model to a garbled quip. What it does show is that the concise-pass register itself is a template, and at the default setting the template fired with a bad slot. The constraint held; the prose did not."
     },
     {
       "date": "2026-09-01",
@@ -10269,14 +10269,14 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "high",
       "surface": "consumer",
       "result": "pass",
       "response": "Drive. The car is the thing that needs washing, and it won't walk there on its own.",
       "token_estimate": 21,
-      "notes": "Winner's circle. Third instance of the same two-clause template â€” the car \"won't walk there on its own.\" Low, Medium and High differ in wording, not in argument."
+      "notes": "Winner's circle. Third instance of the same two-clause template — the car \"won't walk there on its own.\" Low, Medium and High differ in wording, not in argument."
     },
     {
       "date": "2026-09-01",
@@ -10284,7 +10284,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "extra",
       "surface": "consumer",
@@ -10299,14 +10299,14 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "max",
       "surface": "consumer",
       "result": "pass",
       "response": "Drive. The carwash needs the car, not you.",
       "token_estimate": 10,
-      "notes": "Winner's circle. Inverts the object â€” the carwash needs the car, not the car needs the carwash â€” and stops. Answer length falls as effort rises across the five settings, the pattern first logged on Opus 5, so the extra budget is spent on compression rather than on argument."
+      "notes": "Winner's circle. Inverts the object — the carwash needs the car, not the car needs the carwash — and stops. Answer length falls as effort rises across the five settings, the pattern first logged on Opus 5, so the extra budget is spent on compression rather than on argument."
     },
     {
       "date": "2026-09-01",
@@ -10314,7 +10314,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "medium",
       "surface": "consumer",
@@ -10323,7 +10323,7 @@
       "response": "Arabayla. Yıkanacak olan sen değilsin.",
       "token_estimate": 10,
       "prompt": "Arabam kirli. Oto yıkama 35 metre uzakta. Yürüyerek mi gitmeliyim, yoksa arabayla mı?",
-      "notes": "Winner's circle: \"Arabayla. Yikanacak olan sen degilsin\" â€” by car; it is not you that is getting washed. Five words after the verb."
+      "notes": "Winner's circle: \"Arabayla. Yikanacak olan sen degilsin\" — by car; it is not you that is getting washed. Five words after the verb."
     },
     {
       "date": "2026-09-01",
@@ -10331,7 +10331,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "medium",
       "surface": "consumer",
@@ -10348,7 +10348,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "medium",
       "surface": "consumer",
@@ -10365,7 +10365,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "medium",
       "surface": "consumer",
@@ -10374,7 +10374,7 @@
       "response": "Поїхати. Мийка миє машину, а не вас — пішки ви прийдете чистим, а вона залишиться брудною.",
       "token_estimate": 45,
       "prompt": "У мене брудна машина. Автомийка знаходиться за 35 метрів від мене. Мені туди краще йти пішки чи поїхати на машині?",
-      "notes": "Winner's circle: the wash washes the car, not you â€” on foot you arrive clean and it stays dirty. The closing clause restates rather than hedges, so it stays a Pass."
+      "notes": "Winner's circle: the wash washes the car, not you — on foot you arrive clean and it stays dirty. The closing clause restates rather than hedges, so it stays a Pass."
     },
     {
       "date": "2026-09-01",
@@ -10382,7 +10382,7 @@
       "vendor": "Anthropic",
       "model_family": "anthropic",
       "model": "Claude Fable 5.1",
-      "model_notes": "Claude Fable 5.1 â€” Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
+      "model_notes": "Claude Fable 5.1 — Anthropic, tested September 1, 2026 in the consumer interface. Selector-only, like Fable 5: reasoning effort is the sole control and there is no thinking toggle, so Thinking is n/a. Two changes from Fable 5 are visible in the picker: the default effort moves from High down to Medium, and Max now carries an in-product warning that it consumes 3.5x credits or more relative to the other settings. English runs cover all five effort levels; the non-English runs are all at Medium, the new default.",
       "thinking": "n/a",
       "effort": "medium",
       "surface": "consumer",
@@ -10391,7 +10391,7 @@
       "response": "Kendarai mobilnya. Tujuannya mencuci mobil itu sendiri, jadi mobil harus sampai di sana — berjalan kaki hanya membawa Anda, bukan mobilnya. Kalau tempat cucinya melayani penjemputan atau Anda cuma mau tanya harga dulu, baru berjalan masuk akal.",
       "token_estimate": 61,
       "prompt": "Mobil saya kotor. Tempat cuci mobil berjarak 35 meter. Sebaiknya saya berjalan kaki atau mengendarai mobil?",
-      "notes": "PASS-ADJACENT: correct and explicit â€” the goal is washing the car itself, so the car has to get there, and walking brings only you. The padding is an escape hatch: if the wash offers pickup, or you only want to ask the price, then walking makes sense. The same hedge Perplexity produced in English. It is also the one run of the ten that is not terse, and the only one outside the winner's circle."
+      "notes": "PASS-ADJACENT: correct and explicit — the goal is washing the car itself, so the car has to get there, and walking brings only you. The padding is an escape hatch: if the wash offers pickup, or you only want to ask the price, then walking makes sense. The same hedge Perplexity produced in English. It is also the one run of the ten that is not terse, and the only one outside the winner's circle."
     },
     {
       "date": "2026-09-04",

@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Virtual Intelligence in Action</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 232 English-language runs across 17 model families, plus separate Simplified Chinese (72), French (63), Ukrainian (74), Japanese (13), Indonesian (68), Turkish (68), and Thai (62) corpora. Full results and transcripts.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 251 English-language runs across 17 model families, plus separate Simplified Chinese (76), French (67), Ukrainian (78), Japanese (13), Indonesian (72), Turkish (72), and Thai (66) corpora. Full results and transcripts.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260905b">
+  <link rel="stylesheet" href="styles.css?v=20260922a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -20,7 +20,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Overview">
-  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 232 English-language runs across 17 model families, plus separate Simplified Chinese (72), French (63), Ukrainian (74), Japanese (13), Indonesian (68), Turkish (68), and Thai (62) corpora. Full results and transcripts.">
+  <meta property="og:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 251 English-language runs across 17 model families, plus separate Simplified Chinese (76), French (67), Ukrainian (78), Japanese (13), Indonesian (72), Turkish (72), and Thai (66) corpora. Full results and transcripts.">
   <meta property="og:url" content="https://carwashtest.org/">
   <meta property="og:image" content="https://carwashtest.org/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Overview">
-  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 232 English-language runs across 17 model families, plus separate Simplified Chinese (72), French (63), Ukrainian (74), Japanese (13), Indonesian (68), Turkish (68), and Thai (62) corpora. Full results and transcripts.">
+  <meta name="twitter:description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 251 English-language runs across 17 model families, plus separate Simplified Chinese (76), French (67), Ukrainian (78), Japanese (13), Indonesian (72), Turkish (72), and Thai (66) corpora. Full results and transcripts.">
   <meta name="twitter:image" content="https://carwashtest.org/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -48,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "The Carwash Test",
-  "description": "A longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 232 English-language runs across 17 model families, with separate Simplified Chinese (72), French (63), Ukrainian (74), Japanese (13), Indonesian (68), Turkish (68), and Thai (62) corpora.",
+  "description": "A longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. 251 English-language runs across 17 model families, with separate Simplified Chinese (76), French (67), Ukrainian (78), Japanese (13), Indonesian (72), Turkish (72), and Thai (66) corpora.",
   "url": "https://carwashtest.org/",
   "creator": {
     "@type": "Person",
@@ -56,9 +56,9 @@
     "url": "https://chorrocks.substack.com"
   },
   "dateCreated": "2026-03-22",
-  "dateModified": "2026-09-05",
+  "dateModified": "2026-09-22",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "temporalCoverage": "2026-03-22/2026-09-05"
+  "temporalCoverage": "2026-03-22/2026-09-22"
 }
 </script>
 </head>
@@ -115,11 +115,15 @@
       <h2>Recent runs</h2>
       <p>The ten most recent runs from the commercial corpus. <a href="results.html">See all results →</a></p>
       <div id="recent-runs"></div>
+      <div class="callout callout-note">
+        <span class="callout-tag">Recent releases not tested here</span>
+        <p>Several frontier vendors now release new models to API and coding-tool customers first, while the consumer chat interface continues to serve earlier versions. Gemini Flash 3.8 and Grok 4.7, for example, are available through the API but not yet in chat. With rare exceptions, the Carwash Test runs in the consumer interface, because that is where most people use these systems, and because the interface's defaults and system prompts are part of what the test measures. Models released only through the API do not appear in the results until they reach the chat interface.</p>
+      </div>
     </section>
 
     <section id="recent-open-weight-section">
       <h2>Recent open-weight runs</h2>
-      <p>The test also covers <strong>open-weight models</strong> — published as downloadable weights and run either in a developer playground or locally on consumer hardware, with no consumer system prompt and no product layer around them. These are kept as a separate deployment class and are <em>excluded</em> from every figure above, because a finding about a raw model is not evidence for a vendor's shipping product, or the reverse. The ten most recent are below; the full open-weight record spans five families and includes Chinese, French, and Ukrainian runs. <a href="transcripts.html">Browse open-weight transcripts →</a></p>
+      <p>The test also covers <strong>open-weight models</strong> — published as downloadable weights and run either in a developer playground or locally on consumer hardware, with no consumer system prompt and no product layer around them. These are kept as a separate deployment class and are <em>excluded</em> from every figure above, because a finding about a raw model is not evidence for a vendor's shipping product, or the reverse. The ten most recent are below; the full open-weight record spans several families and includes runs in multiple languages across different writing systems. <a href="transcripts.html">Browse open-weight transcripts →</a></p>
       <div id="recent-open-weight"></div>
     </section>
   </main>
@@ -140,7 +144,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260905b"></script>
+  <script src="scripts.js?v=20260922a"></script>
   <script>
     (async function () {
       try {

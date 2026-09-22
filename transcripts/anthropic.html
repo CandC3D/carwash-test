@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260905b">
+  <link rel="stylesheet" href="../styles.css?v=20260922a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -83,6 +83,12 @@
 
     <section>
       <div class="callout callout-note">
+        <span class="callout-tag">Opus 5.5</span>
+        <p><strong>Claude Opus 5.5 (September 22, 2026) is eleven runs and eleven Passes</strong>, nine of them inside the winner's circle: all five effort levels in English, plus French, Indonesian, Thai, Turkish, Ukrainian and Chinese at Medium, which is now the default. Anthropic positions it at Claude Fable 5.1's level on most work, at 40% lower running cost than Opus 5, and on this item the two are indistinguishable: terse, correct, and the same shape every time. The Chinese run is the first from the Opus 5 line. Opus 4.7 and 4.8 failed Chinese in every state in May, before 4.8 recovered in July, and 5.5 holds it.</p>
+        <p><strong>Three of the five English tiers return the same sentence, verbatim.</strong> Low, High and Extra all answer "Drive. The car has to be there too." Earlier effort sweeps here produced identical pairs, on Opus 4.6, Sonnet 4.6, Inkling and Opus 5, but never three. Fable 5.1 in September was already one template in three paraphrases; Opus 5.5 has stopped paraphrasing. Only Medium and Max change the wording, and Max is the <em>longest</em> of the five at about 19 tokens. That reverses Opus 5, whose answers shortened as the dial went up, so on this model the effort setting is not buying compression either. It changes almost nothing that can be seen.</p>
+        <p>The one visible trace, at Max, is about register rather than the car: "Puzzling out whether to walk or drive to the carwash. Settling on a short, dry one-line answer." Anthropic's trace is a summary, so this describes the summary layer, but half of what it records is a decision about tone.</p>
+      </div>
+      <div class="callout callout-note">
         <span class="callout-tag">Opus 5</span>
         <p><strong>Claude Opus 5 (July 24, 2026) passes in every tier tested — and gets shorter as it thinks harder.</strong> Its control surface is the effort selector alone — no thinking, Adaptive, or extended-reasoning toggle — so its runs carry a Thinking value of n/a, bringing the Fable 5 / Sonnet 5 pattern to the flagship line. Run at Low, High (the default), and Max, it names the constraint each time, and answer length falls as the budget rises: ~21 tokens at Low, ~12 at High, ~9 at Max ("Drive. Walking gets you clean shoes.") — the tersest English pass since Opus 4.6’s six-token record, and all three inside the winner’s circle. This confirms on the Opus line the inverse effort/verbosity pattern first seen in Sonnet 5: the extra budget goes into the reasoning, not the output.</p>
         <p>One texture worth recording. The High and Max runs display an <em>identical</em> summarized trace — "Thinking about weighing transportation options for a short distance" — which describes the problem in precisely the distance-weighing framing the test is built to catch, while both answers name the car. Anthropic’s visible trace is a summary rather than the raw reasoning, so this is an observation about the summary layer, not evidence about what the model actually did. It belongs with the Inkling trace/answer split as a reminder that the trace is a product surface, and its job is making the reasoning inspectable.</p>
@@ -140,7 +146,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260905b"></script>
+  <script src="../scripts.js?v=20260922a"></script>
   <script>
     (async function () {
       const SLUG = "anthropic";

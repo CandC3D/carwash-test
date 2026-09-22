@@ -15,12 +15,24 @@ Static site published at `https://carwashtest.org/` via GitHub Pages
   `category` (`general` / `purpose-optimized`).
 
 ## Language corpora (separate, not merged)
-- Runs without a `language` field are English. Other corpora use `language`
-  (`zh-CN`, `fr`, `uk`). **English aggregates must stay English-only** via
+- Runs without a `language` field are English. Other corpora use `language`:
+  `zh-CN` (Simplified Chinese), `fr`, `uk`, `id` (Indonesian), `tr` (Turkish),
+  `th` (Thai), and `ja` (Japanese). **English aggregates must stay English-only** via
   `CarwashTest.englishRuns(runs)` — this filters the index, results table + CSV,
   the transcripts-hub family grid, per-vendor pages, the vendor rail, and the
-  English metrics charts. Other languages render in their own Metrics sections and
-  in per-vendor transcript subsections (`renderVendorLanguageRuns`).
+  English metrics charts. Other languages render in their own Metrics sections, in
+  per-vendor transcript subsections (`renderVendorLanguageRuns`), and on their own
+  corpus pages (`transcripts/lang-*.html`), which the transcripts hub lists under
+  Language Corpora.
+- **Japanese is the exception.** It has only been run against Sakana AI, so it has
+  no corpus page, no hub card and no Metrics section; its runs live on
+  `transcripts/sakana.html`.
+- **Adding a new language touches three places in `scripts.js`:** `LANG_SHORT` (the
+  table marker), `LANG_LIST` (prompt, gloss and corpus note, shared by the vendor
+  subsections and the corpus pages), and `LANG_CORPORA` (the hub card and corpus
+  page). Then add a `transcripts/lang-XX.html` page, a methodology corpora-table
+  row, a sitemap entry, and — if it gets a Metrics section — the section plus its
+  lines in `metrics.html`'s bootstrap script. Bump the cache token.
 - **REMINDER — the cross-language comparison table in `metrics.html` is static
   hand-written HTML; it does NOT read `runs.json`.** When you add, relabel, or
   re-score any multilingual run, update that table (and its English column, taken
@@ -37,6 +49,12 @@ Static site published at `https://carwashtest.org/` via GitHub Pages
 ## Verifying changes
 - `node -c scripts.js` after JS edits.
 - Validate JSON: `python -c "import json,io; json.load(io.open('data/runs.json',encoding='utf-8'))"`.
+- Where only Windows PowerShell 5.1 is available (no Node or Python), validate JSON
+  with `ConvertFrom-Json`. Keep any `.ps1` generator script pure ASCII: 5.1 reads a
+  BOM-less script as Windows-1252, so a non-ASCII literal is silently corrupted —
+  an em dash becomes `â€”`. That once put mojibake into runs 638–647. Read prose
+  from a UTF-8 data file instead, and after any generated write, check `runs.json`
+  for U+00E2 followed by U+20AC.
 - Serve locally and check the rendered DOM + console (no errors). Note: GitHub Pages
   CDN means a hard refresh may still show stale assets for ~10 min; append `?x=1`
   to force-fetch.

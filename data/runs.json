@@ -119,6 +119,13 @@
       "category": "purpose-optimized",
       "notes": "Instacart's shopping agent at instacart.com, labelled Beta when tested. No reasoning control exposed."
     },
+    "americagov": {
+      "name": "America.gov",
+      "display_name": "America.gov (federal government assistant)",
+      "slug": "americagov",
+      "category": "purpose-optimized",
+      "notes": "The U.S. federal government's chat interface at america.gov, built by the National Design Studio with the General Services Administration under Executive Order 14338. Phase 1 launched September 29, 2026, answering from roughly 29,000 government websites; Phase 2, applying and enrolling in chat, is planned for 2027. The underlying model is not named."
+    },
     "alexa": {
       "name": "Alexa",
       "display_name": "Amazon (Alexa shopping assistant)",
@@ -12684,9 +12691,26 @@
         "result":  "fail",
         "response":  "For 100 feet—about the length of a small parking lot—walking makes more sense. You’ll save time by not getting in and out of your car and avoid using gas for such a short trip. Plus, it’s better for your tires and engine to skip needless short drives.\n\n* Walk to the carwash\n* Get some fresh air\n* Enjoy the walk\n* Take a scenic route",
         "notes":  "FAIL: walk, on the grounds that it saves time, gas, and wear on the tires and engine. The car never enters the reasoning as the thing to be washed. Then the product layer compounds the error: all four suggested follow-up chips reinforce it — 'Walk to the carwash,' 'Get some fresh air,' 'Enjoy the walk,' 'Take a scenic route.' This is the purpose-optimized failure in its plainest commercial form. Both Amazon shopping agents held the object and then pivoted to selling car-cleaning supplies — Rufus offered microfiber towels, Alexa detailing kits. Clementine, built to sell exactly that kind of thing, lost the car and with it the sale: its chips sell a walk instead of a wash. The Rufus note put it that a shopping agent that loses the object is money walking away; here it literally walks."
+    },
+    {
+        "date":  "2026-09-30",
+        "id":  782,
+        "vendor":  "U.S. federal government",
+        "model_family":  "americagov",
+        "model":  "America.gov",
+        "model_notes":  "America.gov — the U.S. federal government's chat interface, built by the National Design Studio with the General Services Administration under Executive Order 14338 and launched as Phase 1 on September 29, 2026 (america.gov/about). It answers from roughly 29,000 government websites; Phase 2, applying and enrolling in chat, is planned for 2027. The underlying model is not named. No reasoning control is exposed and no trace is shown.",
+        "thinking":  "n/a",
+        "surface":  "consumer",
+        "result":  "no-score",
+        "response":  "I can help with official U.S. government services and information, not personal choices like walking or driving to a car wash.\n\nIf you have a question about a federal program, benefit, form, or agency, ask that and I will point you to official sources.",
+        "notes":  "NO SCORE: it declines the question as outside its remit and never reaches a verb, so there is nothing to grade. The rubric asks whether the right verb held the logical object; this system stops before the object, and says why. That restraint is credited. Every other purpose-optimized system here answered from its domain whether or not the domain fit: TIME AI answered from its content catalog and walked, Clementine answered like a shopping agent and walked, and the Amazon agents drove and then tried to sell car-care supplies. America.gov is the only one to recognize that a personal errand is not a government service, and it offers the questions it can answer instead. Recorded outside every tally, chart, rate and corpus count."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-09-30",
+      "summary": "America.gov, the U.S. federal government's new chat interface (launched September 29), recorded as the first unscored run. It declined the question as a personal choice outside its remit and offered to help with federal programs, benefits, forms or agencies instead. It never reaches a verb, so the rubric has nothing to grade; the run is logged as No score and kept out of every tally, chart, rate and corpus count, which remain at 258 English runs across 18 families. The restraint is credited in the notes. Every other purpose-optimized system here answered from its domain whether the domain fit or not; America.gov is the only one to recognize the question was not its business. The site gains a No score grade: a dashed, uncoloured pill, an Unscored section on the Purpose-Optimized page, hub cards that report unscored runs, and a paragraph in the Methodology rubric."
+    },
     {
       "date": "2026-09-30",
       "summary": "Instacart's Clementine (Beta) added as a fourth purpose-optimized system, and a new model family. It fails: walking is recommended on time, gas and engine-wear grounds, and the car never registers as the thing to be washed. The interface then offers four follow-up chips that all extend the error ('Walk to the carwash', 'Get some fresh air', 'Enjoy the walk', 'Take a scenic route'). The contrast with Amazon's two shopping agents is the finding. Rufus and Alexa both held the car and pivoted to selling car-cleaning supplies; Clementine lost the object and with it the sale. Also fixed: the Purpose-Optimized page title split mid-word ('OPTIMIZE / D') because titles get non-breaking hyphens; that page now uses an ordinary one."

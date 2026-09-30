@@ -9,7 +9,8 @@ Static site published at `https://carwashtest.org/` via GitHub Pages
   the live transcripts/data, the JSON wins. Verify claims (results, cross-language
   cells, counts) against it before writing them into the site.
 - Each run: `id`, `date`, `vendor`, `model_family`, `model`, `thinking`, `result`
-  (`pass` / `pass-adjacent` / `verbose` / `fail`), `response`, `notes`, optional
+  (`pass` / `pass-adjacent` / `verbose` / `fail`, or `no-score` for a system that
+  declines the question and never reaches a verb), `response`, `notes`, optional
   `token_estimate`, `language`, `prompt`, `token_method`, `reasoning_trace`.
 - `model_families` carries `display_name` (Vendor (Product) form) and optional
   `category` (`general` / `purpose-optimized`).
@@ -24,6 +25,11 @@ Static site published at `https://carwashtest.org/` via GitHub Pages
   per-vendor transcript subsections (`renderVendorLanguageRuns`), and on their own
   corpus pages (`transcripts/lang-*.html`), which the transcripts hub lists under
   Language Corpora.
+- **Unscored runs (`result: "no-score"`) are outside every scored figure.**
+  `englishRuns` and `runsByLanguage` drop them, so tallies, charts, rates, corpus
+  counts and the winner's circle never see them; `unscoredRuns` returns them for
+  listing on their own (the Purpose-Optimized page has an Unscored section, and hub
+  cards show "N runs · unscored"). `thinking` for a system with no toggle is `n/a`.
 - **Japanese is the exception.** It has only been run against Sakana AI, so it has
   no corpus page, no hub card and no Metrics section; its runs live on
   `transcripts/sakana.html`.

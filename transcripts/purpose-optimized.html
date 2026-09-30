@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260922a">
+  <link rel="stylesheet" href="../styles.css?v=20260930a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -99,6 +99,12 @@
       <h2>Transcripts</h2>
       <div id="transcripts"></div>
     </section>
+
+    <section id="unscored-section" hidden>
+      <h2>Unscored</h2>
+      <p class="chart-note">These systems declined the question as outside their remit and never reached a verb, so there is nothing to grade. They are recorded here and left out of every tally, chart, rate and corpus count on the site.</p>
+      <div id="unscored"></div>
+    </section>
     <div id="vendor-rail-bottom"></div>
   </main>
 
@@ -118,7 +124,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260922a"></script>
+  <script src="../scripts.js?v=20260930a"></script>
   <script>
     (async function () {
       const CATEGORY = "purpose-optimized";
@@ -144,6 +150,12 @@
           CarwashTest.renderLegend();
         document.getElementById("transcripts").innerHTML =
           catRuns.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+        const unscored = CarwashTest.runsInCategory(CarwashTest.unscoredRuns(data.runs), data.model_families, CATEGORY);
+        if (unscored.length) {
+          document.getElementById("unscored").innerHTML =
+            unscored.map(function(r){return CarwashTest.renderTranscriptEntry(r,"../");}).join("");
+          document.getElementById("unscored-section").hidden = false;
+        }
         document.getElementById("vendor-rail").innerHTML =
           CarwashTest.renderVendorRail(CATEGORY, data.model_families, data.runs, "../");
         document.getElementById("vendor-rail-bottom").innerHTML =

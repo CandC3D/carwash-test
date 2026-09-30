@@ -5,7 +5,8 @@
     "pass": "Pass",
     "pass-adjacent": "Pass-adjacent",
     "verbose": "Verbose",
-    "fail": "Fail"
+    "fail": "Fail",
+    "no-score": "No score"
   };
   // Compressed labels for the grade pills (CSS uppercases them). The full
   // labels above remain the vocabulary for ARIA text and the CSV export.
@@ -13,8 +14,13 @@
     "pass": "Pass",
     "pass-adjacent": "Pass-adj",
     "verbose": "Verbose",
-    "fail": "Fail"
+    "fail": "Fail",
+    "no-score": "No score"
   };
+  // "no-score" is recorded for a system that declines the question and never
+  // reaches a verb, so there is nothing to grade. It is not in RESULT_ORDER:
+  // unscored runs are kept out of every tally, chart, rate and corpus count
+  // (see englishRuns) and shown only where they are listed on their own.
 
   // Fill + label colors per result, matching the tally cards / badges.
   const RESULT_COLORS = {
@@ -127,7 +133,7 @@
     }).join("") + '</div>';
   }
 
-  const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3 };
+  const RESULT_SORT_RANK = { "pass": 0, "pass-adjacent": 1, "verbose": 2, "fail": 3, "no-score": 4 };
   const THINKING_SORT_RANK = { "off": 0, "adaptive_off": 1, "n/a": 2, "fast": 3, "balanced": 4, "auto": 5, "contemplating": 6, "think": 7, "expert": 8, "adaptive_on": 9, "on": 10, "research": 11 };
   // Reasoning-effort tier ordering (low → max). "xhigh" is OpenAI's extra-high;
   // GPT-6 adds "light" at the bottom and "ultra" at the top, ranked with Pro/Max;
@@ -352,9 +358,14 @@
       });
   }
 
-  function _familyCard(slug, families, counts, basePath) {
+  function _familyCard(slug, families, counts, basePath, unscoredCounts) {
     const f = families[slug];
     const c = counts[slug] || 0;
+    const u = (unscoredCounts && unscoredCounts[slug]) || 0;
+    const countText = u
+      ? (c ? c + ' run' + (c === 1 ? '' : 's') + ' + ' + u + ' unscored'
+           : u + ' run' + (u === 1 ? '' : 's') + ' · unscored')
+      : c + ' run' + (c === 1 ? '' : 's');
     const href = familyCategory(f) === "purpose-optimized"
       ? basePath + "transcripts/purpose-optimized.html"
       : basePath + "transcripts/" + slug + ".html";
@@ -364,7 +375,7 @@
     return '<a class="family-card" href="' + href + '">' +
       logo +
       '<span class="family-name">' + escapeHTML(f.display_name) + '</span>' +
-      '<span class="family-count">' + c + ' run' + (c === 1 ? '' : 's') + '</span>' +
+      '<span class="family-count">' + countText + '</span>' +
       '</a>';
   }
 
@@ -503,6 +514,10 @@
     openWeightRuns(runs).forEach(function (r) {
       owCounts[r.model_family] = (owCounts[r.model_family] || 0) + 1;
     });
+    const unscoredCounts = {};
+    unscoredRuns(runs).forEach(function (r) {
+      unscoredCounts[r.model_family] = (unscoredCounts[r.model_family] || 0) + 1;
+    });
     const generalSlugs = _slugsByCategory(families, "general");
     const poSlugs = _slugsByCategory(families, "purpose-optimized");
     const owSlugs = _slugsByCategory(families, "open-weight");
@@ -535,7 +550,7 @@
           '<a href="' + basePath + 'transcripts/purpose-optimized.html">About this category →</a></p>' +
         '</div>' +
         '<div class="family-grid family-grid-purpose-optimized">' + poSlugs.map(function (slug) {
-          return _familyCard(slug, families, counts, basePath);
+          return _familyCard(slug, families, counts, basePath, unscoredCounts);
         }).join("") + '</div>';
     }
 
@@ -1021,10 +1036,12 @@
 
   // Stat strip (Metrics masthead): headline figures over a 2px ink rule.
   function renderStatStrip(runs, families) {
+    // Headline figures describe the scored record only.
+    runs = runs.filter(function (r) { return !isUnscored(r); });
     const langs = new Set(runs.map(function (r) { return r.language || "en"; }));
     const fams = new Set(runs.map(function (r) { return r.model_family; }));
     const dates = new Set(runs.map(function (r) { return r.date; }));
-    const eng = runs.filter(function (r) { return !r.language || r.language === "en"; });
+    const eng = runs.filter(function (r) { return (!r.language || r.language === "en") && r.result !== "no-score"; });
     const engCommercial = eng.filter(function (r) { return r.deployment_class !== "open_weight"; });
     const fails = engCommercial.filter(function (r) { return r.result === "fail"; }).length;
     const failPct = engCommercial.length ? Math.round(100 * fails / engCommercial.length) : 0;
@@ -1357,11 +1374,17 @@
   function openWeightRuns(runs) {
     return runs.filter(isOpenWeight);
   }
+  // Unscored runs (result "no-score") sit outside every scored corpus.
+  function isUnscored(r) { return r.result === "no-score"; }
   function englishRuns(runs) {
-    return runs.filter(function (r) { return runLang(r) === "en" && !isOpenWeight(r); });
+    return runs.filter(function (r) { return runLang(r) === "en" && !isOpenWeight(r) && !isUnscored(r); });
   }
   function runsByLanguage(runs, lang) {
-    return runs.filter(function (r) { return runLang(r) === lang && !isOpenWeight(r); });
+    return runs.filter(function (r) { return runLang(r) === lang && !isOpenWeight(r) && !isUnscored(r); });
+  }
+  // The commercial runs that declined the question, for listing on their own.
+  function unscoredRuns(runs) {
+    return runs.filter(function (r) { return isUnscored(r) && !isOpenWeight(r); });
   }
 
   // Filter runs to those whose model family belongs to the given category.
@@ -1377,6 +1400,7 @@
     OPEN_WEIGHT_ICON: OPEN_WEIGHT_ICON,
     runsInCategory: runsInCategory,
     englishRuns: englishRuns,
+    unscoredRuns: unscoredRuns,
     runsByLanguage: runsByLanguage,
     openWeightRuns: openWeightRuns,
     buildResultsCSV: buildResultsCSV,

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260922a">
+  <link rel="stylesheet" href="styles.css?v=20260930a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -106,7 +106,7 @@
       </blockquote>
     </section>
 
-    <section>
+    <section id="rubric">
       <h2>The rubric</h2>
       <p>Each response is scored against a single criterion: did the system hold the logical object of the question. The car must be present at the carwash for the washing to occur. Distance is irrelevant to that constraint. Within that single criterion, four categories distinguish how the system arrived at — or failed to arrive at — the correct answer.</p>
       <div class="rubric-grid">
@@ -132,6 +132,7 @@
         </div>
       </div>
       <p>No further rubric is applied. Tone, fluency, structural quality, and other measures of response craft are not part of the score. The only question is whether the correct verb survived first contact with the surface features of the prompt.</p>
+      <p><strong>One case is recorded without a grade.</strong> A system that declines the question as outside its remit, and so never offers a verb, has nothing for the rubric to score. It is logged as <em>No score</em>, listed on its own, and left out of every tally, chart, rate and corpus count. The first such run is America.gov, the federal government's chat interface, on September 30, 2026. Declining is different from failing: a system that answers from the wrong frame and says walk is a Fail, while one that recognizes the question is not its business has shown its own kind of restraint, and the site records that.</p>
     </section>
 
     <section id="thinking-conventions">
@@ -208,8 +209,9 @@
         <li>Alexa (Amazon's shopping assistant at amazon.com; replaced Rufus; no reasoning toggle exposed; tested May 25)</li>
         <li>TIME AI (purpose-optimized media assistant; no reasoning toggle exposed; tested May 25)</li>
         <li>Instacart Clementine (Beta) (purpose-optimized shopping agent at instacart.com; no reasoning control exposed; tested September 30)</li>
+        <li>America.gov (the U.S. federal government's chat interface, launched September 29; declined the question as outside its remit, so recorded unscored; tested September 30)</li>
       </ul>
-      <p>Amazon Rufus, Alexa, TIME AI and Instacart Clementine are <a href="transcripts/purpose-optimized.html">purpose-optimized models</a> — domain-specific systems where catalog optimization shapes the answer as much as the underlying model's reasoning. They are grouped separately from the general-purpose families.</p>
+      <p>Amazon Rufus, Alexa, TIME AI, Instacart Clementine and America.gov are <a href="transcripts/purpose-optimized.html">purpose-optimized models</a> — domain-specific systems where catalog optimization shapes the answer as much as the underlying model's reasoning. They are grouped separately from the general-purpose families.</p>
       <p>Where the same system was tested more than once, each run is recorded as a separate entry in the dataset. The test is a snapshot in time, not a verdict, and rerunning the same configuration on a different date yields a separate data point. Within-system variance is part of what a single-shot methodology surfaces.</p>
       <p>Two prompt variants are in use — the canonical prompt for nearly all runs, and a restraint prompt for Microsoft Copilot. Both are documented in <a href="#prompts">The two prompts</a> below.</p>
     </section>
@@ -421,6 +423,7 @@
           <tr><td>Amazon</td><td>Alexa (Shopping Assistant)</td><td>—</td><td>Shopping assistant at amazon.com; replaced Rufus; no reasoning toggle; version not exposed.</td></tr>
           <tr><td>TIME</td><td>TIME AI</td><td>—</td><td>Media assistant; no reasoning toggle; version not exposed</td></tr>
           <tr><td>Instacart</td><td>Clementine (Beta)</td><td>—</td><td>Shopping agent at instacart.com; no reasoning control; version not exposed. Follows each answer with suggested next-prompt chips.</td></tr>
+          <tr><td>U.S. federal government</td><td>America.gov</td><td>Phase 1</td><td>Federal chat interface launched September 29, 2026 by the National Design Studio and GSA under Executive Order 14338; answers from about 29,000 government websites. Underlying model not named. No reasoning control.</td></tr>
           <tr><td>Microsoft</td><td>Copilot</td><td>—</td><td>Wrapper surface; exposes Claude Opus 4.6 and GPT 5.2/5.3/5.4/5.5 via Quick Response / Think Deeper</td></tr>
         </tbody>
       </table></div>
@@ -468,6 +471,7 @@
         <li><strong>August 17, 2026:</strong> <strong>Ministral 3 14B Reasoning</strong> (Mistral, open-weight) added as a new family. It fails, and its closing advice &mdash; &ldquo;if you do drive, consider parking farther away to encourage walking habits&rdquo; &mdash; counsels moving the car away from the wash. With this run Mistral has been tested in two deployment classes and <strong>still has no Pass anywhere in the dataset</strong>, in any language, on any surface, in any mode. See the <a href="transcripts/mistral_ow.html">Ministral transcript page</a>.</li>
         <li><strong>August 17, 2026:</strong> <strong>GLM-4.7-Flash</strong> (Z.ai, open-weight) added as a new family, with a <strong>perfectly inverted toggle</strong>: thinking off passes and names the constraint, thinking on fails at five times the length. Its trace asks &ldquo;Is there a trick?&rdquo;, answers itself &ldquo;usually you drive to the wash&rdquo;, files that as a rejected hypothesis, and recommends walking &mdash; the clearest instance in the record of a model reaching the constraint and discarding it. See the <a href="transcripts/zai_ow.html">GLM Flash transcript page</a>.</li>
         <li><strong>August 17, 2026:</strong> <strong>GLM-4.7-Flash</strong> run in Simplified Chinese, French, and Ukrainian &mdash; six runs, <strong>one of which arrives</strong>. The English inversion does not travel: thinking off, which held in English, fails in Chinese and Ukrainian and lands only in French, where the answer is correct and its arithmetic is not. The Chinese trace names the prompt a brainteaser, recalls that brainteasers have counterintuitive answers, and recommends walking on that ground &mdash; recognition of the genre producing the wrong answer faster. Trace language splits exactly as <strong>Qwen3.8 27B</strong>&rsquo;s did the day before &mdash; Chinese trace in Chinese, French and Ukrainian traces in English &mdash; the first cross-vendor replication of that asymmetry.</li>
+        <li><strong>September 29–30, 2026:</strong> The U.S. federal government launched <strong>America.gov</strong>, a chat interface to federal information built by the National Design Studio and GSA (<a href="https://america.gov/about" target="_blank" rel="noopener">america.gov/about</a>). Tested the next day, it declined the question as a personal choice outside its remit, which is the first run the rubric cannot grade. It is recorded as <em>No score</em> (see <a href="#rubric">the rubric</a>). Instacart's <strong>Clementine (Beta)</strong>, tested the same day, answered the question and failed it.</li>
         <li><strong>September 28, 2026 (Sakana):</strong> <strong>Fugu Max</strong>, announced September 11 (<a href="https://sakana.ai/fugu-max-release/" target="_blank" rel="noopener">sakana.ai/fugu-max-release</a>) as an API model, turned up in the Sakana Chat interface on or after that date — another case of a release note describing one surface while the chat interface quietly gains the model. Its trace shows the orchestrator's housekeeping alongside the reasoning — whether to call a skill, whether to write anything to memory — much as Namazu's traces show it deciding not to search. Tested in English and Japanese; see the <a href="transcripts/sakana.html">Sakana transcript page</a>.</li>
         <li><strong>September 28, 2026:</strong> Anthropic released <strong>Claude Sonnet 5.5</strong>. Like Opus 5.5 it offers a reasoning-effort selector with Medium as the default, and it drops the thinking toggle that Sonnet 5 carried alongside its effort selector from July. That removes the control that split Sonnet 5's results: with thinking off it had failed Indonesian at every effort level. Tested the same day; see the <a href="transcripts/anthropic.html">Claude transcript page</a>.</li>
         <li><strong>September 22, 2026:</strong> Two vendors shipped on the same day. Anthropic released <strong>Claude Opus 5.5</strong>, with Medium as the default effort, the same move Fable 5.1 made three weeks earlier. OpenAI released <strong>GPT-6 Sol and GPT-6 Luna</strong>, completing the GPT-6 family under <strong>GPT-6 Astra</strong>, which had reached general availability on September 4. GPT-6 renames the effort picker to <strong>Light / Medium / High / Extra High / Ultra</strong>; Luna, the tier Free users get, has no Ultra. All four models were tested the same day: 43 runs, and every one a Pass. The same week, Gemini Flash 3.8 and Grok 4.7 were available through the API but not in the consumer chat interface, so they are not in the results yet; see the note on the <a href="index.html">Overview</a>.</li>
@@ -554,7 +558,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="scripts.js?v=20260922a"></script>
+  <script src="scripts.js?v=20260930a"></script>
   <script>
     (async function () {
       try {

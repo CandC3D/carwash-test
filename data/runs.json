@@ -154,6 +154,12 @@
       "slug": "zai",
       "category": "general"
     },
+    "apple": {
+      "name": "Apple",
+      "display_name": "Apple (Siri)",
+      "slug": "apple",
+      "category": "general"
+    },
     "sakana": {
       "name": "Sakana AI",
       "display_name": "Sakana AI (Namazu and Fugu)",
@@ -13070,9 +13076,27 @@
         "token_method":  "Chinese chars × 0.6 (DeepSeek documented rate)",
         "prompt":  "我的车脏了。洗车店在35米外。我是该走路去，还是开车去？",
         "notes":  "Winner's circle: you are washing the car, so the car has to come too. Close to Sol 5.6's July Chinese answer, word for word at the start."
+    },
+    {
+        "date":  "2026-09-30",
+        "id":  805,
+        "vendor":  "Apple",
+        "model_family":  "apple",
+        "model":  "Siri AI",
+        "model_notes":  "Siri AI — Apple's rebuilt Siri, powered by the next generation of Apple Intelligence, released in beta on September 14, 2026 with Apple's 2027 software releases, in English only at launch. Tested on iPhone running iOS 27.0.1. No reasoning control and no visible trace. Apple does not say which model produced a given answer.",
+        "thinking":  "n/a",
+        "surface":  "consumer",
+        "result":  "pass-adjacent",
+        "response":  "If your goal is to wash your dirty car, you should definitely drive! Walking 100 feet is great for exercise, but it won't get your car to the carwash.\n\nBy the way, I'm an assistant powered by AI and may make mistakes. Always verify important details.",
+        "token_estimate":  62,
+        "notes":  "Correct: walking will not get the car to the carwash. Padded on both ends: it opens on a conditional ('If your goal is to wash your dirty car') and closes with a standing disclaimer that Siri appends to the answer ('I'm an assistant powered by AI and may make mistakes'). The first disclaimer of its kind in the dataset."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-09-30",
+      "summary": "Apple's Siri AI added as a new model family, Apple (Siri), the 19th in the English corpus. Siri AI, the rebuilt Siri powered by the next generation of Apple Intelligence, was released in beta on September 14 in English only, and tested on iPhone under iOS 27.0.1. It drives for the right reason ('it won't get your car to the carwash') but opens on a conditional and closes with a standing disclaimer that it is an AI and may make mistakes, so it scores Pass-adjacent. It is the first answer in the dataset to carry a disclaimer inside the response. No reasoning control and no visible trace; Apple joins the vendors in the Trace exposure table that show nothing. The English corpus is now 269 runs across 19 families. The Apple logo is added to the family cards and vendor rail."
+    },
     {
       "date": "2026-09-30",
       "summary": "ChatGPT 5.6 Terra, the middle model of the July GPT-5.6 series, run on September 30 as a legacy option, on the same grid as Sol 6.1: all five effort tiers in English and Medium in the six non-English corpora. 11 runs and 11 Passes, 10 inside the winner's circle, with Thai again the exception because it has no threshold. Terra answers in short quips ('Drive—unless you enjoy arriving at the carwash without the car'), ~8 to ~16 tokens in English, and echoes Sol 5.6 in places. Set beside Sol 5.6, Sol 6 and Sol 6.1, only Sol 6 stands apart: it alone concedes the distance at every English tier and uses no emoji in any language. On a single short question that is a difference of voice, not evidence of what the models are underneath. Its Thai answer ends with a Chinese full stop. The English corpus is now 268 runs across 18 families."

@@ -66,6 +66,7 @@
     "xai": "grok.svg",
     "mistral": "mistralai.svg",
     "perplexity": "perplexity.svg",
+    "apple": "apple.svg",
     "qwen": "qwen.svg",
     "kimi": "kimi.svg",
     "lumo": "lumo.svg",

@@ -84,6 +84,7 @@
 
     <section>
       <p class="category-intro">These systems are not general-purpose chat models. They are LLMs optimized for a specific domain — shopping, media, customer service — where the optimization target shapes the response as much as the underlying model's reasoning does. The Carwash Test reveals how that optimization interacts with the prompt's surface features: the same mechanism produces opposite answers depending on what the system has been trained to find.</p>
+      <p class="chart-note"><strong>Instacart's Clementine (Beta), tested September 30, 2026, is the shopping agent that lost the sale.</strong> Both Amazon shopping agents held the car and then did their job: Rufus pivoted to microfiber towels, Alexa to detailing kits. Clementine recommends walking, on time, gas and engine-wear grounds, and never registers that the car is the thing being washed. Its product layer then compounds the error. All four suggested follow-up chips point the same way: "Walk to the carwash," "Get some fresh air," "Enjoy the walk," "Take a scenic route." A shopping agent that holds the object has something to sell; one that loses it ends up selling a stroll.</p>
     </section>
 
     <section>
@@ -127,7 +128,10 @@
 
         document.getElementById("family-title").innerHTML =
           '<span class="title-icon">' + CarwashTest.PURPOSE_OPTIMIZED_ICON + '</span>' +
-          CarwashTest.familyTitleHTML("Purpose-Optimized Models");
+          // Static title: an ordinary hyphen, so it can wrap after "Purpose-".
+          // familyTitleHTML makes hyphens non-breaking, which turned this into
+          // one word too wide for the column and split it mid-word.
+          "Purpose-Optimized Models";
 
         document.getElementById("tally").innerHTML =
           CarwashTest.renderTallyRow(CarwashTest.tally(catRuns));

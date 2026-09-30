@@ -112,6 +112,13 @@
       "slug": "time-ai",
       "category": "purpose-optimized"
     },
+    "clementine": {
+      "name": "Instacart Clementine",
+      "display_name": "Instacart (Clementine shopping assistant)",
+      "slug": "clementine",
+      "category": "purpose-optimized",
+      "notes": "Instacart's shopping agent at instacart.com, labelled Beta when tested. No reasoning control exposed."
+    },
     "alexa": {
       "name": "Alexa",
       "display_name": "Amazon (Alexa shopping assistant)",
@@ -12664,9 +12671,26 @@
         "reasoning_trace_language":  "English",
         "register":  "Standard",
         "notes":  "VERBOSE: correct at once — the car itself is what needs washing, so it has to be at the wash — then a walk-versus-drive bullet list, a paragraph arguing the short distance favours driving, and an aside on self-service washes. The trace calls the prompt 'riddle-ish,' runs a visible memory check — 'No memory needed? The user stated nothing durable about themselves. So no memory writes.' — and tells itself to 'Keep it short and neutral in Japanese' above the longest Japanese answer any Fugu model has given here. The trace announces one answer and the output delivers another. Standard register; reasoned in English on a Japanese prompt."
+    },
+    {
+        "date":  "2026-09-30",
+        "id":  781,
+        "vendor":  "Instacart",
+        "model_family":  "clementine",
+        "model":  "Clementine (Beta)",
+        "model_notes":  "Clementine — Instacart's shopping agent at instacart.com, in beta, built to help shoppers find and buy groceries and household goods. No reasoning control is exposed and no trace is shown. The interface follows each answer with suggested next prompts as tappable chips; the four shown here are recorded after the answer.",
+        "thinking":  "n/a",
+        "surface":  "consumer",
+        "result":  "fail",
+        "response":  "For 100 feet—about the length of a small parking lot—walking makes more sense. You’ll save time by not getting in and out of your car and avoid using gas for such a short trip. Plus, it’s better for your tires and engine to skip needless short drives.\n\n* Walk to the carwash\n* Get some fresh air\n* Enjoy the walk\n* Take a scenic route",
+        "notes":  "FAIL: walk, on the grounds that it saves time, gas, and wear on the tires and engine. The car never enters the reasoning as the thing to be washed. Then the product layer compounds the error: all four suggested follow-up chips reinforce it — 'Walk to the carwash,' 'Get some fresh air,' 'Enjoy the walk,' 'Take a scenic route.' This is the purpose-optimized failure in its plainest commercial form. Both Amazon shopping agents held the object and then pivoted to selling car-cleaning supplies — Rufus offered microfiber towels, Alexa detailing kits. Clementine, built to sell exactly that kind of thing, lost the car and with it the sale: its chips sell a walk instead of a wash. The Rufus note put it that a shopping agent that loses the object is money walking away; here it literally walks."
     }
   ],
   "change_log": [
+    {
+      "date": "2026-09-30",
+      "summary": "Instacart's Clementine (Beta) added as a fourth purpose-optimized system, and a new model family. It fails: walking is recommended on time, gas and engine-wear grounds, and the car never registers as the thing to be washed. The interface then offers four follow-up chips that all extend the error ('Walk to the carwash', 'Get some fresh air', 'Enjoy the walk', 'Take a scenic route'). The contrast with Amazon's two shopping agents is the finding. Rufus and Alexa both held the car and pivoted to selling car-cleaning supplies; Clementine lost the object and with it the sale. Also fixed: the Purpose-Optimized page title split mid-word ('OPTIMIZE / D') because titles get non-breaking hyphens; that page now uses an ordinary one."
+    },
     {
       "date": "2026-09-28",
       "summary": "Sakana AI's Fugu Max tested in Sakana Chat, in English and in Japanese at the Standard register. Its September 11 announcement describes an API model; it reached the chat interface on or after that date. Both answers drive: the English one is Pass-adjacent, a clean sentence and then a restatement, and the Japanese one is Verbose, with a bullet list, a distance paragraph and a self-service aside. Unlike Fugu, Fugu Max shows a trace, and the trace carries the orchestrator's housekeeping alongside the reasoning: both call the prompt a riddle, then settle that no skill is needed and nothing should be written to memory. The Japanese trace tells itself to 'Keep it short and neutral in Japanese' above the longest Japanese answer any Fugu model has given here, which is one more case of the trace describing a plan and the answer departing from it."

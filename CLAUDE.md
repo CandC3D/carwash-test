@@ -71,3 +71,13 @@ Static site published at `https://carwashtest.org/` via GitHub Pages
   or animation; palette is the CSS custom properties in `:root`.
 - Commit messages: conventional, with the Co-Authored-By trailer already in use.
 - Working scratch files live in `_notes/` (Jekyll-ignored, not published).
+- **Methodology change log (the dated list under “Product surface changes”) is not in
+  one order.** It runs ascending through the August 17, 2026 entries, then
+  newest-first. Add each new entry at the top of the newest-first block, directly
+  above the most recently added one. Don't anchor by matching a date string: several
+  entries carry parentheticals (“September 14, 2026 (Apple; tested September 30)”), so
+  a date match can land the entry mid-block.
+- **A side-by-side “which is better?” pair is not a run.** The methodology (The testing
+  regime) discards it and re-runs the prompt in a new chat: the tester can't choose
+  between two answers, and choosing would be a preference signal. Record it as
+  context in notes if it matters, never as a scored or unscored run.

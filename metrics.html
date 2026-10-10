@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Metrics | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 273 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 278 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Metrics">
-  <meta property="og:description" content="Charts and trends across 273 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:description" content="Charts and trends across 278 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta property="og:url" content="https://carwashtest.org/metrics.html">
   <meta property="og:image" content="https://carwashtest.org/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Metrics">
-  <meta name="twitter:description" content="Charts and trends across 273 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="twitter:description" content="Charts and trends across 278 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://carwashtest.org/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -118,7 +118,7 @@
     <section>
       <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=273). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
+      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=278). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
       <div class="table-scroll"><table class="results-table cross-lang-table">
         <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian. The Indonesian, Turkish and Thai corpora each arrived as a sweep over a different model set, so each is reported in its own section below rather than as an extra column here. Japanese has only been run against Sakana AI and stays on that vendor's page.</caption>
         <thead>
@@ -178,6 +178,7 @@
           <tr><td>Qwen3.8-Max</td><td>Auto</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge verbose">Verbose</span></td></tr>
           <tr><td>Gemini 3.8 Flash</td><td>Extended Thinking On</td><td><span class="badge pass">Pass</span></td><td><span class="badge verbose">Verbose</span></td><td><span class="badge verbose">Verbose</span></td><td><span class="badge verbose">Verbose</span></td></tr>
           <tr><td>Gemini 3.8 Flash</td><td>Extended Thinking Off</td><td><span class="badge pass">Pass</span></td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Claude Haiku 5.5</td><td>Effort Medium</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td></tr>
         </tbody>
       </table></div>
       <ul class="findings-list">
@@ -623,6 +624,10 @@
           <tr><td>#804</td><td>Hanzi</td><td>ChatGPT 5.6 Terra</td><td>Chinese / Effort Medium</td><td>~10</td><td><span lang="zh-Hans">开车去。你是要洗车，车得一起去。</span></td></tr>
           <tr><td>#806</td><td>Latin</td><td>Gemini 3.8 Flash</td><td>English / Ext On</td><td>~25</td><td>Drive. Unless you plan on carrying it, walking there leaves the dirty car sitting right where it is.</td></tr>
           <tr><td>#807</td><td>Latin</td><td>Gemini 3.8 Flash</td><td>English / Ext Off</td><td>~25</td><td>Drive. If you walk, your legs get a very short workout, but your car stays right where it is—dirty.</td></tr>
+          <tr><td>#817</td><td>Latin</td><td>Claude Haiku 5.5</td><td>English / Effort Medium</td><td>~27</td><td>Drive. The car is the thing that needs washing, and 100 feet is short enough that the trip costs you nothing.</td></tr>
+          <tr><td>#820</td><td>Latin</td><td>Claude Haiku 5.5</td><td>English / Effort Max</td><td>~18</td><td>Drive. Walking gets you to the car wash and leaves the car where it is.</td></tr>
+          <tr><td>#825</td><td>Cyrillic</td><td>Claude Haiku 5.5</td><td>Ukrainian / Effort Medium</td><td>~40</td><td><span lang="uk">Їдь на машині. Машину треба підігнати до мийки, а пішки ти б її там не залишив.</span></td></tr>
+          <tr><td>#826</td><td>Hanzi</td><td>Claude Haiku 5.5</td><td>Chinese / Effort Medium</td><td>~10</td><td><span lang="zh-Hans">开车去。走过去的话，车还是脏的。</span></td></tr>
         </tbody>
       </table></div>
       <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>

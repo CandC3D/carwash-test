@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Metrics | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 269 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 273 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Metrics">
-  <meta property="og:description" content="Charts and trends across 269 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:description" content="Charts and trends across 273 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta property="og:url" content="https://carwashtest.org/metrics.html">
   <meta property="og:image" content="https://carwashtest.org/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Metrics">
-  <meta name="twitter:description" content="Charts and trends across 269 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="twitter:description" content="Charts and trends across 273 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://carwashtest.org/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -118,7 +118,7 @@
     <section>
       <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=269). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
+      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=273). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
       <div class="table-scroll"><table class="results-table cross-lang-table">
         <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian. The Indonesian, Turkish and Thai corpora each arrived as a sweep over a different model set, so each is reported in its own section below rather than as an extra column here. Japanese has only been run against Sakana AI and stays on that vendor's page.</caption>
         <thead>
@@ -176,6 +176,8 @@
           <tr><td>Qwen3.8-Max</td><td>Fast</td><td><span class="badge verbose">Verbose</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
           <tr><td>Qwen3.8-Max</td><td>Thinking</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass">Pass</span></td></tr>
           <tr><td>Qwen3.8-Max</td><td>Auto</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge verbose">Verbose</span></td></tr>
+          <tr><td>Gemini 3.8 Flash</td><td>Extended Thinking On</td><td><span class="badge pass">Pass</span></td><td><span class="badge verbose">Verbose</span></td><td><span class="badge verbose">Verbose</span></td><td><span class="badge verbose">Verbose</span></td></tr>
+          <tr><td>Gemini 3.8 Flash</td><td>Extended Thinking Off</td><td><span class="badge pass">Pass</span></td><td>—</td><td>—</td><td>—</td></tr>
         </tbody>
       </table></div>
       <ul class="findings-list">
@@ -190,6 +192,7 @@
         <li><strong>The first response-language mismatch — and a home-language flip.</strong> On July 11 Namazu answered the <em>Chinese</em> prompt entirely in <em>Japanese</em> — until now only reasoning traces mismatched the prompt language; here the answer itself does. The same session flipped its home-language result: the Standard-register Japanese run, which reached Drive on June 23, now recommends walking. Namazu finishes Carwash III zero-for-five (English, French, Ukrainian, Chinese, Japanese).</li>
         <li><strong>DeepSeek V4-Pro fails only English — the mirror image of the historical pattern.</strong> With thinking off, V4-Pro produced the dataset's first English inverted-logic failure (July 11) while holding French, Chinese, and Ukrainian on the same day. Four months of data said models hold English and break elsewhere; this is the first model to break <em>only</em> in English. Kimi shows a related inversion: its sole hold anywhere is French-with-thinking, while it fails home-language Chinese in both states — with a Chinese inverted-logic flourish ("the wash would be wasted; the drive back splashes mud on the body").</li>
         <li><strong>A Japanese-adapted model holds the object only in Japanese — and only in some registers.</strong> Sakana AI's Namazu reaches "drive" exclusively on Japanese prompts (Standard register in both interfaces; Polite only in the English interface) and recommends walking in <em>every</em> non-Japanese language — English, Chinese, French, and Ukrainian all fail. Two new variables move the verdict within Japanese: the register selector (Kansai-ben walks in both interfaces; Polite walks in Japanese but drives in English) and the interface language itself. It is the first model whose grip on the logical object appears tied to a cultural-adaptation target rather than to reasoning budget. Full breakdown on its <a href="transcripts/sakana.html">transcript page</a>.</li>
+        <li><strong>Gemini 3.8 Flash is the first Gemini with a full row here, and its length does not hold still.</strong> Run on October 4, each prompt in a new chat, it gives the right verb in every language. The English prompt, repeated minutes apart in each Extended Thinking state, returned ~25-token winner&rsquo;s-circle Passes the first time and ~245- and ~299-token answers the second &mdash; the same verdict, with an unrequested wash-bay checklist appended. The English cells above show the first runs. The French, Chinese and Ukrainian cells are Verbose for the same checklist, and the Turkish reply introduces it as following preparation it never gave. See the <a href="transcripts/google.html">Gemini transcript page</a>.</li>
       </ul>
     </section>
 
@@ -618,6 +621,8 @@
           <tr><td>#802</td><td>Latin</td><td>ChatGPT 5.6 Terra</td><td>Turkish / Effort Medium</td><td>~25</td><td><span lang="tr">Arabayla gitmelisin — oto yıkamaya arabayı götürmek gerekiyor. 35 metre olduğu için neredeyse köşede.</span></td></tr>
           <tr><td>#803</td><td>Cyrillic</td><td>ChatGPT 5.6 Terra</td><td>Ukrainian / Effort Medium</td><td>~52</td><td><span lang="uk">Їдьте машиною — інакше як її помити? 35 метрів можна пройти пішки, але чистішою від цього стане лише ви.</span></td></tr>
           <tr><td>#804</td><td>Hanzi</td><td>ChatGPT 5.6 Terra</td><td>Chinese / Effort Medium</td><td>~10</td><td><span lang="zh-Hans">开车去。你是要洗车，车得一起去。</span></td></tr>
+          <tr><td>#806</td><td>Latin</td><td>Gemini 3.8 Flash</td><td>English / Ext On</td><td>~25</td><td>Drive. Unless you plan on carrying it, walking there leaves the dirty car sitting right where it is.</td></tr>
+          <tr><td>#807</td><td>Latin</td><td>Gemini 3.8 Flash</td><td>English / Ext Off</td><td>~25</td><td>Drive. If you walk, your legs get a very short workout, but your car stays right where it is—dirty.</td></tr>
         </tbody>
       </table></div>
       <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>

@@ -81,3 +81,9 @@ Static site published at `https://carwashtest.org/` via GitHub Pages
   regime) discards it and re-runs the prompt in a new chat: the tester can't choose
   between two answers, and choosing would be a preference signal. Record it as
   context in notes if it matters, never as a scored or unscored run.
+- **Release notes at the top of transcript pages are collapsible.** Each release is one
+  `<details class="release-note">` with its tag as the `<summary>`, newest first, and only
+  the topmost carries `open`. When adding a release, put its note on top with `open` and
+  remove `open` from the one below. Tagged notes keep their box as
+  `<details class="release-note callout callout-note">`; grouped paragraphs use plain
+  `release-note`. Language-corpus and Purpose-Optimized intros are not release notes.

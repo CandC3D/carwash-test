@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260930b">
+  <link rel="stylesheet" href="../styles.css?v=20261010a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -82,10 +82,9 @@
     <div id="vendor-rail"></div>
 
     <section>
-      <div class="callout callout-note">
-        <span class="callout-tag">Open-weight</span>
+      <details class="release-note callout callout-note" open><summary><span class="callout-tag">Open-weight</span></summary>
         <p><strong>Nemotron is NVIDIA's open model line, and it has no consumer counterpart.</strong> Nemotron 3 Nano Omni was released <a href="https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/" target="_blank" rel="noopener">April 28, 2026</a> as an omni-modal model — text, images, audio, and video in, text out — on a 30B-A3B hybrid Mixture-of-Experts architecture, roughly 3B parameters active per token, distributed on Hugging Face, OpenRouter, and build.nvidia.com. These runs are local, in LM Studio, from the Q4_K_M GGUF with a single Think on/off toggle. NVIDIA ships no consumer chat product, so unlike every other family here there is no commercial sibling to compare against: this <em>is</em> NVIDIA's model as the public meets it. Open-weight runs are kept as a separate deployment class and excluded from the commercial corpora.</p>
-      </div>
+      </details>
       <p class="chart-note"><strong>Deployment note.</strong> Only five layers were offloaded to the GPU — 2.47&nbsp;GB of a 25.63&nbsp;GB footprint — making this the most CPU-resident run in the record. Elapsed time would reflect that rather than how long the model deliberated, so the token counts, not any clock, are the measure on this page.</p>
       <p class="chart-note"><strong>Both states fail, and the thinking state fails at greater length than any other run in the dataset.</strong> With Think on, Nemotron spends 1,371 tokens arriving at a bolded <strong>"Walk."</strong> With Think off it spends 215 tokens arriving at nothing at all.</p>
       <p class="chart-note"><strong>What makes the Think-on trace worth reading is that it does not miss the constraint — it passes directly through the sentence containing it.</strong> <em>"Wait, the user mentioned their car is dirty. So they probably want to get it cleaned quickly. If they drive, they have to deal with starting the car…"</em> The dirt is registered, and in the same breath converted into a reason to hurry <em>on foot</em>. From there the deliberation turns away from the problem and onto the reader: <em>"Underlying needs: They might want validation that walking is okay… Maybe they feel guilty about using gas for such a short trip."</em> Several hundred tokens go to modelling a person's imagined guilt about fuel, and none to how a car gets washed. It closes: <em>"Final thought: 100 feet is negligible."</em></p>
@@ -128,7 +127,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260930b"></script>
+  <script src="../scripts.js?v=20261010a"></script>
   <script>
     (async function () {
       const SLUG = "nemotron";

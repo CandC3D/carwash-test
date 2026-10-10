@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260930b">
+  <link rel="stylesheet" href="../styles.css?v=20261010a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -82,44 +82,37 @@
     <div id="vendor-rail"></div>
 
     <section>
-      <div class="callout callout-note">
-        <span class="callout-tag">Haiku 5.5</span>
+      <details class="release-note callout callout-note" open><summary><span class="callout-tag">Haiku 5.5</span></summary>
         <p><strong>Claude Haiku 5.5 (October 10, 2026) is eleven runs and ten correct verbs</strong>: 5 Passes, 4 of them inside the winner&rsquo;s circle, 5 Pass-adjacent, and one Fail. Anthropic <a href="https://www.anthropic.com/claude-haiku-5-5" target="_blank" rel="noopener">announced it on October 7</a> as its cheapest and fastest small model, and the first Haiku with an effort selector rather than a thinking toggle. It covers all five effort levels in English, plus French, Indonesian, Thai, Turkish, Ukrainian and Chinese at Medium. The Pass-adjacent answers carry the check-the-line exception Sonnet 5.5 added at Max.</p>
         <p><strong>Its one failure is the self-reversal, at Low.</strong> The answer opens &ldquo;Walk,&rdquo; names the object in the same sentence &mdash; &ldquo;the car is the thing being washed, so driving it there gains you nothing&rdquo; &mdash; and then argues its way to &ldquo;Drive it.&rdquo; Both verdicts are published, the wrong one first, so it is scored Fail under the answer-reversal rule. From Medium up it holds, and its Max answer lands within a word of Opus 5.5&rsquo;s.</p>
         <p><strong>Haiku 4.5&rsquo;s language problems are gone.</strong> Haiku 4.5 answered the Turkish prompt in English, refused the Thai one with thinking off (&ldquo;I don&rsquo;t speak Thai&rdquo;), and walked with thinking on in every non-English corpus it was run in. Haiku 5.5 answers every prompt in its own language and holds all six. French, Ukrainian and Chinese are the first Haiku runs in those languages.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Sonnet 5.5</span>
+      </details>
+      <details class="release-note callout callout-note"><summary><span class="callout-tag">Sonnet 5.5</span></summary>
         <p><strong>Claude Sonnet 5.5 (September 28, 2026) is eleven runs and eleven correct verbs</strong>: seven Passes and four Pass-adjacent, four of them inside the winner's circle. It covers all five effort levels in English, plus French, Indonesian, Thai, Turkish, Ukrainian and Chinese at Medium, the default. On the Sonnet line this question still shows a difference. Sonnet 5's non-English record depended on its settings: with thinking off it failed Indonesian at every effort level, and at Medium it failed Thai with thinking both on and off. Only its top thinking-on tiers, Extra and Max, held everywhere they were run. Sonnet 5.5 drops the thinking toggle, and at its default Medium it holds all six.</p>
         <p><strong>It is also wordier than its Opus sibling, and never repeats itself.</strong> Opus 5.5 returned one sentence verbatim at three effort levels; no two Sonnet 5.5 answers match. The extra words are mostly codas: a cold-start cost at Medium, a check-the-line exception at Max, a no-need-to-idle aside in Indonesian, and a walk-over-to-check-the-queue paragraph in Ukrainian. The visible trace at Max calls the prompt "a playful carwash riddle," the framing that captured DeepSeek-V4-Pro in April, and the answer beneath it names the car anyway. The tersest answer comes at Extra, not Max, and Max is the one that adds an exception nobody asked for. That echoes a footnote in Anthropic's own launch table: on FrontierCode, Sonnet 5.5 scores lower at Max than at the tier below, because at Max it more often makes changes beyond the task's scope. The parallel is suggestive, not proof of a shared cause.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Opus 5.5</span>
+      </details>
+      <details class="release-note callout callout-note"><summary><span class="callout-tag">Opus 5.5</span></summary>
         <p><strong>Claude Opus 5.5 (September 22, 2026) is eleven runs and eleven Passes</strong>, nine of them inside the winner's circle: all five effort levels in English, plus French, Indonesian, Thai, Turkish, Ukrainian and Chinese at Medium, which is now the default. Anthropic positions it at Claude Fable 5.1's level on most work, at 40% lower running cost than Opus 5, and on this item the two are indistinguishable: terse, correct, and the same shape every time. The Chinese run is the first from the Opus 5 line. Opus 4.7 and 4.8 failed Chinese in every state in May, before 4.8 recovered in July, and 5.5 holds it.</p>
         <p><strong>Three of the five English tiers return the same sentence, verbatim.</strong> Low, High and Extra all answer "Drive. The car has to be there too." Earlier effort sweeps here produced identical pairs, on Opus 4.6, Sonnet 4.6, Inkling and Opus 5, but never three. Fable 5.1 in September was already one template in three paraphrases; Opus 5.5 has stopped paraphrasing. Only Medium and Max change the wording, and Max is the <em>longest</em> of the five at about 19 tokens. That reverses Opus 5, whose answers shortened as the dial went up, so on this model the effort setting is not buying compression either. It changes almost nothing that can be seen.</p>
         <p>The one visible trace, at Max, is about register rather than the car: "Puzzling out whether to walk or drive to the carwash. Settling on a short, dry one-line answer." Anthropic's trace is a summary, so this describes the summary layer, but half of what it records is a decision about tone.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Opus 5</span>
+      </details>
+      <details class="release-note callout callout-note"><summary><span class="callout-tag">Opus 5</span></summary>
         <p><strong>Claude Opus 5 (July 24, 2026) passes in every tier tested — and gets shorter as it thinks harder.</strong> Its control surface is the effort selector alone — no thinking, Adaptive, or extended-reasoning toggle — so its runs carry a Thinking value of n/a, bringing the Fable 5 / Sonnet 5 pattern to the flagship line. Run at Low, High (the default), and Max, it names the constraint each time, and answer length falls as the budget rises: ~21 tokens at Low, ~12 at High, ~9 at Max ("Drive. Walking gets you clean shoes.") — the tersest English pass since Opus 4.6’s six-token record, and all three inside the winner’s circle. This confirms on the Opus line the inverse effort/verbosity pattern first seen in Sonnet 5: the extra budget goes into the reasoning, not the output.</p>
         <p>One texture worth recording. The High and Max runs display an <em>identical</em> summarized trace — "Thinking about weighing transportation options for a short distance" — which describes the problem in precisely the distance-weighing framing the test is built to catch, while both answers name the car. Anthropic’s visible trace is a summary rather than the raw reasoning, so this is an observation about the summary layer, not evidence about what the model actually did. It belongs with the Inkling trace/answer split as a reminder that the trace is a product surface, and its job is making the reasoning inspectable.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Sonnet 5</span>
+      </details>
+      <details class="release-note callout callout-note"><summary><span class="callout-tag">Sonnet 5</span></summary>
         <p><strong>Claude Sonnet 5 (June 30, 2026) drops the Adaptive On/Off toggle</strong> — reasoning is now governed solely by a five-tier effort selector (Low / Medium / High / Extra / Max), so its runs carry a Thinking value of n/a. It passes the Carwash Test in all five modes, naming the constraint directly in each. Notably, the answer stays terse as effort rises: the extra budget goes into the reasoning trace (visible from High up), not the output — the inverse of the "more reasoning, more words" pattern. The Max trace reasons to the logical object and then explicitly chooses brevity, citing the user's stored preference for directness.</p>
         <p><strong>Two weeks later the control surface changed again (week of July 6, 2026):</strong> the consumer UI now pairs an Extended-thinking On/Off toggle <em>with</em> the effort selector across Opus 4.8/4.7/4.6 and Sonnet 5/4.6 — Sonnet 5 regained a toggle days after launching without one, the fourth Anthropic control configuration since March. Fable 5 stays selector-only; Haiku 4.5 keeps a plain toggle. The July 11 Carwash III re-baseline (35 runs below) tests the full lineup under this UI: 34 of 35 hold the constraint, most within winner's-circle brevity — the one exception is Haiku 4.5 with thinking <em>On</em>, which reasons its way to Walk while its thinking-Off state passes. The same day's non-English sweep (French, Ukrainian, Chinese) shows Opus 4.8 holding all six states and Fable re-verifying its record — while <strong>Sonnet 5's toggle-dependence appears only outside English</strong>: thinking On holds all four languages, thinking Off fails Ukrainian (with the scrambled "Їдь пішки" — "drive by foot") and Chinese.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Fable 5.1</span>
+      </details>
+      <details class="release-note callout callout-note"><summary><span class="callout-tag">Fable 5.1</span></summary>
         <p><strong>Claude Fable 5.1 (September 1, 2026) is ten runs and ten correct verbs</strong> — a clean sweep of all five effort levels in English, plus Turkish, Chinese, French, Ukrainian and Indonesian at Medium. Nine are Passes inside the winner's circle; the Indonesian run is Pass-adjacent, carrying a pickup-service escape hatch of the kind Perplexity produced in English. Two settings moved with the release: the <strong>default effort drops from High to Medium</strong>, so the answer an ordinary user now gets comes from a different tier than it did under Fable 5, and <strong>Max is flagged in-product at 3.5× credits or more</strong>. Chinese is worth singling out — Opus 4.7 and 4.8 failed it in every state in May, before 4.8 recovered in July, and the Fable line has now held it at 5 and at 5.1.</p>
         <p><strong>The three answers at Low, Medium and High are one template with paraphrased slots.</strong> Read together: the car is <em>[the thing being washed / what needs washing / the thing that needs washing]</em>, and it <em>[doesn't travel on foot / won't fit through the door on foot / won't walk there on its own]</em>. Same two-clause shape three times; the effort level changes the wording, not the argument. Extra and Max drop the second clause entirely and compress further — "Drive. The car has to be there." — reproducing the length-falls-as-effort-rises pattern first logged on Opus 5. Whatever the extra budget buys, it is being spent after the verb is settled, on compression rather than on argument.</p>
         <p><strong>The Medium run is the specimen.</strong> At the new default setting, the second clause comes out malformed: the car "won't fit through the door on foot." It scores Pass — the verb is right and the constraint is named — but the clause is a slot corruption rather than a claim. The template wants a car-cannot-do-a-pedestrian-thing idiom, and two candidates sharing surface words have been spliced: <em>won't fit through the door</em> and <em>on foot</em>. It is not evidence that the model pictures someone carrying a car through the wash bay, and reading an expectation into it would be attributing a world-model to a garbled quip. What it does show is worth recording: the concise-pass register this line has settled into — the one-line quip that names the constraint — is <em>itself</em> a template, and at the default setting it fired with a bad slot. The constraint held; the prose did not. That is the mirror image of the standard failure on this test, which is fluent prose wrapped around a lost constraint, and it is a reminder that concision on the Pass side is no more evidence of understanding than enumeration on the Verbose side is evidence of deliberation. The rubric scores the verb, which is the right thing to score, and this run shows why it should score nothing else.</p>
         <p>One caveat on the language sweep. The five non-English answers are close paraphrases of a single line — <em>the wash washes the car, not you</em> — which is Opus 4.6's March answer in five scripts. That may be the natural way to say it in any language, or it may be a well-known answer arriving on cue. A sweep of the canonical item cannot separate those two, which is an argument for a matched control prompt rather than for reading the sweep as evidence of understanding.</p>
-      </div>
-      <div class="callout callout-note">
-        <span class="callout-tag">Fable 5</span>
+      </details>
+      <details class="release-note callout callout-note"><summary><span class="callout-tag">Fable 5</span></summary>
         <p><strong>Claude Fable 5 (June 9, 2026) is the public-facing version of Anthropic's Mythos model line</strong> — a different line from Opus/Sonnet/Haiku; Mythos 5 itself is restricted to approved organizations. Its control surface is a reasoning-effort selector only (default High), with no Adaptive or Extended-thinking toggle. Caveat: in high-risk topic areas Fable blocks and silently falls back to Claude Opus 4.8 (Anthropic reports ≥95% of sessions run entirely on Fable), and no interface indicator shows which model answered. The Carwash prompt does not plausibly trigger the fallback, but the caveat applies to every Fable entry as a class.</p>
-      </div>
+      </details>
     </section>
 
     <section>
@@ -157,7 +150,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260930b"></script>
+  <script src="../scripts.js?v=20261010a"></script>
   <script>
     (async function () {
       const SLUG = "anthropic";

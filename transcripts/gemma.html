@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=20260930b">
+  <link rel="stylesheet" href="../styles.css?v=20261010a">
 <!-- carwash-meta-block -->
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
@@ -82,10 +82,9 @@
     <div id="vendor-rail"></div>
 
     <section>
-      <div class="callout callout-note">
-        <span class="callout-tag">Open-weight</span>
+      <details class="release-note callout callout-note" open><summary><span class="callout-tag">Open-weight</span></summary>
         <p><strong>Gemma 4 is an open-weight model line, not the commercial Gemini product.</strong> Most of these runs were taken in Google AI Studio's playground (Thinking Level: High, Temperature 1, Grounding off); the 12B was run locally on consumer hardware via LM Studio. Either way it is the model as a raw artifact — no consumer system prompt, no RLHF-tuned product layer, and no wrapper doing cleanup. Gemma is not reachable through the Gemini consumer app; it lives in AI Studio, on Hugging Face, and in self-hosted deployments. These results are relevant to developers, self-hosters, and small-office deployers, and they are <em>not</em> evidence for what the Gemini consumer product will do, or vice versa. They are kept as a separate deployment class and excluded from the commercial corpora.</p>
-      </div>
+      </details>
     </section>
 
     <section>
@@ -139,7 +138,7 @@
        financial interest in, and receives no compensation from, any AI or technology firm.</p>
   </footer>
 
-  <script src="../scripts.js?v=20260930b"></script>
+  <script src="../scripts.js?v=20261010a"></script>
   <script>
     (async function () {
       const SLUG = "gemma";

@@ -716,6 +716,42 @@ li { margin-bottom: 6px; }
 .callout-specimen { border-left-color: var(--olive); }
 .callout-specimen .callout-tag { background: var(--olive); }
 .callout-specimen p { font-family: var(--mono); font-size: 14px; line-height: 1.55; }
+/* Release notes at the top of transcript pages: one <details> per release,
+   newest first, only the topmost open. These override the generic details
+   rule below, which is styled for the monospace reasoning-trace boxes. */
+details.release-note { border: 0; background: none; padding: 0; margin: 10px 0; }
+details.release-note.callout {
+  background: var(--bg-alt);
+  border: 1px solid var(--light);
+  border-left: 3px solid var(--pumpkin);
+  padding: 12px 20px;
+}
+.release-note > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  color: inherit;
+}
+.release-note > summary::-webkit-details-marker { display: none; }
+.release-note > summary .callout-tag { margin-bottom: 0; }
+.release-note > summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(-45deg);
+}
+.release-note[open] > summary { border-bottom: 0; margin-bottom: 12px; }
+.release-note[open] > summary::after { transform: rotate(45deg); }
+.release-note > summary:focus-visible { outline: 2px solid var(--pumpkin); outline-offset: 3px; }
+.release-note.callout > p + p { margin-top: 10px; }
 @media (max-width: 560px) {
   .charts-row { gap: 20px; }
 }

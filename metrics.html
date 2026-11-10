@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Carwash Test — Metrics | Virtual Intelligence</title>
-  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 281 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="description" content="The Carwash Test — a longitudinal AI reasoning diagnostic measuring whether systems can hold the logical object of a prompt against statistical pressure. Charts and trends across 291 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Carwash Test">
   <meta property="og:title" content="The Carwash Test — Metrics">
-  <meta property="og:description" content="Charts and trends across 281 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta property="og:description" content="Charts and trends across 291 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta property="og:url" content="https://carwashtest.org/metrics.html">
   <meta property="og:image" content="https://carwashtest.org/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
   <meta property="og:image:alt" content="The Carwash Test — Virtual Intelligence in Action. A diagnostic by Christopher Horrocks.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Carwash Test — Metrics">
-  <meta name="twitter:description" content="Charts and trends across 281 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
+  <meta name="twitter:description" content="Charts and trends across 291 runs and 19 model families: outcome mix, verbosity over time, cost ratio, and per-family comparison.">
   <meta name="twitter:image" content="https://carwashtest.org/assets/og-image.png">
   <meta name="author" content="Christopher Horrocks">
 <!-- carwash-keywords -->
@@ -118,7 +118,7 @@
     <section>
       <div class="sec-rail" aria-hidden="true"><span class="sec-num">05</span><span class="sec-name">Cross-language</span></div>
       <h2>Cross-language comparison</h2>
-      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=281). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
+      <p>The Carwash Test has been run in eight languages, each kept as a separate corpus (the charts above are the English corpus, n=291). This table places side by side the four languages with cross-vendor coverage in depth. The English column follows the live dataset. A dash means the model was not run in that language. (Namazu was also run in Japanese across registers and interface languages — register-dependent, so it is not reduced to a single cell here; see its <a href="transcripts/sakana.html">transcript page</a>.)</p>
       <div class="table-scroll"><table class="results-table cross-lang-table">
         <caption>Cross-language Carwash Test results for models tested in English, French, Simplified Chinese, and Ukrainian. The Indonesian, Turkish and Thai corpora each arrived as a sweep over a different model set, so each is reported in its own section below rather than as an extra column here. Japanese has only been run against Sakana AI and stays on that vendor's page.</caption>
         <thead>
@@ -180,6 +180,8 @@
           <tr><td>Gemini 3.8 Flash</td><td>Extended Thinking Off</td><td><span class="badge pass">Pass</span></td><td>—</td><td>—</td><td>—</td></tr>
           <tr><td>Claude Haiku 5.5</td><td>Effort Medium</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td></tr>
 <tr><td>Gemini 4 Argon</td><td>Effort Medium</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass-adjacent">Pass-adjacent</span></td></tr>
+<tr><td>Claude Fable 5.2</td><td>Effort Medium</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td></tr>
+<tr><td>ChatGPT 6.1 Terra</td><td>Effort Medium</td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td><td><span class="badge pass">Pass</span></td></tr>
         </tbody>
       </table></div>
       <ul class="findings-list">
@@ -633,6 +635,24 @@
           <tr><td>#828</td><td>Latin</td><td>Gemini 4 Argon</td><td>English / Effort Medium</td><td>~23</td><td>Drive—unless you plan on carrying the car on your back, walking won&#x27;t get it to the carwash.</td></tr>
           <tr><td>#829</td><td>Latin</td><td>Gemini 4 Argon</td><td>English / Effort High</td><td>~17</td><td>Drive. If you walk, your car won&#x27;t be at the carwash to get cleaned.</td></tr>
           <tr><td>#835</td><td>Hanzi</td><td>Gemini 4 Argon</td><td>Chinese / Effort Medium</td><td>~23</td><td><span lang="zh-Hans">你得**开车去**——毕竟你要洗的是车，走路去的话，车可就留在原地没法洗了！</span></td></tr>
+          <tr><td>#836</td><td>Latin</td><td>Claude Fable 5.2</td><td>English / Effort Low</td><td>~25</td><td>Drive. The car has to be at the carwash to get washed, and walking there leaves it in the driveway.</td></tr>
+          <tr><td>#837</td><td>Latin</td><td>Claude Fable 5.2</td><td>English / Effort Medium</td><td>~26</td><td>Drive. The car has to be at the carwash to get washed, and walking there leaves it dirty in the driveway.</td></tr>
+          <tr><td>#838</td><td>Latin</td><td>Claude Fable 5.2</td><td>English / Effort High</td><td>~11</td><td>Drive. The car has to be there to get washed.</td></tr>
+          <tr><td>#839</td><td>Latin</td><td>Claude Fable 5.2</td><td>English / Effort Extra</td><td>~24</td><td>Drive. The car has to be at the carwash to get washed, and walking leaves it a hundred feet short.</td></tr>
+          <tr><td>#840</td><td>Latin</td><td>Claude Fable 5.2</td><td>English / Effort Max</td><td>~18</td><td>Drive. The car has to be at the carwash, and walking gets only you there.</td></tr>
+          <tr><td>#844</td><td>Latin</td><td>Claude Fable 5.2</td><td>Turkish / Effort Medium</td><td>~26</td><td><span lang="tr">Arabayla. Yıkanacak olan araba; yürürseniz oto yıkamaya siz varırsınız, araba kirli halde yerinde kalır.</span></td></tr>
+          <tr><td>#845</td><td>Cyrillic</td><td>Claude Fable 5.2</td><td>Ukrainian / Effort Medium</td><td>~26</td><td><span lang="uk">Їхати. Мити треба машину, а пішки вона туди не дійде.</span></td></tr>
+          <tr><td>#846</td><td>Hanzi</td><td>Claude Fable 5.2</td><td>Chinese / Effort Medium</td><td>~20</td><td><span lang="zh-Hans">开车去。车不到场，洗车店没东西可洗。35米的距离只说明这趟车程很短。</span></td></tr>
+          <tr><td>#847</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>English / Effort Light</td><td>~12</td><td>Drive. Your car needs to be at the car wash. 🚗🫧</td></tr>
+          <tr><td>#848</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>English / Effort Medium</td><td>~13</td><td>Drive—your car needs to go through the car wash. 🚗🧼</td></tr>
+          <tr><td>#849</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>English / Effort High</td><td>~15</td><td>**Drive.** The car needs to be at the carwash to get clean.</td></tr>
+          <tr><td>#850</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>English / Effort Extra High</td><td>~15</td><td>Drive. Your car needs to be at the car wash to get cleaned.</td></tr>
+          <tr><td>#851</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>English / Effort Ultra</td><td>~11</td><td>Drive. The car needs to be at the car wash.</td></tr>
+          <tr><td>#852</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>French / Effort Medium</td><td>~22</td><td><span lang="fr">En voiture : même à 35 mètres, il faut l’amener au lave-auto pour la faire laver. 🚗🧼</span></td></tr>
+          <tr><td>#853</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>Indonesian / Effort Medium</td><td>~24</td><td><span lang="id">**Kendarai mobilnya**, meskipun hanya 35 meter—mobil perlu berada di tempat cuci agar bisa dicuci.</span></td></tr>
+          <tr><td>#855</td><td>Latin</td><td>ChatGPT 6.1 Terra</td><td>Turkish / Effort Medium</td><td>~22</td><td><span lang="tr">Arabayla gitmelisin. Oto yıkama yalnızca 35 metre uzakta olsa da yıkanacak olan araban.</span></td></tr>
+          <tr><td>#856</td><td>Cyrillic</td><td>ChatGPT 6.1 Terra</td><td>Ukrainian / Effort Medium</td><td>~50</td><td><span lang="uk">Краще **поїхати на машині**: хоч автомийка й за 35 метрів, машина має бути там, щоб її помили. 🚗🧼</span></td></tr>
+          <tr><td>#857</td><td>Hanzi</td><td>ChatGPT 6.1 Terra</td><td>Chinese / Effort Medium</td><td>~19</td><td><span lang="zh-Hans">开车去。虽然只有35米，但洗车店需要洗的是你的车，得把车开过去。</span></td></tr>
         </tbody>
       </table></div>
       <p>The structural finding across all four corpora: holding the logical object is not a function of model size or reasoning budget. The shortest correct answers come from models that name the constraint immediately; the longest wrong answers come from models that elaborate their way past it.</p>
